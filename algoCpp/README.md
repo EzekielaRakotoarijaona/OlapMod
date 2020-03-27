@@ -8,4 +8,4 @@ Assuming you have installed cmake on your computer :
 
 To clear all the generated files by cmake :
 
-* delete all the files in the build folder 
+* delete all the files in the build folder
