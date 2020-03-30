@@ -24,4 +24,6 @@ jobs:
 
     # Runs a set of commands using the runners shell
     - name: Run cmake and make build
-      run: pwd
+      run: |
+        pwd,
+        ls
