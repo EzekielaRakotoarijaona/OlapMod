@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(main ../source/main/source/main.cpp ../source/main/source/nbEnregistrements.cpp)
+add_executable(main ../source/main/source/main.cpp ../source/main/source/nbEnregistrements.cpp ../source/main/source/calculBenefice.cpp)
 
 add_executable(main_test ../source/test/source/main.cpp ../source/test/source/unit_test.cpp)
 

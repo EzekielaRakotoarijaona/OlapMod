@@ -71,7 +71,7 @@ vector<int> Binaire_colonnes(vector<int> &V) {
 void toutes_les_tailles(matrice & M) {
     //affiche les taille de chaque combinaison de colonnes de M
     int nbcolonnes = M[0].size();
-    for (int combinaison = 1; combinaison <= pow(2, nbcolonnes) - 2; combinaison++) {
+    for (int combinaison = 1; combinaison <= pow(2, nbcolonnes); combinaison++) {
         vector<int> V = convertirEnBinaire(combinaison, nbcolonnes);
         vector<int> W = Binaire_colonnes(V);
         cout << "la taille de la combinaison " << combinaison << " est " << taille(M, W) << endl;

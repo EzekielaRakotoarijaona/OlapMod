@@ -5,6 +5,7 @@
 #include <ctime>//ça sert pour la génération aléatoire
 #include <cmath>//ça sert pour la fonction pow (puissance)
 #include "../include/nbEnregistrements.hpp"
+#include "../include/calculBenefice.hpp"
 
 
 int main() {
