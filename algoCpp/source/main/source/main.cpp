@@ -9,13 +9,13 @@
 
 
 int main() {
-    int l = 100000; //100000 lignes
-    int c = 5; // 5 colonnes
+    int l = 8; //100000 lignes
+    int c = 3; // 5 colonnes
     matrice M;
     srand(time(NULL));//c'est pour qu'à chaque exécution, on ait des nombres différents
     generer(M, l, c);
     //pour tester la fonction taille
-    vector<int> W(3); W[0] = 1;  W[1] = 3; W[2] = 4;// je teste sur les colonnes 1, 3 et 4
+    vector<int> W(3); W[0] = 1;  W[1] = 2; W[2] = 3;// je teste sur les colonnes 1, 3 et 4
     cout << "Dans la matrice M, en considérant les 3 colonnes 1, 2 et 3, le nombre de triplets distincts est " << taille(M, W) << endl;
     cout << "_____________________________________" << endl;
     //maintenant, je calcule toutes les tailles
