@@ -9,8 +9,6 @@
 
 
 int calculBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisees, int numeroRequete) {
-    
-    
     if(numeroRequete == 0 || numeroRequete >= taillesRequetes.size()) {
         throw "Numero de requete invalide : doit etre supperieur a 0 et dans l'index des requetes possibles";
     }
@@ -25,7 +23,16 @@ int calculBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisee
         index--;
     }
     return benefice;
-    
+}
+
+vector<int> requeteDep(int numeroRequete, vector<int> taillesRequetes) {
+    vector<int> reponse;
+    for(int i = 1; i<taillesRequetes.size(); i++) {
+        if((i & numeroRequete) == i || i == taillesRequetes.size()-1){
+            reponse.push_back(i);
+        }
+    }
+    return reponse;
 }
 
 
