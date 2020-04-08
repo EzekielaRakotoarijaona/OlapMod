@@ -17,7 +17,7 @@ int calculBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisee
     int index = requetesMaterialisees.size() - 1;
     int benefice = taillesRequetes[requetesMaterialisees[0]] - taillesRequetes[numeroRequete];
     while( index >= 0) {
-        if((numeroRequete & requetesMaterialisees[index]) == numeroRequete || taillesRequetes.size()-1) {
+        if((numeroRequete & requetesMaterialisees[index]) == numeroRequete || numeroRequete == taillesRequetes.size()-1) {
             if (benefice > taillesRequetes[requetesMaterialisees[index]] - taillesRequetes[numeroRequete]) {
                 benefice = taillesRequetes[requetesMaterialisees[index]] - taillesRequetes[numeroRequete];
             }
@@ -27,3 +27,7 @@ int calculBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisee
     return benefice;
     
 }
+
+
+
+

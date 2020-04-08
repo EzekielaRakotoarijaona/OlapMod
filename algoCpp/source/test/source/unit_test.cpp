@@ -14,21 +14,43 @@ bool testCalculBenefice(){
     printf("Test successful : Resultat attendu : %d / resultat réel : %d \n", resultatAttendu, resultatReel);
     
     //Test 2 : Dans le cas où le résultatAttendu est faux
-    resultatAttendu = 4;
+    resultatAttendu = 3;
     resultatReel = calculBenefice(taillesRequetes, requetesMaterialisees, 2);
     
-    if (resultatReel != resultatAttendu) {
+    if (resultatReel == resultatAttendu) {
         printf("Test successful : Resultat attendu : %d / resultat réel : %d \n", resultatAttendu, resultatReel);
         
         //Test 3 : On rajoute un noeud matérialisé de plus : noeud 3
         requetesMaterialisees.push_back(3);
         resultatAttendu = 1;
         resultatReel = calculBenefice(taillesRequetes, requetesMaterialisees, 2);
-        if(resultatAttendu == resultatReel)
-        {
+        if(resultatAttendu == resultatReel) {
             printf("Test successful : Resultat attendu : %d / resultat réel : %d \n", resultatAttendu, resultatReel);
-            return true;
-        }
+            
+            //Test 4 : On rajoute une autre dimension non calacuble à partir du numeroRequete
+            requetesMaterialisees.push_back(1);
+            resultatAttendu = 1;
+            resultatReel = calculBenefice(taillesRequetes, requetesMaterialisees, 2);
+            if(resultatAttendu == resultatReel) {
+                printf("Test successful : Resultat attendu : %d / resultat réel : %d \n", resultatAttendu, resultatReel);
+                //Test 5: Ajout d'une dimension moins benéfique que celles précédentes
+                    requetesMaterialisees.push_back(6);
+                    resultatAttendu = 1;
+                    resultatReel = calculBenefice(taillesRequetes, requetesMaterialisees, 2);
+                    if(resultatAttendu == resultatReel) {
+                        printf("Test successful : Resultat attendu : %d / resultat réel : %d \n", resultatAttendu, resultatReel);
+                        //Test 6: Changement du numero de la reqiete en 8
+                        requetesMaterialisees.push_back(6);
+                        resultatAttendu = 2;
+                        resultatReel = calculBenefice(taillesRequetes, requetesMaterialisees, 8);
+                        if(resultatAttendu == resultatReel) {
+                            printf("Test successful : Resultat attendu : %d / resultat réel : %d \n", resultatAttendu, resultatReel);
+                            return true;
+                        }
+                    }
+                }
+            }
+        
     }
     
     printf("Test failed : Resultat attendu : %d / resultat réel : %d \n", resultatAttendu, resultatReel);
