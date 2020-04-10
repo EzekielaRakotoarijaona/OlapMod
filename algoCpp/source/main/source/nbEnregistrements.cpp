@@ -38,7 +38,7 @@ vector<int> extraire(vector<int>& V, vector<int>& W) {
 
 int taille(matrice& M, vector<int>& W) {
     //ça compte le nombre de tuples de M, quand on considère les colonnes désignées dans W
-    set<vector<int>> S;//ensemble où on met les vecteurs/tuples qu'on extraits de chaque ligne de M
+    set<vector<int> > S;//ensemble où on met les vecteurs/tuples qu'on extraits de chaque ligne de M
     for (auto i = 0; i < M.size(); i++) {
         S.insert(extraire(M[i], W));
     }
