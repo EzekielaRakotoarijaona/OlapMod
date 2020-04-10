@@ -12,5 +12,8 @@ static vector<int> requetesMaterialisees = {7};
 
 bool testCalculBenefice();
 
+vector<int> requeteDep(int numeroRequete, vector<int> taillesRequetes);
+bool testRequeteDep();
+
 
 #endif

@@ -15,6 +15,12 @@ int main() {
     else{
         printf("Test failed \n");
     }
+    if (testRequeteDep()) {
+        printf("Test réussi! \n");
+    }
+    else{
+        printf("Test failed \n");
+    }
     printf("Test réussi! \n");
     return 0;
     

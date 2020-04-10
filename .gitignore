@@ -7,3 +7,4 @@ CTestTestfile.cmake
 Testing/
 main
 main_test
+.DS_Store
