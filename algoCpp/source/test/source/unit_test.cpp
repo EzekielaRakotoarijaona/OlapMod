@@ -59,21 +59,18 @@ bool testCalculBenefice(){
 bool testRequeteDep(){
     vector<int> resultatAttendu = {1,2,3,4,5,6,7,8};
     vector<int> resultatReel = requeteDep(7, taillesRequetes);
-    sort(resultatReel.begin(), resultatReel.end());
     if(resultatAttendu != resultatReel){
         printf("Test Failed\n");
         return false;
     }
     resultatAttendu = {2,4,6,8};
     resultatReel = requeteDep(6, taillesRequetes);
-    sort(resultatReel.begin(), resultatReel.end());
     if(resultatAttendu != resultatReel){
         printf("Test Failed \n");
         return false;
     }
     resultatAttendu = {8};
     resultatReel = requeteDep(8, taillesRequetes);
-    sort(resultatReel.begin(), resultatReel.end());
     if(resultatAttendu != resultatReel){
         printf("Test Failed \n");
         return false;
