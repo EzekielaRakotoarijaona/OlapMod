@@ -38,3 +38,10 @@ Assuming you have installed cmake on your computer :
 To clear all the generated files by cmake :
 
 * delete all the files in the build folder
+
+Dernière étape pour ouvrir votre projet dans qt creator : 
+1. Ouvrir qt creator
+2. Fichier -> Nouveau fichier ou projet -> importer un projet existant -> Olap mod ->algoCPP
+3. Suivez les instructions
+4. Voilà
+
