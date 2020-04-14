@@ -7,6 +7,7 @@
 
 #include "../include/calculBenefice.hpp"
 #include <time.h>
+#include <algorithm>
 
 using namespace std;
 
