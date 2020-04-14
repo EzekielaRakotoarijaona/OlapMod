@@ -61,7 +61,7 @@ int maxBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisees) 
     int indexMax = 1;
     printf("\nLes benefice trouves sont : ");
     for(int i = 1; i < taillesRequetes.size(); i++) {
-        if(find(requetesMaterialisees.begin(), requetesMaterialisees.end(), taillesRequetes[i]) == requetesMaterialisees.end()) {
+        if(std::find(requetesMaterialisees.begin(), requetesMaterialisees.end(), taillesRequetes[i]) == requetesMaterialisees.end()) {
             int beneficeActuel = calculerBeneficeReel(taillesRequetes, requetesMaterialisees, i);
             printf("requete : %d = %d,", i, beneficeActuel);
             if(beneficeActuel > maxBenefice) {
