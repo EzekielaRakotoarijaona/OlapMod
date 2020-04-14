@@ -8,7 +8,7 @@
 #include "../include/calculBenefice.hpp"
 #include <time.h>
 
-
+using namespace std;
 
 int calculBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisees, int numeroRequete) {
     if(numeroRequete == 0 || numeroRequete >= taillesRequetes.size()) {
