@@ -77,3 +77,34 @@ bool testRequeteDep(){
     }
     return true;
 }
+
+bool testCalculBeneficeTotal() {
+    //Test 1
+    int nombreAMaterialiser = 1;
+    vector<int> resultatAttendu = {7,1};
+    vector<int> resultatReel = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+    if(resultatAttendu != resultatReel){
+        printf("Test Failed Test 1 Calcul Benefice Total \n");
+        return false;
+    }
+    
+    //Test 2
+    nombreAMaterialiser = 2;
+    resultatAttendu = {7,1,3};
+    resultatReel = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+    if(resultatAttendu != resultatReel){
+        printf("Test Failed Test 2 Calcul Benefice Total \n");
+        return false;
+    }
+    
+    //Test 3
+    nombreAMaterialiser = 2;
+    resultatAttendu = {7,5,2};
+    resultatReel = calculBeneficeTotal(taillesRequetes2, nombreAMaterialiser);
+    if(resultatAttendu != resultatReel){
+        printf("Test Failed Test 3 Calcul Benefice Total \n");
+        return false;
+    }
+    
+    return true;
+}
