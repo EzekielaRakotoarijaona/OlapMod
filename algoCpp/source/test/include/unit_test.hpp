@@ -20,7 +20,7 @@ static const vector<vector<int>> tableFait = { {1,4,7},
                                                {2,4,9},
                                                {2,4,8},
                                                {3,5,8},
-                                               {3,6,7}};
+                                               {3,6,7} };
 
 bool testCalculBenefice();
 bool testRequeteDep();
