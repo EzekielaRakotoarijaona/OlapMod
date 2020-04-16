@@ -21,7 +21,7 @@ using namespace std;//ça permet d'utiliser la librairie stl
 static const string FICHIER_CSV="table_fait.csv";
 
 
-vector<vector<string>> chargerFichier() {
+void chargerFichiers() {
     string ligne;
     ifstream file (FICHIER_CSV);
     vector<string> V2;
@@ -39,18 +39,11 @@ vector<vector<string>> chargerFichier() {
     }
     else
         cout<<"erreur d'ouverture du fichier"<<endl;
-
-    /*for(auto it = V2.begin(); it != V2.end(); it++) {
-          cout << *it<<" ";
-
-       }*/
-
     for (int i = 0; i < tableFait.size(); i++) {
         for (int j = 0; j < tableFait[i].size(); j++)
             cout << tableFait[i][j] << " ";
         cout << endl;
     }
-    return tableFait;
 }
 
 void generer(matrice& M, int l, int c) {

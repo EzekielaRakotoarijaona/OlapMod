@@ -20,7 +20,7 @@
 
 using namespace std;//ça permet d'utiliser la librairie stl
 
-vector<vector<string>> chargerFichier();
+void chargerFichiers();
 
 typedef vector<vector<int>> matrice;//on définit le type matrice
 

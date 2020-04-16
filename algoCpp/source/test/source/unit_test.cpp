@@ -114,7 +114,7 @@ bool testCalculBeneficeTotal() {
 
 
 bool testChargerFichier() {
-    vector<vector<string>> reponse = chargerFichier();
+    //chargerFichiers();
     /*if(reponse != tableFait) {
         printf("Test Failed Test 1 Charger Fichier \n");
                return false;
