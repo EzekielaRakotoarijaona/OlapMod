@@ -122,8 +122,7 @@ bool testChargerFichier() {
     return true;
 }
 bool testTaillesRequetes(){
-  vector<int> resultatReel = toutes_les_tailles(tableFait);
-
+ vector<int> resultatReel = toutes_les_tailles(tableFait);
  if(resultatAttenduTestTaillesRequetes != resultatReel){
         printf("Test Failed test Tailles Requetes \n");
         return false;
