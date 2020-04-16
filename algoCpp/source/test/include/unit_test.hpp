@@ -26,5 +26,4 @@ bool testCalculBenefice();
 bool testRequeteDep();
 bool testCalculBeneficeTotal();
 
-
 #endif
