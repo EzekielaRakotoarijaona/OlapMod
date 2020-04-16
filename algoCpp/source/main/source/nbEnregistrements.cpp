@@ -99,12 +99,16 @@ vector<int> Binaire_colonnes(vector<int> &V) {
     return W;
 }
 
-void toutes_les_tailles(matrice & M) {
+vector<int> toutes_les_tailles(matrice & M) {
     //affiche les taille de chaque combinaison de colonnes de M
-    int nbcolonnes = M[0].size();
+vector<int> resultat; 
+   int nbcolonnes = M[0].size();
+   resultat.push_back(0);
     for (int combinaison = 1; combinaison <= pow(2, nbcolonnes); combinaison++) {
         vector<int> V = convertirEnBinaire(combinaison, nbcolonnes);
         vector<int> W = Binaire_colonnes(V);
+	resultat.push_back(taille(M, W));
         cout << "la taille de la combinaison " << combinaison << " est " << taille(M, W) << endl;
     }
+    return resultat; 
 }

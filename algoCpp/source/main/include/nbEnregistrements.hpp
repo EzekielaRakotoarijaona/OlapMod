@@ -34,7 +34,7 @@ vector<int> convertirEnBinaire(int n, int c);
 
 vector<int> Binaire_colonnes(vector<int> &V);
 
-void toutes_les_tailles(matrice & M);
+vector<int> toutes_les_tailles(matrice & M);
 
 
 #endif /* nbEnregistrements_hpp */
