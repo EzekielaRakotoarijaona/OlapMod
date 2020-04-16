@@ -14,8 +14,13 @@
 #include<set>
 #include <ctime>//ça sert pour la génération aléatoire
 #include <cmath>
+#include <fstream>
+#include <iostream>
+
 
 using namespace std;//ça permet d'utiliser la librairie stl
+
+vector<vector<string>> chargerFichier();
 
 typedef vector<vector<int>> matrice;//on définit le type matrice
 
@@ -29,7 +34,7 @@ vector<int> convertirEnBinaire(int n, int c);
 
 vector<int> Binaire_colonnes(vector<int> &V);
 
-void toutes_les_tailles(matrice & M) ;
+void toutes_les_tailles(matrice & M);
 
 
 #endif /* nbEnregistrements_hpp */

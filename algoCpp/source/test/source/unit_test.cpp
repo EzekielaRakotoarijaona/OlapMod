@@ -1,5 +1,8 @@
 #include "../include/unit_test.hpp"
 #include "../../main/include/calculBenefice.hpp"
+#include "../../main/include/nbEnregistrements.hpp"
+#include <iostream>
+#include <stdio.h>
 
 bool testCalculBenefice(){
     
@@ -106,6 +109,16 @@ bool testCalculBeneficeTotal() {
         return false;
     }
     
+    return true;
+}
+
+
+bool testChargerFichier() {
+    vector<vector<string>> reponse = chargerFichier();
+    /*if(reponse != tableFait) {
+        printf("Test Failed Test 1 Charger Fichier \n");
+               return false;
+    }*/
     return true;
 }
 

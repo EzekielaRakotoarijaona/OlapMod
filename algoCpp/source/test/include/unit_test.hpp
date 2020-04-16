@@ -5,6 +5,7 @@
 #include <iostream>//c'est pour l'affichage
 #include <vector>
 
+
 using namespace std;
 
 static const vector<int> taillesRequetes = {0, 3, 5, 6, 7, 6, 7, 8, 1};
@@ -25,5 +26,6 @@ static const vector<vector<int>> tableFait = { {1,4,7},
 bool testCalculBenefice();
 bool testRequeteDep();
 bool testCalculBeneficeTotal();
+bool testChargerFichier();
 
 #endif
