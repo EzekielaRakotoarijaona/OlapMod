@@ -60,6 +60,13 @@ int main() {
         printf("Test failed  CalculBeneficeTotal\n");
         return 0;
     }
+    if (testTaillesRequetes()){
+     printf("Test réussi! \n");
+    }
+    else{
+        printf("Test failed  Test tailles requetes\n");
+        return 0;
+    }
     /*
     if (testChargerFichier()) {
         printf("Test réussi! \n");
