@@ -50,7 +50,6 @@ vector<int> calculBeneficeTotal(vector<int> taillesRequetes, int nombreAMaterial
         requetesMaterialisees.push_back(maxBenefice(taillesRequetes,requetesMaterialisees));
     }
     afficherVector(requetesMaterialisees);
-    
     clock_t end = clock();
     time_spent += (double)(end - begin)/CLOCKS_PER_SEC;
     printf("Time elpased is %f seconds \n", time_spent);
@@ -62,13 +61,11 @@ int maxBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisees) 
     int indexMax = 1;
     printf("\nLes benefice trouves sont : ");
     for(int i = 1; i < taillesRequetes.size(); i++) {
-        if(std::find(requetesMaterialisees.begin(), requetesMaterialisees.end(), taillesRequetes[i]) == requetesMaterialisees.end()) {
-            int beneficeActuel = calculerBeneficeReel(taillesRequetes, requetesMaterialisees, i);
-            printf("requete : %d = %d,", i, beneficeActuel);
-            if(beneficeActuel > maxBenefice) {
-                maxBenefice = beneficeActuel;
-                indexMax = i;
-            }
+        int beneficeActuel = calculerBeneficeReel(taillesRequetes, requetesMaterialisees, i);
+        printf("requete : %d = %d,", i, beneficeActuel);
+        if(beneficeActuel > maxBenefice) {
+            maxBenefice = beneficeActuel;
+            indexMax = i;
         }
     }
     printf("\n");
@@ -81,6 +78,7 @@ int calculerBeneficeReel(vector<int> taillesRequetes, vector<int> requetesMateri
     }
     else {
         int benefice = calculBenefice(taillesRequetes,requetesMaterialisees, numeroRequete);
+        int maxBenefice = benefice;
         vector<int> requeteDepTab = requeteDep(numeroRequete, taillesRequetes);
         for(int i=0; i< requeteDepTab.size(); i++) {
             if(requeteDepTab[i] != numeroRequete) {
@@ -88,11 +86,11 @@ int calculerBeneficeReel(vector<int> taillesRequetes, vector<int> requetesMateri
                 int parQuiJeSuisCalculerValeur = parQuiJeSuisCalculer(taillesRequetes, requetesMaterialisees, requeteDepTab[i]);
                 //printf("\nJe suis la requete %d et je suis calcule par %d pour la requete %d\n", requeteDepTab[i], parQuiJeSuisCalculerValeur, numeroRequete);
                 if(parQuiJeSuisCalculerValeur == parQuiJeSuisCalculer(taillesRequetes, requetesMaterialisees, numeroRequete)) {
-                    benefice += benefice;
+                    maxBenefice += benefice;
                 } else {
                     if(taillesRequetes[parQuiJeSuisCalculerValeur] > taillesRequetes[numeroRequete]) {
                         //printf("\n Je suis a la requete %d pour la requete %d mon benefice simple est %d - %d = %d \n",i, numeroRequete, taillesRequetes[parQuiJeSuisCalculerValeur], taillesRequetes[numeroRequete], taillesRequetes[parQuiJeSuisCalculerValeur] - taillesRequetes[numeroRequete] );
-                        benefice += taillesRequetes[parQuiJeSuisCalculerValeur] - taillesRequetes[numeroRequete];
+                        maxBenefice += taillesRequetes[parQuiJeSuisCalculerValeur] - taillesRequetes[numeroRequete];
                     }
                 }
             }

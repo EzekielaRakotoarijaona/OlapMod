@@ -93,7 +93,7 @@ bool testCalculBeneficeTotal() {
     
     //Test 2
     nombreAMaterialiser = 2;
-    resultatAttendu = {7,1,3};
+    resultatAttendu = {7,1,2};
     resultatReel = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
     if(resultatAttendu != resultatReel){
         printf("Test Failed Test 2 Calcul Benefice Total \n");
@@ -113,20 +113,33 @@ bool testCalculBeneficeTotal() {
 }
 
 
-bool testChargerFichier() {
-    //chargerFichiers();
-    /*if(reponse != tableFait) {
-        printf("Test Failed Test 1 Charger Fichier \n");
-               return false;
-    }*/
+bool testChargerFichier(string filePath) {
+    matrice resultatReel = chargerFichiers(filePath);
+    if(tableFait.size() != resultatReel.size()){
+        printf("Test Failed test Charger fichier \n");
+        return false;
+    }
+    for (int i = 0; i < tableFait.size(); i++) {
+        if(tableFait[i].size() != resultatReel[i].size()){
+            printf("Test Failed test Charger fichier \n");
+            return false;
+        }
+        for (int j = 0; j < tableFait[i].size(); j++){
+            if(tableFait[i][j] != resultatReel[i][j]){
+                printf("Test Failed test Charger fichier \n");
+                return false;
+            }
+        }
+    }
     return true;
 }
+
 bool testTaillesRequetes(){
  vector<int> resultatReel = toutes_les_tailles(tableFait);
  if(resultatAttenduTestTaillesRequetes != resultatReel){
-        printf("Test Failed test Tailles Requetes \n");
-        return false;
-    }
+    printf("Test Failed test Tailles Requetes \n");
+    return false;
+}
 return true;
 }
 

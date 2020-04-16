@@ -29,7 +29,7 @@ static matrice tableFait = { {1,4,7},
 bool testCalculBenefice();
 bool testRequeteDep();
 bool testCalculBeneficeTotal();
-bool testChargerFichier();
+bool testChargerFichier(string filePath);
 bool testTaillesRequetes();
 
 #endif

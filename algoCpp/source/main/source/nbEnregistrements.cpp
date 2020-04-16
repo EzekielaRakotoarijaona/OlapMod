@@ -13,6 +13,7 @@
 #include <cmath>
 #include <fstream>
 #include <stdio.h>
+#include <sstream>
 
 
 
@@ -21,29 +22,43 @@ using namespace std;//ça permet d'utiliser la librairie stl
 static const string FICHIER_CSV="table_fait.csv";
 
 
-void chargerFichiers() {
+matrice chargerFichiers(string filePath) {
     string ligne;
-    ifstream file (FICHIER_CSV);
+    ifstream file (filePath);
     vector<string> V2;
     vector<vector<string>> tableFait;
     getline(file,ligne); //on a pas besoin de la première ligne
-    char delim = ','; // Ddefine the delimiter to split by
-
+    matrice tableFaitEntiers;
+    char delim = ',';
     if (file.good())
     {
-        while (getline(file,ligne,delim))
+        while (getline(file,ligne))
         {
-            V2.push_back(ligne);
+            stringstream ss(ligne);
+            string token;
+            while (getline(ss, token, delim)) {
+                V2.push_back(token);
+            }
             tableFait.push_back(V2);
+            V2.clear();
         }
     }
-    else
+    else{
         cout<<"erreur d'ouverture du fichier"<<endl;
+        return tableFaitEntiers;
+    }
+    tableFaitEntiers.resize(tableFait.size());
+    for (int i = 0; i < tableFait.size(); i++) {
+        tableFaitEntiers[i].resize(tableFait[i].size());
+        for (int j = 0; j < tableFait[i].size(); j++)
+            tableFaitEntiers[i][j] = stoi(tableFait[i][j]);
+    }
     for (int i = 0; i < tableFait.size(); i++) {
         for (int j = 0; j < tableFait[i].size(); j++)
-            cout << tableFait[i][j] << " ";
-        cout << endl;
+            cout<< tableFaitEntiers[i][j] << " ";
+        cout<<" "<<endl;
     }
+    return tableFaitEntiers;
 }
 
 void generer(matrice& M, int l, int c) {

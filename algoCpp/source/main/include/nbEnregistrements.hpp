@@ -20,9 +20,9 @@
 
 using namespace std;//ça permet d'utiliser la librairie stl
 
-void chargerFichiers();
-
 typedef vector<vector<int>> matrice;//on définit le type matrice
+
+matrice chargerFichiers(string filePath);
 
 void generer(matrice& M, int l, int c);
 

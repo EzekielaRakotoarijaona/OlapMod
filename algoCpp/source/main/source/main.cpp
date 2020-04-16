@@ -8,7 +8,22 @@
 #include "../include/calculBenefice.hpp"
 
 
-int main() {
+int main(int argc, char *argv[]) {
+    if(argc > 1) {
+        matrice tableFait = chargerFichiers(argv[1]);
+        vector<int> taillesRequetes = toutes_les_tailles(tableFait);
+        cout << "Combien de requêtes à matérialiser ? : ";
+        int nombreAMaterialiser = 0;
+        cin >> nombreAMaterialiser;
+        while(nombreAMaterialiser < 1 || nombreAMaterialiser > taillesRequetes.size()-2){
+            cout << "erreur de saisie, retapez" << endl;
+            cin.clear();
+            cin.ignore(999, '\n');
+            cin >> nombreAMaterialiser;
+        }
+        calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+        return 0;
+    }
     int l = 8; //100000 lignes
     int c = 3; // 5 colonnes
     matrice M;
