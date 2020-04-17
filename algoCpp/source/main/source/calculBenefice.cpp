@@ -11,14 +11,14 @@
 
 using namespace std;
 
-int calculBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisees, int numeroRequete) {
-    if(numeroRequete == 0 || numeroRequete >= taillesRequetes.size()) {
-        throw "Numero de requete invalide : doit etre supperieur a 0 et dans l'index des requetes possibles";
+int calculBenefice(vector<int> &taillesRequetes, vector<int> &requetesMaterialisees, int numeroRequete) {
+    if(numeroRequete >= taillesRequetes.size()) {
+        throw "Numero de requete invalide : doit etre dans l'index des requetes possibles";
     }
     int index = requetesMaterialisees.size() - 1;
     int benefice = taillesRequetes[requetesMaterialisees[0]] - taillesRequetes[numeroRequete];
     while( index >= 0) {
-        if((numeroRequete & requetesMaterialisees[index]) == numeroRequete || numeroRequete == taillesRequetes.size()-1) {
+        if((numeroRequete & requetesMaterialisees[index]) == numeroRequete || numeroRequete == 0) {
             if (benefice > taillesRequetes[requetesMaterialisees[index]] - taillesRequetes[numeroRequete]) {
                 benefice = taillesRequetes[requetesMaterialisees[index]] - taillesRequetes[numeroRequete];
             }
@@ -28,22 +28,22 @@ int calculBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisee
     return benefice;
 }
 
-vector<int> requeteDep(int numeroRequete, vector<int> taillesRequetes) {
+vector<int> requeteDep(int numeroRequete, vector<int> &taillesRequetes) {
     vector<int> reponse;
-    for(int i = 1; i<taillesRequetes.size(); i++) {
-        if((i & numeroRequete) == i || i == taillesRequetes.size()-1){
+    for(int i = 0; i<=numeroRequete; i++) {
+        if((i & numeroRequete) == i || i == 0){
             reponse.push_back(i);
         }
     }
     return reponse;
 }
 
-vector<int> calculBeneficeTotal(vector<int> taillesRequetes, int nombreAMaterialiser) {
+vector<int> calculBeneficeTotal(vector<int> &taillesRequetes, int nombreAMaterialiser) {
     
     double time_spent = 0.0;
     clock_t begin = clock();
     vector<int> requetesMaterialisees;
-    requetesMaterialisees.push_back(taillesRequetes.size()-2);
+    requetesMaterialisees.push_back(taillesRequetes.size()-1);
     while(requetesMaterialisees.size()-1 != nombreAMaterialiser){
         int size = requetesMaterialisees.size();
         printf("Etape : %d \n", size);
@@ -56,11 +56,11 @@ vector<int> calculBeneficeTotal(vector<int> taillesRequetes, int nombreAMaterial
     return requetesMaterialisees;
 }
 
-int maxBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisees) {
+int maxBenefice(vector<int> &taillesRequetes, vector<int> &requetesMaterialisees) {
     int maxBenefice = 0;
     int indexMax = 1;
     printf("\nLes benefice trouves sont : ");
-    for(int i = 1; i < taillesRequetes.size(); i++) {
+    for(int i = 0; i < taillesRequetes.size(); i++) {
         int beneficeActuel = calculerBeneficeReel(taillesRequetes, requetesMaterialisees, i);
         printf("requete : %d = %d,", i, beneficeActuel);
         if(beneficeActuel > maxBenefice) {
@@ -72,7 +72,7 @@ int maxBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisees) 
     return indexMax;
 }
 
-int calculerBeneficeReel(vector<int> taillesRequetes, vector<int> requetesMaterialisees, int numeroRequete){
+int calculerBeneficeReel(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, int numeroRequete){
     if(requetesMaterialisees.size() == 1) {
         return calculBenefice(taillesRequetes,requetesMaterialisees, numeroRequete) * requeteDep(numeroRequete, taillesRequetes).size();
     }
@@ -99,13 +99,13 @@ int calculerBeneficeReel(vector<int> taillesRequetes, vector<int> requetesMateri
     }
 }
 
-int parQuiJeSuisCalculer(vector<int> taillesRequetes, vector<int> requetesMaterialisees, int numeroRequete) {
-    if(numeroRequete == 0 || numeroRequete >= taillesRequetes.size()) {
-        throw "Numero de requete invalide : doit etre supperieur a 0 et dans l'index des requetes possibles";
+int parQuiJeSuisCalculer(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, int numeroRequete) {
+    if(numeroRequete >= taillesRequetes.size()) {
+        throw "Numero de requete invalide : doit etre dans l'index des requetes possibles";
     }
     int indexMax = requetesMaterialisees[0];
     for(int i = 0 ; i < requetesMaterialisees.size(); i++) {
-        if((numeroRequete & requetesMaterialisees[i]) == numeroRequete || numeroRequete == taillesRequetes.size()-1) {
+        if((numeroRequete & requetesMaterialisees[i]) == numeroRequete || numeroRequete == 0) {
             if (taillesRequetes[requetesMaterialisees[i]] < taillesRequetes[indexMax]) {
                 indexMax = requetesMaterialisees[i];
             }
@@ -114,7 +114,7 @@ int parQuiJeSuisCalculer(vector<int> taillesRequetes, vector<int> requetesMateri
     return indexMax;
 }
 
-void afficherVector(vector<int> vector) {
+void afficherVector(vector<int>& vector) {
     printf("\nLe vecteur est : ");
     for(int i = 0; i<vector.size() ; i++){
         printf("%d, ", vector[i]);

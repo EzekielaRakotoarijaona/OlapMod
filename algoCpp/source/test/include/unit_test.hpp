@@ -8,12 +8,12 @@
 
 
 using namespace std;
-static const vector<int> resultatAttenduTestTaillesRequetes={0, 3, 3, 6, 3, 7, 7, 8, 1};
+static const vector<int> resultatAttenduTestTaillesRequetes={1, 3, 3, 6, 3, 7, 7, 8};
 
 
-static const vector<int> taillesRequetes = {0, 3, 5, 6, 7, 6, 7, 8, 1};
+static vector<int> taillesRequetes = {1, 3, 5, 6, 7, 6, 7, 8};
 static vector<int> requetesMaterialisees = {7};
-static const vector<int> taillesRequetes2 = {0, 20, 15, 50, 30, 40, 75, 100, 1};
+static vector<int> taillesRequetes2 = {1, 20, 15, 50, 30, 40, 75, 100};
 
 static matrice tableFait = { {1,4,7},
                                                {1,5,8},

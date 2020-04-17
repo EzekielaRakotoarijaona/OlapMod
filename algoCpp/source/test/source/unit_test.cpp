@@ -45,7 +45,7 @@ bool testCalculBenefice(){
                         //Test 6: Changement du numero de la reqiete en 8
                         requetesMaterialisees.push_back(6);
                         resultatAttendu = 2;
-                        resultatReel = calculBenefice(taillesRequetes, requetesMaterialisees, 8);
+                        resultatReel = calculBenefice(taillesRequetes, requetesMaterialisees, 0);
                         if(resultatAttendu == resultatReel) {
                             printf("Test successful : Resultat attendu : %d / resultat réel : %d \n", resultatAttendu, resultatReel);
                             return true;
@@ -60,20 +60,20 @@ bool testCalculBenefice(){
 
 
 bool testRequeteDep(){
-    vector<int> resultatAttendu = {1,2,3,4,5,6,7,8};
+    vector<int> resultatAttendu = {0,1,2,3,4,5,6,7};
     vector<int> resultatReel = requeteDep(7, taillesRequetes);
     if(resultatAttendu != resultatReel){
         printf("Test Failed\n");
         return false;
     }
-    resultatAttendu = {2,4,6,8};
+    resultatAttendu = {0,2,4,6};
     resultatReel = requeteDep(6, taillesRequetes);
     if(resultatAttendu != resultatReel){
         printf("Test Failed \n");
         return false;
     }
-    resultatAttendu = {8};
-    resultatReel = requeteDep(8, taillesRequetes);
+    resultatAttendu = {0};
+    resultatReel = requeteDep(0, taillesRequetes);
     if(resultatAttendu != resultatReel){
         printf("Test Failed \n");
         return false;

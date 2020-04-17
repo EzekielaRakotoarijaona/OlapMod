@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
         cout << "Combien de requêtes à matérialiser ? : ";
         int nombreAMaterialiser = 0;
         cin >> nombreAMaterialiser;
-        while(nombreAMaterialiser < 1 || nombreAMaterialiser > taillesRequetes.size()-2){
+        while(nombreAMaterialiser < 1 || nombreAMaterialiser > taillesRequetes.size()-1){
             cout << "erreur de saisie, retapez" << endl;
             cin.clear();
             cin.ignore(999, '\n');
@@ -24,17 +24,17 @@ int main(int argc, char *argv[]) {
         calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
         return 0;
     }
-    int l = 8; //100000 lignes
+    int l = 100000; //100000 lignes
     int c = 3; // 5 colonnes
     matrice M;
     srand(time(NULL));//c'est pour qu'à chaque exécution, on ait des nombres différents
+    cout << "Generation d'une table aléatoire de taille 100000" << endl;
     generer(M, l, c);
-    //pour tester la fonction taille
-    vector<int> W(3); W[0] = 1;  W[1] = 2; W[2] = 3;// je teste sur les colonnes 1, 3 et 4
-    cout << "Dans la matrice M, en considérant les 3 colonnes 1, 2 et 3, le nombre de triplets distincts est " << taille(M, W) << endl;
-    cout << "_____________________________________" << endl;
+    cout << "Début du calcul des tailles" << endl;
     //maintenant, je calcule toutes les tailles
-    toutes_les_tailles(M);
+    vector<int> taillesRequetes = toutes_les_tailles(M);
+    int nombreAMaterialiser = 4;
+    calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
     //la fonction toutes_les_tailles calcule et affiche toutes les tailles. Noter qu'en réalité, on n'a pas besoin d'afficher.
     return 0;
 }

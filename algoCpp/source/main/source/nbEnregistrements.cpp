@@ -118,13 +118,12 @@ vector<int> toutes_les_tailles(matrice & M) {
     //affiche les taille de chaque combinaison de colonnes de M
     vector<int> resultat;
     int nbcolonnes = M[0].size();
-    resultat.push_back(0);
+    resultat.push_back(1);
     for (int combinaison = 1; combinaison <= pow(2, nbcolonnes) - 1; combinaison++) {
         vector<int> V = convertirEnBinaire(combinaison, nbcolonnes);
         vector<int> W = Binaire_colonnes(V);
         resultat.push_back(taille(M, W));
         cout << "la taille de la combinaison " << combinaison << " est " << taille(M, W) << endl;
     }
-    resultat.push_back(1);
     return resultat; 
 }

@@ -13,19 +13,19 @@
 
 using namespace std;
 
-int calculBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisees, int numeroRequete);
+int calculBenefice(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, int numeroRequete);
 
-vector<int> requeteDep(int numeroRequete, vector<int> taillesRequetes);
+vector<int> requeteDep(int numeroRequete, vector<int>& taillesRequetes);
 
-vector<int> calculBeneficeTotal(vector<int> taillesRequetes, int nombreAMaterialiser);
+vector<int> calculBeneficeTotal(vector<int>& taillesRequetes, int nombreAMaterialiser);
 
-int maxBenefice(vector<int> taillesRequetes, vector<int> requetesMaterialisees);
+int maxBenefice(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees);
 
-int calculerBeneficeReel(vector<int> taillesRequetes, vector<int> requetesMaterialisees, int numeroRequete);
+int calculerBeneficeReel(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, int numeroRequete);
 
-int parQuiJeSuisCalculer(vector<int> taillesRequetes, vector<int> requetesMaterialisees, int numeroRequete);
+int parQuiJeSuisCalculer(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, int numeroRequete);
 
-void afficherVector(vector<int> vector);
+void afficherVector(vector<int>& vector);
 
 
 #endif /* calculBenefice_hpp */
