@@ -21,9 +21,6 @@
 
 using namespace std;//ça permet d'utiliser la librairie stl
 
-static const string FICHIER_CSV="table_fait.csv";
-
-
 matrice chargerFichiers(string filePath) {
     string ligne;
     ifstream file (filePath);

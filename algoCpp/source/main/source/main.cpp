@@ -10,10 +10,13 @@
 
 int main(int argc, char *argv[]) {
     if(argc > 1) {
+        //SI on lance le main avec une le chemin d'un fichier csv en parametre
         matrice tableFait = chargerFichiers(argv[1]);
+        //Calcul et affichage des tailles de la table de fait
         vector<int> taillesRequetes = toutes_les_tailles(tableFait);
         cout << "Combien de requêtes à matérialiser ? : ";
         int nombreAMaterialiser = 0;
+        //Demande du nombre de requete à matérialiser en plus de la table de fait
         cin >> nombreAMaterialiser;
         while(nombreAMaterialiser < 1 || nombreAMaterialiser > taillesRequetes.size()-1){
             cout << "erreur de saisie, retapez" << endl;
@@ -21,9 +24,11 @@ int main(int argc, char *argv[]) {
             cin.ignore(999, '\n');
             cin >> nombreAMaterialiser;
         }
+        //Calcul des bénéfices
         calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
         return 0;
     }
+    //Cas si le main est lancé sans paramètre : lancement avec une table de fait aléatoire
     int l = 100000; //100000 lignes
     int c = 5; // 5 colonnes
     matrice M;
