@@ -8,6 +8,8 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set(MACOSX TRUE)
 endif()
 
+set(CMAKE_CXX_COMPILER "/usr/bin/c++")
+
 # Find OpenMP
 if(MACOSX AND USE_OpenMP)
     set(CMAKE_C_COMPILER "/usr/local/Cellar/llvm/10.0.0_1/bin/clang")
