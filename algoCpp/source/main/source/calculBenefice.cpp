@@ -103,15 +103,13 @@ int parQuiJeSuisCalculer(vector<int> taillesRequetes, vector<int> requetesMateri
     if(numeroRequete == 0 || numeroRequete >= taillesRequetes.size()) {
         throw "Numero de requete invalide : doit etre supperieur a 0 et dans l'index des requetes possibles";
     }
-    int index = requetesMaterialisees.size() - 1;
     int indexMax = requetesMaterialisees[0];
     for(int i = 0 ; i < requetesMaterialisees.size(); i++) {
-        if((numeroRequete & requetesMaterialisees[index]) == numeroRequete || numeroRequete == taillesRequetes.size()-1) {
-            if (taillesRequetes[requetesMaterialisees[index]] < taillesRequetes[indexMax]) {
-                indexMax = requetesMaterialisees[index];
+        if((numeroRequete & requetesMaterialisees[i]) == numeroRequete || numeroRequete == taillesRequetes.size()-1) {
+            if (taillesRequetes[requetesMaterialisees[i]] < taillesRequetes[indexMax]) {
+                indexMax = requetesMaterialisees[i];
             }
         }
-        index--;
     }
     return indexMax;
 }
