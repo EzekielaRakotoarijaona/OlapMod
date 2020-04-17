@@ -2,37 +2,7 @@ cmake_minimum_required(VERSION 2.6)
 
 project(algoNbEnregistrements)
 
-OPTION (USE_OpenMP "Use OpenMP to enable <omp.h>" ON)
 
-if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    set(MACOSX FALSE)
-endif()
-
-set(CMAKE_CXX_COMPILER "/usr/bin/c++")
-
-# Find OpenMP
-if(MACOSX AND USE_OpenMP)
-    set(CMAKE_C_COMPILER "/usr/local/Cellar/llvm/10.0.0_1/bin/clang")
-    set(CMAKE_CXX_COMPILER "/usr/local/Cellar/llvm/10.0.0_1/bin/clang++")
-    set(OPENMP_LIBRARIES "/usr/local/Cellar/llvm/10.0.0_1/lib")
-    set(OPENMP_INCLUDES "/usr/local/Cellar/llvm/10.0.0_1/include")
-    if(CMAKE_C_COMPILER_ID MATCHES "Clang")
-        set(OpenMP_C "${CMAKE_C_COMPILER}")
-        set(OpenMP_C_FLAGS "-fopenmp=libomp")
-        set(OpenMP_C_LIB_NAMES "libomp" "libgomp" "libiomp5")
-        set(OpenMP_libomp_LIBRARY ${OpenMP_C_LIB_NAMES})
-        set(OpenMP_libgomp_LIBRARY ${OpenMP_C_LIB_NAMES})
-        set(OpenMP_libiomp5_LIBRARY ${OpenMP_C_LIB_NAMES})
-    endif()
-    if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-      set(OpenMP_CXX "${CMAKE_CXX_COMPILER}")
-      set(OpenMP_CXX_FLAGS "-fopenmp=libomp")
-      set(OpenMP_CXX_LIB_NAMES "libomp" "libgomp" "libiomp5")
-      set(OpenMP_libomp_LIBRARY ${OpenMP_CXX_LIB_NAMES})
-      set(OpenMP_libgomp_LIBRARY ${OpenMP_CXX_LIB_NAMES})
-      set(OpenMP_libiomp5_LIBRARY ${OpenMP_CXX_LIB_NAMES})
-    endif()
-endif()
 
 if(USE_OpenMP)
   find_package(OpenMP REQUIRED)
