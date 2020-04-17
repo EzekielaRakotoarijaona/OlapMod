@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
         return 0;
     }
     int l = 100000; //100000 lignes
-    int c = 3; // 5 colonnes
+    int c = 5; // 5 colonnes
     matrice M;
     srand(time(NULL));//c'est pour qu'à chaque exécution, on ait des nombres différents
     cout << "Generation d'une table aléatoire de taille 100000" << endl;

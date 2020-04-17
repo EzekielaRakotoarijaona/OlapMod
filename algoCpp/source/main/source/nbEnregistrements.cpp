@@ -14,6 +14,8 @@
 #include <fstream>
 #include <stdio.h>
 #include <sstream>
+#include <omp.h>
+
 
 
 
@@ -118,12 +120,16 @@ vector<int> toutes_les_tailles(matrice & M) {
     //affiche les taille de chaque combinaison de colonnes de M
     vector<int> resultat;
     int nbcolonnes = M[0].size();
-    resultat.push_back(1);
+    resultat.resize(pow(2, nbcolonnes));
+    resultat[0] = 1;
+    #pragma omp parallel for
     for (int combinaison = 1; combinaison <= pow(2, nbcolonnes) - 1; combinaison++) {
         vector<int> V = convertirEnBinaire(combinaison, nbcolonnes);
         vector<int> W = Binaire_colonnes(V);
-        resultat.push_back(taille(M, W));
-        cout << "la taille de la combinaison " << combinaison << " est " << taille(M, W) << endl;
+        resultat[combinaison] = taille(M, W);
+    }
+    for(int combinaison = 0; combinaison <= pow(2, nbcolonnes); combinaison++ ) {
+        cout << "la taille de la combinaison " << combinaison << " est " << resultat[combinaison] << endl;
     }
     return resultat; 
 }
