@@ -5,7 +5,7 @@ project(algoNbEnregistrements)
 OPTION (USE_OpenMP "Use OpenMP to enable <omp.h>" ON)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    set(MACOSX TRUE)
+    set(MACOSX FALSE)
 endif()
 
 # Find OpenMP
