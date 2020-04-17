@@ -122,8 +122,9 @@ vector<int> toutes_les_tailles(matrice & M) {
     int nbcolonnes = M[0].size();
     resultat.resize(pow(2, nbcolonnes));
     resultat[0] = 1;
+    int combinaisonMax = pow(2, nbcolonnes) - 1;
     #pragma omp parallel for
-    for (int combinaison = 1; combinaison <= pow(2, nbcolonnes) - 1; combinaison++) {
+    for (int combinaison = 1; combinaison <= combinaisonMax; combinaison++) {
         vector<int> V = convertirEnBinaire(combinaison, nbcolonnes);
         vector<int> W = Binaire_colonnes(V);
         resultat[combinaison] = taille(M, W);
