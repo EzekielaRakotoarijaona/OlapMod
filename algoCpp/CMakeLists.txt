@@ -2,15 +2,14 @@ cmake_minimum_required(VERSION 2.6)
 
 project(algoNbEnregistrements)
 
-set(CMAKE_C_COMPILER "/usr/local/Cellar/llvm/10.0.0_1/bin/clang")
-set(CMAKE_CXX_COMPILER "/usr/local/Cellar/llvm/10.0.0_1/bin/clang++")
-set(OPENMP_LIBRARIES "/usr/local/Cellar/llvm/10.0.0_1/lib")
-set(OPENMP_INCLUDES "/usr/local/Cellar/llvm/10.0.0_1/include")
-
 OPTION (USE_OpenMP "Use OpenMP to enamble <omp.h>" ON)
 
 # Find OpenMP
 if(APPLE AND USE_OpenMP)
+    set(CMAKE_C_COMPILER "/usr/local/Cellar/llvm/10.0.0_1/bin/clang")
+    set(CMAKE_CXX_COMPILER "/usr/local/Cellar/llvm/10.0.0_1/bin/clang++")
+    set(OPENMP_LIBRARIES "/usr/local/Cellar/llvm/10.0.0_1/lib")
+    set(OPENMP_INCLUDES "/usr/local/Cellar/llvm/10.0.0_1/include")
     if(CMAKE_C_COMPILER_ID MATCHES "Clang")
         set(OpenMP_C "${CMAKE_C_COMPILER}")
         set(OpenMP_C_FLAGS "-fopenmp=libomp")
