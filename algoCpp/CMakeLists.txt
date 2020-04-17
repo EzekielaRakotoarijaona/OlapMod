@@ -2,10 +2,14 @@ cmake_minimum_required(VERSION 2.6)
 
 project(algoNbEnregistrements)
 
-OPTION (USE_OpenMP "Use OpenMP to enamble <omp.h>" ON)
+OPTION (USE_OpenMP "Use OpenMP to enable <omp.h>" ON)
+
+if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    set(MACOSX TRUE)
+endif()
 
 # Find OpenMP
-if(APPLE AND USE_OpenMP)
+if(MACOSX AND USE_OpenMP)
     set(CMAKE_C_COMPILER "/usr/local/Cellar/llvm/10.0.0_1/bin/clang")
     set(CMAKE_CXX_COMPILER "/usr/local/Cellar/llvm/10.0.0_1/bin/clang++")
     set(OPENMP_LIBRARIES "/usr/local/Cellar/llvm/10.0.0_1/lib")
