@@ -129,7 +129,7 @@ vector<int> toutes_les_tailles(matrice & M) {
         vector<int> W = Binaire_colonnes(V);
         resultat[combinaison] = taille(M, W);
     }
-    for(int combinaison = 0; combinaison <= pow(2, nbcolonnes); combinaison++ ) {
+    for(int combinaison = 0; combinaison <= combinaisonMax; combinaison++ ) {
         cout << "la taille de la combinaison " << combinaison << " est " << resultat[combinaison] << endl;
     }
     return resultat; 
