@@ -20,35 +20,35 @@ int main() {
     }
     else{
         printf("Test failed Calcul Benefice\n");
-        return 0;
+        return EXIT_FAILURE;
     }
     if (testRequeteDep()) {
         printf("Test réussi! \n");
     }
     else{
         printf("Test failed  Requete Dep\n");
-        return 0;
+        return EXIT_FAILURE;
     }
     if (testCalculBeneficeTotal()) {
         printf("Test réussi! \n");
     }
     else{
         printf("Test failed  CalculBeneficeTotal\n");
-        return 0;
+        return EXIT_FAILURE;
     }
     if (testTaillesRequetes()){
      printf("Test réussi! \n");
     }
     else{
         printf("Test failed  Test tailles requetes\n");
-        return 0;
+        return EXIT_FAILURE;
     }
     if (testChargerFichier(FICHIER_CSV)) {
         printf("Test réussi! \n");
     }
     else{
         printf("Test failed  CalculBeneficeTotal\n");
-        return 0;
+        return EXIT_FAILURE;
     }
     printf("Test réussi! \n");
     return 0;
