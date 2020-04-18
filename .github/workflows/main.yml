@@ -23,7 +23,9 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
+    # Install and Download Qt 
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2
     # Runs a set of commands using the runners shell
     - name: Run cmake, make build and make test
       run: |
