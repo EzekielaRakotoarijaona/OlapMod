@@ -1,4 +1,7 @@
-## Run c++ algorithm
+## Run c++ Program
+
+Pré-requis : Librairies OpenMp et Qt Sdk installées (disponible sur le site offciel de Qt)
+
 
 Pré-requis : qt creator
 Pour installer qtcreator sur une machine linux 
@@ -33,7 +36,9 @@ Assuming you have installed cmake on your computer :
 
 * Open a terminal in the /build and run "cmake .." . This command will generate a Makefile.
 * Then run "make" to generate your exec.
-* You can now run your exec named main with "./main".
+* You can now run the terminal version your exec named main with a parameter with "./main {path_to_csv_file}".
+* To run the GUI version just launch "./qt_main" : from there, you can open a csv file and choose your options.
+
 
 To clear all the generated files by cmake :
 
