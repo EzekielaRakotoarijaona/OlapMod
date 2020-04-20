@@ -7,5 +7,9 @@ CTestTestfile.cmake
 Testing/
 main
 main_test
+qt_main
 .DS_Store
 .DS_Store
+Olap.creator.user
+OlapProjet.creator.user
+

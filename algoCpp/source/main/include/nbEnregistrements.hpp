@@ -22,7 +22,9 @@ using namespace std;//ça permet d'utiliser la librairie stl
 
 typedef vector<vector<int>> matrice;//on définit le type matrice
 
-matrice chargerFichiers(string filePath);
+vector<vector<string>> chargerFichiers(string filePath);
+
+matrice conversion(vector<vector<string>> tableFaitString);
 
 void generer(matrice& M, int l, int c);
 

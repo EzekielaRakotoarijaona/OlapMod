@@ -9,7 +9,7 @@
 
 using namespace std;
 
-static const string FICHIER_CSV="table_fait.csv";
+static const string FICHIER_CSV="table_fait_string.csv";
 
 
 int main() {

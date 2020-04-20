@@ -15,19 +15,19 @@
 #include <stdio.h>
 #include <sstream>
 #include <omp.h>
+#include <map>
+#include <iterator>
 
 
 
 
 using namespace std;//ça permet d'utiliser la librairie stl
 
-matrice chargerFichiers(string filePath) {
+vector<vector<string>> chargerFichiers(string filePath) {
     string ligne;
     ifstream file (filePath);
     vector<string> V2;
     vector<vector<string>> tableFait;
-    getline(file,ligne); //on a pas besoin de la première ligne
-    matrice tableFaitEntiers;
     char delim = ',';
     if (file.good())
     {
@@ -44,20 +44,33 @@ matrice chargerFichiers(string filePath) {
     }
     else{
         cout<<"erreur d'ouverture du fichier"<<endl;
-        return tableFaitEntiers;
+        return tableFait;
     }
-    tableFaitEntiers.resize(tableFait.size());
-    for (int i = 0; i < tableFait.size(); i++) {
-        tableFaitEntiers[i].resize(tableFait[i].size());
-        for (int j = 0; j < tableFait[i].size(); j++)
-            tableFaitEntiers[i][j] = stoi(tableFait[i][j]);
-    }
+ 
     for (int i = 0; i < tableFait.size(); i++) {
         for (int j = 0; j < tableFait[i].size(); j++)
-            cout<< tableFaitEntiers[i][j] << " ";
+            cout<< tableFait[i][j] << " ";
         cout<<" "<<endl;
     }
-    return tableFaitEntiers;
+    return tableFait;
+}
+
+matrice conversion(vector<vector<string>> tableFaitString) {
+    matrice tableFaitEntiers;
+    map<string,int> ma_map;
+    int map_valeur=0;
+
+ tableFaitEntiers.resize(tableFaitString.size()-1);
+
+ for (int i = 0; i < tableFaitString[0].size(); i++) {
+        for (int j = 1; j < tableFaitString.size(); j++){
+            if(ma_map.find(tableFaitString[j][i])==ma_map.end()){
+                ma_map[tableFaitString[j][i]]=++map_valeur;
+            }
+            tableFaitEntiers[j-1].push_back(ma_map[tableFaitString[j][i]]);
+        }
+}
+return tableFaitEntiers;
 }
 
 void generer(matrice& M, int l, int c) {

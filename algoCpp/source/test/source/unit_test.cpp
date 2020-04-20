@@ -114,7 +114,7 @@ bool testCalculBeneficeTotal() {
 
 
 bool testChargerFichier(string filePath) {
-    matrice resultatReel = chargerFichiers(filePath);
+    matrice resultatReel = conversion(chargerFichiers(filePath));
     if(tableFait.size() != resultatReel.size()){
         printf("Test Failed test Charger fichier \n");
         return false;
