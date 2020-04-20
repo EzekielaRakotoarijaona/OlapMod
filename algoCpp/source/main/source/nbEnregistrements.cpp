@@ -18,27 +18,25 @@
 #include <map>
 #include <iterator>
 
+using namespace std; //ça permet d'utiliser la librairie stl
 
-
-
-using namespace std;//ça permet d'utiliser la librairie stl
-
-vector<vector<string>> chargerFichiers(string filePath) {
+vector<vector<string>> chargerFichiers(string filePath) { // Extrait les valeurs sous format string du fichier CSV pour les mettre dans une matrice
     string ligne;
     ifstream file (filePath);
     vector<string> V2;
     vector<vector<string>> tableFait;
     char delim = ',';
-    if (file.good())
+    
+    if (file.good())  // On vérifie si le fichier est ouvert
     {
-        while (getline(file,ligne))
+        while (getline(file,ligne)) // On parcourt le fichier et on copie chaque valeur dans le vecteur V2
         {
             stringstream ss(ligne);
             string token;
             while (getline(ss, token, delim)) {
                 V2.push_back(token);
             }
-            tableFait.push_back(V2);
+            tableFait.push_back(V2); // On remplit la matrice à partir du vecteur V2
             V2.clear();
         }
     }
@@ -47,7 +45,7 @@ vector<vector<string>> chargerFichiers(string filePath) {
         return tableFait;
     }
  
-    for (int i = 0; i < tableFait.size(); i++) {
+    for (int i = 0; i < tableFait.size(); i++) {  // On parcourt la matrice et affiche ses valeurs
         for (int j = 0; j < tableFait[i].size(); j++)
             cout<< tableFait[i][j] << " ";
         cout<<" "<<endl;
@@ -55,22 +53,28 @@ vector<vector<string>> chargerFichiers(string filePath) {
     return tableFait;
 }
 
-matrice conversion(vector<vector<string>> tableFaitString) {
-    matrice tableFaitEntiers;
+matrice conversion(vector<vector<string>> tableFaitString) {  // A partir de la tableFaitString qui a été généré dans la fonction d'avant
+                                                               // on convertit les données "string" en "entier" à partir d'une map
+                                                               // et on les insère dans une nouvelle matrice tableFaitEntier
+    matrice tableFaitEntiers; 
     map<string,int> ma_map;
     int map_valeur=0;
 
- tableFaitEntiers.resize(tableFaitString.size()-1);
+ tableFaitEntiers.resize(tableFaitString.size()-1);  // On initialise la taille de tableFaitEntier 
 
- for (int i = 0; i < tableFaitString[0].size(); i++) {
+ for (int i = 0; i < tableFaitString[0].size(); i++) {  // On parcourt la tableFaitString 
         for (int j = 1; j < tableFaitString.size(); j++){
-            if(ma_map.find(tableFaitString[j][i])==ma_map.end()){
-                ma_map[tableFaitString[j][i]]=++map_valeur;
+            if(ma_map.find(tableFaitString[j][i])==ma_map.end()){ // L'objectif est d'associer une valeur entière à chaque string différent
+                                                                  // On utilise une MAP et on ajoute une ligne d'association clé-valeur à la map
+                                                                  // Si la valeur de la tableFaitString n'est pas déja dans la map  
+                                                                   // On ajoute une ligne d'association clé-valeur à la map 
+                                                                   // Exemple : La clé correspond au string : "USA" et la valeur aux entier : "1"
+                ma_map[tableFaitString[j][i]]=++map_valeur;  
             }
             tableFaitEntiers[j-1].push_back(ma_map[tableFaitString[j][i]]);
         }
 }
-return tableFaitEntiers;
+return tableFaitEntiers; // On retourne la table de fait avec des valeurs entières
 }
 
 void generer(matrice& M, int l, int c) {
