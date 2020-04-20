@@ -6,15 +6,13 @@
 //
 
 #include <stdio.h>
-#include <QtWidgets>
+#include "../include/mainwindow.hpp"
+#include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    QWidget window;
-    window.resize(1200, 500);
-    window.show();
-    window.setWindowTitle(
-        QApplication::translate("toplevel", "Top-level widget"));
+    MainWindow mainWindow;
+    mainWindow.showMaximized();
     return app.exec();
 }

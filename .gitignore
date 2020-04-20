@@ -12,4 +12,5 @@ qt_main
 .DS_Store
 Olap.creator.user
 OlapProjet.creator.user
+build/.cmake
 

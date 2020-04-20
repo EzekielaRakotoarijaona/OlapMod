@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     if(argc > 1) {
         //SI on lance le main avec une le chemin d'un fichier csv en parametre
         vector<vector<string>> tableFaitString = chargerFichiers(argv[1]);
-	matrice tableFait = conversion(tableFaitString);
+        matrice tableFait = conversion(tableFaitString);
         //Calcul et affichage des tailles de la table de fait
         vector<int> taillesRequetes = toutes_les_tailles(tableFait);
         cout << "Combien de requêtes à matérialiser ? : ";

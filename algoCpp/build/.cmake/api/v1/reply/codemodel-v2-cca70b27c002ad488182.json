@@ -16,7 +16,10 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3,
+						4,
+						5
 					]
 				}
 			],
@@ -33,7 +36,10 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3,
+						4,
+						5
 					]
 				}
 			],
@@ -42,22 +48,43 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "main::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-main-29fb596ce35bfc22ee71.json",
+					"jsonFile" : "target-main-26f7c3a6215f197fd791.json",
 					"name" : "main",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
+					"id" : "main_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main_autogen-ef5abfdf814598565064.json",
+					"name" : "main_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "main_test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-main_test-5a907b4a37a89705239d.json",
+					"jsonFile" : "target-main_test-cc0ab136026835e149fb.json",
 					"name" : "main_test",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
+					"id" : "main_test_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main_test_autogen-7cf95516cf140d1c41d7.json",
+					"name" : "main_test_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "qt_main::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-qt_main-f525fc6e6fa56d544cd7.json",
+					"jsonFile" : "target-qt_main-e3c322fca0f069f00cf9.json",
 					"name" : "qt_main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "qt_main_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-qt_main_autogen-8902de2a9d7d761e1703.json",
+					"name" : "qt_main_autogen",
 					"projectIndex" : 0
 				}
 			]

@@ -184,22 +184,6 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "/usr/local/opt/qt/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake"
-		},
-		{
-			"isExternal" : true,
-			"path" : "/usr/local/opt/qt/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake"
-		},
-		{
-			"isExternal" : true,
-			"path" : "/usr/local/opt/qt/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake"
-		},
-		{
-			"isExternal" : true,
-			"path" : "/usr/local/opt/qt/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake"
-		},
-		{
-			"isExternal" : true,
 			"path" : "/usr/local/opt/qt/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake"
 		},
 		{
@@ -222,6 +206,22 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/usr/local/Cellar/cmake/3.17.0_1/share/cmake/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/local/opt/qt/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/local/opt/qt/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/local/opt/qt/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/local/opt/qt/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake"
 		},
 		{
 			"isExternal" : true,

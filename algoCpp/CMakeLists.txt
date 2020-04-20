@@ -2,6 +2,15 @@ cmake_minimum_required(VERSION 2.6)
 
 project(algoNbEnregistrements)
 
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+set(MOC_SOURCES ../source/main/include/mainwindow.hpp)
+
 OPTION (USE_OpenMP "Use OpenMP to enable <omp.h>" ON)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
@@ -36,7 +45,7 @@ if(USE_OpenMP)
   find_package(OpenMP REQUIRED)
 endif(USE_OpenMP)
 
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
 
 if (OPENMP_FOUND)
   if(MACOSX AND USE_OpenMP)	
@@ -48,19 +57,15 @@ if (OPENMP_FOUND)
     set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif(OPENMP_FOUND)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
 add_executable(main ../source/main/source/main.cpp ../source/main/source/nbEnregistrements.cpp ../source/main/source/calculBenefice.cpp)
 
-add_executable(qt_main ../source/main/source/qt_main.cpp)
+add_executable(qt_main ../source/main/source/qt_main.cpp ../source/main/source/mainwindow.cpp ../source/main/source/nbEnregistrements.cpp ../source/main/source/calculBenefice.cpp ${MOC_SOURCES})
 
 add_executable(main_test ../source/test/source/main.cpp ../source/test/source/unit_test.cpp ../source/main/source/nbEnregistrements.cpp ../source/main/source/calculBenefice.cpp)
 
 target_link_libraries(main PRIVATE OpenMP::OpenMP_CXX)
 target_link_libraries(main_test PRIVATE OpenMP::OpenMP_CXX)
-target_link_libraries(qt_main Qt5::Widgets)
+target_link_libraries(qt_main Qt5::Widgets Qt5::Core)
 
 
 enable_testing()
