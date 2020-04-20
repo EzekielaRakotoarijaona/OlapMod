@@ -18,27 +18,25 @@
 #include <map>
 #include <iterator>
 
+using namespace std; //ça permet d'utiliser la librairie stl
 
-
-
-using namespace std;//ça permet d'utiliser la librairie stl
-
-vector<vector<string>> chargerFichiers(string filePath) {
+vector<vector<string>> chargerFichiers(string filePath) { // Extrait les valeurs sous format string du fichier CSV pour les mettre dans une matrice
     string ligne;
     ifstream file (filePath);
     vector<string> V2;
     vector<vector<string>> tableFait;
     char delim = ',';
-    if (file.good())
+    
+    if (file.good())  // On vérifie si le fichier est ouvert
     {
-        while (getline(file,ligne))
+        while (getline(file,ligne)) // On parcourt le fichier et on copie chaque valeur dans le vecteur V2
         {
             stringstream ss(ligne);
             string token;
             while (getline(ss, token, delim)) {
                 V2.push_back(token);
             }
-            tableFait.push_back(V2);
+            tableFait.push_back(V2); // On remplit la matrice à partir du vecteur V2
             V2.clear();
         }
     }
