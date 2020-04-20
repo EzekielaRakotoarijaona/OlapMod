@@ -45,7 +45,7 @@ vector<vector<string>> chargerFichiers(string filePath) { // Extrait les valeurs
         return tableFait;
     }
  
-    for (int i = 0; i < tableFait.size(); i++) {
+    for (int i = 0; i < tableFait.size(); i++) {  // On parcourt la matrice et affiche ses valeurs
         for (int j = 0; j < tableFait[i].size(); j++)
             cout<< tableFait[i][j] << " ";
         cout<<" "<<endl;
@@ -53,22 +53,28 @@ vector<vector<string>> chargerFichiers(string filePath) { // Extrait les valeurs
     return tableFait;
 }
 
-matrice conversion(vector<vector<string>> tableFaitString) {
-    matrice tableFaitEntiers;
+matrice conversion(vector<vector<string>> tableFaitString) {  // A partir de la tableFaitString qui a été généré dans la fonction d'avant
+                                                               // on convertit les données "string" en "entier" à partir d'une map
+                                                               // et on les insère dans une nouvelle matrice tableFaitEntier
+    matrice tableFaitEntiers; 
     map<string,int> ma_map;
     int map_valeur=0;
 
- tableFaitEntiers.resize(tableFaitString.size()-1);
+ tableFaitEntiers.resize(tableFaitString.size()-1);  // On initialise la taille de tableFaitEntier 
 
- for (int i = 0; i < tableFaitString[0].size(); i++) {
+ for (int i = 0; i < tableFaitString[0].size(); i++) {  // On parcourt la tableFaitString 
         for (int j = 1; j < tableFaitString.size(); j++){
-            if(ma_map.find(tableFaitString[j][i])==ma_map.end()){
-                ma_map[tableFaitString[j][i]]=++map_valeur;
+            if(ma_map.find(tableFaitString[j][i])==ma_map.end()){ // L'objectif est d'associer une valeur entière à chaque string différent
+                                                                  // On utilise une MAP et on ajoute une ligne d'association clé-valeur à la map
+                                                                  // Si la valeur de la tableFaitString n'est pas déja dans la map  
+                                                                   // On ajoute une ligne d'association clé-valeur à la map 
+                                                                   // Exemple : La clé correspond au string : "USA" et la valeur aux entier : "1"
+                ma_map[tableFaitString[j][i]]=++map_valeur;  
             }
             tableFaitEntiers[j-1].push_back(ma_map[tableFaitString[j][i]]);
         }
 }
-return tableFaitEntiers;
+return tableFaitEntiers; // On retourne la table de fait avec des valeurs entières
 }
 
 void generer(matrice& M, int l, int c) {
