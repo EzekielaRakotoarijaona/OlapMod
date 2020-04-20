@@ -65,7 +65,7 @@ add_executable(main_test ../source/test/source/main.cpp ../source/test/source/un
 
 target_link_libraries(main PRIVATE OpenMP::OpenMP_CXX)
 target_link_libraries(main_test PRIVATE OpenMP::OpenMP_CXX)
-target_link_libraries(qt_main Qt5::Widgets Qt5::Core)
+target_link_libraries(qt_main Qt5::Widgets Qt5::Core OpenMP::OpenMP_CXX)
 
 
 enable_testing()
