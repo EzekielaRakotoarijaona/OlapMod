@@ -143,5 +143,22 @@ bool testTaillesRequetes(){
 return true;
 }
 
+bool testIntegrationCalculBeneficeWorkflow(string filePath) {
+    //Lancement d'un test d'integration
+    vector<vector<string>> tableFaitString = chargerFichiers(filePath);
+    matrice tableFait = conversion(tableFaitString);
+    //Calcul et affichage des tailles de la table de fait
+    vector<int> taillesRequetes = toutes_les_tailles(tableFait);
+    int nombreAMaterialiser = 3;
+    //Calcul des bénéfices
+    vector<int> resultatAttendu = {7,1,2,4};
+    vector<int> resultatReel = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+    if(resultatAttendu != resultatReel){
+        printf("Integration Test Benefice WorkFlow Failed \n");
+        return false;
+    }
+    return true;
+}
+
 
 

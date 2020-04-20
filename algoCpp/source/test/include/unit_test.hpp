@@ -31,5 +31,6 @@ bool testRequeteDep();
 bool testCalculBeneficeTotal();
 bool testChargerFichier(string filePath);
 bool testTaillesRequetes();
+bool testIntegrationCalculBeneficeWorkflow(string filePath);
 
 #endif

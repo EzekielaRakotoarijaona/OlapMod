@@ -65,7 +65,10 @@ target_link_libraries(qt_main Qt5::Widgets)
 
 enable_testing()
 
-add_test (test main_test)
-set_tests_properties(test PROPERTIES PASS_REGULAR_EXPRESSION "Test réussi! \n")
+add_test(unit_test main_test)
+set_tests_properties(unit_test PROPERTIES PASS_REGULAR_EXPRESSION "Test réussi! \n")
+
+add_test(integration_test main_test ../resources/table_fait_string.csv)
+set_tests_properties(integration_test PROPERTIES PASS_REGULAR_EXPRESSION "Test réussi! \n")
 
 set(CMAKE_INSTALL_PREFIX ..)

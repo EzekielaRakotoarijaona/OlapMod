@@ -9,12 +9,22 @@
 
 using namespace std;
 
-static const string FICHIER_CSV="table_fait_string.csv";
+static const string FICHIER_CSV="../resources/table_fait_string.csv";
 
 
-int main() {
-    
- printf("Running tests \n");
+int main(int argc, char *argv[]) {
+ if(argc > 1) {
+     printf("Running Integration Test \n");
+     if (testIntegrationCalculBeneficeWorkflow(argv[1])) {
+         printf("Test réussi! \n");
+     }
+     else{
+         printf("Integration Tests Failed\n");
+         return EXIT_FAILURE;
+     }
+     return 0;
+ }
+ printf("Running Unit Tests \n");
     if (testCalculBenefice()) {
         printf("Test réussi! \n");
     }
@@ -50,7 +60,7 @@ int main() {
         printf("Test failed  CalculBeneficeTotal\n");
         return EXIT_FAILURE;
     }
-    printf("Test réussi! \n");
+    printf("Test unitaires réussis! \n");
     return 0;
 
 }
