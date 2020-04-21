@@ -12,5 +12,8 @@ qt_main
 .DS_Store
 Olap.creator.user
 OlapProjet.creator.user
-build/.cmake
+.cmake
+main_autogen
+qt_main_autogen
+main_test_autogen
 
