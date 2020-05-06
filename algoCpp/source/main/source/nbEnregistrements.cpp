@@ -62,7 +62,7 @@ matrice conversion(vector<vector<string>> tableFaitString) {  // A partir de la 
 
  tableFaitEntiers.resize(tableFaitString.size()-1);  // On initialise la taille de tableFaitEntier 
 
- for (int i = 0; i < tableFaitString[0].size(); i++) {  // On parcourt la tableFaitString 
+ for (int i = 0; i < tableFaitString[0].size()-1; i++) {  // On parcourt la tableFaitString sans prendre en compte la dernière colonne (#units) qui n'a pas besoin d'être convertie
         for (int j = 1; j < tableFaitString.size(); j++){
             if(ma_map.find(tableFaitString[j][i])==ma_map.end()){ // L'objectif est d'associer une valeur entière à chaque string différent
                                                                   // On utilise une MAP et on ajoute une ligne d'association clé-valeur à la map
