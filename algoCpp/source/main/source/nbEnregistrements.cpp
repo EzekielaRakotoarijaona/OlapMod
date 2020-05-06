@@ -8,7 +8,7 @@
 #include "../include/nbEnregistrements.hpp"
 #include <iostream>//c'est pour l'affichage
 #include <vector>
-#include<set>
+#include <set>
 #include <ctime>//ça sert pour la génération aléatoire
 #include <cmath>
 #include <fstream>
@@ -17,8 +17,30 @@
 #include <omp.h>
 #include <map>
 #include <iterator>
+#include <unordered_set>
+
 
 using namespace std; //ça permet d'utiliser la librairie stl
+
+
+//On définit une fonction de hash qui associe un entier à un vecteur d'entier
+struct VectorHash {
+    size_t operator()(const std::vector<int>& v) const {
+        std::hash<int> hasher;
+        size_t seed = 0;
+        for (int i : v) {
+            seed ^= hasher(i) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        }
+        return seed;
+    }
+};
+
+
+//On définit le type MySet qui est un unoredred_set de vecteurs d'entiers. Ces vecteurs sont hachés en utilisant
+//la fonction VectorHash définie ci-dessus
+
+using MySet = std::unordered_set<std::vector<int>, VectorHash>;
+
 
 vector<vector<string>> chargerFichiers(string filePath) { // Extrait les valeurs sous format string du fichier CSV pour les mettre dans une matrice
     string ligne;
@@ -99,9 +121,10 @@ vector<int> extraire(vector<int>& V, vector<int>& W) {
 }
 
 int taille(matrice& M, vector<int>& W) {
-    //ça compte le nombre de tuples de M, quand on considère les colonnes désignées dans W
-    set<vector<int> > S;//ensemble où on met les vecteurs/tuples qu'on extraits de chaque ligne de M
-    for (auto i = 0; i < M.size(); i++) {
+//ça compte le nombre de tuples de M, quand on considère les colonnes désignées dans W
+    set<vector<int>> S;//ensemble où on met les vecteurs/tuples qu'on extraits de chaque ligne de M
+    //MySet S;
+    for (int i = 0; i < M.size(); i++) {
         S.insert(extraire(M[i], W));
     }
     return S.size();
@@ -148,3 +171,6 @@ vector<int> toutes_les_tailles(matrice & M) {
     }
     return resultat; 
 }
+
+
+
