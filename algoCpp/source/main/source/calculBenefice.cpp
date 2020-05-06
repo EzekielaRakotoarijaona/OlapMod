@@ -34,7 +34,7 @@ vector<int> requeteDep(int numeroRequete, vector<int> &taillesRequetes) {
     //Calcul de toutes les dépendances d'une requetes : toutes les requetes calculables à partir de numeroRequete
     vector<int> reponse;
     for(int i = 0; i<=numeroRequete; i++) {
-        if((i & numeroRequete) == i || i == 0){
+        if((i & numeroRequete) == i){
             reponse.push_back(i);
         }
     }
@@ -62,15 +62,18 @@ vector<int> calculBeneficeTotal(vector<int> &taillesRequetes, int nombreAMateria
 
 int maxBenefice(vector<int> &taillesRequetes, vector<int> &requetesMaterialisees) {
     //Détection de la requetes ayant le benefice le plus élevé
-    int maxBenefice = 0;
-    int indexMax = 1;
+    vector<int> benefices;
+    benefices.resize(taillesRequetes.size());
     printf("\nLes benefice trouves sont : ");
     //Parcours de chaque requetes pour calculer leur benefice
+    #pragma omp parallel for
     for(int i = 0; i < taillesRequetes.size(); i++) {
         int beneficeActuel = calculerBeneficeReel(taillesRequetes, requetesMaterialisees, i);
-        printf("requete : %d = %d,", i, beneficeActuel);
-        if(beneficeActuel > maxBenefice) {
-            maxBenefice = beneficeActuel;
+        benefices[i] = beneficeActuel;
+    }
+    int indexMax = 0;
+    for (int i = 0; i < taillesRequetes.size(); i++) {
+        if (benefices[i] > benefices[indexMax]){
             indexMax = i;
         }
     }
@@ -116,7 +119,7 @@ int parQuiJeSuisCalculer(vector<int>& taillesRequetes, vector<int>& requetesMate
     //Detecter parmi les requetes materialisée, par qui est calculée la requete numéro requete : la requete la plus petite en taille
     int indexMax = requetesMaterialisees[0];
     for(int i = 0 ; i < requetesMaterialisees.size(); i++) {
-        if((numeroRequete & requetesMaterialisees[i]) == numeroRequete || numeroRequete == 0) {
+        if((numeroRequete & requetesMaterialisees[i]) == numeroRequete) {
             if (taillesRequetes[requetesMaterialisees[i]] < taillesRequetes[indexMax]) {
                 indexMax = requetesMaterialisees[i];
             }
