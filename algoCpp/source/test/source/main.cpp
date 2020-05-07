@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <stdio.h>
 #include "../include/unit_test.hpp"//c'est pour l'affichage
@@ -14,7 +13,8 @@ static const string FICHIER_CSV="../resources/table_fait_string.csv";
 
 int main(int argc, char *argv[]) {
  if(argc > 1) {
-     printf("Running Integration Test \n");
+
+ printf("Running Integration Test \n");
      if (testIntegrationCalculBeneficeWorkflow(argv[1])) {
          printf("Test réussi! \n");
      }
@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
         printf("Test failed  Requete Dep\n");
         return EXIT_FAILURE;
     }
-    if (testCalculBeneficeTotal()) {
+   if (testCalculBeneficeTotal()) {
         printf("Test réussi! \n");
     }
     else{

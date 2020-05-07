@@ -26,7 +26,8 @@ int main(int argc, char *argv[]) {
             cin >> nombreAMaterialiser;
         }
         //Calcul des bénéfices
-        calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+	vector<int> requeteMaterialiser = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+        stockerRequete(requeteMaterialiser, tableFaitString);
         return 0;
     }
     //Cas si le main est lancé sans paramètre : lancement avec une table de fait aléatoire
@@ -40,7 +41,7 @@ int main(int argc, char *argv[]) {
     //maintenant, je calcule toutes les tailles
     vector<int> taillesRequetes = toutes_les_tailles(M);
     int nombreAMaterialiser = 4;
-    calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+   // calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
     //la fonction toutes_les_tailles calcule et affiche toutes les tailles. Noter qu'en réalité, on n'a pas besoin d'afficher.
     return 0;
 }

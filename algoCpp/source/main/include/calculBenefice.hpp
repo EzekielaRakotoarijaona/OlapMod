@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <vector>
+#include "../include/nbEnregistrements.hpp"
 
 using namespace std;
 
@@ -26,6 +27,8 @@ int calculerBeneficeReel(vector<int>& taillesRequetes, vector<int>& requetesMate
 int parQuiJeSuisCalculer(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, int numeroRequete);
 
 void afficherVector(vector<int>& vector);
+
+void stockerRequete(vector<int>& vector, matrice_string table_FaitString) ;
 
 
 #endif /* calculBenefice_hpp */

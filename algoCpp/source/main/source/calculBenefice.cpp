@@ -8,8 +8,22 @@
 #include "../include/calculBenefice.hpp"
 #include <time.h>
 #include <algorithm>
+#include <string>
+#include <map>
+#include <iterator>
 
 using namespace std;
+
+static matrice_string tableFaitString_test = {{"USA","T1","TV","5"},
+					{"USA","T2","PC","8"},
+					{"USA","T1","TV","6"},
+					{"USA","T2","PC","4"},
+					{"USA","T3","DVD","8"},
+					{"MEXICO","T3","DVD","6"},
+					{"MEXICO","T1","DVD","2"},
+					{"MEXICO","T1","PC","10"},
+					{"CANADA","T2","PC","11"},
+					{"CANADA","T3","TV","5"} };
 
 int calculBenefice(vector<int> &taillesRequetes, vector<int> &requetesMaterialisees, int numeroRequete) {
     //Calcul de la différence de taille entre la requête courante et la requete matérialisée par laquelle elle est calculée
@@ -53,6 +67,7 @@ vector<int> calculBeneficeTotal(vector<int> &taillesRequetes, int nombreAMateria
         printf("Etape : %d \n", size);
         requetesMaterialisees.push_back(maxBenefice(taillesRequetes,requetesMaterialisees));
     }
+ 
     afficherVector(requetesMaterialisees);
     clock_t end = clock();
     time_spent += (double)(end - begin)/CLOCKS_PER_SEC;
@@ -135,6 +150,32 @@ void afficherVector(vector<int>& vector) {
     }
     printf("\n");
 }
+
+
+
+void stockerRequete(vector<int>& vector, matrice_string table_FaitString) {
+    matrice_string tableFait_Retournee;
+    map<int,matrice_string> map_Sum;
+    map<int,matrice_string> map_Max;
+    for(int i = 0; i<vector.size() ; i++){
+    //map_Sum[vector[i]].push_back(fonctionEZECK(table_FaitString, vector[i],0));
+   // map_Max[vector[i]].push_back(fonctionEZECK(table_FaitString, vector[i],1));
+   //tableFait_Retournee=tableFaitString_test;
+    // map_Sum[vector[i]].push_back(tableFaitString_test);  
+    // map_Max[vector[i]].push_back(tableFaitString_test);
+    }
+/*
+for (int i = 0; i < map_Sum.size(); i++) {  // On parcourt la matrice et affiche ses valeurs
+        for (int j = 0; j < map_Sum[i].size(); j++)
+            cout<< map_Sum[i][j] << " ";
+        cout<<" "<<endl;
+    }*/
+}
+
+//vector<vector<int>> fonctionEZECK( matrice_string  tableFait_Entree, int num_requete, int parametre){
+
+//}
+
 
 
 

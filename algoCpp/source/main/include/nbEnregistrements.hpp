@@ -21,6 +21,7 @@
 using namespace std;//ça permet d'utiliser la librairie stl
 
 typedef vector<vector<int>> matrice;//on définit le type matrice
+typedef vector<vector<string>> matrice_string;//on définit le type matrice pour des string
 
 vector<vector<string>> chargerFichiers(string filePath);
 
