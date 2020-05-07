@@ -5,12 +5,15 @@
 //  Created by Ezekiela Rakotoarijaona on 07/04/2020.
 //
 
+#include <iostream>
 #include "../include/calculBenefice.hpp"
 #include <time.h>
 #include <algorithm>
 #include <string>
 #include <map>
 #include <iterator>
+#include "../include/nbEnregistrements.hpp"
+
 
 using namespace std;
 
@@ -151,6 +154,84 @@ void afficherVector(vector<int>& vector) {
     printf("\n");
 }
 
+void afficherTableFait(vector<vector<string>>& tableFait){
+    for (int i = 0; i < tableFait.size(); i++) {
+        for (int j = 0; j < tableFait[i].size(); j++) {
+            cout << tableFait[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+
+void materialiser(vector<vector<string>> & tableFait, int requeteAMaterialiser, int typeOperation, vector<vector<string>> & newTableFait){
+    vector<int> entier_Binaire = convertirEnBinaire(requeteAMaterialiser, tableFait[0].size()-1);
+    
+    vector<vector<string>> tableFaitIntermediaire;
+    
+    for (int i = 0; i < entier_Binaire.size(); i++) {
+        if (entier_Binaire[i] == 1){
+            tableFaitIntermediaire.resize(tableFait.size());
+            for (int j = 0; j < tableFaitIntermediaire.size(); j++) {
+                tableFaitIntermediaire[j].push_back(tableFait[j][i]);
+            }
+        }
+    }
+    
+    for (int i = 0; i < tableFaitIntermediaire.size(); i++) {
+            tableFaitIntermediaire[i].push_back(tableFait[i][tableFait[i].size()-1]);
+    }
+    
+    afficherTableFait(tableFaitIntermediaire);
+    
+    for (int i = 0; i < tableFaitIntermediaire.size(); i++) {
+        int position = findTuple(newTableFait, tableFaitIntermediaire[i]);
+        if (position == -1) {
+            insertInTableFait(newTableFait, tableFaitIntermediaire[i]);
+        }
+        else{
+            if (typeOperation == 0) {
+                int actualValue = stoi(newTableFait[position][newTableFait[position].size()-1]);
+                int additionalValue = stoi(tableFaitIntermediaire[i][tableFaitIntermediaire[i].size()-1]);
+                int finalValue = actualValue + additionalValue;
+                newTableFait[position][newTableFait[position].size()-1] = to_string(finalValue);
+            }
+            else{
+                int actualValue = stoi(newTableFait[position][newTableFait[position].size()-1]);
+                int additionalValue = stoi(tableFaitIntermediaire[i][tableFaitIntermediaire[i].size()-1]);
+                if (actualValue < additionalValue) {
+                    newTableFait[position][newTableFait[position].size()-1] = to_string(additionalValue);
+                }
+            }
+        }
+    }
+    afficherTableFait(newTableFait);
+}
+
+int findTuple(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire){
+    if (newTableFait.size() == 0) {
+        return -1;
+    }
+    for (int i = 0; i < newTableFait.size(); i++) {
+        int count = 0;
+        for (int j = 0; j < tableFaitIntermediaire.size()-1; j++) {
+            if (newTableFait[i][j] == tableFaitIntermediaire[j]) {
+                count++;
+            }
+        }
+        if (count == tableFaitIntermediaire.size()-1) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void insertInTableFait(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire){
+    newTableFait.resize(newTableFait.size()+1);
+    for (int i = 0; i < tableFaitIntermediaire.size(); i++) {
+        newTableFait[newTableFait.size() - 1].push_back(tableFaitIntermediaire[i]);
+    }
+}
 
 
 void stockerRequete(vector<int>& vector, matrice_string table_FaitString) {

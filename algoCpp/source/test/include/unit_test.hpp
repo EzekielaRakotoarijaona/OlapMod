@@ -47,5 +47,6 @@ bool testCalculBeneficeTotal();
 bool testChargerFichier(string filePath);
 bool testTaillesRequetes();
 bool testIntegrationCalculBeneficeWorkflow(string filePath);
+bool testMaterialiser(string filePath);
 
 #endif

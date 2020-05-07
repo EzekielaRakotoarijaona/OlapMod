@@ -60,6 +60,15 @@ int main(int argc, char *argv[]) {
         printf("Test failed  CalculBeneficeTotal\n");
         return EXIT_FAILURE;
     }
+    
+    if (testMaterialiser(FICHIER_CSV)) {
+        printf("Test réussi! \n");
+    }
+    else{
+        printf("Test failed  testMaterialiser \n");
+        return EXIT_FAILURE;
+    }
+    
     printf("Test unitaires réussis! \n");
     return 0;
 

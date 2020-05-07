@@ -1,7 +1,7 @@
 
 #include <iostream>//c'est pour l'affichage
 #include <vector>
-#include<set>
+#include <set>
 #include <ctime>//ça sert pour la génération aléatoire
 #include <cmath>//ça sert pour la fonction pow (puissance)
 #include "../include/nbEnregistrements.hpp"
@@ -43,5 +43,13 @@ int main(int argc, char *argv[]) {
     int nombreAMaterialiser = 4;
    // calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
     //la fonction toutes_les_tailles calcule et affiche toutes les tailles. Noter qu'en réalité, on n'a pas besoin d'afficher.
+    
+    vector<vector<string>> newTableFait;
+    vector<vector<string>> tableFaitString = chargerFichiers("../resources/table_fait_string.csv");
+    
+    materialiser(tableFaitString, 3, 1, newTableFait);
+    
     return 0;
 }
+
+

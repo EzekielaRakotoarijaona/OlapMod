@@ -161,4 +161,64 @@ bool testIntegrationCalculBeneficeWorkflow(string filePath) {
 }
 
 
+bool testMaterialiser(string filePath){
+    
+    vector<vector<string>> newTableFaitSomme;
+    vector<vector<string>> newTableFaitMax;
+    vector<vector<string>> tableFaitString = chargerFichiers("../resources/table_fait_string.csv");
+    
+    materialiser(tableFaitString, 3, 0, newTableFaitSomme);
+    materialiser(tableFaitString, 3, 1, newTableFaitMax);
+    
+    vector<vector<string>> tableFaitAttenduSomme = { {"QUATER", "PRODUCT", "#UNITS"}, {"T1","TV","11"},
+    {"T2","PC","23"},
+    {"T3","DVD","14"},
+    {"T1","DVD","2"},
+    {"T1","PC","10"},
+    {"T3","TV","5"}};
+    
+    vector<vector<string>> tableFaitAttenduMax = {{"QUATER", "PRODUCT", "#UNITS"}, {"T1","TV","6"},
+    {"T2","PC","11"},
+    {"T3","DVD","8"},
+    {"T1","DVD","2"},
+    {"T1","PC","10"},
+    {"T3","TV","5"}};
+ 
+    if(newTableFaitSomme.size() != tableFaitAttenduSomme.size()){
+        printf("Test Failed test 1 table fait SOMME \n");
+        return false;
+    }
+    for (int i = 0; i < newTableFaitSomme.size(); i++) {
+        if(newTableFaitSomme[i].size() != tableFaitAttenduSomme[i].size()){
+            printf("Test Failed test 2 table fait SOMME \n");
+            return false;
+        }
+        for (int j = 0; j < newTableFaitSomme[i].size(); j++){
+            if(newTableFaitSomme[i][j] != tableFaitAttenduSomme[i][j]){
+                printf("Test Failed test 3 table fait SOMME \n");
+                return false;
+            }
+        }
+    }
+    
+    if(newTableFaitMax.size() != tableFaitAttenduMax.size()){
+        printf("Test Failed test 1 table fait MAX \n");
+        return false;
+    }
+    for (int i = 0; i < newTableFaitMax.size(); i++) {
+        if(newTableFaitMax[i].size() != tableFaitAttenduMax[i].size()){
+            printf("Test Failed test 2 table fait MAX \n");
+            return false;
+        }
+        for (int j = 0; j < newTableFaitMax[i].size(); j++){
+            if(newTableFaitMax[i][j] != tableFaitAttenduMax[i][j]){
+                printf("Test Failed test 3 table fait MAX \n");
+                return false;
+            }
+        }
+    }
+    printf("Test réussi SOMME et MAX \n");
+    return true;
+}
+
 
