@@ -26,35 +26,30 @@ int main(int argc, char *argv[]) {
  }
  printf("Running Unit Tests \n");
     if (testCalculBenefice()) {
-        printf("Test réussi! \n");
     }
     else{
         printf("Test failed Calcul Benefice\n");
         return EXIT_FAILURE;
     }
     if (testRequeteDep()) {
-        printf("Test réussi! \n");
     }
     else{
         printf("Test failed  Requete Dep\n");
         return EXIT_FAILURE;
     }
    if (testCalculBeneficeTotal()) {
-        printf("Test réussi! \n");
     }
     else{
         printf("Test failed  CalculBeneficeTotal\n");
         return EXIT_FAILURE;
     }
     if (testTaillesRequetes()){
-     printf("Test réussi! \n");
     }
     else{
         printf("Test failed  Test tailles requetes\n");
         return EXIT_FAILURE;
     }
     if (testChargerFichier(FICHIER_CSV)) {
-        printf("Test réussi! \n");
     }
     else{
         printf("Test failed  CalculBeneficeTotal\n");
@@ -62,13 +57,12 @@ int main(int argc, char *argv[]) {
     }
     
     if (testMaterialiser(FICHIER_CSV)) {
-        printf("Test réussi! \n");
     }
     else{
         printf("Test failed  testMaterialiser \n");
         return EXIT_FAILURE;
     }
-    
+    printf("Test réussi! \n");
     printf("Test unitaires réussis! \n");
     return 0;
 

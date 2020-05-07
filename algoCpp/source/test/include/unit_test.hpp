@@ -15,16 +15,16 @@ static vector<int> taillesRequetes = {1, 3, 5, 6, 7, 6, 7, 8};
 static vector<int> requetesMaterialisees = {7};
 static vector<int> taillesRequetes2 = {1, 20, 15, 50, 30, 40, 75, 100};
 
-static matrice tableFait = { {1,4,7,5},
-                                               {1,5,8,8},
-                                               {1,4,7,8},
-                                               {1,5,8,3},
-                                               {1,6,9,5},
-                                               {2,6,9,2},
-                                               {2,4,9,4},
-                                               {2,4,8,6},
-                                               {3,5,8,3},
-                                               {3,6,7,1} };
+static matrice tableFait = { {1,4,7},
+                                               {1,5,8},
+                                               {1,4,7},
+                                               {1,5,8},
+                                               {1,6,9},
+                                               {2,6,9},
+                                               {2,4,9},
+                                               {2,4,8},
+                                               {3,5,8},
+                                               {3,6,7} };
 
 static matrice_string tableFaitString = {{"USA","T1","TV","5"},
 					{"USA","T2","PC","8"},

@@ -168,7 +168,7 @@ void materialiser(vector<vector<string>> & tableFait, int requeteAMaterialiser, 
     vector<int> entier_Binaire = convertirEnBinaire(requeteAMaterialiser, tableFait[0].size()-1);
     
     vector<vector<string>> tableFaitIntermediaire;
-    
+    //Création  d'une table de fait intermédiaire récupérant les colonnes concernées
     for (int i = 0; i < entier_Binaire.size(); i++) {
         if (entier_Binaire[i] == 1){
             tableFaitIntermediaire.resize(tableFait.size());
@@ -177,25 +177,27 @@ void materialiser(vector<vector<string>> & tableFait, int requeteAMaterialiser, 
             }
         }
     }
-    
+    //On y ajoute les faits
     for (int i = 0; i < tableFaitIntermediaire.size(); i++) {
             tableFaitIntermediaire[i].push_back(tableFait[i][tableFait[i].size()-1]);
     }
-    
-    afficherTableFait(tableFaitIntermediaire);
-    
+    //On stock dans la vraie table de fait les tuples de manière unique et de sorte à appliquer la fonction d'aggrégation
     for (int i = 0; i < tableFaitIntermediaire.size(); i++) {
+        //Position renvoie la position du tuple dans la nnouvelleTableDeFAit
         int position = findTuple(newTableFait, tableFaitIntermediaire[i]);
+        //Si la position est à -1 on insère le tuple dans la table de fait 
         if (position == -1) {
             insertInTableFait(newTableFait, tableFaitIntermediaire[i]);
         }
         else{
+            //SI 0 calcul de la somme
             if (typeOperation == 0) {
                 int actualValue = stoi(newTableFait[position][newTableFait[position].size()-1]);
                 int additionalValue = stoi(tableFaitIntermediaire[i][tableFaitIntermediaire[i].size()-1]);
                 int finalValue = actualValue + additionalValue;
                 newTableFait[position][newTableFait[position].size()-1] = to_string(finalValue);
             }
+            //Si 1 Calcul du Max
             else{
                 int actualValue = stoi(newTableFait[position][newTableFait[position].size()-1]);
                 int additionalValue = stoi(tableFaitIntermediaire[i][tableFaitIntermediaire[i].size()-1]);
@@ -205,13 +207,14 @@ void materialiser(vector<vector<string>> & tableFait, int requeteAMaterialiser, 
             }
         }
     }
-    afficherTableFait(newTableFait);
 }
 
 int findTuple(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire){
+    //Si la table de fait est de taille 0 alors il est sûr que le tuple n'est pas encore dans la table
     if (newTableFait.size() == 0) {
         return -1;
     }
+    //Sinon on parcours par colonne pour voir s'il y a une colonne qui correspond exactement les mêmes tuples
     for (int i = 0; i < newTableFait.size(); i++) {
         int count = 0;
         for (int j = 0; j < tableFaitIntermediaire.size()-1; j++) {
