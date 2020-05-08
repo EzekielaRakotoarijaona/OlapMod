@@ -19,15 +19,27 @@ int main(int argc, char *argv[]) {
         int nombreAMaterialiser = 0;
         //Demande du nombre de requete à matérialiser en plus de la table de fait
         cin >> nombreAMaterialiser;
-        while(nombreAMaterialiser < 1 || nombreAMaterialiser > taillesRequetes.size()-1){
+        while(nombreAMaterialiser < 0 || nombreAMaterialiser > taillesRequetes.size()-1){
             cout << "erreur de saisie, retapez" << endl;
             cin.clear();
             cin.ignore(999, '\n');
             cin >> nombreAMaterialiser;
         }
         //Calcul des bénéfices
-	vector<int> requeteMaterialiser = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
-        stockerRequete(requeteMaterialiser, tableFaitString);
+        vector<int> requeteMaterialiser = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+        map<int,vector<vector<string>>> map_Sum;
+        map<int,vector<vector<string>>> map_Max;
+        stockerRequete(requeteMaterialiser, tableFaitString, map_Sum, map_Max);
+        cout << "Quelle requete stockée afficher? : " << endl;
+        int requeteAMaterialiser = 0;
+        cin >> requeteAMaterialiser;
+        while(requeteAMaterialiser < 0 || requeteAMaterialiser > taillesRequetes.size()-1){
+            cout << "erreur de saisie, retapez" << endl;
+            cin.clear();
+            cin.ignore(999, '\n');
+            cin >> requeteAMaterialiser;
+        }
+        afficherTableFait(map_Sum[requeteAMaterialiser]);
         return 0;
     }
     //Cas si le main est lancé sans paramètre : lancement avec une table de fait aléatoire
@@ -41,14 +53,13 @@ int main(int argc, char *argv[]) {
     //maintenant, je calcule toutes les tailles
     vector<int> taillesRequetes = toutes_les_tailles(M);
     int nombreAMaterialiser = 4;
-   // calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+    // calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
     //la fonction toutes_les_tailles calcule et affiche toutes les tailles. Noter qu'en réalité, on n'a pas besoin d'afficher.
     
     vector<vector<string>> newTableFait;
     vector<vector<string>> tableFaitString = chargerFichiers("../resources/table_fait_string.csv");
-    
-    materialiser(tableFaitString, 3, 1, newTableFait);
-    
+    materialiser(tableFaitString, 0, 1, newTableFait);
+    afficherTableFait(newTableFait);
     return 0;
 }
 

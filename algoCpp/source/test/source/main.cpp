@@ -62,6 +62,12 @@ int main(int argc, char *argv[]) {
         printf("Test failed  testMaterialiser \n");
         return EXIT_FAILURE;
     }
+    if (testStocker(FICHIER_CSV)) {
+    }
+    else{
+        printf("Test failed  testStocker \n");
+        return EXIT_FAILURE;
+    }
     printf("Test réussi! \n");
     printf("Test unitaires réussis! \n");
     return 0;

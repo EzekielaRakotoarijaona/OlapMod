@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <vector>
+#include <map>
 #include "../include/nbEnregistrements.hpp"
 
 using namespace std;
@@ -28,15 +29,19 @@ int parQuiJeSuisCalculer(vector<int>& taillesRequetes, vector<int>& requetesMate
 
 void afficherVector(vector<int>& vector);
 
-void stockerRequete(vector<int>& vector, matrice_string table_FaitString) ;
+void stockerRequete(vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, map<int,vector<vector<string>>>& map_Sum, map<int,vector<vector<string>>>& map_Max);
 
 void afficherTableFait(vector<vector<string>>& tableFait);
 
 void materialiser(vector<vector<string>> & tableFait, int requeteAMaterialiser, int typeOperation, vector<vector<string>> & newTableFait );
 
-int findTuple(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire);
+long findTuple(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire);
 
 void insertInTableFait(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire);
+
+void addition(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait);
+
+void max(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait);
 
 #endif /* calculBenefice_hpp */
 

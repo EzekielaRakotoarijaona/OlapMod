@@ -26,19 +26,22 @@ static matrice tableFait = { {1,4,7},
                                                {3,5,8},
                                                {3,6,7} };
 
-static matrice_string tableFaitString = {{"USA","T1","TV","5"},
-					{"USA","T2","PC","8"},
-					{"USA","T1","TV","6"},
-					{"USA","T2","PC","4"},
-					{"USA","T3","DVD","8"},
-					{"MEXICO","T3","DVD","6"},
-					{"MEXICO","T1","DVD","2"},
-					{"MEXICO","T1","PC","10"},
-					{"CANADA","T2","PC","11"},
-					{"CANADA","T3","TV","5"} };
-
 
 static vector<int> stockMaterialisees = {7};
+
+static vector<vector<string>> tableFaitAttenduSomme = { {"QUATER", "PRODUCT", "#UNITS"}, {"T1","TV","11"},
+{"T2","PC","23"},
+{"T3","DVD","14"},
+{"T1","DVD","2"},
+{"T1","PC","10"},
+{"T3","TV","5"}};
+
+static vector<vector<string>> tableFaitAttenduMax = {{"QUATER", "PRODUCT", "#UNITS"}, {"T1","TV","6"},
+{"T2","PC","11"},
+{"T3","DVD","8"},
+{"T1","DVD","2"},
+{"T1","PC","10"},
+{"T3","TV","5"}};
 
 
 bool testCalculBenefice();
@@ -48,5 +51,6 @@ bool testChargerFichier(string filePath);
 bool testTaillesRequetes();
 bool testIntegrationCalculBeneficeWorkflow(string filePath);
 bool testMaterialiser(string filePath);
+bool testStocker(string filePath);
 
 #endif

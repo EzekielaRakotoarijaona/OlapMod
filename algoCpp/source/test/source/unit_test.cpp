@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdio.h>
 
+
 bool testCalculBenefice(){
     
     int resultatAttendu = 3;
@@ -169,20 +170,6 @@ bool testMaterialiser(string filePath){
     
     materialiser(tableFaitString, 3, 0, newTableFaitSomme);
     materialiser(tableFaitString, 3, 1, newTableFaitMax);
-    
-    vector<vector<string>> tableFaitAttenduSomme = { {"QUATER", "PRODUCT", "#UNITS"}, {"T1","TV","11"},
-    {"T2","PC","23"},
-    {"T3","DVD","14"},
-    {"T1","DVD","2"},
-    {"T1","PC","10"},
-    {"T3","TV","5"}};
-    
-    vector<vector<string>> tableFaitAttenduMax = {{"QUATER", "PRODUCT", "#UNITS"}, {"T1","TV","6"},
-    {"T2","PC","11"},
-    {"T3","DVD","8"},
-    {"T1","DVD","2"},
-    {"T1","PC","10"},
-    {"T3","TV","5"}};
  
     if(newTableFaitSomme.size() != tableFaitAttenduSomme.size()){
         printf("Test Failed test 1 table fait SOMME \n");
@@ -219,6 +206,57 @@ bool testMaterialiser(string filePath){
     }
     printf("Test réussi SOMME et MAX \n");
     return true;
+}
+
+
+bool testStocker(string filePath) {
+    vector<vector<string>> tableFaitString = chargerFichiers(filePath);
+    matrice tableFait = conversion(tableFaitString);
+    //Calcul et affichage des tailles de la table de fait
+    vector<int> taillesRequetes = toutes_les_tailles(tableFait);
+    int nombreAMaterialiser = 6;
+    //Demande du nombre de requete à matérialiser en plus de la table de fait
+    //Calcul des bénéfices
+    vector<int> requeteMaterialiser = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+    map<int,vector<vector<string>>> map_Sum;
+    map<int,vector<vector<string>>> map_Max;
+    stockerRequete(requeteMaterialiser, tableFaitString, map_Sum, map_Max);
+    afficherTableFait(map_Sum[3]);
+    if(map_Sum[3].size() != tableFaitAttenduSomme.size()){
+           printf("Test Failed test 1 MAP SOMME \n");
+           return false;
+       }
+       for (int i = 0; i < map_Sum[3].size(); i++) {
+           if(map_Sum[3][i].size() != tableFaitAttenduSomme[i].size()){
+               printf("Test Failed test 2 MAP SOMME \n");
+               return false;
+           }
+           for (int j = 0; j < map_Sum[3][i].size(); j++){
+               if(map_Sum[3][i][j] != tableFaitAttenduSomme[i][j]){
+                   printf("Test Failed test 3 MAP SOMME \n");
+                   return false;
+               }
+           }
+       }
+       
+       if(map_Max[3].size() != tableFaitAttenduMax.size()){
+           printf("Test Failed test 1 MAP MAX \n");
+           return false;
+       }
+       for (int i = 0; i < map_Max[3].size(); i++) {
+           if(map_Max[3][i].size() != tableFaitAttenduMax[i].size()){
+               printf("Test Failed test 2 MAP MAX \n");
+               return false;
+           }
+           for (int j = 0; j < map_Max[3][i].size(); j++){
+               if(map_Max[3][i][j] != tableFaitAttenduMax[i][j]){
+                   printf("Test Failed test 3 MAP MAX \n");
+                   return false;
+               }
+           }
+       }
+       printf("Test réussi Stocker \n");
+       return true;
 }
 
 
