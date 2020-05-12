@@ -43,5 +43,9 @@ void addition(vector<vector<string>>& tableFait, vector<vector<string>>& newTabl
 
 void max(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait);
 
+void materialiserRequete(vector<int>& numeroDeRequete,vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, map<int,vector<vector<string>>>& map_Sum, map<int,vector<vector<string>>>& map_Max, int typeOperation,  vector<vector<string>>& newTableFait);
+
+int conversionBinaireAEntier(vector<int>& numeroDeRequete);
+
 #endif /* calculBenefice_hpp */
 

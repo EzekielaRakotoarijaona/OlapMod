@@ -43,6 +43,50 @@ static vector<vector<string>> tableFaitAttenduMax = {{"QUATER", "PRODUCT", "#UNI
 {"T1","PC","10"},
 {"T3","TV","5"}};
 
+static vector<int> entierBinaire1 = {0,0,0,0,1};
+static vector<int> entierBinaire2 = {1,0,0,1,0};
+static vector<int> entierBinaire3 = {1,1,1,1,0};
+static vector<int> entierBinaire4 = {1,1,1,1,1};
+
+static vector<int> entierBinaireTestMaterialiserRequete = {0,1,1};
+static vector<int> entierBinaireTestMaterialiserRequete2 = {1,1,0};
+static vector<int> entierBinaireTestMaterialiserRequete3 = {1,1,1};
+static vector<int> entierBinaireTestMaterialiserRequete4 = {0,0,0};
+static vector<vector<string>> tableFaitAttenduSommeMaterialiser ={{"COUNTRY", "QUATER", "#UNITS"},
+{"USA", "T1", "11"},
+{"USA", "T2", "12"},
+{"USA", "T3", "8"},
+{"MEXICO", "T3", "6"},
+{"MEXICO", "T1", "12"},
+{"CANADA", "T2", "11"},
+{"CANADA", "T3", "5"}};
+
+static vector<vector<string>> tableFaitAttenduMaxMaterialiser ={{"COUNTRY", "QUATER", "#UNITS"},
+{"USA", "T1", "6"},
+{"USA", "T2", "8"},
+{"USA", "T3", "8"},
+{"MEXICO", "T3", "6"},
+{"MEXICO", "T1", "10"},
+{"CANADA", "T2", "11"},
+{"CANADA", "T3", "5"}};
+
+static vector<vector<string>> tableFaitString_test = {{"COUNTRY", "QUATER", "PRODUCT", "#UNITS"},
+{"USA","T1","TV","5"},
+{"USA","T2","PC","8"},
+{"USA","T1","TV","6"},
+{"USA","T2","PC","4"},
+{"USA","T3","DVD","8"},
+{"MEXICO","T3","DVD","6"},
+{"MEXICO","T1","DVD","2"},
+{"MEXICO","T1","PC","10"},
+{"CANADA","T2","PC","11"},
+{"CANADA","T3","TV","5"} };
+
+static vector<vector<string>> tableFaitAttenduSommeMaterialiserDepuisMap = {{"#UNITS"},
+    {"65"}};
+
+static vector<vector<string>> tableFaitAttenduMaxMaterialiserDepuisMap = {{"#UNITS"},
+{"11"}};
 
 bool testCalculBenefice();
 bool testRequeteDep();
@@ -52,5 +96,7 @@ bool testTaillesRequetes();
 bool testIntegrationCalculBeneficeWorkflow(string filePath);
 bool testMaterialiser(string filePath);
 bool testStocker(string filePath);
+bool testConversionBinaireEntier();
+bool testMateriliserRequete(string filePath);
 
 #endif

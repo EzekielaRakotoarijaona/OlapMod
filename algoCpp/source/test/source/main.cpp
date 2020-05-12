@@ -24,48 +24,41 @@ int main(int argc, char *argv[]) {
      }
      return 0;
  }
- printf("Running Unit Tests \n");
-    if (testCalculBenefice()) {
-    }
-    else{
+    printf("Running Unit Tests \n");
+    if (!testCalculBenefice()) {
         printf("Test failed Calcul Benefice\n");
         return EXIT_FAILURE;
     }
-    if (testRequeteDep()) {
-    }
-    else{
+    if (!testRequeteDep()) {
         printf("Test failed  Requete Dep\n");
         return EXIT_FAILURE;
     }
-   if (testCalculBeneficeTotal()) {
+   if (!testCalculBeneficeTotal()) {
+       printf("Test failed  CalculBeneficeTotal\n");
+       return EXIT_FAILURE;
     }
-    else{
-        printf("Test failed  CalculBeneficeTotal\n");
-        return EXIT_FAILURE;
-    }
-    if (testTaillesRequetes()){
-    }
-    else{
+    if (!testTaillesRequetes()){
         printf("Test failed  Test tailles requetes\n");
         return EXIT_FAILURE;
     }
-    if (testChargerFichier(FICHIER_CSV)) {
-    }
-    else{
+    if (!testChargerFichier(FICHIER_CSV)) {
         printf("Test failed  CalculBeneficeTotal\n");
         return EXIT_FAILURE;
     }
-    
-    if (testMaterialiser(FICHIER_CSV)) {
-    }
-    else{
+    if (!testMaterialiser(FICHIER_CSV)) {
         printf("Test failed  testMaterialiser \n");
         return EXIT_FAILURE;
     }
-    if (testStocker(FICHIER_CSV)) {
-    }
-    else{
+    if (!testStocker(FICHIER_CSV)) {
         printf("Test failed  testStocker \n");
+        return EXIT_FAILURE;
+    }
+    if (!testConversionBinaireEntier()) {
+        printf("Test failed  testConversionBinaire \n");
+        return EXIT_FAILURE;
+    }
+    if (!testMateriliserRequete(FICHIER_CSV)) {
+        printf("Test failed  testMaterialiserRequete \n");
         return EXIT_FAILURE;
     }
     printf("Test réussi! \n");

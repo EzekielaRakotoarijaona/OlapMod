@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
             cin.ignore(999, '\n');
             cin >> requeteAMaterialiser;
         }
-        afficherTableFait(map_Sum[requeteAMaterialiser]);
+        afficherTableFait(map_Max[requeteAMaterialiser]);
         return 0;
     }
     //Cas si le main est lancé sans paramètre : lancement avec une table de fait aléatoire

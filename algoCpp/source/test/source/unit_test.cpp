@@ -259,4 +259,175 @@ bool testStocker(string filePath) {
        return true;
 }
 
+bool testConversionBinaireEntier() {
+    //Test 1
+    if(conversionBinaireAEntier(entierBinaire1) != 1){
+        printf("Test Failed Test 1 Conversion Binaire A Entier \n");
+        return false;
+    }
+    
+    //Test 2
+    if(conversionBinaireAEntier(entierBinaire2) != 18){
+        printf("Test Failed Test 2 Conversion Binaire A Entier  \n");
+        return false;
+    }
+    
+    //Test 3
+    if(conversionBinaireAEntier(entierBinaire3) != 30){
+        printf("Test Failed Test 3 Conversion Binaire A Entier  \n");
+        return false;
+    }
+    
+    //Test 4
+    if(conversionBinaireAEntier(entierBinaire4) != 31){
+        printf("Test Failed Test 4 Conversion Binaire A Entier  \n");
+        return false;
+    }
+    printf("Test réussi Conversion Binaire A Entier \n");
+    return true;
+}
+
+bool testMateriliserRequete(string filePath) {
+    vector<vector<string>> tableFaitString = chargerFichiers(filePath);
+    matrice tableFait = conversion(tableFaitString);
+    //Calcul et affichage des tailles de la table de fait
+    vector<int> taillesRequetes = toutes_les_tailles(tableFait);
+    int nombreAMaterialiser = 6;
+    //Demande du nombre de requete à matérialiser en plus de la table de fait
+    //Calcul des bénéfices
+    vector<int> requeteMaterialiser = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+    map<int,vector<vector<string>>> map_Sum;
+    map<int,vector<vector<string>>> map_Max;
+    stockerRequete(requeteMaterialiser, tableFaitString, map_Sum, map_Max);
+    vector<vector<string>> newTableFait;
+    
+    //Test 1 Materialisation provenant de la map
+    materialiserRequete(entierBinaireTestMaterialiserRequete,taillesRequetes, requeteMaterialiser, tableFaitString, map_Sum, map_Max, 0, newTableFait);
+    if(newTableFait.size() != tableFaitAttenduSomme.size()){
+        printf("Test Failed test 1 Materialiser of map sum \n");
+        return false;
+    }
+    for (int i = 0; i < newTableFait.size(); i++) {
+        if(newTableFait[i].size() != tableFaitAttenduSomme[i].size()){
+            printf("Test Failed test 2 Materialiser of map sum \n");
+            return false;
+        }
+        for (int j = 0; j < newTableFait[i].size(); j++){
+            if(newTableFait[i][j] != tableFaitAttenduSomme[i][j]){
+                printf("Test Failed test 3 Materialiser of map sum \n");
+                return false;
+            }
+        }
+    }
+    
+    //Test 2 Materialisation provenant de la table de fait de base
+    materialiserRequete(entierBinaireTestMaterialiserRequete2,taillesRequetes, requeteMaterialiser, tableFaitString, map_Sum, map_Max, 0, newTableFait);
+    if(newTableFait.size() != tableFaitAttenduSommeMaterialiser.size()){
+        printf("Test Failed test 1 Materialiser from extern sum \n");
+        return false;
+    }
+    for (int i = 0; i < newTableFait.size(); i++) {
+        if(newTableFait[i].size() != tableFaitAttenduSommeMaterialiser[i].size()){
+            printf("Test Failed test 2 Materialiser from extern sum\n");
+            return false;
+        }
+        for (int j = 0; j < newTableFait[i].size(); j++){
+            if(newTableFait[i][j] != tableFaitAttenduSommeMaterialiser[i][j]){
+                printf("Test Failed test 3 Materialiser from extern sum\n");
+                return false;
+            }
+        }
+    }
+    
+    //Test 3 Materialisation provenant de la table de fait de base
+    materialiserRequete(entierBinaireTestMaterialiserRequete2,taillesRequetes, requeteMaterialiser, tableFaitString, map_Sum, map_Max, 1, newTableFait);
+    if(newTableFait.size() != tableFaitAttenduMaxMaterialiser.size()){
+        printf("Test Failed test 1 Materialiser from extern max \n");
+        return false;
+    }
+    for (int i = 0; i < newTableFait.size(); i++) {
+        if(newTableFait[i].size() != tableFaitAttenduMaxMaterialiser[i].size()){
+            printf("Test Failed test 2 Materialiser from extern max\n");
+            return false;
+        }
+        for (int j = 0; j < newTableFait[i].size(); j++){
+            if(newTableFait[i][j] != tableFaitAttenduMaxMaterialiser[i][j]){
+                printf("Test Failed test 3 Materialiser from extern max\n");
+                return false;
+            }
+        }
+    }
+    
+    //Test 4 Materialisation de la table de fait de base
+    materialiserRequete(entierBinaireTestMaterialiserRequete3,taillesRequetes, requeteMaterialiser, tableFaitString, map_Sum, map_Max, 1, newTableFait);
+    if(newTableFait.size() != tableFaitString_test.size()){
+        printf("Test Failed test 1 Materialiser from real table \n");
+        return false;
+    }
+    for (int i = 0; i < newTableFait.size(); i++) {
+        if(newTableFait[i].size() != tableFaitString_test[i].size()){
+            printf("Test Failed test 2 Materialiser from real table\n");
+            return false;
+        }
+        for (int j = 0; j < newTableFait[i].size(); j++){
+            if(newTableFait[i][j] != tableFaitString_test[i][j]){
+                printf("Test Failed test 3 Materialiser from real table\n");
+                return false;
+            }
+        }
+    }
+    
+    
+    //Test 5 Materialisation en passant par la map somme
+    nombreAMaterialiser = 3;
+    //Demande du nombre de requete à matérialiser en plus de la table de fait
+    //Calcul des bénéfices
+    requeteMaterialiser = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+    stockerRequete(requeteMaterialiser, tableFaitString, map_Sum, map_Max);
+    materialiserRequete(entierBinaireTestMaterialiserRequete4,taillesRequetes, requeteMaterialiser, tableFaitString, map_Sum, map_Max, 0, newTableFait);
+    if(newTableFait.size() != tableFaitAttenduSommeMaterialiserDepuisMap.size()){
+        printf("Test Failed test 1 Materialiser from map sum \n");
+        return false;
+    }
+    for (int i = 0; i < newTableFait.size(); i++) {
+        if(newTableFait[i].size() != tableFaitAttenduSommeMaterialiserDepuisMap[i].size()){
+            printf("Test Failed test 2 Materialiser from map sum \n");
+            return false;
+        }
+        for (int j = 0; j < newTableFait[i].size(); j++){
+            if(newTableFait[i][j] != tableFaitAttenduSommeMaterialiserDepuisMap[i][j]){
+                printf("Test Failed test 3 Materialiser from map sum \n");
+                return false;
+            }
+        }
+    }
+    
+    //Test 5 Materialisation en passant par la map max
+    nombreAMaterialiser = 3;
+    //Demande du nombre de requete à matérialiser en plus de la table de fait
+    //Calcul des bénéfices
+    requeteMaterialiser = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+    stockerRequete(requeteMaterialiser, tableFaitString, map_Sum, map_Max);
+    materialiserRequete(entierBinaireTestMaterialiserRequete4,taillesRequetes, requeteMaterialiser, tableFaitString, map_Sum, map_Max, 1, newTableFait);
+    if(newTableFait.size() != tableFaitAttenduMaxMaterialiserDepuisMap.size()){
+        printf("Test Failed test 1 Materialiser from map sum \n");
+        return false;
+    }
+    for (int i = 0; i < newTableFait.size(); i++) {
+        if(newTableFait[i].size() != tableFaitAttenduMaxMaterialiserDepuisMap[i].size()){
+            printf("Test Failed test 2 Materialiser from map sum \n");
+            return false;
+        }
+        for (int j = 0; j < newTableFait[i].size(); j++){
+            if(newTableFait[i][j] != tableFaitAttenduMaxMaterialiserDepuisMap[i][j]){
+                printf("Test Failed test 3 Materialiser from map sum \n");
+                return false;
+            }
+        }
+    }
+    
+    printf("Test réussi Materialiser Requete \n");
+    return true;
+}
+
 

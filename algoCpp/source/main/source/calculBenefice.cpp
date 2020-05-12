@@ -264,5 +264,58 @@ void max(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait
     }
 }
 
+void materialiserRequete(vector<int>& numeroDeRequete,vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, map<int,vector<vector<string>>>& map_Sum, map<int,vector<vector<string>>>& map_Max, int typeOperation,  vector<vector<string>>& newTableFait) {
+    //On vide la table de fait si elle a déjà été utilisé auparavant
+    newTableFait.clear();
+    //On recupère l'entier correspondant à la requete
+    int requete = conversionBinaireAEntier(numeroDeRequete);
+    //Si la requete est déjà matérialisée on renvoie depuis la map ou la table de fait de base
+    if (find(requetesMaterialisees.begin(), requetesMaterialisees.end(), requete) != requetesMaterialisees.end()){
+        if(requete == requetesMaterialisees[0]) {
+            cout << "Calcul sur table fait actuel" << endl;
+            newTableFait = table_FaitString;
+        }
+        else {
+            if(typeOperation == 0) {
+                cout << "Recuperation somme depuis map" << endl;
+                newTableFait = map_Sum[requete];
+            }
+            else{
+                cout << "Recuperation max depuis map" << endl;
+                newTableFait = map_Max[requete];
+            }
+        }
+    }
+    //Sinon on calcul la table à partir de la requete deja materialisée la plus proche 
+    else {
+        int parQuiJesuiCalculer = parQuiJeSuisCalculer(taillesRequetes, requetesMaterialisees, requete);
+        if(parQuiJesuiCalculer == requetesMaterialisees[0]) {
+            cout << "Materialisation a partir de la table de fait de base" << endl;
+            materialiser(table_FaitString, requete, typeOperation, newTableFait);
+        }
+        else if(typeOperation == 0) {
+            cout << "Materialisation somme depuis map" << endl;
+            materialiser(map_Sum[parQuiJesuiCalculer], requete, typeOperation, newTableFait);
+        }
+        else {
+            cout << "Materialisation max depuis map" << endl;
+            materialiser(map_Max[parQuiJesuiCalculer], requete, typeOperation, newTableFait);
+        }
+    }
+}
+
+int conversionBinaireAEntier(vector<int>& numeroDeRequete) {
+    string binaireNumeroRequete;
+    for (int i = 0; i < numeroDeRequete.size(); i++) {
+        binaireNumeroRequete += to_string(numeroDeRequete[i]);
+    }
+    return stoi(binaireNumeroRequete, 0, 2);
+}
+
+
+
+
+
+
 
 
