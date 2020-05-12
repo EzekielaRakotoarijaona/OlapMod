@@ -117,17 +117,17 @@ bool testCalculBeneficeTotal() {
 bool testChargerFichier(string filePath) {
     matrice resultatReel = conversion(chargerFichiers(filePath));
     if(tableFait.size() != resultatReel.size()){
-        printf("Test Failed test Charger fichier \n");
+        printf("Test Failed test Charger fichier 1 \n");
         return false;
     }
     for (int i = 0; i < tableFait.size(); i++) {
         if(tableFait[i].size() != resultatReel[i].size()){
-            printf("Test Failed test Charger fichier \n");
+            printf("Test Failed test Charger fichier 2 \n");
             return false;
         }
         for (int j = 0; j < tableFait[i].size(); j++){
             if(tableFait[i][j] != resultatReel[i][j]){
-                printf("Test Failed test Charger fichier \n");
+                printf("Test Failed test Charger fichier 3 \n");
                 return false;
             }
         }
@@ -166,7 +166,7 @@ bool testMaterialiser(string filePath){
     
     vector<vector<string>> newTableFaitSomme;
     vector<vector<string>> newTableFaitMax;
-    vector<vector<string>> tableFaitString = chargerFichiers("../resources/table_fait_string.csv");
+    vector<vector<string>> tableFaitString = chargerFichiers("../resources/table_fait_string_test.csv");
     
     materialiser(tableFaitString, 3, 0, newTableFaitSomme);
     materialiser(tableFaitString, 3, 1, newTableFaitMax);
