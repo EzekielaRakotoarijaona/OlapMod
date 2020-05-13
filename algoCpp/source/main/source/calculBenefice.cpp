@@ -246,7 +246,7 @@ void stockerRequete(vector<int>& requetesMaterialisees, vector<vector<string>>& 
         materialiser(table_FaitString, requetesMaterialisees[i],0, newTableFaitSomme);
         materialiser(table_FaitString, requetesMaterialisees[i],1, newTableFaitMax);
         sum[requetesMaterialisees[i]] = newTableFaitSomme;
-        //max[requetesMaterialisees[i]] = newTableFaitMax;
+        max[requetesMaterialisees[i]] = newTableFaitMax;
     }
 }
 
