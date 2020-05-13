@@ -1,0 +1,1000 @@
+COUNTRY,QUATER,PRODUCT,sexe,ethnic ,color ,origin,adress,studies,level ,work ,#UNITS
+ALGERIA,T1,TV,M,european ,G ,1,5 rue ,history ,M1,doctor,5
+ALGERIA,T1,TV,F,african ,B,2,16 rue ,german,M2,teacher,6
+ALGERIA,T1,DVD,M,asian ,R,3, 1 place,economics,M3,lawer,2
+ALGERIA,T1,PC,F,aztec ,Y,4,2 place,informatics,M4,jobber ,10
+ALGERIA,T1,TV,M,arabic ,W,6,6 rue ,sciences,M5,doctor,6
+ALGERIA,T1,PC,F,maya ,G ,5,7 allée,computer sciences ,M6,teacher,9
+ALGERIA,T1,PC,M,berbere,B,12,3 allée,history ,M7,lawer,5
+ALGERIA,T2,PC,F,european ,R,2,6 rue ,german,M8,jobber ,8
+ALGERIA,T2,PC,M,african ,Y,3,17 rue ,economics,M9,doctor,4
+ALGERIA,T2,PC,F,asian ,W,4, 1 place,informatics,M10,teacher,11
+ALGERIA,T2,TV,M,aztec ,G ,5,3 place,sciences,M11,lawer,7
+ALGERIA,T2,PC,F,arabic ,B,7,7 rue ,computer sciences ,M12,jobber ,11
+ALGERIA,T2,PC,M,maya ,R,6,8 allée,history ,M13,doctor,12
+ALGERIA,T2,TV,F,berbere,Y,13,4 allée,german,M14,teacher,7
+ALGERIA,T3,DVD,M,european ,W,3,7 rue ,economics,M15,lawer,8
+ALGERIA,T3,DVD,F,african ,G ,4,18 rue ,informatics,M16,jobber ,6
+ALGERIA,T3,TV,M,asian ,B,5, 1 place,sciences,M17,doctor,5
+ALGERIA,T3,DVD,F,aztec ,R,6,4 place,computer sciences ,M18,teacher,9
+ALGERIA,T3,DVD,M,arabic ,Y,8,8 rue ,history ,M19,lawer,7
+ALGERIA,T3,DVD,F,maya ,W,7,9 allée,german,M20,jobber ,3
+ALGERIA,T3,TV,M,berbere,G ,14,5 allée,economics,M21,doctor,6
+ALGERIA,T3,DVD,F,european ,B,4,8 rue ,informatics,M22,teacher,10
+ALGERIA,T3,DVD,M,african ,R,5,19 rue ,sciences,M23,lawer,8
+ALGERIA,T3,PC,F,asian ,Y,6, 1 place,computer sciences ,M24,jobber ,12
+ALGERIA,T4,PC,M,aztec ,W,7,5 place,history ,M25,doctor,10
+ALGERIA,T4,TV,F,arabic ,G ,9,9 rue ,german,M26,teacher,8
+ALGERIA,T4,PC,M,maya ,B,8,10 allée,economics,M27,lawer,6
+ALGERIA,T4,DVD,F,berbere,R,15,6 allée,informatics,M28,jobber ,4
+ALGERIA,T4,PC,M,european ,Y,5,9 rue ,sciences,M29,doctor,11
+ALGERIA,T4,TV,F,african ,W,6,20 rue ,computer sciences ,M30,teacher,9
+ALGERIA,T4,DVD,M,asian ,G ,7, 1 place,history ,M31,lawer,11
+ALGERIA,T5,PC,F,aztec ,B,8,6 place,german,M32,jobber ,13
+ALGERIA,T5,TV,M,arabic ,R,10,10 rue ,economics,M33,doctor,7
+ALGERIA,T5,TV,F,maya ,Y,9,11 allée,informatics,M34,teacher,8
+ALGERIA,T5,PC,M,berbere,W,16,7 allée,sciences,M35,lawer,7
+AUSTALIA,T10,PC,F,european ,G ,6,10 rue ,computer sciences ,M36,jobber ,10
+AUSTALIA,T10,DVD,M,african ,B,7,21 rue ,history ,M37,doctor,14
+AUSTALIA,T10,DVD,F,asian ,R,8, 1 place,german,M38,teacher,12
+AUSTALIA,T10,PC,M,aztec ,Y,9,7 place,economics,M39,lawer,17
+AUSTALIA,T5,PC,F,arabic ,W,11,11 rue ,informatics,M40,jobber ,14
+AUSTALIA,T5,TV,M,maya ,G ,10,12 allée,sciences,M41,doctor,8
+AUSTALIA,T5,PC,F,berbere,B,17,8 allée,computer sciences ,M42,teacher,12
+AUSTALIA,T6,DVD,M,european ,R,7,11 rue ,history ,M43,lawer,9
+AUSTALIA,T6,DVD,F,african ,Y,8,22 rue ,german,M44,jobber ,5
+AUSTALIA,T6,PC,M,asian ,W,9, 1 place,economics,M45,doctor,13
+AUSTALIA,T6,TV,F,aztec ,G ,10,8 place,informatics,M46,teacher,9
+AUSTALIA,T6,DVD,M,arabic ,B,12,12 rue ,sciences,M47,lawer,10
+AUSTALIA,T6,DVD,F,maya ,R,11,13 allée,computer sciences ,M48,jobber ,6
+AUSTALIA,T6,PC,M,berbere,Y,18,9 allée,history ,M49,doctor,15
+AUSTALIA,T7,TV,F,european ,W,8,12 rue ,german,M50,teacher,10
+AUSTALIA,T7,PC,M,african ,G ,9,23 rue ,economics,M51,lawer,8
+AUSTALIA,T7,DVD,F,asian ,B,10, 1 place,informatics,M52,jobber ,12
+AUSTALIA,T7,PC,M,aztec ,R,11,9 place,sciences,M53,doctor,14
+AUSTALIA,T7,TV,F,arabic ,Y,13,13 rue ,computer sciences ,M54,teacher,11
+AUSTALIA,T7,PC,M,maya ,W,12,14 allée,history ,M55,lawer,9
+AUSTALIA,T7,DVD,F,berbere,G ,19,10 allée,german,M56,jobber ,11
+AUSTALIA,T8,TV,M,european ,B,9,13 rue ,economics,M57,doctor,9
+AUSTALIA,T8,TV,F,african ,R,10,24 rue ,informatics,M58,teacher,10
+AUSTALIA,T8,PC,M,asian ,Y,11, 1 place,sciences,M59,lawer,13
+AUSTALIA,T8,DVD,F,aztec ,W,12,10 place,computer sciences ,M60,jobber ,13
+AUSTALIA,T8,TV,M,arabic ,G ,14,14 rue ,history ,M61,doctor,10
+AUSTALIA,T8,TV,F,maya ,B,13,15 allée,german,M62,teacher,11
+AUSTALIA,T8,TV,M,berbere,R,20,11 allée,economics,M63,lawer,12
+AUSTALIA,T9,DVD,F,european ,Y,10,14 rue ,informatics,M64,jobber ,7
+AUSTALIA,T9,PC,M,african ,W,11,25 rue ,sciences,M65,doctor,15
+AUSTALIA,T9,PC,F,asian ,G ,12, 1 place,computer sciences ,M66,teacher,16
+AUSTALIA,T9,PC,M,aztec ,B,13,11 place,history ,M67,lawer,14
+AUSTALIA,T9,DVD,F,arabic ,R,15,15 rue ,german,M68,jobber ,8
+AUSTALIA,T9,PC,M,maya ,Y,14,16 allée,economics,M69,doctor,16
+AUSTALIA,T9,TV,F,berbere,W,21,12 allée,informatics,M70,teacher,11
+BELGIUM,T10,PC,M,european ,G ,11,15 rue ,sciences,M71,lawer,11
+BELGIUM,T10,DVD,F,african ,B,12,26 rue ,computer sciences ,M72,jobber ,15
+BELGIUM,T10,DVD,M,asian ,R,13, 1 place,history ,M73,doctor,9
+BELGIUM,T11,TV,F,aztec ,Y,14,12 place,german,M74,teacher,12
+BELGIUM,T11,PC,M,arabic ,W,16,16 rue ,economics,M75,lawer,15
+BELGIUM,T11,TV,F,maya ,G ,15,17 allée,informatics,M76,jobber ,13
+BELGIUM,T11,DVD,M,berbere,B,22,13 allée,sciences,M77,doctor,13
+BELGIUM,T11,TV,F,european ,R,12,16 rue ,computer sciences ,M78,teacher,13
+BELGIUM,T11,PC,M,african ,Y,13,27 rue ,history ,M79,lawer,16
+BELGIUM,T11,PC,F,asian ,W,14, 1 place,german,M80,jobber ,12
+BELGIUM,T12,PC,M,aztec ,G ,15,13 place,economics,M81,doctor,17
+BELGIUM,T12,PC,F,arabic ,B,17,17 rue ,informatics,M82,teacher,18
+BELGIUM,T12,TV,M,maya ,R,16,18 allée,sciences,M83,lawer,12
+BELGIUM,T12,TV,F,berbere,Y,23,14 allée,computer sciences ,M84,jobber ,14
+BELGIUM,T12,PC,M,european ,W,13,17 rue ,history ,M85,doctor,18
+BELGIUM,T12,PC,F,african ,G ,14,28 rue ,german,M86,teacher,19
+BELGIUM,T12,TV,M,asian ,B,15, 1 place,economics,M87,lawer,14
+BELGIUM,T13,DVD,F,aztec ,R,16,14 place,informatics,M88,jobber ,16
+BELGIUM,T13,DVD,M,arabic ,Y,18,18 rue ,sciences,M89,doctor,14
+BELGIUM,T13,DVD,F,maya ,W,17,19 allée,computer sciences ,M90,teacher,10
+BELGIUM,T13,TV,M,berbere,G ,24,15 allée,history ,M91,lawer,13
+BELGIUM,T13,DVD,F,european ,B,14,18 rue ,german,M92,jobber ,17
+BELGIUM,T13,DVD,M,african ,R,15,29 rue ,economics,M93,doctor,15
+BELGIUM,T13,PC,F,asian ,Y,16, 1 place,informatics,M94,teacher,19
+BELGIUM,T14,PC,M,aztec ,W,17,15 place,sciences,M95,lawer,17
+BELGIUM,T14,TV,F,arabic ,G ,19,19 rue ,computer sciences ,M96,jobber ,15
+BELGIUM,T14,PC,M,maya ,B,18,20 allée,history ,M97,doctor,13
+BELGIUM,T14,DVD,F,berbere,R,25,16 allée,german,M98,teacher,11
+BELGIUM,T14,PC,M,european ,Y,15,19 rue ,economics,M99,lawer,18
+BELGIUM,T14,TV,F,african ,W,16,30 rue ,informatics,M100,jobber ,16
+BELGIUM,T14,DVD,M,asian ,G ,17, 1 place,sciences,M101,doctor,18
+BELGIUM,T15,PC,F,aztec ,B,18,16 place,computer sciences ,M102,teacher,20
+BELGIUM,T15,TV,M,arabic ,R,20,20 rue ,history ,M103,lawer,14
+BELGIUM,T15,TV,F,maya ,Y,19,21 allée,german,M104,jobber ,15
+BELGIUM,T15,PC,M,berbere,W,26,17 allée,economics,M105,doctor,14
+BRASIL ,T15,PC,F,european ,G ,16,20 rue ,informatics,M106,teacher,21
+BRASIL ,T15,TV,M,african ,B,17,31 rue ,sciences,M107,lawer,15
+BRASIL ,T15,PC,F,asian ,R,18, 1 place,computer sciences ,M108,jobber ,19
+BRASIL ,T16,DVD,M,aztec ,Y,19,17 place,history ,M109,doctor,16
+BRASIL ,T16,DVD,F,arabic ,W,21,21 rue ,german,M110,teacher,12
+BRASIL ,T16,PC,M,maya ,G ,20,22 allée,economics,M111,lawer,20
+BRASIL ,T16,TV,F,berbere,B,27,18 allée,informatics,M112,jobber ,16
+BRASIL ,T2,TV,M,european ,R,17,21 rue ,sciences,M113,doctor,17
+BRASIL ,T2,PC,F,african ,Y,18,32 rue ,computer sciences ,M114,teacher,15
+BRASIL ,T2,DVD,M,asian ,W,19, 1 place,history ,M115,lawer,17
+BRASIL ,T3,DVD,F,aztec ,G ,20,18 place,german,M116,jobber ,19
+BRASIL ,T3,TV,M,arabic ,B,22,22 rue ,economics,M117,doctor,16
+BRASIL ,T3,TV,F,maya ,R,21,23 allée,informatics,M118,teacher,17
+BRASIL ,T3,TV,M,berbere,Y,28,19 allée,sciences,M119,lawer,18
+BRASIL ,T4,DVD,F,european ,W,18,22 rue ,computer sciences ,M120,jobber ,13
+BRASIL ,T4,PC,M,african ,G ,19,33 rue ,history ,M121,doctor,21
+BRASIL ,T4,PC,F,asian ,B,20, 1 place,german,M122,teacher,22
+BRASIL ,T4,PC,M,aztec ,R,21,19 place,economics,M123,lawer,20
+BRASIL ,T4,DVD,F,arabic ,Y,23,23 rue ,informatics,M124,jobber ,14
+BRASIL ,T4,PC,M,maya ,W,22,24 allée,sciences,M125,doctor,22
+BRASIL ,T4,TV,F,berbere,G ,29,20 allée,computer sciences ,M126,teacher,17
+BRASIL ,T5,PC,M,european ,B,19,23 rue ,history ,M127,lawer,16
+BRASIL ,T5,DVD,F,african ,R,20,34 rue ,german,M128,jobber ,20
+BRASIL ,T5,DVD,M,asian ,Y,21, 1 place,economics,M129,doctor,18
+BRASIL ,T5,PC,F,aztec ,W,22,20 place,informatics,M130,teacher,23
+BRASIL ,T5,PC,M,arabic ,G ,24,24 rue ,sciences,M131,lawer,17
+BRASIL ,T5,DVD,F,maya ,B,23,25 allée,computer sciences ,M132,jobber ,21
+BRASIL ,T5,DVD,M,berbere,R,30,21 allée,history ,M133,doctor,15
+BRASIL ,T6,TV,F,european ,Y,20,24 rue ,german,M134,teacher,18
+BRASIL ,T6,PC,M,african ,W,21,35 rue ,economics,M135,lawer,21
+BRASIL ,T6,TV,F,asian ,G ,22, 1 place,informatics,M136,jobber ,19
+BRASIL ,T6,DVD,M,aztec ,B,23,21 place,sciences,M137,doctor,19
+BRASIL ,T7,PC,F,arabic ,R,25,25 rue ,computer sciences ,M138,teacher,23
+BRASIL ,T7,PC,M,maya ,Y,24,26 allée,history ,M139,lawer,24
+BRASIL ,T7,TV,F,berbere,W,31,22 allée,german,M140,jobber ,18
+CANADA,T6,TV,M,european ,G ,21,25 rue ,economics,M141,doctor,19
+CANADA,T6,PC,F,african ,B,22,36 rue ,informatics,M142,teacher,22
+CHINA,T10,PC,M,asian ,R,23, 1 place,sciences,M143,lawer,26
+CHINA,T10,TV,F,aztec ,Y,24,22 place,computer sciences ,M144,jobber ,20
+CHINA,T10,TV,M,arabic ,W,26,26 rue ,history ,M145,doctor,21
+CHINA,T10,PC,F,maya ,G ,25,27 allée,german,M146,teacher,20
+CHINA,T10,PC,M,berbere,B,32,23 allée,economics,M147,lawer,27
+CHINA,T10,TV,F,european ,R,22,26 rue ,informatics,M148,jobber ,21
+CHINA,T10,PC,M,african ,Y,23,37 rue ,sciences,M149,doctor,25
+CHINA,T11,DVD,F,asian ,W,24, 1 place,computer sciences ,M150,teacher,22
+CHINA,T11,DVD,M,aztec ,G ,25,23 place,history ,M151,lawer,18
+CHINA,T11,PC,F,arabic ,B,27,27 rue ,german,M152,jobber ,26
+CHINA,T11,TV,M,maya ,R,26,28 allée,economics,M153,doctor,22
+CHINA,T11,DVD,F,berbere,Y,33,24 allée,informatics,M154,teacher,23
+CHINA,T11,DVD,M,european ,W,23,27 rue ,sciences,M155,lawer,19
+CHINA,T12,TV,F,african ,G ,24,38 rue ,computer sciences ,M156,jobber ,23
+CHINA,T12,PC,M,asian ,B,25, 1 place,history ,M157,doctor,21
+CHINA,T12,DVD,F,aztec ,R,26,24 place,german,M158,teacher,25
+CHINA,T6,PC,M,arabic ,Y,28,28 rue ,economics,M159,lawer,18
+CHINA,T7,TV,F,maya ,W,27,29 allée,informatics,M160,jobber ,20
+CHINA,T7,PC,M,berbere,G ,34,25 allée,sciences,M161,doctor,24
+CHINA,T7,PC,F,european ,B,24,28 rue ,computer sciences ,M162,teacher,25
+CHINA,T7,TV,M,african ,R,25,39 rue ,history ,M163,lawer,20
+CHINA,T8,DVD,F,asian ,Y,26, 1 place,german,M164,jobber ,22
+CHINA,T8,DVD,M,aztec ,W,27,25 place,economics,M165,doctor,20
+CHINA,T8,DVD,F,arabic ,G ,29,29 rue ,informatics,M166,teacher,16
+CHINA,T8,TV,M,maya ,B,28,30 allée,sciences,M167,lawer,19
+CHINA,T8,DVD,F,berbere,R,35,26 allée,computer sciences ,M168,jobber ,23
+CHINA,T8,DVD,M,european ,Y,25,29 rue ,history ,M169,doctor,21
+CHINA,T8,PC,F,african ,W,26,40 rue ,german,M170,teacher,25
+CHINA,T9,PC,M,asian ,G ,27, 1 place,economics,M171,lawer,23
+CHINA,T9,TV,F,aztec ,B,28,26 place,informatics,M172,jobber ,21
+CHINA,T9,PC,M,arabic ,R,30,30 rue ,sciences,M173,doctor,19
+CHINA,T9,DVD,F,maya ,Y,29,31 allée,computer sciences ,M174,teacher,17
+CHINA,T9,PC,M,berbere,W,36,27 allée,history ,M175,lawer,24
+CHINA,T9,TV,F,european ,G ,26,30 rue ,german,M176,jobber ,22
+CHINA,T9,DVD,M,african ,B,27,41 rue ,economics,M177,doctor,24
+COLOMBIA,T11,PC,F,asian ,R,28, 1 place,informatics,M178,teacher,28
+COLOMBIA,T12,PC,M,aztec ,Y,29,27 place,sciences,M179,lawer,27
+COLOMBIA,T12,TV,F,arabic ,W,31,31 rue ,computer sciences ,M180,jobber ,24
+COLOMBIA,T12,PC,M,maya ,G ,30,32 allée,history ,M181,doctor,22
+COLOMBIA,T12,DVD,F,berbere,B,37,28 allée,german,M182,teacher,24
+COLOMBIA,T13,TV,M,european ,R,27,31 rue ,economics,M183,lawer,22
+COLOMBIA,T13,TV,F,african ,Y,28,42 rue ,informatics,M184,jobber ,23
+COLOMBIA,T13,PC,M,asian ,W,29, 1 place,sciences,M185,doctor,26
+COLOMBIA,T13,DVD,F,aztec ,G ,30,28 place,computer sciences ,M186,teacher,26
+COLOMBIA,T13,TV,M,arabic ,B,32,32 rue ,history ,M187,lawer,23
+COLOMBIA,T13,TV,F,maya ,R,31,33 allée,german,M188,jobber ,24
+COLOMBIA,T13,TV,M,berbere,Y,38,29 allée,economics,M189,doctor,25
+COLOMBIA,T14,DVD,F,european ,W,28,32 rue ,informatics,M190,teacher,20
+COLOMBIA,T14,PC,M,african ,G ,29,43 rue ,sciences,M191,lawer,28
+COLOMBIA,T14,PC,F,asian ,B,30, 1 place,computer sciences ,M192,jobber ,29
+COLOMBIA,T14,PC,M,aztec ,R,31,29 place,history ,M193,doctor,27
+COLOMBIA,T14,DVD,F,arabic ,Y,33,33 rue ,german,M194,teacher,21
+COLOMBIA,T14,PC,M,maya ,W,32,34 allée,economics,M195,lawer,29
+COLOMBIA,T14,TV,F,berbere,G ,39,30 allée,informatics,M196,jobber ,24
+COLOMBIA,T15,PC,M,european ,B,29,33 rue ,sciences,M197,doctor,23
+COLOMBIA,T15,DVD,F,african ,R,30,44 rue ,computer sciences ,M198,teacher,27
+COLOMBIA,T15,DVD,M,asian ,Y,31, 1 place,history ,M199,lawer,25
+COLOMBIA,T15,PC,F,aztec ,W,32,30 place,german,M200,jobber ,30
+COLOMBIA,T15,PC,M,arabic ,G ,34,34 rue ,economics,M201,doctor,24
+COLOMBIA,T15,DVD,F,maya ,B,33,35 allée,informatics,M202,teacher,28
+COLOMBIA,T15,DVD,M,berbere,R,40,31 allée,sciences,M203,lawer,22
+COLOMBIA,T16,TV,F,european ,Y,30,34 rue ,computer sciences ,M204,jobber ,25
+COLOMBIA,T16,PC,M,african ,W,31,45 rue ,history ,M205,doctor,28
+COLOMBIA,T16,TV,F,asian ,G ,32, 1 place,german,M206,teacher,26
+COLOMBIA,T16,DVD,M,aztec ,B,33,31 place,economics,M207,lawer,26
+COLOMBIA,T16,TV,F,arabic ,R,35,35 rue ,informatics,M208,jobber ,26
+COLOMBIA,T16,PC,M,maya ,Y,34,36 allée,sciences,M209,doctor,29
+COLOMBIA,T17,PC,F,berbere,W,41,32 allée,computer sciences ,M210,teacher,30
+COLOMBIA,T17,PC,M,european ,G ,31,35 rue ,history ,M211,lawer,31
+COLOMBIA,T17,TV,F,african ,B,32,46 rue ,german,M212,jobber ,25
+EGYPT,T16,PC,M,asian ,R,33, 1 place,economics,M213,doctor,25
+EGYPT,T17,TV,F,aztec ,Y,34,32 place,informatics,M214,teacher,27
+EGYPT,T3,DVD,M,arabic ,W,36,36 rue ,sciences,M215,lawer,29
+EGYPT,T3,DVD,F,maya ,G ,35,37 allée,computer sciences ,M216,jobber ,27
+EGYPT,T3,PC,M,berbere,B,42,33 allée,history ,M217,doctor,31
+EGYPT,T4,DVD,F,european ,R,32,36 rue ,german,M218,teacher,23
+EGYPT,T4,PC,M,african ,Y,33,47 rue ,economics,M219,lawer,30
+EGYPT,T4,TV,F,asian ,W,34, 1 place,informatics,M220,jobber ,28
+EGYPT,T4,DVD,M,aztec ,G ,35,33 place,sciences,M221,doctor,30
+EGYPT,T5,PC,F,arabic ,B,37,37 rue ,computer sciences ,M222,teacher,32
+EGYPT,T5,TV,M,maya ,R,36,38 allée,history ,M223,lawer,26
+EGYPT,T5,TV,F,berbere,Y,43,34 allée,german,M224,jobber ,27
+EGYPT,T5,PC,M,european ,W,33,37 rue ,economics,M225,doctor,26
+EGYPT,T5,PC,F,african ,G ,34,48 rue ,informatics,M226,teacher,33
+EGYPT,T5,TV,M,asian ,B,35, 1 place,sciences,M227,lawer,27
+EGYPT,T5,PC,F,aztec ,R,36,34 place,computer sciences ,M228,jobber ,31
+EGYPT,T6,DVD,M,arabic ,Y,38,38 rue ,history ,M229,doctor,28
+EGYPT,T6,DVD,F,maya ,W,37,39 allée,german,M230,teacher,24
+EGYPT,T6,PC,M,berbere,G ,44,35 allée,economics,M231,lawer,32
+EGYPT,T6,TV,F,european ,B,34,38 rue ,informatics,M232,jobber ,28
+EGYPT,T6,DVD,M,african ,R,35,49 rue ,sciences,M233,doctor,29
+EGYPT,T6,DVD,F,asian ,Y,36, 1 place,computer sciences ,M234,teacher,25
+EGYPT,T6,PC,M,aztec ,W,37,35 place,history ,M235,lawer,34
+EGYPT,T7,TV,F,arabic ,G ,39,39 rue ,german,M236,jobber ,29
+EGYPT,T7,PC,M,maya ,B,38,40 allée,economics,M237,doctor,27
+EGYPT,T7,DVD,F,berbere,R,45,36 allée,informatics,M238,teacher,31
+EGYPT,T7,PC,M,european ,Y,35,39 rue ,sciences,M239,lawer,33
+EGYPT,T7,TV,F,african ,W,36,50 rue ,computer sciences ,M240,jobber ,30
+EGYPT,T7,PC,M,asian ,G ,37, 1 place,history ,M241,doctor,28
+EGYPT,T7,DVD,F,aztec ,B,38,36 place,german,M242,teacher,30
+EGYPT,T8,TV,M,arabic ,R,40,40 rue ,economics,M243,lawer,28
+EGYPT,T8,TV,F,maya ,Y,39,41 allée,informatics,M244,jobber ,29
+EGYPT,T8,PC,M,berbere,W,46,37 allée,sciences,M245,doctor,32
+EGYPT,T8,DVD,F,european ,G ,36,40 rue ,computer sciences ,M246,teacher,32
+EGYPT,T9,DVD,M,african ,B,37,51 rue ,history ,M247,lawer,26
+FRANCE,T10,PC,F,asian ,R,38, 1 place,german,M248,jobber ,29
+FRANCE,T10,DVD,M,aztec ,Y,39,37 place,economics,M249,doctor,33
+FRANCE,T10,DVD,F,arabic ,W,41,41 rue ,informatics,M250,teacher,31
+FRANCE,T10,PC,M,maya ,G ,40,42 allée,sciences,M251,lawer,36
+FRANCE,T10,PC,F,berbere,B,47,38 allée,computer sciences ,M252,jobber ,30
+FRANCE,T10,DVD,M,european ,R,37,41 rue ,history ,M253,doctor,34
+FRANCE,T10,DVD,F,african ,Y,38,52 rue ,german,M254,teacher,28
+FRANCE,T11,TV,M,asian ,W,39, 1 place,economics,M255,lawer,31
+FRANCE,T11,PC,F,aztec ,G ,40,38 place,informatics,M256,jobber ,34
+FRANCE,T11,TV,M,arabic ,B,42,42 rue ,sciences,M257,doctor,32
+FRANCE,T11,DVD,F,maya ,R,41,43 allée,computer sciences ,M258,teacher,32
+FRANCE,T11,TV,M,berbere,Y,48,39 allée,history ,M259,lawer,32
+FRANCE,T11,PC,F,european ,W,38,42 rue ,german,M260,jobber ,35
+FRANCE,T11,PC,M,african ,G ,39,53 rue ,economics,M261,doctor,31
+FRANCE,T12,PC,F,asian ,B,40, 1 place,informatics,M262,teacher,36
+FRANCE,T12,PC,M,aztec ,R,41,39 place,sciences,M263,lawer,37
+FRANCE,T12,TV,F,arabic ,Y,43,43 rue ,computer sciences ,M264,jobber ,31
+FRANCE,T12,TV,M,maya ,W,42,44 allée,history ,M265,doctor,33
+FRANCE,T12,PC,F,berbere,G ,49,40 allée,german,M266,teacher,37
+FRANCE,T12,PC,M,european ,B,39,43 rue ,economics,M267,lawer,38
+FRANCE,T12,TV,F,african ,R,40,54 rue ,informatics,M268,jobber ,33
+FRANCE,T13,DVD,M,asian ,Y,41, 1 place,sciences,M269,doctor,35
+FRANCE,T13,DVD,F,aztec ,W,42,40 place,computer sciences ,M270,teacher,33
+FRANCE,T13,DVD,M,arabic ,G ,44,44 rue ,history ,M271,lawer,29
+FRANCE,T13,TV,F,maya ,B,43,45 allée,german,M272,jobber ,32
+FRANCE,T14,PC,M,berbere,R,50,41 allée,economics,M273,doctor,36
+FRANCE,T14,TV,F,european ,Y,40,44 rue ,informatics,M274,teacher,34
+FRANCE,T8,TV,M,african ,W,41,55 rue ,sciences,M275,lawer,29
+FRANCE,T8,TV,F,asian ,G ,42, 1 place,computer sciences ,M276,jobber ,30
+FRANCE,T8,TV,M,aztec ,B,43,41 place,history ,M277,doctor,31
+FRANCE,T9,PC,F,arabic ,R,45,45 rue ,german,M278,teacher,34
+FRANCE,T9,PC,M,maya ,Y,44,46 allée,economics,M279,lawer,35
+FRANCE,T9,PC,F,berbere,W,51,42 allée,informatics,M280,jobber ,33
+FRANCE,T9,DVD,M,european ,G ,41,45 rue ,sciences,M281,doctor,27
+FRANCE,T9,PC,F,african ,B,42,56 rue ,computer sciences ,M282,teacher,35
+FRANCE,T9,TV,M,asian ,R,43, 1 place,history ,M283,lawer,30
+GERMANY ,T13,DVD,F,aztec ,Y,44,42 place,german,M284,jobber ,36
+GERMANY ,T13,DVD,M,arabic ,W,46,46 rue ,economics,M285,doctor,34
+GERMANY ,T14,PC,F,maya ,G ,45,47 allée,informatics,M286,teacher,32
+GERMANY ,T14,DVD,M,berbere,B,52,43 allée,sciences,M287,lawer,30
+HAITI,T13,PC,F,european ,R,42,46 rue ,computer sciences ,M288,jobber ,38
+HAITI,T14,PC,M,african ,Y,43,57 rue ,history ,M289,doctor,37
+HAITI,T14,TV,F,asian ,W,44, 1 place,german,M290,teacher,35
+HAITI,T14,DVD,M,aztec ,G ,45,43 place,economics,M291,lawer,37
+HAITI,T15,PC,F,arabic ,B,47,47 rue ,informatics,M292,jobber ,39
+HAITI,T15,TV,M,maya ,R,46,48 allée,sciences,M293,doctor,33
+HAITI,T15,TV,F,berbere,Y,53,44 allée,computer sciences ,M294,teacher,34
+HAITI,T15,PC,M,european ,W,43,47 rue ,history ,M295,lawer,33
+HAITI,T15,PC,F,african ,G ,44,58 rue ,german,M296,jobber ,40
+HAITI,T15,TV,M,asian ,B,45, 1 place,economics,M297,doctor,34
+HAITI,T15,PC,F,aztec ,R,46,44 place,informatics,M298,teacher,38
+HAITI,T16,DVD,M,arabic ,Y,48,48 rue ,sciences,M299,lawer,35
+HAITI,T16,DVD,F,maya ,W,47,49 allée,computer sciences ,M300,jobber ,31
+HAITI,T16,PC,M,berbere,G ,54,45 allée,history ,M301,doctor,39
+HAITI,T16,TV,F,european ,B,44,48 rue ,german,M302,teacher,35
+HAITI,T16,DVD,M,african ,R,45,59 rue ,economics,M303,lawer,36
+HAITI,T16,DVD,F,asian ,Y,46, 1 place,informatics,M304,jobber ,32
+HAITI,T16,PC,M,aztec ,W,47,45 place,sciences,M305,doctor,41
+HAITI,T17,TV,F,arabic ,G ,49,49 rue ,computer sciences ,M306,teacher,36
+HAITI,T17,PC,M,maya ,B,48,50 allée,history ,M307,lawer,34
+HAITI,T17,DVD,F,berbere,R,55,46 allée,german,M308,jobber ,38
+HAITI,T17,PC,M,european ,Y,45,49 rue ,economics,M309,doctor,40
+HAITI,T17,TV,F,african ,W,46,60 rue ,informatics,M310,teacher,37
+HAITI,T17,PC,M,asian ,G ,47, 1 place,sciences,M311,lawer,35
+HAITI,T17,DVD,F,aztec ,B,48,46 place,computer sciences ,M312,jobber ,37
+HAITI,T18,TV,M,arabic ,R,50,50 rue ,history ,M313,doctor,35
+HAITI,T18,TV,F,maya ,Y,49,51 allée,german,M314,teacher,36
+HAITI,T18,PC,M,berbere,W,56,47 allée,economics,M315,lawer,39
+HAITI,T18,DVD,F,european ,G ,46,50 rue ,informatics,M316,jobber ,39
+HAITI,T4,DVD,M,african ,B,47,61 rue ,sciences,M317,doctor,33
+HAITI,T4,PC,F,asian ,R,48, 1 place,computer sciences ,M318,teacher,41
+HAITI,T4,TV,M,aztec ,Y,49,47 place,history ,M319,lawer,36
+HAITI,T5,PC,F,arabic ,W,51,51 rue ,german,M320,jobber ,42
+HAITI,T6,TV,M,maya ,G ,50,52 allée,economics,M321,doctor,37
+HUNGARY,T10,PC,F,berbere,B,57,48 allée,informatics,M322,teacher,45
+HUNGARY,T10,TV,M,european ,R,47,51 rue ,sciences,M323,lawer,39
+HUNGARY,T10,TV,F,african ,Y,48,62 rue ,computer sciences ,M324,jobber ,40
+HUNGARY,T10,PC,M,asian ,W,49, 1 place,history ,M325,doctor,39
+HUNGARY,T11,DVD,F,aztec ,G ,50,48 place,german,M326,teacher,41
+HUNGARY,T5,PC,M,arabic ,B,52,52 rue ,economics,M327,lawer,36
+HUNGARY,T5,DVD,F,maya ,R,51,53 allée,informatics,M328,jobber ,40
+HUNGARY,T5,DVD,M,berbere,Y,58,49 allée,sciences,M329,doctor,34
+HUNGARY,T6,PC,F,european ,W,48,52 rue ,computer sciences ,M330,teacher,40
+HUNGARY,T6,TV,M,african ,G ,49,63 rue ,history ,M331,lawer,38
+HUNGARY,T6,DVD,F,asian ,B,50, 1 place,german,M332,jobber ,38
+HUNGARY,T6,TV,M,aztec ,R,51,49 place,economics,M333,doctor,38
+HUNGARY,T6,PC,F,arabic ,Y,53,53 rue ,informatics,M334,teacher,41
+HUNGARY,T6,PC,M,maya ,W,52,54 allée,sciences,M335,lawer,37
+HUNGARY,T7,PC,F,berbere,G ,59,50 allée,computer sciences ,M336,jobber ,42
+HUNGARY,T7,PC,M,european ,B,49,53 rue ,history ,M337,doctor,43
+HUNGARY,T7,TV,F,african ,R,50,64 rue ,german,M338,teacher,37
+HUNGARY,T7,TV,M,asian ,Y,51, 1 place,economics,M339,lawer,39
+HUNGARY,T7,PC,F,aztec ,W,52,50 place,informatics,M340,jobber ,43
+HUNGARY,T7,PC,M,arabic ,G ,54,54 rue ,sciences,M341,doctor,44
+HUNGARY,T7,TV,F,maya ,B,53,55 allée,computer sciences ,M342,teacher,39
+HUNGARY,T8,DVD,M,berbere,R,60,51 allée,history ,M343,lawer,41
+HUNGARY,T8,DVD,F,european ,Y,50,54 rue ,german,M344,jobber ,39
+HUNGARY,T8,DVD,M,african ,W,51,65 rue ,economics,M345,doctor,35
+HUNGARY,T8,TV,F,asian ,G ,52, 1 place,informatics,M346,teacher,38
+HUNGARY,T8,DVD,M,aztec ,B,53,51 place,sciences,M347,lawer,42
+HUNGARY,T8,DVD,F,arabic ,R,55,55 rue ,computer sciences ,M348,jobber ,40
+HUNGARY,T8,PC,M,maya ,Y,54,56 allée,history ,M349,doctor,44
+HUNGARY,T9,PC,F,berbere,W,61,52 allée,german,M350,teacher,42
+HUNGARY,T9,TV,M,european ,G ,51,55 rue ,economics,M351,lawer,40
+HUNGARY,T9,PC,F,african ,B,52,66 rue ,informatics,M352,jobber ,38
+HUNGARY,T9,DVD,M,asian ,R,53, 1 place,sciences,M353,doctor,36
+HUNGARY,T9,PC,F,aztec ,Y,54,52 place,computer sciences ,M354,teacher,43
+HUNGARY,T9,TV,M,arabic ,W,56,56 rue ,history ,M355,lawer,41
+HUNGARY,T9,DVD,F,maya ,G ,55,57 allée,german,M356,jobber ,43
+IRAN,T10,PC,M,berbere,B,62,53 allée,economics,M357,doctor,46
+IRAN,T10,TV,F,european ,R,52,56 rue ,informatics,M358,teacher,40
+IRAN,T10,PC,M,african ,Y,53,67 rue ,sciences,M359,lawer,44
+IRAN,T11,DVD,F,asian ,W,54, 1 place,computer sciences ,M360,jobber ,37
+IRAN,T11,PC,M,aztec ,G ,55,53 place,history ,M361,doctor,45
+IRAN,T11,TV,F,arabic ,B,57,57 rue ,german,M362,teacher,41
+IRAN,T11,DVD,M,maya ,R,56,58 allée,economics,M363,lawer,42
+IRAN,T11,DVD,F,berbere,Y,63,54 allée,informatics,M364,jobber ,38
+IRAN,T11,PC,M,european ,W,53,57 rue ,sciences,M365,doctor,47
+IRAN,T12,TV,F,african ,G ,54,68 rue ,computer sciences ,M366,teacher,42
+IRAN,T12,PC,M,asian ,B,55, 1 place,history ,M367,lawer,40
+IRAN,T12,DVD,F,aztec ,R,56,54 place,german,M368,jobber ,44
+IRAN,T12,PC,M,arabic ,Y,58,58 rue ,economics,M369,doctor,46
+IRAN,T12,TV,F,maya ,W,57,59 allée,informatics,M370,teacher,43
+IRAN,T12,PC,M,berbere,G ,64,55 allée,sciences,M371,lawer,41
+IRAN,T12,DVD,F,european ,B,54,58 rue ,computer sciences ,M372,jobber ,43
+IRAN,T13,TV,M,african ,R,55,69 rue ,history ,M373,doctor,41
+IRAN,T13,TV,F,asian ,Y,56, 1 place,german,M374,teacher,42
+IRAN,T13,PC,M,aztec ,W,57,55 place,economics,M375,lawer,45
+IRAN,T13,DVD,F,arabic ,G ,59,59 rue ,informatics,M376,jobber ,45
+IRAN,T13,TV,M,maya ,B,58,60 allée,sciences,M377,doctor,42
+IRAN,T13,TV,F,berbere,R,65,56 allée,computer sciences ,M378,teacher,43
+IRAN,T13,TV,M,european ,Y,55,59 rue ,history ,M379,lawer,44
+IRAN,T14,DVD,F,african ,W,56,70 rue ,german,M380,jobber ,39
+IRAN,T14,PC,M,asian ,G ,57, 1 place,economics,M381,doctor,47
+IRAN,T14,PC,F,aztec ,B,58,56 place,informatics,M382,teacher,48
+IRAN,T14,PC,M,arabic ,R,60,60 rue ,sciences,M383,lawer,46
+IRAN,T14,DVD,F,maya ,Y,59,61 allée,computer sciences ,M384,jobber ,40
+IRAN,T14,PC,M,berbere,W,66,57 allée,history ,M385,doctor,48
+IRAN,T14,TV,F,european ,G ,56,60 rue ,german,M386,teacher,43
+IRAN,T15,PC,M,african ,B,57,71 rue ,economics,M387,lawer,42
+IRAN,T15,DVD,F,asian ,R,58, 1 place,informatics,M388,jobber ,46
+IRAN,T15,DVD,M,aztec ,Y,59,57 place,sciences,M389,doctor,44
+IRAN,T15,PC,F,arabic ,W,61,61 rue ,computer sciences ,M390,teacher,49
+IRAN,T16,TV,M,maya ,G ,60,62 allée,history ,M391,lawer,44
+ISLAND,T15,PC,F,berbere,B,67,58 allée,german,M392,jobber ,43
+ISLAND,T15,DVD,M,european ,R,57,61 rue ,economics,M393,doctor,47
+ISLAND,T15,DVD,F,african ,Y,58,72 rue ,informatics,M394,teacher,41
+ISLAND,T16,PC,M,asian ,W,59, 1 place,sciences,M395,lawer,47
+ISLAND,T16,TV,F,aztec ,G ,60,58 place,computer sciences ,M396,jobber ,45
+ISLAND,T16,DVD,M,arabic ,B,62,62 rue ,history ,M397,doctor,45
+ISLAND,T16,TV,F,maya ,R,61,63 allée,german,M398,teacher,45
+ISLAND,T16,PC,M,berbere,Y,68,59 allée,economics,M399,lawer,48
+ISLAND,T16,PC,F,european ,W,58,62 rue ,informatics,M400,jobber ,44
+ISLAND,T17,PC,M,african ,G ,59,73 rue ,sciences,M401,doctor,49
+ISLAND,T17,PC,F,asian ,B,60, 1 place,computer sciences ,M402,teacher,50
+ISLAND,T17,TV,M,aztec ,R,61,59 place,history ,M403,lawer,44
+ISLAND,T17,TV,F,arabic ,Y,63,63 rue ,german,M404,jobber ,46
+ISLAND,T17,PC,M,maya ,W,62,64 allée,economics,M405,doctor,50
+ISLAND,T17,PC,F,berbere,G ,69,60 allée,informatics,M406,teacher,51
+ISLAND,T17,TV,M,european ,B,59,63 rue ,sciences,M407,lawer,46
+ISLAND,T18,DVD,F,african ,R,60,74 rue ,computer sciences ,M408,jobber ,48
+ISLAND,T18,DVD,M,asian ,Y,61, 1 place,history ,M409,doctor,46
+ISLAND,T18,DVD,F,aztec ,W,62,60 place,german,M410,teacher,42
+ISLAND,T18,TV,M,arabic ,G ,64,64 rue ,economics,M411,lawer,45
+ISLAND,T18,DVD,F,maya ,B,63,65 allée,informatics,M412,jobber ,49
+ISLAND,T18,DVD,M,berbere,R,70,61 allée,sciences,M413,doctor,47
+ISLAND,T18,PC,F,european ,Y,60,64 rue ,computer sciences ,M414,teacher,51
+ISLAND,T19,PC,M,african ,W,61,75 rue ,history ,M415,lawer,49
+ISLAND,T19,TV,F,asian ,G ,62, 1 place,german,M416,jobber ,47
+ISLAND,T19,PC,M,aztec ,B,63,61 place,economics,M417,doctor,45
+ISLAND,T19,DVD,F,arabic ,R,65,65 rue ,informatics,M418,teacher,43
+ISLAND,T5,PC,M,maya ,Y,64,66 allée,sciences,M419,lawer,52
+ISLAND,T5,TV,F,berbere,W,71,62 allée,computer sciences ,M420,jobber ,46
+ISLAND,T5,PC,M,european ,G ,61,65 rue ,history ,M421,doctor,50
+ISLAND,T6,TV,F,african ,B,62,76 rue ,german,M422,teacher,47
+ISLAND,T6,DVD,M,asian ,R,63, 1 place,economics,M423,lawer,48
+ISLAND,T7,TV,F,aztec ,Y,64,62 place,informatics,M424,jobber ,48
+ISLAND,T7,PC,M,arabic ,W,66,66 rue ,sciences,M425,doctor,46
+ISLAND,T7,DVD,F,maya ,G ,65,67 allée,computer sciences ,M426,teacher,50
+ITALY,T10,PC,M,berbere,B,72,63 allée,history ,M427,lawer,48
+ITALY,T10,DVD,F,european ,R,62,66 rue ,german,M428,jobber ,52
+ITALY,T10,DVD,M,african ,Y,63,77 rue ,economics,M429,doctor,50
+ITALY,T10,PC,F,asian ,W,64, 1 place,informatics,M430,teacher,55
+ITALY,T10,PC,M,aztec ,G ,65,63 place,sciences,M431,lawer,49
+ITALY,T10,DVD,F,arabic ,B,67,67 rue ,computer sciences ,M432,jobber ,53
+ITALY,T10,DVD,M,maya ,R,66,68 allée,history ,M433,doctor,47
+ITALY,T11,TV,F,berbere,Y,73,64 allée,german,M434,teacher,50
+ITALY,T11,PC,M,european ,W,63,67 rue ,economics,M435,lawer,53
+ITALY,T11,TV,F,african ,G ,64,78 rue ,informatics,M436,jobber ,51
+ITALY,T11,DVD,M,asian ,B,65, 1 place,sciences,M437,doctor,51
+ITALY,T11,TV,F,aztec ,R,66,64 place,computer sciences ,M438,teacher,51
+ITALY,T11,PC,M,arabic ,Y,68,68 rue ,history ,M439,lawer,54
+ITALY,T12,PC,F,maya ,W,67,69 allée,german,M440,jobber ,55
+ITALY,T12,PC,M,berbere,G ,74,65 allée,economics,M441,doctor,56
+ITALY,T12,TV,F,european ,B,64,68 rue ,informatics,M442,teacher,50
+ITALY,T6,DVD,M,african ,R,65,79 rue ,sciences,M443,lawer,44
+ITALY,T6,PC,F,asian ,Y,66, 1 place,computer sciences ,M444,jobber ,53
+ITALY,T7,PC,M,aztec ,W,67,65 place,history ,M445,doctor,52
+ITALY,T7,TV,F,arabic ,G ,69,69 rue ,german,M446,teacher,49
+ITALY,T7,PC,M,maya ,B,68,70 allée,economics,M447,lawer,47
+ITALY,T7,DVD,F,berbere,R,75,66 allée,informatics,M448,jobber ,49
+ITALY,T8,TV,M,european ,Y,65,69 rue ,sciences,M449,doctor,47
+ITALY,T8,TV,F,african ,W,66,80 rue ,computer sciences ,M450,teacher,48
+ITALY,T8,PC,M,asian ,G ,67, 1 place,history ,M451,lawer,51
+ITALY,T8,DVD,F,aztec ,B,68,66 place,german,M452,jobber ,51
+ITALY,T8,TV,M,arabic ,R,70,70 rue ,economics,M453,doctor,48
+ITALY,T8,TV,F,maya ,Y,69,71 allée,informatics,M454,teacher,49
+ITALY,T8,TV,M,berbere,W,76,67 allée,sciences,M455,lawer,50
+ITALY,T9,DVD,F,european ,G ,66,70 rue ,computer sciences ,M456,jobber ,45
+ITALY,T9,PC,M,african ,B,67,81 rue ,history ,M457,doctor,53
+ITALY,T9,PC,F,asian ,R,68, 1 place,german,M458,teacher,54
+ITALY,T9,PC,M,aztec ,Y,69,67 place,economics,M459,lawer,52
+ITALY,T9,DVD,F,arabic ,W,71,71 rue ,informatics,M460,jobber ,46
+ITALY,T9,PC,M,maya ,G ,70,72 allée,sciences,M461,doctor,54
+ITALY,T9,TV,F,berbere,B,77,68 allée,computer sciences ,M462,teacher,49
+JAPAN,T11,PC,M,european ,R,67,71 rue ,history ,M463,lawer,50
+JAPAN,T12,TV,F,african ,Y,68,82 rue ,german,M464,jobber ,52
+JAPAN,T12,PC,M,asian ,W,69, 1 place,economics,M465,doctor,56
+JAPAN,T12,PC,F,aztec ,G ,70,68 place,informatics,M466,teacher,57
+JAPAN,T12,TV,M,arabic ,B,72,72 rue ,sciences,M467,lawer,52
+JAPAN,T13,DVD,F,maya ,R,71,73 allée,computer sciences ,M468,jobber ,54
+JAPAN,T13,DVD,M,berbere,Y,78,69 allée,history ,M469,doctor,52
+JAPAN,T13,DVD,F,european ,W,68,72 rue ,german,M470,teacher,48
+JAPAN,T13,TV,M,african ,G ,69,83 rue ,economics,M471,lawer,51
+JAPAN,T13,DVD,F,asian ,B,70, 1 place,informatics,M472,jobber ,55
+JAPAN,T13,DVD,M,aztec ,R,71,69 place,sciences,M473,doctor,53
+JAPAN,T13,PC,F,arabic ,Y,73,73 rue ,computer sciences ,M474,teacher,57
+JAPAN,T14,PC,M,maya ,W,72,74 allée,history ,M475,lawer,55
+JAPAN,T14,TV,F,berbere,G ,79,70 allée,german,M476,jobber ,53
+JAPAN,T14,PC,M,european ,B,69,73 rue ,economics,M477,doctor,51
+JAPAN,T14,DVD,F,african ,R,70,84 rue ,informatics,M478,teacher,49
+JAPAN,T14,PC,M,asian ,Y,71, 1 place,sciences,M479,lawer,56
+JAPAN,T14,TV,F,aztec ,W,72,70 place,computer sciences ,M480,jobber ,54
+JAPAN,T14,DVD,M,arabic ,G ,74,74 rue ,history ,M481,doctor,56
+JAPAN,T15,PC,F,maya ,B,73,75 allée,german,M482,teacher,58
+JAPAN,T15,TV,M,berbere,R,80,71 allée,economics,M483,lawer,52
+JAPAN,T15,TV,F,european ,Y,70,74 rue ,informatics,M484,jobber ,53
+JAPAN,T15,PC,M,african ,W,71,85 rue ,sciences,M485,doctor,52
+JAPAN,T15,PC,F,asian ,G ,72, 1 place,computer sciences ,M486,teacher,59
+JAPAN,T15,TV,M,aztec ,B,73,71 place,history ,M487,lawer,53
+JAPAN,T15,PC,F,arabic ,R,75,75 rue ,german,M488,jobber ,57
+JAPAN,T16,DVD,M,maya ,Y,74,76 allée,economics,M489,doctor,54
+JAPAN,T16,DVD,F,berbere,W,81,72 allée,informatics,M490,teacher,50
+JAPAN,T16,PC,M,european ,G ,71,75 rue ,sciences,M491,lawer,58
+JAPAN,T16,TV,F,african ,B,72,86 rue ,computer sciences ,M492,jobber ,54
+JAPAN,T16,DVD,M,asian ,R,73, 1 place,history ,M493,doctor,55
+JAPAN,T16,DVD,F,aztec ,Y,74,72 place,german,M494,teacher,51
+JAPAN,T17,TV,M,arabic ,W,76,76 rue ,economics,M495,lawer,55
+JAPAN,T17,PC,F,maya ,G ,75,77 allée,informatics,M496,jobber ,53
+JAPAN,T17,DVD,M,berbere,B,82,73 allée,sciences,M497,doctor,57
+KOREA,T16,PC,F,european ,R,72,76 rue ,computer sciences ,M498,teacher,60
+KOREA,T17,PC,M,african ,Y,73,87 rue ,history ,M499,lawer,59
+KOREA,T18,TV,F,asian ,W,74, 1 place,german,M500,jobber ,54
+LIBYA,T17,TV,M,aztec ,G ,75,73 place,economics,M501,doctor,56
+LIBYA,T17,PC,F,arabic ,B,77,77 rue ,informatics,M502,teacher,54
+LIBYA,T17,DVD,M,maya ,R,76,78 allée,sciences,M503,lawer,56
+LIBYA,T18,TV,F,berbere,Y,83,74 allée,computer sciences ,M504,jobber ,55
+LIBYA,T18,PC,M,european ,W,73,77 rue ,history ,M505,doctor,58
+LIBYA,T18,DVD,F,african ,G ,74,88 rue ,german,M506,teacher,58
+LIBYA,T18,TV,M,asian ,B,75, 1 place,economics,M507,lawer,55
+LIBYA,T18,TV,F,aztec ,R,76,74 place,informatics,M508,jobber ,56
+LIBYA,T18,TV,M,arabic ,Y,78,78 rue ,sciences,M509,doctor,57
+LIBYA,T19,DVD,F,maya ,W,77,79 allée,computer sciences ,M510,teacher,52
+LIBYA,T19,PC,M,berbere,G ,84,75 allée,history ,M511,lawer,60
+LIBYA,T19,PC,F,european ,B,74,78 rue ,german,M512,jobber ,61
+LIBYA,T19,PC,M,african ,R,75,89 rue ,economics,M513,doctor,59
+LIBYA,T19,DVD,F,asian ,Y,76, 1 place,informatics,M514,teacher,53
+LIBYA,T19,PC,M,aztec ,W,77,75 place,sciences,M515,lawer,61
+LIBYA,T19,TV,F,arabic ,G ,79,79 rue ,computer sciences ,M516,jobber ,56
+LIBYA,T20,PC,M,maya ,B,78,80 allée,history ,M517,doctor,55
+LIBYA,T20,DVD,F,berbere,R,85,76 allée,german,M518,teacher,59
+LIBYA,T20,DVD,M,european ,Y,75,79 rue ,economics,M519,lawer,57
+LIBYA,T20,PC,F,african ,W,76,90 rue ,informatics,M520,jobber ,62
+LIBYA,T6,TV,M,asian ,G ,77, 1 place,sciences,M521,doctor,57
+LIBYA,T6,PC,F,aztec ,B,78,76 place,computer sciences ,M522,teacher,60
+LIBYA,T6,PC,M,arabic ,R,80,80 rue ,history ,M523,lawer,56
+LIBYA,T7,TV,F,maya ,Y,79,81 allée,german,M524,jobber ,58
+LIBYA,T7,PC,M,berbere,W,86,77 allée,economics,M525,doctor,62
+LIBYA,T7,PC,F,european ,G ,76,80 rue ,informatics,M526,teacher,63
+LIBYA,T7,TV,M,african ,B,77,91 rue ,sciences,M527,lawer,58
+LIBYA,T8,DVD,F,asian ,R,78, 1 place,computer sciences ,M528,jobber ,60
+LIBYA,T8,DVD,M,aztec ,Y,79,77 place,history ,M529,doctor,58
+LIBYA,T8,DVD,F,arabic ,W,81,81 rue ,german,M530,teacher,54
+LIBYA,T8,TV,M,maya ,G ,80,82 allée,economics,M531,lawer,57
+LIBYA,T8,DVD,F,berbere,B,87,78 allée,informatics,M532,jobber ,61
+LIBYA,T9,PC,M,european ,R,77,81 rue ,sciences,M533,doctor,61
+LIBYA,T9,TV,F,african ,Y,78,92 rue ,computer sciences ,M534,teacher,59
+LIBYA,T9,PC,M,asian ,W,79, 1 place,history ,M535,lawer,57
+MADAGASCAR,T10,PC,F,aztec ,G ,80,78 place,german,M536,jobber ,64
+MADAGASCAR,T10,TV,M,arabic ,B,82,82 rue ,economics,M537,doctor,58
+MADAGASCAR,T10,TV,F,maya ,R,81,83 allée,informatics,M538,teacher,59
+MADAGASCAR,T10,PC,M,berbere,Y,88,79 allée,sciences,M539,lawer,58
+MADAGASCAR,T10,PC,F,european ,W,78,82 rue ,computer sciences ,M540,jobber ,65
+MADAGASCAR,T10,TV,M,african ,G ,79,93 rue ,history ,M541,doctor,59
+MADAGASCAR,T10,PC,F,asian ,B,80, 1 place,german,M542,teacher,63
+MADAGASCAR,T11,DVD,M,aztec ,R,81,79 place,economics,M543,lawer,60
+MADAGASCAR,T11,DVD,F,arabic ,Y,83,83 rue ,informatics,M544,jobber ,56
+MADAGASCAR,T11,PC,M,maya ,W,82,84 allée,sciences,M545,doctor,64
+MADAGASCAR,T11,TV,F,berbere,G ,89,80 allée,computer sciences ,M546,teacher,60
+MADAGASCAR,T11,DVD,M,european ,B,79,83 rue ,history ,M547,lawer,61
+MADAGASCAR,T11,DVD,F,african ,R,80,94 rue ,german,M548,jobber ,57
+MADAGASCAR,T11,PC,M,asian ,Y,81, 1 place,economics,M549,doctor,66
+MADAGASCAR,T12,TV,F,aztec ,W,82,80 place,informatics,M550,teacher,61
+MADAGASCAR,T12,PC,M,arabic ,G ,84,84 rue ,sciences,M551,lawer,59
+MADAGASCAR,T12,DVD,F,maya ,B,83,85 allée,computer sciences ,M552,jobber ,63
+MADAGASCAR,T12,PC,M,berbere,R,90,81 allée,history ,M553,doctor,65
+MADAGASCAR,T12,TV,F,european ,Y,80,84 rue ,german,M554,teacher,62
+MADAGASCAR,T12,PC,M,african ,W,81,95 rue ,economics,M555,lawer,60
+MADAGASCAR,T12,DVD,F,asian ,G ,82, 1 place,informatics,M556,jobber ,62
+MADAGASCAR,T13,TV,M,aztec ,B,83,81 place,sciences,M557,doctor,60
+MADAGASCAR,T13,TV,F,arabic ,R,85,85 rue ,computer sciences ,M558,teacher,61
+MADAGASCAR,T13,PC,M,maya ,Y,84,86 allée,history ,M559,lawer,64
+MADAGASCAR,T13,DVD,F,berbere,W,91,82 allée,german,M560,jobber ,64
+MADAGASCAR,T13,TV,M,european ,G ,81,85 rue ,economics,M561,doctor,61
+MADAGASCAR,T14,DVD,F,african ,B,82,96 rue ,informatics,M562,teacher,58
+MADAGASCAR,T14,PC,M,asian ,R,83, 1 place,sciences,M563,lawer,66
+MADAGASCAR,T14,PC,F,aztec ,Y,84,82 place,computer sciences ,M564,jobber ,67
+MADAGASCAR,T8,DVD,M,arabic ,W,86,86 rue ,history ,M565,doctor,59
+MADAGASCAR,T8,PC,F,maya ,G ,85,87 allée,german,M566,teacher,63
+MADAGASCAR,T9,DVD,M,berbere,B,92,83 allée,economics,M567,lawer,55
+MADAGASCAR,T9,PC,F,european ,R,82,86 rue ,informatics,M568,jobber ,62
+MADAGASCAR,T9,TV,M,african ,Y,83,97 rue ,sciences,M569,doctor,60
+MADAGASCAR,T9,DVD,F,asian ,W,84, 1 place,computer sciences ,M570,teacher,62
+MALTA,T13,TV,M,aztec ,G ,85,83 place,history ,M571,lawer,62
+MALTA,T13,TV,F,arabic ,B,87,87 rue ,german,M572,jobber ,63
+MALTA,T14,PC,M,maya ,R,86,88 allée,economics,M573,doctor,65
+MALTA,T14,DVD,F,berbere,Y,93,84 allée,informatics,M574,teacher,59
+MALTA,T14,PC,M,european ,W,83,87 rue ,sciences,M575,lawer,67
+MALTA,T14,TV,F,african ,G ,84,98 rue ,computer sciences ,M576,jobber ,62
+MALTA,T15,PC,M,asian ,B,85, 1 place,history ,M577,doctor,61
+MALTA,T15,DVD,F,aztec ,R,86,84 place,german,M578,teacher,65
+MALTA,T15,DVD,M,arabic ,Y,88,88 rue ,economics,M579,lawer,63
+MALTA,T15,PC,F,maya ,W,87,89 allée,informatics,M580,jobber ,68
+MALTA,T15,PC,M,berbere,G ,94,85 allée,sciences,M581,doctor,62
+MALTA,T15,DVD,F,european ,B,84,88 rue ,computer sciences ,M582,teacher,66
+MALTA,T15,DVD,M,african ,R,85,99 rue ,history ,M583,lawer,60
+MALTA,T16,TV,F,asian ,Y,86, 1 place,german,M584,jobber ,63
+MALTA,T16,PC,M,aztec ,W,87,85 place,economics,M585,doctor,66
+MALTA,T16,TV,F,arabic ,G ,89,89 rue ,informatics,M586,teacher,64
+MALTA,T16,DVD,M,maya ,B,88,90 allée,sciences,M587,lawer,64
+MALTA,T16,TV,F,berbere,R,95,86 allée,computer sciences ,M588,jobber ,64
+MALTA,T16,PC,M,european ,Y,85,89 rue ,history ,M589,doctor,67
+MALTA,T16,PC,F,african ,W,86,100 rue ,german,M590,teacher,63
+MALTA,T17,PC,M,asian ,G ,87, 1 place,economics,M591,lawer,68
+MALTA,T17,PC,F,aztec ,B,88,86 place,informatics,M592,jobber ,69
+MALTA,T17,TV,M,arabic ,R,90,90 rue ,sciences,M593,doctor,63
+MALTA,T17,TV,F,maya ,Y,89,91 allée,computer sciences ,M594,teacher,65
+MALTA,T17,PC,M,berbere,W,96,87 allée,history ,M595,lawer,69
+MALTA,T17,PC,F,european ,G ,86,90 rue ,german,M596,jobber ,70
+MALTA,T17,TV,M,african ,B,87,101 rue ,economics,M597,doctor,65
+MALTA,T18,DVD,F,asian ,R,88, 1 place,informatics,M598,teacher,67
+MALTA,T18,DVD,M,aztec ,Y,89,87 place,sciences,M599,lawer,65
+MALTA,T18,DVD,F,arabic ,W,91,91 rue ,computer sciences ,M600,jobber ,61
+MALTA,T18,TV,M,maya ,G ,90,92 allée,history ,M601,doctor,64
+MALTA,T18,DVD,F,berbere,B,97,88 allée,german,M602,teacher,68
+MALTA,T19,PC,M,european ,R,87,91 rue ,economics,M603,lawer,68
+MALTA,T19,TV,F,african ,Y,88,102 rue ,informatics,M604,jobber ,66
+MALTA,T19,PC,M,asian ,W,89, 1 place,sciences,M605,doctor,64
+MAURITIUS,T10,PC,F,aztec ,G ,90,88 place,computer sciences ,M606,teacher,67
+MAURITIUS,T10,DVD,M,arabic ,B,92,92 rue ,history ,M607,lawer,71
+MAURITIUS,T10,DVD,F,maya ,R,91,93 allée,german,M608,jobber ,69
+MAURITIUS,T10,PC,M,berbere,Y,98,89 allée,economics,M609,doctor,74
+MAURITIUS,T18,DVD,F,european ,W,88,92 rue ,informatics,M610,teacher,66
+MAURITIUS,T18,PC,M,african ,G ,89,103 rue ,sciences,M611,lawer,70
+MAURITIUS,T19,DVD,F,asian ,B,90, 1 place,computer sciences ,M612,jobber ,62
+MAURITIUS,T19,PC,M,aztec ,R,91,89 place,history ,M613,doctor,69
+MAURITIUS,T19,TV,F,arabic ,Y,93,93 rue ,german,M614,teacher,67
+MAURITIUS,T19,DVD,M,maya ,W,92,94 allée,economics,M615,lawer,69
+MAURITIUS,T20,PC,F,berbere,G ,99,90 allée,informatics,M616,jobber ,71
+MAURITIUS,T20,TV,M,european ,B,89,93 rue ,sciences,M617,doctor,65
+MAURITIUS,T20,TV,F,african ,R,90,104 rue ,computer sciences ,M618,teacher,66
+MAURITIUS,T20,PC,M,asian ,Y,91, 1 place,history ,M619,lawer,65
+MAURITIUS,T20,PC,F,aztec ,W,92,90 place,german,M620,jobber ,72
+MAURITIUS,T20,TV,M,arabic ,G ,94,94 rue ,economics,M621,doctor,66
+MAURITIUS,T20,PC,F,maya ,B,93,95 allée,informatics,M622,teacher,70
+MAURITIUS,T21,DVD,M,berbere,R,100,91 allée,sciences,M623,lawer,67
+MAURITIUS,T21,DVD,F,european ,Y,90,94 rue ,computer sciences ,M624,jobber ,63
+MAURITIUS,T21,PC,M,african ,W,91,105 rue ,history ,M625,doctor,71
+MAURITIUS,T21,TV,F,asian ,G ,92, 1 place,german,M626,teacher,67
+MAURITIUS,T7,TV,M,aztec ,B,93,91 place,economics,M627,lawer,68
+MAURITIUS,T7,PC,F,arabic ,R,95,95 rue ,informatics,M628,jobber ,66
+MAURITIUS,T7,DVD,M,maya ,Y,94,96 allée,sciences,M629,doctor,68
+MAURITIUS,T8,DVD,F,berbere,W,101,92 allée,computer sciences ,M630,teacher,70
+MAURITIUS,T8,TV,M,european ,G ,91,95 rue ,history ,M631,lawer,67
+MAURITIUS,T8,TV,F,african ,B,92,106 rue ,german,M632,jobber ,68
+MAURITIUS,T8,TV,M,asian ,R,93, 1 place,economics,M633,doctor,69
+MAURITIUS,T9,DVD,F,aztec ,Y,94,92 place,informatics,M634,teacher,64
+MAURITIUS,T9,PC,M,arabic ,W,96,96 rue ,sciences,M635,lawer,72
+MAURITIUS,T9,PC,F,maya ,G ,95,97 allée,computer sciences ,M636,jobber ,73
+MAURITIUS,T9,PC,M,berbere,B,102,93 allée,history ,M637,doctor,71
+MAURITIUS,T9,DVD,F,european ,R,92,96 rue ,german,M638,teacher,65
+MAURITIUS,T9,PC,M,african ,Y,93,107 rue ,economics,M639,lawer,73
+MAURITIUS,T9,TV,F,asian ,W,94, 1 place,informatics,M640,jobber ,68
+MEXICO,T11,TV,M,aztec ,G ,95,93 place,sciences,M641,doctor,69
+MEXICO,T11,PC,F,arabic ,B,97,97 rue ,computer sciences ,M642,teacher,72
+MEXICO,T11,TV,M,maya ,R,96,98 allée,history ,M643,lawer,70
+MOROCCO,T10,PC,F,berbere,Y,103,94 allée,german,M644,jobber ,68
+MOROCCO,T10,DVD,M,european ,W,93,97 rue ,economics,M645,doctor,72
+MOROCCO,T10,DVD,F,african ,G ,94,108 rue ,informatics,M646,teacher,66
+MOROCCO,T11,DVD,M,asian ,B,95, 1 place,sciences,M647,lawer,70
+MOROCCO,T11,TV,F,aztec ,R,96,94 place,computer sciences ,M648,jobber ,70
+MOROCCO,T11,PC,M,arabic ,Y,98,98 rue ,history ,M649,doctor,73
+MOROCCO,T11,PC,F,maya ,W,97,99 allée,german,M650,teacher,69
+MOROCCO,T12,PC,M,berbere,G ,104,95 allée,economics,M651,lawer,74
+MOROCCO,T12,PC,F,european ,B,94,98 rue ,informatics,M652,jobber ,75
+MOROCCO,T12,TV,M,african ,R,95,109 rue ,sciences,M653,doctor,69
+MOROCCO,T12,TV,F,asian ,Y,96, 1 place,computer sciences ,M654,teacher,71
+MOROCCO,T12,PC,M,aztec ,W,97,95 place,history ,M655,lawer,75
+MOROCCO,T12,PC,F,arabic ,G ,99,99 rue ,german,M656,jobber ,76
+MOROCCO,T12,TV,M,maya ,B,98,100 allée,economics,M657,doctor,71
+MOROCCO,T13,DVD,F,berbere,R,105,96 allée,informatics,M658,teacher,73
+MOROCCO,T13,DVD,M,european ,Y,95,99 rue ,sciences,M659,lawer,71
+MOROCCO,T13,DVD,F,african ,W,96,110 rue ,computer sciences ,M660,jobber ,67
+MOROCCO,T13,TV,M,asian ,G ,97, 1 place,history ,M661,doctor,70
+MOROCCO,T13,DVD,F,aztec ,B,98,96 place,german,M662,teacher,74
+MOROCCO,T13,DVD,M,arabic ,R,100,100 rue ,economics,M663,lawer,72
+MOROCCO,T13,PC,F,maya ,Y,99,101 allée,informatics,M664,jobber ,76
+MOROCCO,T14,PC,M,berbere,W,106,97 allée,sciences,M665,doctor,74
+MOROCCO,T14,TV,F,european ,G ,96,100 rue ,computer sciences ,M666,teacher,72
+MOROCCO,T14,PC,M,african ,B,97,111 rue ,history ,M667,lawer,70
+MOROCCO,T14,DVD,F,asian ,R,98, 1 place,german,M668,jobber ,68
+MOROCCO,T14,PC,M,aztec ,Y,99,97 place,economics,M669,doctor,75
+MOROCCO,T14,TV,F,arabic ,W,101,101 rue ,informatics,M670,teacher,73
+MOROCCO,T14,DVD,M,maya ,G ,100,102 allée,sciences,M671,lawer,75
+MOROCCO,T15,PC,F,berbere,B,107,98 allée,computer sciences ,M672,jobber ,77
+MOROCCO,T15,TV,M,european ,R,97,101 rue ,history ,M673,doctor,71
+MOROCCO,T15,TV,F,african ,Y,98,112 rue ,german,M674,teacher,72
+MOROCCO,T15,PC,M,asian ,W,99, 1 place,economics,M675,lawer,71
+MOROCCO,T16,DVD,F,aztec ,G ,100,98 place,informatics,M676,jobber ,73
+MOROCCO,T16,DVD,M,arabic ,B,102,102 rue ,sciences,M677,doctor,69
+MOROCCO,T16,PC,F,maya ,R,101,103 allée,computer sciences ,M678,teacher,77
+NEDERLANDS,T15,PC,M,berbere,Y,108,99 allée,history ,M679,lawer,78
+NEDERLANDS,T15,TV,F,european ,W,98,102 rue ,german,M680,jobber ,72
+NEDERLANDS,T15,PC,M,african ,G ,99,113 rue ,economics,M681,doctor,76
+NEDERLANDS,T16,TV,F,asian ,B,100, 1 place,informatics,M682,teacher,73
+NEDERLANDS,T16,DVD,M,aztec ,R,101,99 place,sciences,M683,lawer,74
+NEDERLANDS,T16,DVD,F,arabic ,Y,103,103 rue ,computer sciences ,M684,jobber ,70
+NEDERLANDS,T16,PC,M,maya ,W,102,104 allée,history ,M685,doctor,79
+NEDERLANDS,T17,TV,F,berbere,G ,109,100 allée,german,M686,teacher,74
+NEDERLANDS,T17,PC,M,european ,B,99,103 rue ,economics,M687,lawer,72
+NEDERLANDS,T17,DVD,F,african ,R,100,114 rue ,informatics,M688,jobber ,76
+NEDERLANDS,T17,PC,M,asian ,Y,101, 1 place,sciences,M689,doctor,78
+NEDERLANDS,T17,TV,F,aztec ,W,102,100 place,computer sciences ,M690,teacher,75
+NEDERLANDS,T17,PC,M,arabic ,G ,104,104 rue ,history ,M691,lawer,73
+NEDERLANDS,T17,DVD,F,maya ,B,103,105 allée,german,M692,jobber ,75
+NEDERLANDS,T18,TV,M,berbere,R,110,101 allée,economics,M693,doctor,73
+NEDERLANDS,T18,TV,F,european ,Y,100,104 rue ,informatics,M694,teacher,74
+NEDERLANDS,T18,PC,M,african ,W,101,115 rue ,sciences,M695,lawer,77
+NEDERLANDS,T18,DVD,F,asian ,G ,102, 1 place,computer sciences ,M696,jobber ,77
+NEDERLANDS,T18,TV,M,aztec ,B,103,101 place,history ,M697,doctor,74
+NEDERLANDS,T18,TV,F,arabic ,R,105,105 rue ,german,M698,teacher,75
+NEDERLANDS,T18,TV,M,maya ,Y,104,106 allée,economics,M699,lawer,76
+NEDERLANDS,T19,DVD,F,berbere,W,111,102 allée,informatics,M700,jobber ,71
+NEDERLANDS,T19,PC,M,european ,G ,101,105 rue ,sciences,M701,doctor,79
+NEDERLANDS,T19,PC,F,african ,B,102,116 rue ,computer sciences ,M702,teacher,80
+NEDERLANDS,T19,PC,M,asian ,R,103, 1 place,history ,M703,lawer,78
+NEDERLANDS,T19,DVD,F,aztec ,Y,104,102 place,german,M704,jobber ,72
+NEDERLANDS,T19,PC,M,arabic ,W,106,106 rue ,economics,M705,doctor,80
+NEDERLANDS,T19,TV,F,maya ,G ,105,107 allée,informatics,M706,teacher,75
+NEDERLANDS,T20,PC,M,berbere,B,112,103 allée,sciences,M707,lawer,74
+NEDERLANDS,T20,DVD,F,european ,R,102,106 rue ,computer sciences ,M708,jobber ,78
+NEDERLANDS,T20,DVD,M,african ,Y,103,117 rue ,history ,M709,doctor,76
+NEDERLANDS,T20,PC,F,asian ,W,104, 1 place,german,M710,teacher,81
+NEDERLANDS,T21,TV,M,aztec ,G ,105,103 place,economics,M711,lawer,76
+NEDERLANDS,T21,PC,F,arabic ,B,107,107 rue ,informatics,M712,jobber ,79
+NEDERLANDS,T21,TV,M,maya ,R,106,108 allée,sciences,M713,doctor,77
+PERU,T10,PC,F,berbere,Y,113,104 allée,computer sciences ,M714,teacher,83
+PERU,T10,TV,M,european ,W,103,107 rue ,history ,M715,lawer,77
+PERU,T10,TV,F,african ,G ,104,118 rue ,german,M716,jobber ,78
+PERU,T10,PC,M,asian ,B,105, 1 place,economics,M717,doctor,77
+PERU,T10,PC,F,aztec ,R,106,104 place,informatics,M718,teacher,84
+PERU,T10,TV,M,arabic ,Y,108,108 rue ,sciences,M719,lawer,78
+PERU,T10,PC,F,maya ,W,107,109 allée,computer sciences ,M720,jobber ,82
+PERU,T11,DVD,M,berbere,G ,114,105 allée,history ,M721,doctor,79
+PERU,T11,DVD,F,european ,B,104,108 rue ,german,M722,teacher,75
+PERU,T11,PC,M,african ,R,105,119 rue ,economics,M723,lawer,83
+PERU,T11,TV,F,asian ,Y,106, 1 place,informatics,M724,jobber ,79
+PERU,T11,DVD,M,aztec ,W,107,105 place,sciences,M725,doctor,80
+PERU,T11,DVD,F,arabic ,G ,109,109 rue ,computer sciences ,M726,teacher,76
+PERU,T12,TV,M,maya ,B,108,110 allée,history ,M727,lawer,80
+PERU,T12,PC,F,berbere,R,115,106 allée,german,M728,jobber ,78
+PERU,T12,DVD,M,european ,Y,105,109 rue ,economics,M729,doctor,82
+PERU,T12,PC,F,african ,W,106,120 rue ,informatics,M730,teacher,84
+PERU,T20,PC,M,asian ,G ,107, 1 place,sciences,M731,lawer,75
+PERU,T20,DVD,F,aztec ,B,108,106 place,computer sciences ,M732,jobber ,79
+PERU,T20,DVD,M,arabic ,R,110,110 rue ,history ,M733,doctor,73
+PERU,T21,DVD,F,maya ,Y,109,111 allée,german,M734,teacher,77
+PERU,T21,TV,M,berbere,W,116,107 allée,economics,M735,lawer,77
+PERU,T21,PC,F,european ,G ,106,110 rue ,informatics,M736,jobber ,80
+PERU,T21,PC,M,african ,B,107,121 rue ,sciences,M737,doctor,76
+PERU,T22,PC,F,asian ,R,108, 1 place,computer sciences ,M738,teacher,81
+PERU,T22,PC,M,aztec ,Y,109,107 place,history ,M739,lawer,82
+PERU,T22,TV,F,arabic ,W,111,111 rue ,german,M740,jobber ,76
+PERU,T22,TV,M,maya ,G ,110,112 allée,economics,M741,doctor,78
+PERU,T8,DVD,F,berbere,B,117,108 allée,informatics,M742,teacher,80
+PERU,T8,DVD,M,european ,R,107,111 rue ,sciences,M743,lawer,78
+PERU,T8,PC,F,african ,Y,108,122 rue ,computer sciences ,M744,jobber ,82
+PERU,T9,DVD,M,asian ,W,109, 1 place,history ,M745,doctor,74
+PERU,T9,PC,F,aztec ,G ,110,108 place,german,M746,teacher,81
+PERU,T9,TV,M,arabic ,B,112,112 rue ,economics,M747,lawer,79
+PERU,T9,DVD,F,maya ,R,111,113 allée,informatics,M748,jobber ,81
+PORTO RICO ,T11,PC,M,berbere,Y,118,109 allée,sciences,M749,doctor,85
+PORTO RICO ,T12,TV,F,european ,W,108,112 rue ,computer sciences ,M750,teacher,81
+PORTO RICO ,T12,PC,M,african ,G ,109,123 rue ,history ,M751,lawer,79
+PORTO RICO ,T12,DVD,F,asian ,B,110, 1 place,german,M752,jobber ,81
+PORTO RICO ,T13,TV,M,aztec ,R,111,109 place,economics,M753,doctor,79
+PORTO RICO ,T13,TV,F,arabic ,Y,113,113 rue ,informatics,M754,teacher,80
+PORTO RICO ,T13,PC,M,maya ,W,112,114 allée,sciences,M755,lawer,83
+PORTO RICO ,T13,DVD,F,berbere,G ,119,110 allée,computer sciences ,M756,jobber ,83
+PORTO RICO ,T13,TV,M,european ,B,109,113 rue ,history ,M757,doctor,80
+PORTO RICO ,T13,TV,F,african ,R,110,124 rue ,german,M758,teacher,81
+PORTO RICO ,T13,TV,M,asian ,Y,111, 1 place,economics,M759,lawer,82
+PORTO RICO ,T14,DVD,F,aztec ,W,112,110 place,informatics,M760,jobber ,77
+PORTO RICO ,T14,PC,M,arabic ,G ,114,114 rue ,sciences,M761,doctor,85
+PORTO RICO ,T14,PC,F,maya ,B,113,115 allée,computer sciences ,M762,teacher,86
+PORTO RICO ,T14,PC,M,berbere,R,120,111 allée,history ,M763,lawer,84
+PORTO RICO ,T14,DVD,F,european ,Y,110,114 rue ,german,M764,jobber ,78
+PORTO RICO ,T14,PC,M,african ,W,111,125 rue ,economics,M765,doctor,86
+PORTO RICO ,T14,TV,F,asian ,G ,112, 1 place,informatics,M766,teacher,81
+PORTO RICO ,T15,PC,M,aztec ,B,113,111 place,sciences,M767,lawer,80
+PORTO RICO ,T15,DVD,F,arabic ,R,115,115 rue ,computer sciences ,M768,jobber ,84
+PORTO RICO ,T15,DVD,M,maya ,Y,114,116 allée,history ,M769,doctor,82
+PORTO RICO ,T15,PC,F,berbere,W,121,112 allée,german,M770,teacher,87
+PORTO RICO ,T15,PC,M,european ,G ,111,115 rue ,economics,M771,lawer,81
+PORTO RICO ,T15,DVD,F,african ,B,112,126 rue ,informatics,M772,jobber ,85
+PORTO RICO ,T15,DVD,M,asian ,R,113, 1 place,sciences,M773,doctor,79
+PORTO RICO ,T16,TV,F,aztec ,Y,114,112 place,computer sciences ,M774,teacher,82
+PORTO RICO ,T16,PC,M,arabic ,W,116,116 rue ,history ,M775,lawer,85
+PORTO RICO ,T16,TV,F,maya ,G ,115,117 allée,german,M776,jobber ,83
+PORTO RICO ,T16,DVD,M,berbere,B,122,113 allée,economics,M777,doctor,83
+PORTO RICO ,T16,TV,F,european ,R,112,116 rue ,informatics,M778,teacher,83
+PORTO RICO ,T16,PC,M,african ,Y,113,127 rue ,sciences,M779,lawer,86
+PORTO RICO ,T17,PC,F,asian ,W,114, 1 place,computer sciences ,M780,jobber ,87
+PORTO RICO ,T17,PC,M,aztec ,G ,115,113 place,history ,M781,doctor,88
+PORTO RICO ,T17,TV,F,arabic ,B,117,117 rue ,german,M782,teacher,82
+RUSSIA,T16,PC,M,maya ,R,116,118 allée,economics,M783,lawer,82
+RUSSIA,T17,TV,F,berbere,Y,123,114 allée,informatics,M784,jobber ,84
+RUSSIA,T17,PC,M,european ,W,113,117 rue ,sciences,M785,doctor,88
+RUSSIA,T17,PC,F,african ,G ,114,128 rue ,computer sciences ,M786,teacher,89
+RUSSIA,T17,TV,M,asian ,B,115, 1 place,history ,M787,lawer,84
+RUSSIA,T18,DVD,F,aztec ,R,116,114 place,german,M788,jobber ,86
+RUSSIA,T18,DVD,M,arabic ,Y,118,118 rue ,economics,M789,doctor,84
+RUSSIA,T18,DVD,F,maya ,W,117,119 allée,informatics,M790,teacher,80
+RUSSIA,T18,TV,M,berbere,G ,124,115 allée,sciences,M791,lawer,83
+RUSSIA,T18,DVD,F,european ,B,114,118 rue ,computer sciences ,M792,jobber ,87
+RUSSIA,T18,DVD,M,african ,R,115,129 rue ,history ,M793,doctor,85
+RUSSIA,T18,PC,F,asian ,Y,116, 1 place,german,M794,teacher,89
+RUSSIA,T19,PC,M,aztec ,W,117,115 place,economics,M795,lawer,87
+RUSSIA,T19,TV,F,arabic ,G ,119,119 rue ,informatics,M796,jobber ,85
+RUSSIA,T19,PC,M,maya ,B,118,120 allée,sciences,M797,doctor,83
+RUSSIA,T19,DVD,F,berbere,R,125,116 allée,computer sciences ,M798,teacher,81
+RUSSIA,T19,PC,M,european ,Y,115,119 rue ,history ,M799,lawer,88
+RUSSIA,T19,TV,F,african ,W,116,130 rue ,german,M800,jobber ,86
+RUSSIA,T19,DVD,M,asian ,G ,117, 1 place,economics,M801,doctor,88
+RUSSIA,T20,PC,F,aztec ,B,118,116 place,informatics,M802,teacher,90
+RUSSIA,T20,TV,M,arabic ,R,120,120 rue ,sciences,M803,lawer,84
+RUSSIA,T20,TV,F,maya ,Y,119,121 allée,computer sciences ,M804,jobber ,85
+RUSSIA,T20,PC,M,berbere,W,126,117 allée,history ,M805,doctor,84
+RUSSIA,T20,PC,F,european ,G ,116,120 rue ,german,M806,teacher,91
+RUSSIA,T20,TV,M,african ,B,117,131 rue ,economics,M807,lawer,85
+RUSSIA,T20,PC,F,asian ,R,118, 1 place,informatics,M808,jobber ,89
+RUSSIA,T21,DVD,M,aztec ,Y,119,117 place,sciences,M809,doctor,86
+RUSSIA,T21,DVD,F,arabic ,W,121,121 rue ,computer sciences ,M810,teacher,82
+RUSSIA,T21,PC,M,maya ,G ,120,122 allée,history ,M811,lawer,90
+RUSSIA,T21,TV,F,berbere,B,127,118 allée,german,M812,jobber ,86
+RUSSIA,T21,DVD,M,european ,R,117,121 rue ,economics,M813,doctor,87
+RUSSIA,T21,DVD,F,african ,Y,118,132 rue ,informatics,M814,teacher,83
+RUSSIA,T22,TV,M,asian ,W,119, 1 place,sciences,M815,lawer,87
+RUSSIA,T22,PC,F,aztec ,G ,120,118 place,computer sciences ,M816,jobber ,85
+RUSSIA,T22,DVD,M,arabic ,B,122,122 rue ,history ,M817,doctor,89
+SOUTH AFRICA,T10,PC,F,maya ,R,121,123 allée,german,M818,teacher,93
+SOUTH AFRICA,T10,PC,M,berbere,Y,128,119 allée,economics,M819,lawer,87
+SOUTH AFRICA,T10,DVD,F,european ,W,118,122 rue ,informatics,M820,jobber ,91
+SOUTH AFRICA,T10,DVD,M,african ,G ,119,133 rue ,sciences,M821,doctor,85
+SOUTH AFRICA,T11,TV,F,asian ,B,120, 1 place,computer sciences ,M822,teacher,88
+SOUTH AFRICA,T11,PC,M,aztec ,R,121,119 place,history ,M823,lawer,91
+SOUTH AFRICA,T11,TV,F,arabic ,Y,123,123 rue ,german,M824,jobber ,89
+SOUTH AFRICA,T11,DVD,M,maya ,W,122,124 allée,economics,M825,doctor,89
+SOUTH AFRICA,T11,TV,F,berbere,G ,129,120 allée,informatics,M826,teacher,89
+SOUTH AFRICA,T11,PC,M,european ,B,119,123 rue ,sciences,M827,lawer,92
+SOUTH AFRICA,T11,PC,F,african ,R,120,134 rue ,computer sciences ,M828,jobber ,88
+SOUTH AFRICA,T12,PC,M,asian ,Y,121, 1 place,history ,M829,doctor,93
+SOUTH AFRICA,T12,PC,F,aztec ,W,122,120 place,german,M830,teacher,94
+SOUTH AFRICA,T12,TV,M,arabic ,G ,124,124 rue ,economics,M831,lawer,88
+SOUTH AFRICA,T12,TV,F,maya ,B,123,125 allée,informatics,M832,jobber ,90
+SOUTH AFRICA,T12,PC,M,berbere,R,130,121 allée,sciences,M833,doctor,94
+SOUTH AFRICA,T12,PC,F,european ,Y,120,124 rue ,computer sciences ,M834,teacher,95
+SOUTH AFRICA,T12,TV,M,african ,W,121,135 rue ,history ,M835,lawer,90
+SOUTH AFRICA,T13,DVD,F,asian ,G ,122, 1 place,german,M836,jobber ,92
+SOUTH AFRICA,T13,DVD,M,aztec ,B,123,121 place,economics,M837,doctor,90
+SOUTH AFRICA,T13,DVD,F,arabic ,R,125,125 rue ,informatics,M838,teacher,86
+SOUTH AFRICA,T13,TV,M,maya ,Y,124,126 allée,sciences,M839,lawer,89
+SOUTH AFRICA,T14,PC,F,berbere,W,131,122 allée,computer sciences ,M840,jobber ,93
+SOUTH AFRICA,T21,PC,M,european ,G ,121,125 rue ,history ,M841,doctor,92
+SOUTH AFRICA,T22,PC,F,african ,B,122,136 rue ,german,M842,teacher,91
+SOUTH AFRICA,T22,TV,M,asian ,R,123, 1 place,economics,M843,lawer,88
+SOUTH AFRICA,T22,PC,F,aztec ,Y,124,122 place,informatics,M844,jobber ,86
+SOUTH AFRICA,T22,DVD,M,arabic ,W,126,126 rue ,sciences,M845,doctor,88
+SOUTH AFRICA,T23,TV,F,maya ,G ,125,127 allée,computer sciences ,M846,teacher,86
+SOUTH AFRICA,T23,TV,M,berbere,B,132,123 allée,history ,M847,lawer,87
+SOUTH AFRICA,T23,PC,F,european ,R,122,126 rue ,german,M848,jobber ,90
+SOUTH AFRICA,T23,DVD,M,african ,Y,123,137 rue ,economics,M849,doctor,90
+SOUTH AFRICA,T9,DVD,F,asian ,W,124, 1 place,informatics,M850,teacher,84
+SOUTH AFRICA,T9,PC,M,aztec ,G ,125,123 place,sciences,M851,lawer,92
+SOUTH AFRICA,T9,TV,F,arabic ,B,127,127 rue ,computer sciences ,M852,jobber ,87
+SWEDEN,T13,DVD,M,maya ,R,126,128 allée,history ,M853,doctor,93
+SWEDEN,T13,DVD,F,berbere,Y,133,124 allée,german,M854,teacher,91
+SWEDEN,T13,PC,M,european ,W,123,127 rue ,economics,M855,lawer,95
+SWEDEN,T14,TV,F,african ,G ,124,138 rue ,informatics,M856,jobber ,91
+SWEDEN,T14,PC,M,asian ,B,125, 1 place,sciences,M857,doctor,89
+SWEDEN,T14,DVD,F,aztec ,R,126,124 place,computer sciences ,M858,teacher,87
+SWEDEN,T14,PC,M,arabic ,Y,128,128 rue ,history ,M859,lawer,94
+SWEDEN,T14,TV,F,maya ,W,127,129 allée,german,M860,jobber ,92
+SWEDEN,T14,DVD,M,berbere,G ,134,125 allée,economics,M861,doctor,94
+SWEDEN,T15,PC,F,european ,B,124,128 rue ,informatics,M862,teacher,96
+SWEDEN,T15,TV,M,african ,R,125,139 rue ,sciences,M863,lawer,90
+SWEDEN,T15,TV,F,asian ,Y,126, 1 place,computer sciences ,M864,jobber ,91
+SWEDEN,T15,PC,M,aztec ,W,127,125 place,history ,M865,doctor,90
+SWEDEN,T15,PC,F,arabic ,G ,129,129 rue ,german,M866,teacher,97
+SWEDEN,T15,TV,M,maya ,B,128,130 allée,economics,M867,lawer,91
+SWEDEN,T15,PC,F,berbere,R,135,126 allée,informatics,M868,jobber ,95
+SWEDEN,T16,DVD,M,european ,Y,125,129 rue ,sciences,M869,doctor,92
+SWEDEN,T16,DVD,F,african ,W,126,140 rue ,computer sciences ,M870,teacher,88
+SWEDEN,T16,PC,M,asian ,G ,127, 1 place,history ,M871,lawer,96
+SWEDEN,T16,TV,F,aztec ,B,128,126 place,german,M872,jobber ,92
+SWEDEN,T16,DVD,M,arabic ,R,130,130 rue ,economics,M873,doctor,93
+SWEDEN,T16,DVD,F,maya ,Y,129,131 allée,informatics,M874,teacher,89
+SWEDEN,T16,PC,M,berbere,W,136,127 allée,sciences,M875,lawer,98
+SWEDEN,T17,TV,F,european ,G ,126,130 rue ,computer sciences ,M876,jobber ,93
+SWEDEN,T17,PC,M,african ,B,127,141 rue ,history ,M877,doctor,91
+SWEDEN,T17,DVD,F,asian ,R,128, 1 place,german,M878,teacher,95
+SWEDEN,T17,PC,M,aztec ,Y,129,127 place,economics,M879,lawer,97
+SWEDEN,T17,TV,F,arabic ,W,131,131 rue ,informatics,M880,jobber ,94
+SWEDEN,T17,PC,M,maya ,G ,130,132 allée,sciences,M881,doctor,92
+SWEDEN,T17,DVD,F,berbere,B,137,128 allée,computer sciences ,M882,teacher,94
+SWEDEN,T18,TV,M,european ,R,127,131 rue ,history ,M883,lawer,92
+SWEDEN,T18,TV,F,african ,Y,128,142 rue ,german,M884,jobber ,93
+SWEDEN,T18,PC,M,asian ,W,129, 1 place,economics,M885,doctor,96
+SWEDEN,T18,DVD,F,aztec ,G ,130,128 place,informatics,M886,teacher,96
+SWEDEN,T19,DVD,M,arabic ,B,132,132 rue ,sciences,M887,lawer,90
+TUNISIA,T18,TV,F,maya ,R,131,133 allée,computer sciences ,M888,jobber ,93
+TUNISIA,T18,TV,M,berbere,Y,138,129 allée,history ,M889,doctor,94
+TUNISIA,T18,TV,F,european ,W,128,132 rue ,german,M890,teacher,95
+TUNISIA,T19,PC,M,african ,G ,129,143 rue ,economics,M891,lawer,98
+TUNISIA,T19,PC,F,asian ,B,130, 1 place,informatics,M892,jobber ,99
+TUNISIA,T19,PC,M,aztec ,R,131,129 place,sciences,M893,doctor,97
+TUNISIA,T19,DVD,F,arabic ,Y,133,133 rue ,computer sciences ,M894,teacher,91
+TUNISIA,T19,PC,M,maya ,W,132,134 allée,history ,M895,lawer,99
+TUNISIA,T19,TV,F,berbere,G ,139,130 allée,german,M896,jobber ,94
+TUNISIA,T20,PC,M,european ,B,129,133 rue ,economics,M897,doctor,93
+TUNISIA,T20,DVD,F,african ,R,130,144 rue ,informatics,M898,teacher,97
+TUNISIA,T20,DVD,M,asian ,Y,131, 1 place,sciences,M899,lawer,95
+TUNISIA,T20,PC,F,aztec ,W,132,130 place,computer sciences ,M900,jobber ,100
+TUNISIA,T20,PC,M,arabic ,G ,134,134 rue ,history ,M901,doctor,94
+TUNISIA,T20,DVD,F,maya ,B,133,135 allée,german,M902,teacher,98
+TUNISIA,T20,DVD,M,berbere,R,140,131 allée,economics,M903,lawer,92
+TUNISIA,T21,TV,F,european ,Y,130,134 rue ,informatics,M904,jobber ,95
+TUNISIA,T21,PC,M,african ,W,131,145 rue ,sciences,M905,doctor,98
+TUNISIA,T21,TV,F,asian ,G ,132, 1 place,computer sciences ,M906,teacher,96
+TUNISIA,T21,DVD,M,aztec ,B,133,131 place,history ,M907,lawer,96
+TUNISIA,T21,TV,F,arabic ,R,135,135 rue ,german,M908,jobber ,96
+TUNISIA,T21,PC,M,maya ,Y,134,136 allée,economics,M909,doctor,99
+TUNISIA,T21,PC,F,berbere,W,141,132 allée,informatics,M910,teacher,95
+TUNISIA,T22,PC,M,european ,G ,131,135 rue ,sciences,M911,lawer,100
+TUNISIA,T22,PC,F,african ,B,132,146 rue ,computer sciences ,M912,jobber ,101
+TUNISIA,T22,TV,M,asian ,R,133, 1 place,history ,M913,doctor,95
+TUNISIA,T22,TV,F,aztec ,Y,134,132 place,german,M914,teacher,97
+TUNISIA,T22,PC,M,arabic ,W,136,136 rue ,economics,M915,lawer,101
+TUNISIA,T22,PC,F,maya ,G ,135,137 allée,informatics,M916,jobber ,102
+TUNISIA,T22,TV,M,berbere,B,142,133 allée,sciences,M917,doctor,97
+TUNISIA,T23,DVD,F,european ,R,132,136 rue ,computer sciences ,M918,teacher,99
+TUNISIA,T23,DVD,M,african ,Y,133,147 rue ,history ,M919,lawer,97
+TUNISIA,T23,DVD,F,asian ,W,134, 1 place,german,M920,jobber ,93
+TUNISIA,T23,TV,M,aztec ,G ,135,133 place,economics,M921,doctor,96
+TUNISIA,T24,PC,F,arabic ,B,137,137 rue ,informatics,M922,teacher,100
+UEA,T10,PC,M,maya ,R,136,138 allée,sciences,M923,lawer,103
+UEA,T10,TV,F,berbere,Y,143,134 allée,computer sciences ,M924,jobber ,97
+UEA,T10,PC,M,european ,W,133,137 rue ,history ,M925,doctor,101
+UEA,T11,TV,F,african ,G ,134,148 rue ,german,M926,teacher,98
+UEA,T11,DVD,M,asian ,B,135, 1 place,economics,M927,lawer,99
+UEA,T11,DVD,F,aztec ,R,136,134 place,informatics,M928,jobber ,95
+UEA,T11,PC,M,arabic ,Y,138,138 rue ,sciences,M929,doctor,104
+UEA,T12,TV,F,maya ,W,137,139 allée,computer sciences ,M930,teacher,99
+UEA,T12,PC,M,berbere,G ,144,135 allée,history ,M931,lawer,97
+UEA,T12,DVD,F,european ,B,134,138 rue ,german,M932,jobber ,101
+UEA,T12,PC,M,african ,R,135,149 rue ,economics,M933,doctor,103
+UEA,T12,TV,F,asian ,Y,136, 1 place,informatics,M934,teacher,100
+UEA,T12,PC,M,aztec ,W,137,135 place,sciences,M935,lawer,98
+UEA,T12,DVD,F,arabic ,G ,139,139 rue ,computer sciences ,M936,jobber ,100
+UEA,T13,TV,M,maya ,B,138,140 allée,history ,M937,doctor,98
+UEA,T13,TV,F,berbere,R,145,136 allée,german,M938,teacher,99
+UEA,T13,PC,M,european ,Y,135,139 rue ,economics,M939,lawer,102
+UEA,T13,DVD,F,african ,W,136,150 rue ,informatics,M940,jobber ,102
+UEA,T13,TV,M,asian ,G ,137, 1 place,sciences,M941,doctor,99
+UEA,T13,TV,F,aztec ,B,138,136 place,computer sciences ,M942,teacher,100
+UEA,T13,TV,M,arabic ,R,140,140 rue ,history ,M943,lawer,101
+UEA,T14,DVD,F,maya ,Y,139,141 allée,german,M944,jobber ,96
+UEA,T14,PC,M,berbere,W,146,137 allée,economics,M945,doctor,104
+UEA,T14,PC,F,european ,G ,136,140 rue ,informatics,M946,teacher,105
+UEA,T14,PC,M,african ,B,137,151 rue ,sciences,M947,lawer,103
+UEA,T14,DVD,F,asian ,R,138, 1 place,computer sciences ,M948,jobber ,97
+UEA,T14,PC,M,aztec ,Y,139,137 place,history ,M949,doctor,105
+UEA,T15,PC,F,arabic ,W,141,141 rue ,german,M950,teacher,99
+UEA,T15,DVD,M,maya ,G ,140,142 allée,economics,M951,lawer,103
+UEA,T15,DVD,F,berbere,B,147,138 allée,informatics,M952,jobber ,101
+UEA,T23,DVD,M,european ,R,137,141 rue ,sciences,M953,doctor,100
+UEA,T23,DVD,F,african ,Y,138,152 rue ,computer sciences ,M954,teacher,98
+UEA,T23,PC,M,asian ,W,139, 1 place,history ,M955,lawer,102
+UEA,T24,TV,F,aztec ,G ,140,138 place,german,M956,jobber ,98
+UEA,T24,PC,M,arabic ,B,142,142 rue ,economics,M957,doctor,96
+UEA,T24,DVD,F,maya ,R,141,143 allée,informatics,M958,teacher,94
+UK,T14,TV,M,berbere,Y,148,139 allée,sciences,M959,lawer,100
+UK,T15,PC,F,european ,W,138,142 rue ,computer sciences ,M960,jobber ,106
+UK,T15,PC,M,african ,G ,139,153 rue ,history ,M961,doctor,100
+UK,T15,DVD,F,asian ,B,140, 1 place,german,M962,teacher,104
+UK,T15,DVD,M,aztec ,R,141,139 place,economics,M963,lawer,98
+UK,T16,TV,F,arabic ,Y,143,143 rue ,informatics,M964,jobber ,101
+UK,T16,PC,M,maya ,W,142,144 allée,sciences,M965,doctor,104
+UK,T16,TV,F,berbere,G ,149,140 allée,computer sciences ,M966,teacher,102
+UK,T16,DVD,M,european ,B,139,143 rue ,history ,M967,lawer,102
+UK,T16,TV,F,african ,R,140,154 rue ,german,M968,jobber ,102
+UK,T16,PC,M,asian ,Y,141, 1 place,economics,M969,doctor,105
+UK,T16,PC,F,aztec ,W,142,140 place,informatics,M970,teacher,101
+UK,T17,PC,M,arabic ,G ,144,144 rue ,sciences,M971,lawer,106
+UK,T17,PC,F,maya ,B,143,145 allée,computer sciences ,M972,jobber ,107
+UK,T17,TV,M,berbere,R,150,141 allée,history ,M973,doctor,101
+UK,T17,TV,F,european ,Y,140,144 rue ,german,M974,teacher,103
+UK,T17,PC,M,african ,W,141,155 rue ,economics,M975,lawer,107
+UK,T17,PC,F,asian ,G ,142, 1 place,informatics,M976,jobber ,108
+UK,T17,TV,M,aztec ,B,143,141 place,sciences,M977,doctor,103
+UK,T18,DVD,F,arabic ,R,145,145 rue ,computer sciences ,M978,teacher,105
+UK,T18,DVD,M,maya ,Y,144,146 allée,history ,M979,lawer,103
+UK,T18,DVD,F,berbere,W,151,142 allée,german,M980,jobber ,99
+UK,T18,TV,M,european ,G ,141,145 rue ,economics,M981,doctor,102
+UK,T18,DVD,F,african ,B,142,156 rue ,informatics,M982,teacher,106
+UK,T18,DVD,M,asian ,R,143, 1 place,sciences,M983,lawer,104
+UK,T18,PC,F,aztec ,Y,144,142 place,computer sciences ,M984,jobber ,108
+UK,T19,PC,M,arabic ,W,146,146 rue ,history ,M985,doctor,106
+UK,T19,TV,F,maya ,G ,145,147 allée,german,M986,teacher,104
+UK,T19,PC,M,berbere,B,152,143 allée,economics,M987,lawer,102
+UK,T19,DVD,F,european ,R,142,146 rue ,informatics,M988,jobber ,100
+UK,T19,PC,M,african ,Y,143,157 rue ,sciences,M989,doctor,107
+UK,T19,TV,F,asian ,W,144, 1 place,computer sciences ,M990,teacher,105
+UK,T20,PC,M,aztec ,G ,145,143 place,history ,M991,lawer,109
+UK,T20,TV,F,arabic ,B,147,147 rue ,german,M992,jobber ,103
+UK,T20,TV,M,maya ,R,146,148 allée,economics,M993,doctor,104
+UK,T20,PC,F,berbere,Y,153,144 allée,informatics,M994,teacher,103
+USA,T19,DVD,M,european ,W,143,147 rue ,sciences,M995,lawer,107
+USA,T20,PC,F,african ,G ,144,158 rue ,computer sciences ,M996,jobber ,110
+USA,T21,DVD,M,asian ,B,145, 1 place,history ,M997,doctor,105
+USA,T21,DVD,F,aztec ,R,146,144 place,german,M998,teacher,101
+USA,T21,PC,M,arabic ,Y,148,148 rue ,economics,M999,lawer,109
