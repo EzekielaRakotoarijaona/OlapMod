@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <iostream>//c'est pour l'affichage
 #include <vector>
+#include <unordered_map>
 
 
 using namespace std;

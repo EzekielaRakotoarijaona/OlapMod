@@ -10,7 +10,8 @@
 #include <time.h>
 #include <algorithm>
 #include <string>
-#include <map>
+#include <map> 
+#include <unordered_map> 
 #include <iterator>
 #include "../include/nbEnregistrements.hpp"
 
@@ -237,15 +238,15 @@ void insertInTableFait(vector<vector<string>>& newTableFait, vector<string>& tab
 }
 
 
-void stockerRequete(vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, map<int,vector<vector<string>>>& map_Sum, map<int,vector<vector<string>>>& map_Max) {
+void stockerRequete(vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<int,vector<vector<string>>>& sum, unordered_map<int,vector<vector<string>>>& max) {
     #pragma omp parallel for
     for(int i = 1; i<requetesMaterialisees.size() ; i++){
         vector<vector<string>> newTableFaitSomme;
         vector<vector<string>> newTableFaitMax;
         materialiser(table_FaitString, requetesMaterialisees[i],0, newTableFaitSomme);
         materialiser(table_FaitString, requetesMaterialisees[i],1, newTableFaitMax);
-        map_Sum[requetesMaterialisees[i]] = newTableFaitSomme;
-        map_Max[requetesMaterialisees[i]] = newTableFaitMax;
+        sum[requetesMaterialisees[i]] = newTableFaitSomme;
+        //max[requetesMaterialisees[i]] = newTableFaitMax;
     }
 }
 
@@ -264,7 +265,7 @@ void max(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait
     }
 }
 
-void materialiserRequete(vector<int>& numeroDeRequete,vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, map<int,vector<vector<string>>>& map_Sum, map<int,vector<vector<string>>>& map_Max, int typeOperation,  vector<vector<string>>& newTableFait) {
+void materialiserRequete(vector<int>& numeroDeRequete,vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<int,vector<vector<string>>>& unordered_map_Sum, unordered_map<int,vector<vector<string>>>& unordered_map_Max, int typeOperation,  vector<vector<string>>& newTableFait) {
     //On vide la table de fait si elle a déjà été utilisé auparavant
     newTableFait.clear();
     //On recupère l'entier correspondant à la requete
@@ -278,11 +279,11 @@ void materialiserRequete(vector<int>& numeroDeRequete,vector<int>& taillesRequet
         else {
             if(typeOperation == 0) {
                 cout << "Recuperation somme depuis map" << endl;
-                newTableFait = map_Sum[requete];
+                newTableFait = unordered_map_Sum[requete];
             }
             else{
                 cout << "Recuperation max depuis map" << endl;
-                newTableFait = map_Max[requete];
+                newTableFait = unordered_map_Max[requete];
             }
         }
     }
@@ -295,11 +296,11 @@ void materialiserRequete(vector<int>& numeroDeRequete,vector<int>& taillesRequet
         }
         else if(typeOperation == 0) {
             cout << "Materialisation somme depuis map" << endl;
-            materialiser(map_Sum[parQuiJesuiCalculer], requete, typeOperation, newTableFait);
+            materialiser(unordered_map_Sum[parQuiJesuiCalculer], requete, typeOperation, newTableFait);
         }
         else {
             cout << "Materialisation max depuis map" << endl;
-            materialiser(map_Max[parQuiJesuiCalculer], requete, typeOperation, newTableFait);
+            materialiser(unordered_map_Max[parQuiJesuiCalculer], requete, typeOperation, newTableFait);
         }
     }
 }

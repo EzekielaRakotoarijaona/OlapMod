@@ -16,6 +16,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <unordered_map>
 
 
 using namespace std;//ça permet d'utiliser la librairie stl

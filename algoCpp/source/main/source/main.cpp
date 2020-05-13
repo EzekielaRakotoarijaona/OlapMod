@@ -6,7 +6,7 @@
 #include <cmath>//ça sert pour la fonction pow (puissance)
 #include "../include/nbEnregistrements.hpp"
 #include "../include/calculBenefice.hpp"
-
+#include <unordered_map>
 
 int main(int argc, char *argv[]) {
     if(argc > 1) {
@@ -27,9 +27,9 @@ int main(int argc, char *argv[]) {
         }
         //Calcul des bénéfices
         vector<int> requeteMaterialiser = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
-        map<int,vector<vector<string>>> map_Sum;
-        map<int,vector<vector<string>>> map_Max;
-        stockerRequete(requeteMaterialiser, tableFaitString, map_Sum, map_Max);
+        unordered_map<int,vector<vector<string>>> unordered_map_Sum;
+        unordered_map<int,vector<vector<string>>> unordered_map_Max;
+        stockerRequete(requeteMaterialiser, tableFaitString, unordered_map_Sum, unordered_map_Max);
         cout << "Quelle requete stockée afficher? : " << endl;
         int requeteAMaterialiser = 0;
         cin >> requeteAMaterialiser;
@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
             cin.ignore(999, '\n');
             cin >> requeteAMaterialiser;
         }
-        afficherTableFait(map_Max[requeteAMaterialiser]);
+        afficherTableFait(unordered_map_Max[requeteAMaterialiser]);
         return 0;
     }
     //Cas si le main est lancé sans paramètre : lancement avec une table de fait aléatoire

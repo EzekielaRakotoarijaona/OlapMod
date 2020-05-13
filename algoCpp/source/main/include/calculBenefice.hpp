@@ -12,6 +12,7 @@
 #include <vector>
 #include <map>
 #include "../include/nbEnregistrements.hpp"
+#include <unordered_map> 
 
 using namespace std;
 
@@ -29,7 +30,7 @@ int parQuiJeSuisCalculer(vector<int>& taillesRequetes, vector<int>& requetesMate
 
 void afficherVector(vector<int>& vector);
 
-void stockerRequete(vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, map<int,vector<vector<string>>>& map_Sum, map<int,vector<vector<string>>>& map_Max);
+void stockerRequete(vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<int,vector<vector<string>>>& unordered_map_Sum, unordered_map<int,vector<vector<string>>>& unordered_map_Max);
 
 void afficherTableFait(vector<vector<string>>& tableFait);
 
@@ -43,7 +44,7 @@ void addition(vector<vector<string>>& tableFait, vector<vector<string>>& newTabl
 
 void max(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait);
 
-void materialiserRequete(vector<int>& numeroDeRequete,vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, map<int,vector<vector<string>>>& map_Sum, map<int,vector<vector<string>>>& map_Max, int typeOperation,  vector<vector<string>>& newTableFait);
+void materialiserRequete(vector<int>& numeroDeRequete,vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<int,vector<vector<string>>>& unordered_map_Sum, unordered_map<int,vector<vector<string>>>& unordered_map_Max, int typeOperation,  vector<vector<string>>& newTableFait);
 
 int conversionBinaireAEntier(vector<int>& numeroDeRequete);
 
