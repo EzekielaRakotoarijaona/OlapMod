@@ -25,6 +25,7 @@
 #include <unordered_map>
 #include <QProgressDialog>
 #include <QMessageBox>
+#include <QFont>
 
 
 namespace Ui {
@@ -92,7 +93,7 @@ class MainWindow : public QMainWindow
         QTableWidget *tableFaitRequeteWidget;
         QString dirPath;
         QString fileName;
-        QFont *baloo;
+        QFont* baloo;
 
     
         vector<vector<string>> tableFaitString;

@@ -32,11 +32,11 @@ using namespace std;
 MainWindow::MainWindow(QWidget *parent)
    : QMainWindow(parent)
 {
-
+    
     int id = QFontDatabase::addApplicationFont("../ui_resources/Baloo-Regular-webfont.ttf");// AJOUT CE
-    QString family = QFontDatabase::applicationFontFamilies(id).at(0);// AJOUT CE
-   baloo= new QFont(family);
-
+    if(id!=-1) QString family = QFontDatabase::applicationFontFamilies(id).at(0);// AJOUT CE
+    else baloo = new QFont(QString::fromStdString("Baloo"));
+    
     initiChargerLayout();
     initRequeteLayout();
     nbMterialisationLayout();
@@ -323,7 +323,7 @@ void MainWindow::initRequeteLayout() {
     effacerChamps->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_effacer.png); } ");
     effacerChamps->setMaximumSize(70, 30);//MODIF CE
     effacerChamps->setMinimumSize(70, 30);//MODIF CE
-    connect(effacerChamps, SIGNAL (released()), this, SLOT (handleButton()));
+    connect(effacerChamps, SIGNAL (released()), this, SLOT (effacerListeChamps()));
 
     
      
