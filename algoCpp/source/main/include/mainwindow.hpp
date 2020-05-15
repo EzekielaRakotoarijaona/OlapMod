@@ -31,6 +31,7 @@ namespace Ui {
    class MainWindow;
 }
 
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -91,6 +92,8 @@ class MainWindow : public QMainWindow
         QTableWidget *tableFaitRequeteWidget;
         QString dirPath;
         QString fileName;
+        QFont *baloo;
+
     
         vector<vector<string>> tableFaitString;
         vector<int> taillesRequetes;
@@ -106,4 +109,3 @@ class MainWindow : public QMainWindow
 };
 
 #endif /* mainwindow_hpp */
-    

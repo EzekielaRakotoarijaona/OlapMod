@@ -22,24 +22,35 @@
 #include <QProgressDialog>
 #include <thread>
 #include <QtConcurrent/QtConcurrent>
+#include <QFont>
+#include <QFontDatabase>
+
+
 
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent)
    : QMainWindow(parent)
 {
+
+    int id = QFontDatabase::addApplicationFont("../ui_resources/Baloo-Regular-webfont.ttf");// AJOUT CE
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);// AJOUT CE
+   baloo= new QFont(family);
+
     initiChargerLayout();
     initRequeteLayout();
     nbMterialisationLayout();
     initExporterLayout();
+
+
     
    title = new QLabel(this);
    title->setGeometry(QRect(QPoint(100, 30),
     QSize(200, 50)));
    title->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-   title->setText("");
-    QPixmap pixmap("../ui_resources/QueryOptimizer.png");
-    title->setPixmap(pixmap.scaled(title->width(),title->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
+   title->setFont(*baloo);// AJOUT CE
+   title->setStyleSheet("font-weight:medium; font-size:28pt"); // AJOUT CE
+   title->setText("QueryOptimizer");// AJOUT CE
     title->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
     title->setFrameShape(QFrame::HLine);
     title->setFrameStyle(QFrame::NoFrame);
@@ -48,9 +59,10 @@ MainWindow::MainWindow(QWidget *parent)
     titleTableFait->setGeometry(QRect(QPoint(100, 30),
      QSize(200, 50)));
     titleTableFait->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-    titleTableFait->setText("");
-     QPixmap pixmapTitleTableFait("../ui_resources/table_fait.png");
-     titleTableFait->setPixmap(pixmapTitleTableFait.scaled(titleTableFait->width(),titleTableFait->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
+
+   titleTableFait->setFont(*baloo);// AJOUT CE
+   titleTableFait->setStyleSheet("font-weight:medium; font-size:16pt;color:grey"); // AJOUT CE
+   titleTableFait->setText("Table de fait - Originale");// AJOUT CE
      titleTableFait->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
      titleTableFait->setFrameShape(QFrame::HLine);
      titleTableFait->setFrameStyle(QFrame::NoFrame);
@@ -59,9 +71,9 @@ MainWindow::MainWindow(QWidget *parent)
     titleTableGeneree->setGeometry(QRect(QPoint(100, 30),
      QSize(200, 50)));
     titleTableGeneree->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-    titleTableGeneree->setText("");
-     QPixmap pixmapTitleTableGeneree("../ui_resources/table_fait_generee.png");
-     titleTableGeneree->setPixmap(pixmapTitleTableGeneree.scaled(titleTableGeneree->width(),titleTableGeneree->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
+   titleTableGeneree->setFont(*baloo);// AJOUT CE
+   titleTableGeneree->setStyleSheet("font-weight:medium; font-size:16pt;color:grey"); // AJOUT CE
+   titleTableGeneree->setText("Table de fait - Générée");// AJOUT CE
      titleTableGeneree->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
      titleTableGeneree->setFrameShape(QFrame::HLine);
      titleTableGeneree->setFrameStyle(QFrame::NoFrame);
@@ -213,13 +225,14 @@ void MainWindow::initiChargerLayout() {
     chiffre1->setAlignment(Qt::AlignTop | Qt::AlignCenter);
     chiffre1->setFrameShape(QFrame::HLine);
     chiffre1->setFrameStyle(QFrame::NoFrame);
-    
+
     QLabel* selectionFichier = new QLabel(this);
     selectionFichier->setGeometry(QRect(QPoint(0,0),
      QSize(250, 80)));
     selectionFichier->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-     QPixmap pixmapSelectionFichier("../ui_resources/selection_fichier.png");
-     selectionFichier->setPixmap(pixmapSelectionFichier.scaled(selectionFichier->width(),selectionFichier->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
+      selectionFichier->setFont(*baloo);// AJOUT CE
+   selectionFichier->setStyleSheet("font-weight:medium; font-size:13pt"); // AJOUT CE
+   selectionFichier->setText("Sélectionner votre table de fait");// AJOUT CE
      selectionFichier->setAlignment(Qt::AlignTop | Qt::AlignCenter);
      selectionFichier->setFrameShape(QFrame::HLine);
      selectionFichier->setFrameStyle(QFrame::NoFrame);
@@ -262,13 +275,13 @@ void MainWindow::initRequeteLayout() {
       chiffre2->setFrameShape(QFrame::HLine);
       chiffre2->setFrameStyle(QFrame::NoFrame);
      
-     
      QLabel* champsRequetes = new QLabel(this);
      champsRequetes->setGeometry(QRect(QPoint(0,0),
       QSize(100, 50)));
      champsRequetes->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-      QPixmap pixmapChamps("../ui_resources/les_champs.png");
-      champsRequetes->setPixmap(pixmapChamps.scaled(champsRequetes->width(),champsRequetes->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
+     champsRequetes->setFont(*baloo);// AJOUT CE
+     champsRequetes->setStyleSheet("font-weight:medium; font-size:13pt"); // AJOUT CE
+     champsRequetes->setText("Les champs");// AJOUT CE
       champsRequetes->setAlignment(Qt::AlignTop | Qt::AlignCenter);
       champsRequetes->setFrameShape(QFrame::HLine);
       champsRequetes->setFrameStyle(QFrame::NoFrame);
@@ -277,8 +290,9 @@ void MainWindow::initRequeteLayout() {
      fonctionAggregation->setGeometry(QRect(QPoint(0,0),
       QSize(100, 50)));
      fonctionAggregation->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-      QPixmap pixmapAggregation("../ui_resources/operation.png");
-      fonctionAggregation->setPixmap(pixmapAggregation.scaled(fonctionAggregation->width(),fonctionAggregation->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
+      fonctionAggregation->setFont(*baloo);// AJOUT CE
+   fonctionAggregation->setStyleSheet("font-weight:medium; font-size:13pt"); // AJOUT CE
+   fonctionAggregation->setText("Opération");// AJOUT CE
       fonctionAggregation->setAlignment(Qt::AlignTop | Qt::AlignCenter);
       fonctionAggregation->setFrameShape(QFrame::HLine);
       fonctionAggregation->setFrameStyle(QFrame::NoFrame);
@@ -301,15 +315,16 @@ void MainWindow::initRequeteLayout() {
     
     validerRequete = new QPushButton("", this);
     validerRequete->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_OK.png); } ");
-    validerRequete->setMaximumSize(50, 30);
-    validerRequete->setMinimumSize(50, 30);
+    validerRequete->setMaximumSize(70, 30);//MODIF CE
+    validerRequete->setMinimumSize(70, 30);//MODIF CE
     connect(validerRequete, SIGNAL (released()), this, SLOT (request()));
     
     effacerChamps = new QPushButton("", this);
     effacerChamps->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_effacer.png); } ");
-    effacerChamps->setMaximumSize(50, 30);
-    effacerChamps->setMinimumSize(50, 30);
-    connect(effacerChamps, SIGNAL (released()), this, SLOT (effacerListeChamps()));
+    effacerChamps->setMaximumSize(70, 30);//MODIF CE
+    effacerChamps->setMinimumSize(70, 30);//MODIF CE
+    connect(effacerChamps, SIGNAL (released()), this, SLOT (handleButton()));
+
     
      
      
@@ -358,14 +373,16 @@ void MainWindow::nbMterialisationLayout() {
      chiffre3->setAlignment(Qt::AlignTop | Qt::AlignCenter);
      chiffre3->setFrameShape(QFrame::HLine);
      chiffre3->setFrameStyle(QFrame::NoFrame);
-    
+       
     QLabel* nbMaterialiser = new QLabel(this);
-    nbMaterialiser->setGeometry(QRect(QPoint(0,0),
+    nbMaterialiser->setGeometry(QRect(QPoint(50,0),
      QSize(120, 50)));
     nbMaterialiser->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-     QPixmap pixmapNbMaterialiser("../ui_resources/nb_materialiser.png");
-     nbMaterialiser->setPixmap(pixmapNbMaterialiser.scaled(nbMaterialiser->width(),nbMaterialiser->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
-     nbMaterialiser->setAlignment(Qt::AlignTop | Qt::AlignCenter);
+    nbMaterialiser->setFont(*baloo);// AJOUT CE
+     nbMaterialiser->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px"); // AJOUT CE
+     nbMaterialiser->setText("Nombre de dimensions" "\n" "à matérialiser");// AJOUT CE
+     nbMaterialiser->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+
      nbMaterialiser->setFrameShape(QFrame::HLine);
      nbMaterialiser->setFrameStyle(QFrame::NoFrame);
      nbRequetesAMaterialiserBox =  new QComboBox(this);
@@ -374,9 +391,11 @@ void MainWindow::nbMterialisationLayout() {
     uniteMemoire->setGeometry(QRect(QPoint(0,0),
      QSize(100, 50)));
     uniteMemoire->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-     QPixmap pixmapMemoire("../ui_resources/unite_memoire.png");
-     uniteMemoire->setPixmap(pixmapMemoire.scaled(uniteMemoire->width(),uniteMemoire->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
-     uniteMemoire->setAlignment(Qt::AlignTop | Qt::AlignCenter);
+     uniteMemoire->setFont(*baloo);// AJOUT CE
+     uniteMemoire->setStyleSheet("font-weight:medium; font-size:13pt"); // AJOUT CE
+     uniteMemoire->setText("Unité de mémoire");// AJOUT CE
+
+     uniteMemoire->setAlignment(Qt::AlignTop | Qt::AlignLeft);
      uniteMemoire->setFrameShape(QFrame::HLine);
      uniteMemoire->setFrameStyle(QFrame::NoFrame);
     
@@ -392,8 +411,8 @@ void MainWindow::nbMterialisationLayout() {
     
     nbRequetesAMaterialiserButton = new QPushButton(this);
     nbRequetesAMaterialiserButton->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_OK.png); } ");
-    nbRequetesAMaterialiserButton->setMaximumSize(50, 30);
-    nbRequetesAMaterialiserButton->setMinimumSize(50, 30);
+    nbRequetesAMaterialiserButton->setMaximumSize(70, 30); //MODIF CE
+    nbRequetesAMaterialiserButton->setMinimumSize(70, 30); //MODIF CE
     connect(nbRequetesAMaterialiserButton, SIGNAL (released()), this, SLOT (calculRequetesAMateriliser()));
     
     nbMaterialiserLayout = new QGridLayout();
@@ -421,6 +440,7 @@ void MainWindow::initExporterLayout() {
      exporterBack->setFrameShape(QFrame::HLine);
      exporterBack->setFrameStyle(QFrame::NoFrame);
     
+
     QLabel* chiffre3 = new QLabel(this);
     chiffre3->setGeometry(QRect(QPoint(0,0),
      QSize(50, 50)));
@@ -429,15 +449,16 @@ void MainWindow::initExporterLayout() {
      chiffre3->setPixmap(pixmapChiffre2.scaled(chiffre3->width(),chiffre3->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
      chiffre3->setAlignment(Qt::AlignTop | Qt::AlignCenter);
      chiffre3->setFrameShape(QFrame::HLine);
-     chiffre3->setFrameStyle(QFrame::NoFrame);
-    
+     chiffre3->setFrameStyle(QFrame::NoFrame);  
+
     QLabel* selectionFichier = new QLabel(this);
     selectionFichier->setGeometry(QRect(QPoint(0,0),
      QSize(250, 80)));
     selectionFichier->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-     QPixmap pixmapSelectionFichier("../ui_resources/exporter.png");
-     selectionFichier->setPixmap(pixmapSelectionFichier.scaled(selectionFichier->width(),selectionFichier->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
-     selectionFichier->setAlignment(Qt::AlignTop | Qt::AlignCenter);
+     selectionFichier->setFont(*baloo);// AJOUT CE
+     selectionFichier->setStyleSheet("font-weight:medium; font-size:13pt ; padding-left: 8px"); // AJOUT CE
+     selectionFichier->setText("Souhaitez-vous exporter la table" "\n"  "de fait générée ?");// AJOUT CE
+     selectionFichier->setAlignment(Qt::AlignTop | Qt::AlignLeft);
      selectionFichier->setFrameShape(QFrame::HLine);
      selectionFichier->setFrameStyle(QFrame::NoFrame);
     
