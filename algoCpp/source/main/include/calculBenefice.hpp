@@ -56,5 +56,7 @@ int espaceMemoireUtilise(vector<int> &taillesRequetes, vector<int>& requetesMate
 
 int espaceMemoirePrevu(vector<int> &taillesRequetes, int nbPrevu);
 
+void exportFichier(vector<vector<string>> tableFait, string nomFichier);
+
 #endif /* calculBenefice_hpp */
 

@@ -430,4 +430,32 @@ bool testMateriliserRequete(string filePath) {
     return true;
 }
 
+//Test 6 Export Fichier
+bool testExportFichier(string filePath){
+    vector<vector<string>> tableFaitString = chargerFichiers(filePath);
+    exportFichier(tableFaitString, "Plastico");
+    vector<vector<string>> nouvelleTableFaitImporte = chargerFichiers("Plastico.csv");
+    
+    if(tableFaitString.size() != nouvelleTableFaitImporte.size()){
+            printf("Test Failed test 1 Export Fichier \n");
+            return false;
+        }
+        for (int i = 0; i < tableFaitString.size(); i++) {
+            if(tableFaitString[i].size() != nouvelleTableFaitImporte[i].size()){
+                printf("Test Failed test 2 Export Fichier \n");
+                return false;
+            }
+            for (int j = 0; j < tableFaitString[i].size(); j++){
+                if(tableFaitString[i][j] != nouvelleTableFaitImporte[i][j]){
+                    printf("Test Failed test 3 Export Fichier \n");
+                    return false;
+                }
+            }
+        }
+        
+    printf("Test réussi Export Fichier \n");
+    remove("Plastico.csv");
+    return true;
+}
+
 

@@ -60,6 +60,8 @@ int main(int argc, char *argv[]) {
     vector<vector<string>> tableFaitString = chargerFichiers("../resources/table_fait_string.csv");
     materialiser(tableFaitString, 0, 1, newTableFait);
     afficherTableFait(newTableFait);
+    
+    
     return 0;
 }
 

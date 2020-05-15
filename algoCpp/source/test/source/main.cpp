@@ -61,6 +61,11 @@ int main(int argc, char *argv[]) {
         printf("Test failed  testMaterialiserRequete \n");
         return EXIT_FAILURE;
     }
+    if (!testExportFichier(FICHIER_CSV_TEST)) {
+    printf("Test failed  testExportFichier \n");
+    return EXIT_FAILURE;
+    }
+    
     printf("Test réussi! \n");
     printf("Test unitaires réussis! \n");
     return 0;

@@ -99,5 +99,6 @@ bool testMaterialiser(string filePath);
 bool testStocker(string filePath);
 bool testConversionBinaireEntier();
 bool testMateriliserRequete(string filePath);
+bool testExportFichier(string filePath);
 
 #endif

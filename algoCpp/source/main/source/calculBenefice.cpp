@@ -14,7 +14,7 @@
 #include <unordered_map> 
 #include <iterator>
 #include "../include/nbEnregistrements.hpp"
-
+#include <fstream>
 
 
 using namespace std;
@@ -365,10 +365,21 @@ int espaceMemoirePrevu(vector<int> &taillesRequetes, int nbPrevu){
     return espaceMemoire;
 }
 
-
-
-
-
-
+void exportFichier(vector<vector<string>> tableFait, string nomFichier){
+    ofstream myfile(nomFichier + ".csv");
+    
+    for (int n=0; n < tableFait.size(); n++)
+    {
+        for (int i = 0; i < tableFait[n].size(); i++) {
+            if (i == tableFait[n].size() - 1) {
+                myfile << tableFait[n][i];
+            }
+            else
+            myfile << tableFait[n][i] << ",";
+        }
+        myfile << endl;
+    }
+    myfile.close();
+}
 
 
