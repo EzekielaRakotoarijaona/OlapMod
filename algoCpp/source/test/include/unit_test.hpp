@@ -49,10 +49,10 @@ static vector<int> entierBinaire2 = {1,0,0,1,0};
 static vector<int> entierBinaire3 = {1,1,1,1,0};
 static vector<int> entierBinaire4 = {1,1,1,1,1};
 
-static vector<int> entierBinaireTestMaterialiserRequete = {0,1,1};
-static vector<int> entierBinaireTestMaterialiserRequete2 = {1,1,0};
-static vector<int> entierBinaireTestMaterialiserRequete3 = {1,1,1};
-static vector<int> entierBinaireTestMaterialiserRequete4 = {0,0,0};
+static vector<string> entierBinaireTestMaterialiserRequete = {"QUATER", "PRODUCT"};
+static vector<string> entierBinaireTestMaterialiserRequete2 = {"COUNTRY", "QUATER"};
+static vector<string> entierBinaireTestMaterialiserRequete3 = {"COUNTRY", "QUATER", "PRODUCT"};
+static vector<string> entierBinaireTestMaterialiserRequete4 = {};
 static vector<vector<string>> tableFaitAttenduSommeMaterialiser ={{"COUNTRY", "QUATER", "#UNITS"},
 {"USA", "T1", "11"},
 {"USA", "T2", "12"},

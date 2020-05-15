@@ -17,7 +17,11 @@
 #include <QScrollArea>
 #include <QGridLayout>
 #include <QVBoxLayout>
-
+#include <QMovie>
+#include <sstream>
+#include <QProgressDialog>
+#include <thread>
+#include <QtConcurrent/QtConcurrent>
 
 using namespace std;
 
@@ -65,8 +69,11 @@ MainWindow::MainWindow(QWidget *parent)
     
     mainLayout = new QGridLayout();
     mainLayout->setSizeConstraint(QLayout::SetNoConstraint);
-    mainLayout->setRowMinimumHeight(4, 400);
-    mainLayout->addWidget(title);
+    mainLayout->setRowMinimumHeight(4, 410);
+    mainLayout->setRowMinimumHeight(0, 50);
+    mainLayout->setVerticalSpacing(20);
+    mainLayout->setHorizontalSpacing(30);
+    mainLayout->addWidget(title,0,0,Qt::AlignCenter| Qt::AlignLeft );
     mainLayout->addWidget(chargerBack,1,0);
     mainLayout->addLayout(chargerLayout, 1,0);
     mainLayout->addWidget(requeteBack,1,1);
@@ -86,31 +93,46 @@ MainWindow::MainWindow(QWidget *parent)
     mainScrollArea->resize(2000,4000);
 
     setCentralWidget(mainScrollArea);
+    msgBox = new QMessageBox();
+    tableFaitWidget = new QTableWidget();
+    tableFaitWidget->setMaximumWidth(600);
+    tableFaitWidget->setMinimumWidth(600);
+    tableFaitWidget->setMaximumHeight(400);
+    tableFaitWidget->setMinimumHeight(400);
+    mainLayout->addWidget(tableFaitWidget, 4,0,1,2, Qt::AlignTop| Qt::AlignLeft);
+    
+    
+    tableFaitRequeteWidget = new QTableWidget();
+    tableFaitRequeteWidget->setMaximumWidth(600);
+    tableFaitRequeteWidget->setMinimumWidth(600);
+    tableFaitRequeteWidget->setMaximumHeight(410);
+    tableFaitRequeteWidget->setMinimumHeight(410);
+    mainLayout->addWidget(tableFaitRequeteWidget, 4,2,1,2, Qt::AlignTop| Qt::AlignLeft);
 }
 
 void MainWindow::handleButton()
 {
     QString file = QFileDialog::getOpenFileName(this, tr("Charger une table de fait ..."),tr("BDD (*.csv)"));
-    QMessageBox msgBox;
     if(file.isEmpty()) {
-        msgBox.setText("Le fichier est vide ou n'existe pas");
+        msgBox->setText("Le fichier est vide ou n'existe pas");
+        msgBox->show();
         return;
     }
-     
+    bar = new QProgressDialog();
+    bar->setRange(0,100);
+    bar->setAutoClose(true);
+    bar->setCancelButtonText(QString());
+    bar->show();
+    mainLayout->addWidget(bar,0,3, Qt::AlignTop | Qt::AlignRight);
     QFileInfo fileInfo(file);
-    QString dirPath = fileInfo.filePath(); // Path vers le fichier
-    QString fileName = fileInfo.fileName();
+    dirPath = fileInfo.filePath(); // Path vers le fichier
+    fileName = fileInfo.fileName();
     string filePath = dirPath.toUtf8().constData();
-    this->tableFaitString = chargerFichiers(filePath);
-    tableFait = conversion(tableFaitString);
-    initTableFaitView();
-    initTableTailleRequetesWidget();
-    msgBox.setText(QString::fromStdString("Ouverture et chargement du fichier :  ") + dirPath.toUtf8().constData() + QString::fromStdString(" termninée !"));
-    msgBox.exec();
+    connect(this, SIGNAL(endChargementFichier(int)), this, SLOT(displayPopupEndChargementFichier(int)), Qt::BlockingQueuedConnection);
+    QFuture<void> future = QtConcurrent::run(this, &MainWindow::runChargementFichier );
 }
 
 void MainWindow::initTableFaitView(){
-    tableFaitWidget = new QTableWidget();
     tableFaitWidget->setRowCount(this->tableFaitString.size()-1);
     tableFaitWidget->setColumnCount(this->tableFaitString[0].size());
     for(int i = 0; i<tableFaitString[0].size(); i++) {
@@ -130,25 +152,25 @@ void MainWindow::initTableFaitView(){
     QSize(1500, 300)));
     tableFaitWidget->setMaximumWidth(600);
     tableFaitWidget->setMinimumWidth(600);
-    tableFaitWidget->setMaximumHeight(1500);
-    tableFaitWidget->setMinimumHeight(1500);
+    tableFaitWidget->setMaximumHeight(400);
+    tableFaitWidget->setMinimumHeight(400);
     tableFaitWidget->resizeColumnsToContents();
     tableFaitWidget->resizeRowsToContents();
     
     mainLayout->addWidget(tableFaitWidget, 4,0,1,2, Qt::AlignTop| Qt::AlignLeft);
-    
     delete champsRequetesComboBox;
     champsRequetesComboBox =  new QComboBox(this);
+    champsRequetesComboBox->addItem("");
     for(int i = 0; i< tableFaitString[0].size() - 1; i++) {
         champsRequetesComboBox->addItem(QString::fromStdString(tableFaitString[0][i]));
     }
     champsRequetesComboBox->setGeometry(QRect(QPoint(650, 100),
     QSize(100, 50)));
+    connect(champsRequetesComboBox,SIGNAL (currentIndexChanged(int)),this,SLOT(onClickChampsComboBox(int)));
     requeteLayout->addWidget(champsRequetesComboBox,1,1, Qt::AlignCenter| Qt::AlignCenter);
 }
 
 void MainWindow::initTableTailleRequetesWidget(){
-    taillesRequetes = toutes_les_tailles(tableFait);
     requetesMaterialise.resize(1);
     requetesMaterialise[0] = taillesRequetes.size()-1;
     delete nbRequetesAMaterialiserBox;
@@ -156,6 +178,7 @@ void MainWindow::initTableTailleRequetesWidget(){
     for(int i = 0; i< taillesRequetes.size(); i++) {
         nbRequetesAMaterialiserBox->addItem(QString::fromStdString(to_string(i)));
     }
+    connect(nbRequetesAMaterialiserBox,SIGNAL (currentIndexChanged(int)),this,SLOT(tailleMaxVector(int)));
     nbRequetesAMaterialiserBox->setGeometry(QRect(QPoint(650, 100),
     QSize(100, 50)));
     nbMaterialiserLayout->addWidget(nbRequetesAMaterialiserBox,1,1, Qt::AlignCenter| Qt::AlignCenter);
@@ -163,12 +186,19 @@ void MainWindow::initTableTailleRequetesWidget(){
 
 
 void MainWindow::calculRequetesAMateriliser() {
-    int nbAMateriliser = stoi(nbRequetesAMaterialiserBox->itemText(nbRequetesAMaterialiserBox->currentIndex()).toUtf8().constData());
-    requetesMaterialise = calculBeneficeTotal(taillesRequetes, nbAMateriliser);
-    stockerRequete(requetesMaterialise, tableFaitString, map_Sum, map_Max);
-    QMessageBox msgBox;
-    msgBox.setText(QString::fromStdString("Les requetes sont préchargées !"));
-    msgBox.exec();
+    if(tableFaitString.size() == 0) {
+        msgBox->setText("Commencez par importer une table avant d'optimiser");
+        msgBox->show();
+        return;
+    }
+    bar = new QProgressDialog();
+    bar->setAutoClose(true);
+    bar->setCancelButtonText(QString());
+    bar->setRange(0,100);
+    bar->setValue(0);
+    mainLayout->addWidget(bar,0,3, Qt::AlignTop| Qt::AlignRight);
+    connect(this, SIGNAL(endCalculRequete(int)), this, SLOT(displayPopupEndCalculRequete(int)), Qt::BlockingQueuedConnection);
+    QFuture<void> future = QtConcurrent::run(this, &MainWindow::runCaculRequete );
 }
 
 void MainWindow::initiChargerLayout() {
@@ -195,7 +225,7 @@ void MainWindow::initiChargerLayout() {
      selectionFichier->setFrameStyle(QFrame::NoFrame);
     
     m_button = new QPushButton("", this);
-    m_button->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_charger_fichier.png); } ");
+    m_button->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_charger_fichier.png);} ");
     m_button->setMaximumSize(150, 40);
     m_button->setMinimumSize(150, 40);
     connect(m_button, SIGNAL (released()), this, SLOT (handleButton()));
@@ -279,7 +309,7 @@ void MainWindow::initRequeteLayout() {
     effacerChamps->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_effacer.png); } ");
     effacerChamps->setMaximumSize(50, 30);
     effacerChamps->setMinimumSize(50, 30);
-    connect(effacerChamps, SIGNAL (released()), this, SLOT (handleButton()));
+    connect(effacerChamps, SIGNAL (released()), this, SLOT (effacerListeChamps()));
     
      
      
@@ -426,9 +456,21 @@ void MainWindow::initExporterLayout() {
 
 
 void MainWindow::request() {
+    if(tableFaitString.size() == 0) {
+        msgBox->setText("Commencez par importer une table avant de requeter");
+        msgBox->show();
+        return;
+        
+    }
     string request = listeChampsRetenu->toPlainText().toUtf8().constData();
-    vector<int> binaireRequete = {0,1,1};
-    materialiserRequete(binaireRequete,taillesRequetes, requetesMaterialise, tableFaitString, map_Sum, map_Max, 0, tableFaitRequete);
+    listeChampsRetenu->setText(listeChampsRetenu->toPlainText().toUtf8().constData());
+    requeteLayout->addWidget(listeChampsRetenu,3,0,2,1,Qt::AlignCenter| Qt::AlignRight);
+    vector<string> requete = split(request,';');
+    int operation = 0;
+    string fonctionAggregation = fonctionAggregationComboBox->itemText(fonctionAggregationComboBox->currentIndex()).toUtf8().constData();
+    if( fonctionAggregation == "Max")
+        operation = 1;
+    materialiserRequete(requete,taillesRequetes, requetesMaterialise, tableFaitString, map_Sum, map_Max, operation, tableFaitRequete);
     tableFaitRequeteWidget = new QTableWidget();
     tableFaitRequeteWidget->setRowCount(this->tableFaitRequete.size()-1);
     tableFaitRequeteWidget->setColumnCount(this->tableFaitRequete[0].size());
@@ -449,10 +491,93 @@ void MainWindow::request() {
     QSize(1500, 300)));
     tableFaitRequeteWidget->setMaximumWidth(600);
     tableFaitRequeteWidget->setMinimumWidth(600);
-    tableFaitRequeteWidget->setMaximumHeight(1500);
-    tableFaitRequeteWidget->setMinimumHeight(1500);
+    tableFaitRequeteWidget->setMaximumHeight(400);
+    tableFaitRequeteWidget->setMinimumHeight(400);
     tableFaitRequeteWidget->resizeColumnsToContents();
     tableFaitRequeteWidget->resizeRowsToContents();
     
     mainLayout->addWidget(tableFaitRequeteWidget, 4,2,1,2, Qt::AlignTop| Qt::AlignLeft);
+}
+
+
+vector<string> MainWindow::split(const string &s, char delim) {
+  stringstream ss(s);
+  string item;
+  vector<string> elems;
+  while (getline(ss, item, delim)) {
+    elems.push_back(item);
+  }
+  return elems;
+}
+
+void MainWindow::onClickChampsComboBox(int) {
+    string selected = champsRequetesComboBox->itemText(champsRequetesComboBox->currentIndex()).toUtf8().constData();
+    if(!selected.empty()) {
+        listeChampsRetenu->setText(listeChampsRetenu->toPlainText().toUtf8().constData() + QString::fromStdString(selected + ";"));
+        requeteLayout->addWidget(listeChampsRetenu,3,0,2,1,Qt::AlignCenter| Qt::AlignRight);
+    }
+}
+
+void MainWindow::effacerListeChamps() {
+    listeChampsRetenu->setText("");
+    requeteLayout->addWidget(listeChampsRetenu,3,0,2,1,Qt::AlignCenter| Qt::AlignRight);
+}
+
+void MainWindow::tailleMaxVector(int) {
+    int selected = stoi(nbRequetesAMaterialiserBox->itemText(nbRequetesAMaterialiserBox->currentIndex()).toUtf8().constData());
+    espaceMemoire = espaceMemoirePrevu(taillesRequetes, selected);
+    textMemoire->setGeometry(QRect(QPoint(0,0),
+     QSize(100, 50)));
+    textMemoire->setText(QString::fromStdString(to_string(espaceMemoire)));
+    textMemoire->setFrameShape(QFrame::HLine);
+    textMemoire->setFrameStyle(QFrame::NoFrame);
+    textMemoire->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+     textMemoire->setAlignment(Qt::AlignTop | Qt::AlignCenter);
+    
+    nbMaterialiserLayout->addWidget(textMemoire,2,1, Qt::AlignCenter| Qt::AlignCenter);
+}
+
+void MainWindow::runCaculRequete() {
+    nbAMateriliser = stoi(nbRequetesAMaterialiserBox->itemText(nbRequetesAMaterialiserBox->currentIndex()).toUtf8().constData());
+    emit endCalculRequete(10);
+    requetesMaterialise = calculBeneficeTotal(taillesRequetes, nbAMateriliser);
+    emit endCalculRequete(50);
+    espaceMemoireReel = espaceMemoireUtilise(taillesRequetes, requetesMaterialise);
+    emit endCalculRequete(55);
+    stockerRequete(requetesMaterialise, tableFaitString, map_Sum, map_Max);
+    emit endCalculRequete(100);
+}
+
+
+void MainWindow::displayPopupEndCalculRequete(int value){
+    bar->setValue(value);
+    if(value == 100) {
+        string message = "Les requetes sont préchargées ! <br><br>";
+        if(nbAMateriliser > requetesMaterialise.size()){
+            message +=  to_string(requetesMaterialise.size()) + " matérialisations suffisent à optimiser les requêtes utilisant " + to_string(espaceMemoireReel) + " d'espace mémoire";
+            cout << message << endl;
+        }
+        msgBox->setText(QString::fromStdString(message));
+        msgBox->show();
+    }
+}
+
+void MainWindow::runChargementFichier() {
+    string filePath = dirPath.toUtf8().constData();
+    tableFaitString = chargerFichiers(filePath);
+    emit endChargementFichier(10);
+    tableFait = conversion(tableFaitString);
+    emit endChargementFichier(50);
+    taillesRequetes = toutes_les_tailles(tableFait);
+    emit endChargementFichier(100);
+}
+
+void MainWindow::displayPopupEndChargementFichier(int value) {
+    bar->setValue(value);
+    if(value == 100) {
+        initTableFaitView();
+        initTableTailleRequetesWidget();
+        msgBox->setText(QString::fromStdString("Ouverture et chargement du fichier :  <br><br>") + dirPath.toUtf8().constData() + QString::fromStdString(" termninée !"));
+        msgBox->show();
+    }
 }

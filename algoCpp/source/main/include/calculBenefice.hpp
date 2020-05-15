@@ -44,9 +44,17 @@ void addition(vector<vector<string>>& tableFait, vector<vector<string>>& newTabl
 
 void max(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait);
 
-void materialiserRequete(vector<int>& numeroDeRequete,vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<int,vector<vector<string>>>& unordered_map_Sum, unordered_map<int,vector<vector<string>>>& unordered_map_Max, int typeOperation,  vector<vector<string>>& newTableFait);
+void materialiserRequete(vector<string>& numeroDeRequete,vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<int,vector<vector<string>>>& unordered_map_Sum, unordered_map<int,vector<vector<string>>>& unordered_map_Max, int typeOperation,  vector<vector<string>>& newTableFait);
 
 int conversionBinaireAEntier(vector<int>& numeroDeRequete);
+
+bool vectorContains(int value, vector<int> vector);
+
+vector<int> fromStringToBinary(vector<string> stringRequest, vector<vector<string>> &tableFaitString);
+
+int espaceMemoireUtilise(vector<int> &taillesRequetes, vector<int>& requetesMaterialisees);
+
+int espaceMemoirePrevu(vector<int> &taillesRequetes, int nbPrevu);
 
 #endif /* calculBenefice_hpp */
 

@@ -23,6 +23,8 @@
 #include "../include/nbEnregistrements.hpp"
 #include "../include/calculBenefice.hpp"
 #include <unordered_map>
+#include <QProgressDialog>
+#include <QMessageBox>
 
 
 namespace Ui {
@@ -41,14 +43,28 @@ class MainWindow : public QMainWindow
         void initExporterLayout();
         void nbMterialisationLayout();
         void initTableTailleRequetesWidget();
+        vector<string> split(const string &s, char delim);
+        void runCaculRequete();
+        void runChargementFichier();
+    signals:
+        void endCalculRequete(int value);
+        void endChargementFichier(int value);
     private slots:
-       void handleButton();
-       void calculRequetesAMateriliser();
-       void request();
+        void handleButton();
+        void calculRequetesAMateriliser();
+        void request();
+        void onClickChampsComboBox(int);
+        void tailleMaxVector(int);
+        void effacerListeChamps();
+        void displayPopupEndCalculRequete(int value);
+        void displayPopupEndChargementFichier(int value);
     private:
         QLabel *title;
         QLabel *titleTableFait;
         QLabel *titleTableGeneree;
+        QLabel *chargement;
+        QProgressDialog* bar;
+        QMessageBox *msgBox;
         QGridLayout* mainLayout;
         QScrollArea* mainScrollArea;
         QGridLayout* chargerLayout;
@@ -73,6 +89,8 @@ class MainWindow : public QMainWindow
         QTableWidget *tableFaitWidget;
         QTableWidget *tableTailleRequetesWidget;
         QTableWidget *tableFaitRequeteWidget;
+        QString dirPath;
+        QString fileName;
     
         vector<vector<string>> tableFaitString;
         vector<int> taillesRequetes;
@@ -81,6 +99,9 @@ class MainWindow : public QMainWindow
         unordered_map<int,vector<vector<string>>> map_Sum;
         unordered_map<int,vector<vector<string>>> map_Max;
         vector<vector<string>> tableFaitRequete;
+        int espaceMemoire = 0;
+        int nbAMateriliser = 0;
+        int espaceMemoireReel = 0;
         
 };
 
