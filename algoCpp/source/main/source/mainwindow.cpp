@@ -34,7 +34,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     
     int id = QFontDatabase::addApplicationFont("../ui_resources/Baloo-Regular-webfont.ttf");// AJOUT CE
-    if(id!=-1) QString family = QFontDatabase::applicationFontFamilies(id).at(0);// AJOUT CE
+    if(id!=-1) {
+        QString family = QFontDatabase::applicationFontFamilies(id).at(0);// AJOUT CE
+        baloo = new QFont(family);
+    }
     else baloo = new QFont(QString::fromStdString("Baloo"));
     
     initiChargerLayout();
