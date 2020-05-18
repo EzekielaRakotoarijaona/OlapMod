@@ -127,10 +127,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::handleButton()
 {
-    QString file = QFileDialog::getOpenFileName(this, tr("Charger une table de fait ..."),tr("BDD (*.csv)"));
+    QString file = QFileDialog::getOpenFileName(this, tr("Charger une table de fait ..."),"../resources",tr("BDD (*.csv)"));
     if(file.isEmpty()) {
-        msgBox->setText("Le fichier est vide ou n'existe pas");
-        msgBox->show();
         return;
     }
     bar = new QProgressDialog();
@@ -148,7 +146,10 @@ void MainWindow::handleButton()
 }
 
 void MainWindow::initTableFaitView(){
-    tableFaitWidget->setRowCount(this->tableFaitString.size()-1);
+    if(this->tableFaitString.size() > 1000) {
+        tableFaitWidget->setRowCount(1000);
+    }
+    else tableFaitWidget->setRowCount(this->tableFaitString.size()-1);
     tableFaitWidget->setColumnCount(this->tableFaitString[0].size());
     for(int i = 0; i<tableFaitString[0].size(); i++) {
        tableFaitWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::fromStdString(tableFaitString[0][i])));
@@ -383,7 +384,7 @@ void MainWindow::nbMterialisationLayout() {
     nbMaterialiser->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     nbMaterialiser->setFont(*baloo);// AJOUT CE
      nbMaterialiser->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px"); // AJOUT CE
-     nbMaterialiser->setText("Nombre de dimensions" "\n" "à matérialiser");// AJOUT CE
+     nbMaterialiser->setText("Nombre de requêtes" "\n" "à matérialiser");// AJOUT CE
      nbMaterialiser->setAlignment(Qt::AlignTop | Qt::AlignLeft);
 
      nbMaterialiser->setFrameShape(QFrame::HLine);
@@ -469,7 +470,7 @@ void MainWindow::initExporterLayout() {
     exporterButton->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_exporter.png); } ");
     exporterButton->setMaximumSize(100, 40);
     exporterButton->setMinimumSize(100, 40);
-    connect(exporterButton, SIGNAL (released()), this, SLOT (handleButton()));
+    connect(exporterButton, SIGNAL (released()), this, SLOT (exporterButtonLaunch()));
     
     exporterLayout = new QGridLayout();
     exporterLayout->addWidget(chiffre3,0,0, Qt::AlignTop| Qt::AlignCenter);
@@ -496,7 +497,10 @@ void MainWindow::request() {
         operation = 1;
     materialiserRequete(requete,taillesRequetes, requetesMaterialise, tableFaitString, map_Sum, map_Max, operation, tableFaitRequete);
     tableFaitRequeteWidget = new QTableWidget();
-    tableFaitRequeteWidget->setRowCount(this->tableFaitRequete.size()-1);
+    if(this->tableFaitRequete.size() > 1000) {
+        tableFaitRequeteWidget->setRowCount(1000);
+    }
+    else tableFaitRequeteWidget->setRowCount(this->tableFaitRequete.size()-1);
     tableFaitRequeteWidget->setColumnCount(this->tableFaitRequete[0].size());
     for(int i = 0; i<tableFaitRequete[0].size(); i++) {
        tableFaitRequeteWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::fromStdString(tableFaitRequete[0][i])));
@@ -579,7 +583,6 @@ void MainWindow::displayPopupEndCalculRequete(int value){
         string message = "Les requetes sont préchargées ! <br><br>";
         if(nbAMateriliser > requetesMaterialise.size()){
             message +=  to_string(requetesMaterialise.size()) + " matérialisations suffisent à optimiser les requêtes utilisant " + to_string(espaceMemoireReel) + " d'espace mémoire";
-            cout << message << endl;
         }
         msgBox->setText(QString::fromStdString(message));
         msgBox->show();
@@ -602,6 +605,44 @@ void MainWindow::displayPopupEndChargementFichier(int value) {
         initTableFaitView();
         initTableTailleRequetesWidget();
         msgBox->setText(QString::fromStdString("Ouverture et chargement du fichier :  <br><br>") + dirPath.toUtf8().constData() + QString::fromStdString(" termninée !"));
+        msgBox->show();
+    }
+}
+
+void MainWindow::exporterButtonLaunch() {
+    if(tableFaitString.size() == 0 || tableFaitRequete.size() == 0) {
+        msgBox->setText("Commencez par faire une requêtes");
+        msgBox->show();
+        return;
+    }
+    QString filename = QFileDialog::getSaveFileName(this, tr("Save File"), "../resources/table.csv", tr("Images (*.csv)"));
+    if(filename.isEmpty()) {
+        return;
+    }
+    QFileInfo f( filename );
+    saveDirPath = f.filePath(); // Path vers le fichier
+    saveFileName = f.fileName();
+    bar = new QProgressDialog();
+    bar->setAutoClose(true);
+    bar->setCancelButtonText(QString());
+    bar->setRange(0,100);
+    bar->setValue(0);
+    mainLayout->addWidget(bar,0,3, Qt::AlignTop| Qt::AlignRight);
+    connect(this, SIGNAL(endExportFichier(int)), this, SLOT(displayPopupExporter(int)), Qt::BlockingQueuedConnection);
+    QFuture<void> future = QtConcurrent::run(this, &MainWindow::exporter );
+}
+
+void MainWindow::exporter() {
+    emit endExportFichier(0);
+    string path = saveDirPath.toUtf8().constData();
+    exportFichier(tableFaitRequete, path);
+    emit endExportFichier(100);
+}
+
+void MainWindow::displayPopupExporter(int value) {
+    bar->setValue(value);
+    if(value == 100) {
+        msgBox->setText(QString::fromStdString("Fichier enregistré!"));
         msgBox->show();
     }
 }

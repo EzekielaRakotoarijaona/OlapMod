@@ -366,7 +366,7 @@ int espaceMemoirePrevu(vector<int> &taillesRequetes, int nbPrevu){
 }
 
 void exportFichier(vector<vector<string>> tableFait, string nomFichier){
-    ofstream myfile(nomFichier + ".csv");
+    ofstream myfile(nomFichier);
     
     for (int n=0; n < tableFait.size(); n++)
     {

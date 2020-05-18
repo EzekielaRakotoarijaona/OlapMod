@@ -48,9 +48,11 @@ class MainWindow : public QMainWindow
         vector<string> split(const string &s, char delim);
         void runCaculRequete();
         void runChargementFichier();
+        void exporter();
     signals:
         void endCalculRequete(int value);
         void endChargementFichier(int value);
+        void endExportFichier(int value);
     private slots:
         void handleButton();
         void calculRequetesAMateriliser();
@@ -60,6 +62,8 @@ class MainWindow : public QMainWindow
         void effacerListeChamps();
         void displayPopupEndCalculRequete(int value);
         void displayPopupEndChargementFichier(int value);
+        void exporterButtonLaunch();
+        void displayPopupExporter(int value);
     private:
         QLabel *title;
         QLabel *titleTableFait;
@@ -94,8 +98,11 @@ class MainWindow : public QMainWindow
         QString dirPath;
         QString fileName;
         QFont* baloo;
+        
 
     
+        QString saveDirPath;
+        QString saveFileName;
         vector<vector<string>> tableFaitString;
         vector<int> taillesRequetes;
         vector<int> requetesMaterialise;

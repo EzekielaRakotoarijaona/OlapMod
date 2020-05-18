@@ -433,7 +433,7 @@ bool testMateriliserRequete(string filePath) {
 //Test 6 Export Fichier
 bool testExportFichier(string filePath){
     vector<vector<string>> tableFaitString = chargerFichiers(filePath);
-    exportFichier(tableFaitString, "Plastico");
+    exportFichier(tableFaitString, "Plastico.csv");
     vector<vector<string>> nouvelleTableFaitImporte = chargerFichiers("Plastico.csv");
     
     if(tableFaitString.size() != nouvelleTableFaitImporte.size()){
