@@ -45,7 +45,18 @@ MainWindow::MainWindow(QWidget *parent)
     nbMterialisationLayout();
     initExporterLayout();
 
-
+    
+   tempsReq = new QLabel(this);
+   tempsReq->setGeometry(QRect(QPoint(100, 30),
+    QSize(200, 50)));
+   tempsReq->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+   tempsReq->setFont(*baloo);// AJOUT CE
+   tempsReq->setStyleSheet("font-weight:medium; font-size:14pt");
+   tempsReq->setText(QString::fromStdString(to_string(tempsRequete)) + "s");
+    tempsReq->setAlignment(Qt::AlignTop | Qt::AlignRight);
+    tempsReq->setFrameShape(QFrame::HLine);
+    tempsReq->setFrameStyle(QFrame::NoFrame);
+    
     
    title = new QLabel(this);
    title->setGeometry(QRect(QPoint(100, 30),
@@ -97,8 +108,9 @@ MainWindow::MainWindow(QWidget *parent)
     mainLayout->addLayout(nbMaterialiserLayout, 1,2);
     mainLayout->addWidget(exporterBack, 1,3);
     mainLayout->addLayout(exporterLayout, 1,3);
-    mainLayout->addWidget(titleTableFait, 2,0,2,1);
-    mainLayout->addWidget(titleTableGeneree, 2,2,2,1);
+    mainLayout->addWidget(titleTableFait, 2,0);
+    mainLayout->addWidget(titleTableGeneree, 2,2);
+    mainLayout->addWidget(tempsReq, 2, 3);
 
     QWidget* contentWidget = new QWidget();
     contentWidget->setLayout(mainLayout);
@@ -110,16 +122,16 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(mainScrollArea);
     msgBox = new QMessageBox();
     tableFaitWidget = new QTableWidget();
-    tableFaitWidget->setMaximumWidth(600);
-    tableFaitWidget->setMinimumWidth(600);
-    tableFaitWidget->setMaximumHeight(400);
-    tableFaitWidget->setMinimumHeight(400);
+    tableFaitWidget->setMaximumWidth(630);
+    tableFaitWidget->setMinimumWidth(630);
+    tableFaitWidget->setMaximumHeight(410);
+    tableFaitWidget->setMinimumHeight(410);
     mainLayout->addWidget(tableFaitWidget, 4,0,1,2, Qt::AlignTop| Qt::AlignLeft);
     
     
     tableFaitRequeteWidget = new QTableWidget();
-    tableFaitRequeteWidget->setMaximumWidth(600);
-    tableFaitRequeteWidget->setMinimumWidth(600);
+    tableFaitRequeteWidget->setMaximumWidth(630);
+    tableFaitRequeteWidget->setMinimumWidth(630);
     tableFaitRequeteWidget->setMaximumHeight(410);
     tableFaitRequeteWidget->setMinimumHeight(410);
     mainLayout->addWidget(tableFaitRequeteWidget, 4,2,1,2, Qt::AlignTop| Qt::AlignLeft);
@@ -166,10 +178,10 @@ void MainWindow::initTableFaitView(){
     }
     tableFaitWidget->setGeometry(QRect(QPoint(40, 200),
     QSize(1500, 300)));
-    tableFaitWidget->setMaximumWidth(600);
-    tableFaitWidget->setMinimumWidth(600);
-    tableFaitWidget->setMaximumHeight(400);
-    tableFaitWidget->setMinimumHeight(400);
+    tableFaitWidget->setMaximumWidth(630);
+    tableFaitWidget->setMinimumWidth(630);
+    tableFaitWidget->setMaximumHeight(410);
+    tableFaitWidget->setMinimumHeight(410);
     tableFaitWidget->resizeColumnsToContents();
     tableFaitWidget->resizeRowsToContents();
     
@@ -487,6 +499,10 @@ void MainWindow::request() {
         return;
         
     }
+    
+    tempsRequete = 0.0;
+    clock_t begin = clock();
+    
     string request = listeChampsRetenu->toPlainText().toUtf8().constData();
     listeChampsRetenu->setText(listeChampsRetenu->toPlainText().toUtf8().constData());
     requeteLayout->addWidget(listeChampsRetenu,3,0,2,1,Qt::AlignCenter| Qt::AlignRight);
@@ -517,14 +533,23 @@ void MainWindow::request() {
     }
     tableFaitRequeteWidget->setGeometry(QRect(QPoint(40, 200),
     QSize(1500, 300)));
-    tableFaitRequeteWidget->setMaximumWidth(600);
-    tableFaitRequeteWidget->setMinimumWidth(600);
-    tableFaitRequeteWidget->setMaximumHeight(400);
-    tableFaitRequeteWidget->setMinimumHeight(400);
+    tableFaitRequeteWidget->setMaximumWidth(630);
+    tableFaitRequeteWidget->setMinimumWidth(630);
+    tableFaitRequeteWidget->setMaximumHeight(410);
+    tableFaitRequeteWidget->setMinimumHeight(410);
     tableFaitRequeteWidget->resizeColumnsToContents();
     tableFaitRequeteWidget->resizeRowsToContents();
     
     mainLayout->addWidget(tableFaitRequeteWidget, 4,2,1,2, Qt::AlignTop| Qt::AlignLeft);
+    
+    clock_t end = clock();
+    tempsRequete += (double)(end - begin)/CLOCKS_PER_SEC;
+    string optimisation = "Requete optimisée";
+    if (requetesMaterialise.size() <= 1) {
+        optimisation = "Requete non optimisée";
+    }
+    tempsReq->setText(QString::fromStdString(to_string(tempsRequete)) + "s" "\n" + QString::fromStdString(optimisation));
+    mainLayout->addWidget(tempsReq, 2, 3);
 }
 
 
@@ -646,3 +671,7 @@ void MainWindow::displayPopupExporter(int value) {
         msgBox->show();
     }
 }
+
+
+
+

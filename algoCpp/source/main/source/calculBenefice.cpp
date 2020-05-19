@@ -256,6 +256,10 @@ void insertInTableFait(vector<vector<string>>& newTableFait, vector<string>& tab
 
 
 void stockerRequete(vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<int,vector<vector<string>>>& sum, unordered_map<int,vector<vector<string>>>& max) {
+    
+    sum.clear();
+    max.clear();
+    
     #pragma omp parallel for
     for(int i = 1; i<requetesMaterialisees.size() ; i++){
         vector<vector<string>> newTableFaitSomme;

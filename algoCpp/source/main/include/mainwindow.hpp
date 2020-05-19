@@ -69,6 +69,7 @@ class MainWindow : public QMainWindow
         QLabel *titleTableFait;
         QLabel *titleTableGeneree;
         QLabel *chargement;
+        QLabel* tempsReq;
         QProgressDialog* bar;
         QMessageBox *msgBox;
         QGridLayout* mainLayout;
@@ -113,6 +114,7 @@ class MainWindow : public QMainWindow
         int espaceMemoire = 0;
         int nbAMateriliser = 0;
         int espaceMemoireReel = 0;
+        double tempsRequete = 0.0;
         
 };
 
