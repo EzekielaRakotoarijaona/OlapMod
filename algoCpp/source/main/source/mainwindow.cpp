@@ -33,9 +33,9 @@ MainWindow::MainWindow(QWidget *parent)
    : QMainWindow(parent)
 {
     
-    int id = QFontDatabase::addApplicationFont("../ui_resources/Baloo-Regular-webfont.ttf");// AJOUT CE
+    int id = QFontDatabase::addApplicationFont("../ui_resources/Baloo-Regular-webfont.ttf");
     if(id!=-1) {
-        QString family = QFontDatabase::applicationFontFamilies(id).at(0);// AJOUT CE
+        QString family = QFontDatabase::applicationFontFamilies(id).at(0);
         baloo = new QFont(family);
     }
     else baloo = new QFont(QString::fromStdString("Baloo"));
@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
    tempsReq->setGeometry(QRect(QPoint(100, 30),
     QSize(200, 50)));
    tempsReq->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-   tempsReq->setFont(*baloo);// AJOUT CE
+   tempsReq->setFont(*baloo);
    tempsReq->setStyleSheet("font-weight:medium; font-size:14pt");
    tempsReq->setText(QString::fromStdString(to_string(tempsRequete)) + "s");
     tempsReq->setAlignment(Qt::AlignTop | Qt::AlignRight);
@@ -85,9 +85,9 @@ MainWindow::MainWindow(QWidget *parent)
    title->setGeometry(QRect(QPoint(100, 30),
     QSize(200, 50)));
    title->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-   title->setFont(*baloo);// AJOUT CE
-   title->setStyleSheet("font-weight:medium; font-size:28pt"); // AJOUT CE
-   title->setText("QueryOptimizer");// AJOUT CE
+   title->setFont(*baloo);
+   title->setStyleSheet("font-weight:medium; font-size:28pt");
+   title->setText("QueryOptimizer");
     title->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
     title->setFrameShape(QFrame::HLine);
     title->setFrameStyle(QFrame::NoFrame);
@@ -97,9 +97,9 @@ MainWindow::MainWindow(QWidget *parent)
      QSize(200, 50)));
     titleTableFait->setFrameStyle(QFrame::Panel | QFrame::Sunken);
 
-   titleTableFait->setFont(*baloo);// AJOUT CE
-   titleTableFait->setStyleSheet("font-weight:medium; font-size:16pt;color:grey"); // AJOUT CE
-   titleTableFait->setText("Table de fait - Originale");// AJOUT CE
+   titleTableFait->setFont(*baloo);
+   titleTableFait->setStyleSheet("font-weight:medium; font-size:16pt;color:grey"); 
+   titleTableFait->setText("Table de fait - Originale");
      titleTableFait->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
      titleTableFait->setFrameShape(QFrame::HLine);
      titleTableFait->setFrameStyle(QFrame::NoFrame);
@@ -274,15 +274,17 @@ void MainWindow::initiChargerLayout() {
     selectionFichier->setGeometry(QRect(QPoint(0,0),
      QSize(250, 80)));
     selectionFichier->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-      selectionFichier->setFont(*baloo);// AJOUT CE
-   selectionFichier->setStyleSheet("font-weight:medium; font-size:13pt"); // AJOUT CE
-   selectionFichier->setText("Sélectionner votre table de fait");// AJOUT CE
+      selectionFichier->setFont(*baloo);
+   selectionFichier->setStyleSheet("font-weight:medium; font-size:13pt"); 
+   selectionFichier->setText("Sélectionner votre table de fait");
      selectionFichier->setAlignment(Qt::AlignTop | Qt::AlignCenter);
      selectionFichier->setFrameShape(QFrame::HLine);
      selectionFichier->setFrameStyle(QFrame::NoFrame);
     
     m_button = new QPushButton("", this);
-    m_button->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_charger_fichier.png);} ");
+    m_button->setFont(*baloo);
+    m_button->setStyleSheet("background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white");
+    m_button->setText("Charger le fichier");
     m_button->setMaximumSize(150, 40);
     m_button->setMinimumSize(150, 40);
     connect(m_button, SIGNAL (released()), this, SLOT (handleButton()));
@@ -323,9 +325,9 @@ void MainWindow::initRequeteLayout() {
      champsRequetes->setGeometry(QRect(QPoint(0,0),
       QSize(100, 50)));
      champsRequetes->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-     champsRequetes->setFont(*baloo);// AJOUT CE
-     champsRequetes->setStyleSheet("font-weight:medium; font-size:13pt"); // AJOUT CE
-     champsRequetes->setText("Les champs");// AJOUT CE
+     champsRequetes->setFont(*baloo);
+     champsRequetes->setStyleSheet("font-weight:medium; font-size:13pt"); 
+     champsRequetes->setText("Les champs");
       champsRequetes->setAlignment(Qt::AlignTop | Qt::AlignCenter);
       champsRequetes->setFrameShape(QFrame::HLine);
       champsRequetes->setFrameStyle(QFrame::NoFrame);
@@ -334,9 +336,9 @@ void MainWindow::initRequeteLayout() {
      fonctionAggregation->setGeometry(QRect(QPoint(0,0),
       QSize(100, 50)));
      fonctionAggregation->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-      fonctionAggregation->setFont(*baloo);// AJOUT CE
-   fonctionAggregation->setStyleSheet("font-weight:medium; font-size:13pt"); // AJOUT CE
-   fonctionAggregation->setText("Opération");// AJOUT CE
+      fonctionAggregation->setFont(*baloo);
+   fonctionAggregation->setStyleSheet("font-weight:medium; font-size:13pt"); 
+   fonctionAggregation->setText("Opération");
       fonctionAggregation->setAlignment(Qt::AlignTop | Qt::AlignCenter);
       fonctionAggregation->setFrameShape(QFrame::HLine);
       fonctionAggregation->setFrameStyle(QFrame::NoFrame);
@@ -358,15 +360,19 @@ void MainWindow::initRequeteLayout() {
     listeChampsRetenu->setMaximumWidth(120);
     
     validerRequete = new QPushButton("", this);
-    validerRequete->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_OK.png); } ");
-    validerRequete->setMaximumSize(70, 30);//MODIF CE
-    validerRequete->setMinimumSize(70, 30);//MODIF CE
+    validerRequete->setFont(*baloo);
+    validerRequete->setStyleSheet("background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white");
+    validerRequete->setText("OK");
+    validerRequete->setMaximumSize(70, 30);
+    validerRequete->setMinimumSize(70, 30);
     connect(validerRequete, SIGNAL (released()), this, SLOT (request()));
     
     effacerChamps = new QPushButton("", this);
-    effacerChamps->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_effacer.png); } ");
-    effacerChamps->setMaximumSize(70, 30);//MODIF CE
-    effacerChamps->setMinimumSize(70, 30);//MODIF CE
+    effacerChamps->setFont(*baloo);
+    effacerChamps->setStyleSheet("background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white");
+    effacerChamps->setText("Effacer");
+    effacerChamps->setMaximumSize(70, 30);
+    effacerChamps->setMinimumSize(70, 30);
     connect(effacerChamps, SIGNAL (released()), this, SLOT (effacerListeChamps()));
 
     
@@ -433,11 +439,13 @@ void MainWindow::nbMterialisationLayout() {
     memoireReelle = new QLabel(this);
     memoireReelle->setGeometry(QRect(QPoint(50,0),
      QSize(120, 50)));
+
     memoireReelle->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     memoireReelle->setFont(*baloo);// AJOUT CE
      memoireReelle->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px"); // AJOUT CE
     memoireReelle->setText("Unité de mémoire utilisée");// AJOUT CE
      memoireReelle->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+
 
      memoireReelle->setFrameShape(QFrame::HLine);
      memoireReelle->setFrameStyle(QFrame::NoFrame);
@@ -517,9 +525,11 @@ void MainWindow::nbMterialisationLayout() {
     nbRequetesAMaterialiserBox->setMaximumWidth(90);
     
     nbRequetesAMaterialiserButton = new QPushButton(this);
-    nbRequetesAMaterialiserButton->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_OK.png); } ");
-    nbRequetesAMaterialiserButton->setMaximumSize(70, 30); //MODIF CE
-    nbRequetesAMaterialiserButton->setMinimumSize(70, 30); //MODIF CE
+    nbRequetesAMaterialiserButton->setFont(*baloo);
+    nbRequetesAMaterialiserButton->setStyleSheet("background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white");
+    nbRequetesAMaterialiserButton->setText("OK");
+    nbRequetesAMaterialiserButton->setMaximumSize(70, 30); 
+    nbRequetesAMaterialiserButton->setMinimumSize(70, 30); 
     connect(nbRequetesAMaterialiserButton, SIGNAL (released()), this, SLOT (calculRequetesAMateriliser()));
     
     nbMaterialiserLayout = new QGridLayout();
@@ -566,15 +576,17 @@ void MainWindow::initExporterLayout() {
     selectionFichier->setGeometry(QRect(QPoint(0,0),
      QSize(250, 80)));
     selectionFichier->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-     selectionFichier->setFont(*baloo);// AJOUT CE
-     selectionFichier->setStyleSheet("font-weight:medium; font-size:13pt ; padding-left: 8px"); // AJOUT CE
-     selectionFichier->setText("Souhaitez-vous exporter la table" "\n"  "de fait générée ?");// AJOUT CE
+     selectionFichier->setFont(*baloo);
+     selectionFichier->setStyleSheet("font-weight:medium; font-size:13pt ; padding-left: 8px"); 
+     selectionFichier->setText("Souhaitez-vous exporter la table" "\n"  "de fait générée ?");
      selectionFichier->setAlignment(Qt::AlignTop | Qt::AlignLeft);
      selectionFichier->setFrameShape(QFrame::HLine);
      selectionFichier->setFrameStyle(QFrame::NoFrame);
     
     exporterButton = new QPushButton(this);
-    exporterButton->setStyleSheet("QPushButton {border-image: url(../ui_resources/bouton_exporter.png); } ");
+    exporterButton->setFont(*baloo);
+    exporterButton->setStyleSheet("background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white");
+    exporterButton->setText("Exporter");
     exporterButton->setMaximumSize(100, 40);
     exporterButton->setMinimumSize(100, 40);
     connect(exporterButton, SIGNAL (released()), this, SLOT (exporterButtonLaunch()));
