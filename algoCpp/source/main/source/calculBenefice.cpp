@@ -351,7 +351,7 @@ vector<int> fromStringToBinary(vector<string> stringRequest, vector<vector<strin
 
 int espaceMemoireUtilise(vector<int> &taillesRequetes, vector<int>& requetesMaterialisees){
     int espaceMemoire = 0;
-    for(int i = 0; i<taillesRequetes.size(); i++) {
+    for(int i = 0; i<taillesRequetes.size()-1; i++) {
         if(vectorContains(i,requetesMaterialisees)){
             espaceMemoire += taillesRequetes[i];
         }

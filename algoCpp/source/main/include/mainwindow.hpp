@@ -26,6 +26,7 @@
 #include <QProgressDialog>
 #include <QMessageBox>
 #include <QFont>
+#include <QLineEdit>
 
 
 namespace Ui {
@@ -58,7 +59,7 @@ class MainWindow : public QMainWindow
         void calculRequetesAMateriliser();
         void request();
         void onClickChampsComboBox(int);
-        void tailleMaxVector(int);
+        void tailleMaxVector(QString);
         void effacerListeChamps();
         void displayPopupEndCalculRequete(int value);
         void displayPopupEndChargementFichier(int value);
@@ -70,6 +71,12 @@ class MainWindow : public QMainWindow
         QLabel *titleTableGeneree;
         QLabel *chargement;
         QLabel* tempsReq;
+        QLabel* memoireReelle;
+        QLabel* reqMat;
+        QLabel* memoireReelleVal;
+        QLabel* reqMatVal;
+        QLabel* tailleTableFait;
+        QLabel* tailleResultatRequete;
         QProgressDialog* bar;
         QMessageBox *msgBox;
         QGridLayout* mainLayout;
@@ -88,7 +95,7 @@ class MainWindow : public QMainWindow
         QPushButton *validerRequete;
         QPushButton *effacerChamps;
         QLabel *nbRequetesAMaterialiserLabel;
-        QComboBox *nbRequetesAMaterialiserBox;
+        QLineEdit *nbRequetesAMaterialiserBox;
         QComboBox *champsRequetesComboBox;
         QComboBox *fonctionAggregationComboBox;
         QPushButton *nbRequetesAMaterialiserButton;
