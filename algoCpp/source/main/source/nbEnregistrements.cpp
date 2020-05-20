@@ -82,7 +82,10 @@ matrice conversion(vector<vector<string>> tableFaitString) {  // A partir de la 
     map<string,int> ma_map;
     int map_valeur=0;
 
- tableFaitEntiers.resize(tableFaitString.size()-1);  // On initialise la taille de tableFaitEntier 
+    tableFaitEntiers.resize(tableFaitString.size()-1);  // On initialise la taille de tableFaitEntier
+    if(tableFaitString.size() < 2) {
+        return tableFaitEntiers;
+    }
 
  for (int i = 0; i < tableFaitString[0].size()-1; i++) {  // On parcourt la tableFaitString sans prendre en compte la dernière colonne (#units) qui n'a pas besoin d'être convertie
         for (int j = 1; j < tableFaitString.size(); j++){

@@ -183,6 +183,12 @@ void MainWindow::handleButton()
 }
 
 void MainWindow::initTableFaitView(){
+    requetesMaterialise.clear();
+    map_Max.clear();
+    map_Sum.clear();
+    espaceMemoireReel = 0;
+    memoireReelleVal->setText("0");
+    reqMatVal->setText("0");
     if(this->tableFaitString.size() > 1000) {
         tableFaitWidget->setRowCount(1000);
     }
@@ -226,8 +232,8 @@ void MainWindow::initTableFaitView(){
 void MainWindow::initTableTailleRequetesWidget(){
     requetesMaterialise.resize(1);
     requetesMaterialise[0] = taillesRequetes.size()-1;
-    nbRequetesAMaterialiserBox->setText("");
-    nbRequetesAMaterialiserLabel->setText(nbRequetesAMaterialiserLabel->text() + "\n" "Max : " + QString::fromStdString(to_string(taillesRequetes.size()-1)));
+    nbRequetesAMaterialiserBox->setText("0");
+    nbRequetesAMaterialiserLabel->setText("Nb requêtes à matérialiser" "\n" "Max : " + QString::fromStdString(to_string(taillesRequetes.size()-1)));
     connect(nbRequetesAMaterialiserBox,SIGNAL (textChanged(QString)),this,SLOT(tailleMaxVector(QString)));
     nbRequetesAMaterialiserBox->setGeometry(QRect(QPoint(650, 100),
     QSize(100, 50)));
@@ -418,7 +424,7 @@ void MainWindow::nbMterialisationLayout() {
     nbRequetesAMaterialiserLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     nbRequetesAMaterialiserLabel->setFont(*baloo);// AJOUT CE
      nbRequetesAMaterialiserLabel->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px"); // AJOUT CE
-     nbRequetesAMaterialiserLabel->setText("Nb requêtes à matérialiser");// AJOUT CE
+     nbRequetesAMaterialiserLabel->setText("Nb requêtes à matérialiser" "\n" "Max : 0");// AJOUT CE
      nbRequetesAMaterialiserLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
 
      nbRequetesAMaterialiserLabel->setFrameShape(QFrame::HLine);
@@ -732,17 +738,35 @@ void MainWindow::displayPopupEndCalculRequete(int value){
 }
 
 void MainWindow::runChargementFichier() {
+    
     string filePath = dirPath.toUtf8().constData();
     tableFaitString = chargerFichiers(filePath);
+    if(tableFaitString.size() == 0) {
+        emit endChargementFichier(-1);
+        return;
+    }
     emit endChargementFichier(10);
     tableFait = conversion(tableFaitString);
+    if(tableFait.size() == 0) {
+        emit endChargementFichier(-1);
+        return;
+    }
     emit endChargementFichier(50);
     taillesRequetes = toutes_les_tailles(tableFait);
+    if(taillesRequetes.size() == 0) {
+        emit endChargementFichier(-1);
+        return;
+    }
     emit endChargementFichier(100);
 }
 
 void MainWindow::displayPopupEndChargementFichier(int value) {
-    bar->setValue(value);
+    if(value == -1) {
+        msgBox->setText(QString::fromStdString("Erreur lors du chargement vérifiez le format!"));
+        msgBox->show();
+        bar->setValue(100);
+        return;
+    }
     if(value == 100) {
         initTableFaitView();
         initTableTailleRequetesWidget();
@@ -750,6 +774,7 @@ void MainWindow::displayPopupEndChargementFichier(int value) {
         msgBox->setText(QString::fromStdString("Ouverture et chargement du fichier :  <br><br>") + dirPath.toUtf8().constData() + QString::fromStdString(" termninée !"));
         msgBox->show();
     }
+    bar->setValue(value);
 }
 
 void MainWindow::exporterButtonLaunch() {
