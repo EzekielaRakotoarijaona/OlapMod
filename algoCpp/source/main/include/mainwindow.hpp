@@ -46,7 +46,7 @@ class MainWindow : public QMainWindow
         void initExporterLayout();
         void nbMterialisationLayout();
         void initTableTailleRequetesWidget();
-        vector<string> split(const string &s, char delim);
+        vector<string> split(string &s, char delim);
         void runCaculRequete();
         void runChargementFichier();
         void exporter();
@@ -54,6 +54,7 @@ class MainWindow : public QMainWindow
         void endCalculRequete(int value);
         void endChargementFichier(int value);
         void endExportFichier(int value);
+        void endRequest(int value);
     private slots:
         void handleButton();
         void calculRequetesAMateriliser();
@@ -65,6 +66,8 @@ class MainWindow : public QMainWindow
         void displayPopupEndChargementFichier(int value);
         void exporterButtonLaunch();
         void displayPopupExporter(int value);
+        void doRequest();
+        void requestBarUpdate(int value);
     private:
         QLabel *title;
         QLabel *titleTableFait;

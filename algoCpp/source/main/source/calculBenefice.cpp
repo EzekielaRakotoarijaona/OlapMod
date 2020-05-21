@@ -351,10 +351,8 @@ vector<int> fromStringToBinary(vector<string> stringRequest, vector<vector<strin
 
 int espaceMemoireUtilise(vector<int> &taillesRequetes, vector<int>& requetesMaterialisees){
     int espaceMemoire = 0;
-    for(int i = 0; i<taillesRequetes.size()-1; i++) {
-        if(vectorContains(i,requetesMaterialisees)){
-            espaceMemoire += taillesRequetes[i];
-        }
+    for(int i = 1; i<requetesMaterialisees.size(); i++) {
+        espaceMemoire += taillesRequetes[requetesMaterialisees[i]];
     }
     return espaceMemoire;
 }
@@ -363,7 +361,7 @@ int espaceMemoirePrevu(vector<int> &taillesRequetes, int nbPrevu){
     int espaceMemoire = 0;
     vector<int> copieTailles = taillesRequetes;
     sort(copieTailles.begin(), copieTailles.end(), greater<int>());
-    for(int i = 0; i<nbPrevu; i++){
+    for(int i = 1; i<nbPrevu+1; i++){
         espaceMemoire += copieTailles[i];
     }
     return espaceMemoire;

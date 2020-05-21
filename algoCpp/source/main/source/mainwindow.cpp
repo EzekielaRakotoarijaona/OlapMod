@@ -24,6 +24,7 @@
 #include <QtConcurrent/QtConcurrent>
 #include <QFont>
 #include <QFontDatabase>
+#include <QTextCursor>
 
 
 
@@ -283,7 +284,7 @@ void MainWindow::initiChargerLayout() {
     
     m_button = new QPushButton("", this);
     m_button->setFont(*baloo);
-    m_button->setStyleSheet("background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white");
+    m_button->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white}");
     m_button->setText("Charger le fichier");
     m_button->setMaximumSize(150, 40);
     m_button->setMinimumSize(150, 40);
@@ -361,7 +362,7 @@ void MainWindow::initRequeteLayout() {
     
     validerRequete = new QPushButton("", this);
     validerRequete->setFont(*baloo);
-    validerRequete->setStyleSheet("background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white");
+    validerRequete->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white}");
     validerRequete->setText("OK");
     validerRequete->setMaximumSize(70, 30);
     validerRequete->setMinimumSize(70, 30);
@@ -369,7 +370,7 @@ void MainWindow::initRequeteLayout() {
     
     effacerChamps = new QPushButton("", this);
     effacerChamps->setFont(*baloo);
-    effacerChamps->setStyleSheet("background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white");
+    effacerChamps->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white}");
     effacerChamps->setText("Effacer");
     effacerChamps->setMaximumSize(70, 30);
     effacerChamps->setMinimumSize(70, 30);
@@ -425,49 +426,49 @@ void MainWindow::nbMterialisationLayout() {
      chiffre3->setFrameStyle(QFrame::NoFrame);
        
     nbRequetesAMaterialiserLabel = new QLabel(this);
-    nbRequetesAMaterialiserLabel->setGeometry(QRect(QPoint(50,0),
+    nbRequetesAMaterialiserLabel->setGeometry(QRect(QPoint(0,0),
      QSize(120, 50)));
     nbRequetesAMaterialiserLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     nbRequetesAMaterialiserLabel->setFont(*baloo);// AJOUT CE
-     nbRequetesAMaterialiserLabel->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px"); // AJOUT CE
+     nbRequetesAMaterialiserLabel->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 15px"); // AJOUT CE
      nbRequetesAMaterialiserLabel->setText("Nb requêtes à matérialiser" "\n" "Max : 0");// AJOUT CE
-     nbRequetesAMaterialiserLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+     nbRequetesAMaterialiserLabel->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
 
      nbRequetesAMaterialiserLabel->setFrameShape(QFrame::HLine);
      nbRequetesAMaterialiserLabel->setFrameStyle(QFrame::NoFrame);
     
     memoireReelle = new QLabel(this);
-    memoireReelle->setGeometry(QRect(QPoint(50,0),
-     QSize(120, 50)));
+    memoireReelle->setGeometry(QRect(QPoint(0,0),
+     QSize(200, 30)));
 
     memoireReelle->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     memoireReelle->setFont(*baloo);// AJOUT CE
-     memoireReelle->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px"); // AJOUT CE
+     memoireReelle->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 8px"); // AJOUT CE
     memoireReelle->setText("Unité de mémoire utilisée");// AJOUT CE
-     memoireReelle->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+     memoireReelle->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
 
 
      memoireReelle->setFrameShape(QFrame::HLine);
      memoireReelle->setFrameStyle(QFrame::NoFrame);
     
     reqMat = new QLabel(this);
-    reqMat->setGeometry(QRect(QPoint(50,0),
-     QSize(120, 50)));
+    reqMat->setGeometry(QRect(QPoint(0,0),
+     QSize(200, 50)));
     reqMat->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     reqMat->setFont(*baloo);// AJOUT CE
-     reqMat->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px"); // AJOUT CE
+     reqMat->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 0px"); // AJOUT CE
     reqMat->setText("Requêtes matérialisées");// AJOUT CE
-     reqMat->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+     reqMat->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
 
      reqMat->setFrameShape(QFrame::HLine);
      reqMat->setFrameStyle(QFrame::NoFrame);
     
     memoireReelleVal = new QLabel(this);
-    memoireReelleVal->setGeometry(QRect(QPoint(50,0),
-     QSize(120, 50)));
+    memoireReelleVal->setGeometry(QRect(QPoint(0,0),
+     QSize(120, 30)));
     memoireReelleVal->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     memoireReelleVal->setFont(*baloo);// AJOUT CE
-     memoireReelleVal->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px"); // AJOUT CE
+     memoireReelleVal->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 0px"); // AJOUT CE
     memoireReelleVal->setText(QString::fromStdString(to_string(espaceMemoireReel)));// AJOUT CE
      memoireReelleVal->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
 
@@ -475,11 +476,11 @@ void MainWindow::nbMterialisationLayout() {
      memoireReelleVal->setFrameStyle(QFrame::NoFrame);
     
     reqMatVal = new QLabel(this);
-    reqMatVal->setGeometry(QRect(QPoint(50,0),
-     QSize(120, 50)));
+    reqMatVal->setGeometry(QRect(QPoint(0,0),
+     QSize(120, 30)));
     reqMatVal->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     reqMatVal->setFont(*baloo);// AJOUT CE
-     reqMatVal->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px"); // AJOUT CE
+     reqMatVal->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 0px"); // AJOUT CE
     reqMatVal->setText(QString::fromStdString(to_string(0)));// AJOUT CE
      reqMatVal->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
 
@@ -489,22 +490,22 @@ void MainWindow::nbMterialisationLayout() {
     
     QLabel* uniteMemoire = new QLabel(this);
     uniteMemoire->setGeometry(QRect(QPoint(0,0),
-     QSize(100, 50)));
+     QSize(200, 50)));
     uniteMemoire->setFrameStyle(QFrame::Panel | QFrame::Sunken);
      uniteMemoire->setFont(*baloo);// AJOUT CE
-     uniteMemoire->setStyleSheet("font-weight:medium; font-size:13pt"); // AJOUT CE
+     uniteMemoire->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 4px"); // AJOUT CE
      uniteMemoire->setText("Unité de mémoire prévue");// AJOUT CE
 
-     uniteMemoire->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+     uniteMemoire->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
      uniteMemoire->setFrameShape(QFrame::HLine);
      uniteMemoire->setFrameStyle(QFrame::NoFrame);
     
     textMemoire = new QLabel(this);
-    textMemoire->setGeometry(QRect(QPoint(50,0),
+    textMemoire->setGeometry(QRect(QPoint(0,0),
      QSize(120, 50)));
     textMemoire->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     textMemoire->setFont(*baloo);// AJOUT CE
-     textMemoire->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px"); // AJOUT CE
+     textMemoire->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 0px"); // AJOUT CE
     textMemoire->setText(QString::fromStdString(to_string(0)));// AJOUT CE
      textMemoire->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
 
@@ -512,39 +513,40 @@ void MainWindow::nbMterialisationLayout() {
      textMemoire->setFrameStyle(QFrame::NoFrame);
     
      nbRequetesAMaterialiserBox =  new QLineEdit(this);
-    nbRequetesAMaterialiserBox->setGeometry(QRect(QPoint(50,0),
+    nbRequetesAMaterialiserBox->setGeometry(QRect(QPoint(0,0),
      QSize(120, 50)));
     nbRequetesAMaterialiserBox->setFont(*baloo);// AJOUT CE
      nbRequetesAMaterialiserBox->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px"); // AJOUT CE
     nbRequetesAMaterialiserBox->setText(QString::fromStdString(to_string(0)));// AJOUT CE
      nbRequetesAMaterialiserBox->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
     
-    nbRequetesAMaterialiserBox->setMinimumHeight(20);
-    nbRequetesAMaterialiserBox->setMaximumHeight(20);
-    nbRequetesAMaterialiserBox->setMinimumWidth(90);
-    nbRequetesAMaterialiserBox->setMaximumWidth(90);
+    nbRequetesAMaterialiserBox->setMinimumHeight(15);
+    nbRequetesAMaterialiserBox->setMaximumHeight(15);
+    nbRequetesAMaterialiserBox->setMinimumWidth(80);
+    nbRequetesAMaterialiserBox->setMaximumWidth(80);
     
     nbRequetesAMaterialiserButton = new QPushButton(this);
     nbRequetesAMaterialiserButton->setFont(*baloo);
-    nbRequetesAMaterialiserButton->setStyleSheet("background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white");
+    nbRequetesAMaterialiserButton->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white}");
     nbRequetesAMaterialiserButton->setText("OK");
-    nbRequetesAMaterialiserButton->setMaximumSize(70, 30); 
-    nbRequetesAMaterialiserButton->setMinimumSize(70, 30); 
+    nbRequetesAMaterialiserButton->setMaximumSize(70, 20);
+    nbRequetesAMaterialiserButton->setMinimumSize(70, 20);
     connect(nbRequetesAMaterialiserButton, SIGNAL (released()), this, SLOT (calculRequetesAMateriliser()));
     
     nbMaterialiserLayout = new QGridLayout();
     nbMaterialiserLayout->setAlignment(Qt::AlignTop| Qt::AlignCenter);
     nbMaterialiserLayout->setVerticalSpacing(0);
-    nbMaterialiserLayout->addWidget(chiffre3,0,0,2,0, Qt::AlignTop| Qt::AlignCenter);
+    nbMaterialiserLayout->setRowMinimumHeight(0,45);
+    nbMaterialiserLayout->addWidget(chiffre3,0,0,1,0, Qt::AlignTop| Qt::AlignCenter);
     nbMaterialiserLayout->addWidget(nbRequetesAMaterialiserLabel,1,0, Qt::AlignCenter| Qt::AlignCenter);
     nbMaterialiserLayout->addWidget(nbRequetesAMaterialiserBox,1,1, Qt::AlignCenter| Qt::AlignCenter);
-    nbMaterialiserLayout->addWidget(uniteMemoire,2,0, Qt::AlignCenter| Qt::AlignCenter);
-    nbMaterialiserLayout->addWidget(textMemoire,2,1, Qt::AlignCenter| Qt::AlignCenter);
-    nbMaterialiserLayout->addWidget(nbRequetesAMaterialiserButton,5,1, Qt::AlignTop| Qt::AlignCenter);
     nbMaterialiserLayout->addWidget(memoireReelleVal, 4, 1);
     nbMaterialiserLayout->addWidget(memoireReelle, 4, 0);
     nbMaterialiserLayout->addWidget(reqMat, 3, 0);
     nbMaterialiserLayout->addWidget(reqMatVal, 3, 1);
+    nbMaterialiserLayout->addWidget(uniteMemoire,2,0, Qt::AlignCenter| Qt::AlignCenter);
+    nbMaterialiserLayout->addWidget(textMemoire,2,1, Qt::AlignCenter| Qt::AlignCenter);
+    nbMaterialiserLayout->addWidget(nbRequetesAMaterialiserButton,5,1, Qt::AlignCenter| Qt::AlignCenter);
 }
 
 
@@ -585,7 +587,7 @@ void MainWindow::initExporterLayout() {
     
     exporterButton = new QPushButton(this);
     exporterButton->setFont(*baloo);
-    exporterButton->setStyleSheet("background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white");
+    exporterButton->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white}");
     exporterButton->setText("Exporter");
     exporterButton->setMaximumSize(100, 40);
     exporterButton->setMinimumSize(100, 40);
@@ -606,63 +608,19 @@ void MainWindow::request() {
         return;
         
     }
-    
-    tempsRequete = 0.0;
-    clock_t begin = clock();
-    
-    string request = listeChampsRetenu->toPlainText().toUtf8().constData();
-    listeChampsRetenu->setText(listeChampsRetenu->toPlainText().toUtf8().constData());
-    requeteLayout->addWidget(listeChampsRetenu,3,0,2,1,Qt::AlignCenter| Qt::AlignRight);
-    vector<string> requete = split(request,';');
-    int operation = 0;
-    string fonctionAggregation = fonctionAggregationComboBox->itemText(fonctionAggregationComboBox->currentIndex()).toUtf8().constData();
-    if( fonctionAggregation == "Max")
-        operation = 1;
-    materialiserRequete(requete,taillesRequetes, requetesMaterialise, tableFaitString, map_Sum, map_Max, operation, tableFaitRequete);
-    tableFaitRequeteWidget = new QTableWidget();
-    tailleResultatRequete->setText(QString::fromStdString(to_string(tableFaitRequete.size())) + " lignes");
-    mainLayout->addWidget(tailleResultatRequete, 5, 2);
-    if(this->tableFaitRequete.size() > 1000) {
-        tableFaitRequeteWidget->setRowCount(1000);
-    }
-    else tableFaitRequeteWidget->setRowCount(this->tableFaitRequete.size()-1);
-    tableFaitRequeteWidget->setColumnCount(this->tableFaitRequete[0].size());
-    for(int i = 0; i<tableFaitRequete[0].size(); i++) {
-       tableFaitRequeteWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::fromStdString(tableFaitRequete[0][i])));
-    }
-    for(int i = 1; i<tableFaitRequete.size(); i++) {
-        for(int j = 0; j<tableFaitRequete[0].size(); j++){
-            QTableWidgetItem *item = tableFaitRequeteWidget->item(-1, j);
-            if(!item) {
-                item = new QTableWidgetItem();
-                tableFaitRequeteWidget->setItem(i-1, j, item);
-            }
-            item->setText(QString::fromStdString(tableFaitRequete[i][j]));
-        }
-    }
-    tableFaitRequeteWidget->setGeometry(QRect(QPoint(40, 200),
-    QSize(1500, 300)));
-    tableFaitRequeteWidget->setMaximumWidth(630);
-    tableFaitRequeteWidget->setMinimumWidth(630);
-    tableFaitRequeteWidget->setMaximumHeight(410);
-    tableFaitRequeteWidget->setMinimumHeight(410);
-    tableFaitRequeteWidget->resizeColumnsToContents();
-    tableFaitRequeteWidget->resizeRowsToContents();
-    
-    mainLayout->addWidget(tableFaitRequeteWidget, 4,2,1,2, Qt::AlignTop| Qt::AlignLeft);
-    
-    clock_t end = clock();
-    tempsRequete += (double)(end - begin)/CLOCKS_PER_SEC;
-    string optimisation = "Requete optimisée : ";
-    if (requetesMaterialise.size() <= 1) {
-        optimisation = "Requete non optimisée : ";
-    }
-    tempsReq->setText(QString::fromStdString(optimisation) + QString::fromStdString(to_string(tempsRequete)) + "s");
-    mainLayout->addWidget(tempsReq, 2, 3);
+    bar = new QProgressDialog();
+    bar->setRange(0,100);
+    bar->setAutoClose(true);
+    bar->setCancelButtonText(QString());
+    bar->show();
+    mainLayout->addWidget(bar,0,3, Qt::AlignTop | Qt::AlignRight);
+    connect(this, SIGNAL(endRequest(int)), this, SLOT(requestBarUpdate(int)), Qt::BlockingQueuedConnection);
+    QFuture<void> future = QtConcurrent::run(this, &MainWindow::doRequest );
 }
 
 
-vector<string> MainWindow::split(const string &s, char delim) {
+vector<string> MainWindow::split(string &s, char delim) {
+  s.erase(std::remove(s.begin(), s.end(), '\n'),s.end());
   stringstream ss(s);
   string item;
   vector<string> elems;
@@ -675,7 +633,10 @@ vector<string> MainWindow::split(const string &s, char delim) {
 void MainWindow::onClickChampsComboBox(int) {
     string selected = champsRequetesComboBox->itemText(champsRequetesComboBox->currentIndex()).toUtf8().constData();
     if(!selected.empty()) {
-        listeChampsRetenu->setText(listeChampsRetenu->toPlainText().toUtf8().constData() + QString::fromStdString(selected + ";"));
+        listeChampsRetenu->setText(listeChampsRetenu->toPlainText().toUtf8().constData() + QString::fromStdString(selected + ";") + "\n");
+        QTextCursor cursor = listeChampsRetenu->textCursor();
+        cursor.setPosition(listeChampsRetenu->toPlainText().size());
+        listeChampsRetenu->setTextCursor(cursor);
         requeteLayout->addWidget(listeChampsRetenu,3,0,2,1,Qt::AlignCenter| Qt::AlignRight);
     }
 }
@@ -824,6 +785,71 @@ void MainWindow::displayPopupExporter(int value) {
     if(value == 100) {
         msgBox->setText(QString::fromStdString("Fichier enregistré!"));
         msgBox->show();
+    }
+}
+
+void MainWindow::doRequest() {
+    tempsRequete = 0.0;
+    clock_t begin = clock();
+    
+    string request = listeChampsRetenu->toPlainText().toUtf8().constData();
+    vector<string> requete = split(request,';');
+    int operation = 0;
+    string fonctionAggregation = fonctionAggregationComboBox->itemText(fonctionAggregationComboBox->currentIndex()).toUtf8().constData();
+    emit endRequest(20);
+    if( fonctionAggregation == "Max")
+        operation = 1;
+    emit endRequest(25);
+    materialiserRequete(requete,taillesRequetes, requetesMaterialise, tableFaitString, map_Sum, map_Max, operation, tableFaitRequete);
+    clock_t end = clock();
+    tempsRequete += (double)(end - begin)/CLOCKS_PER_SEC;
+    emit endRequest(100);
+}
+
+
+void MainWindow::requestBarUpdate(int value) {
+    bar->setValue(value);
+    if(value == 100) {
+        listeChampsRetenu->setText(listeChampsRetenu->toPlainText().toUtf8().constData());
+        requeteLayout->addWidget(listeChampsRetenu,3,0,2,1,Qt::AlignCenter| Qt::AlignRight);
+        tableFaitRequeteWidget = new QTableWidget();
+        tailleResultatRequete->setText(QString::fromStdString(to_string(tableFaitRequete.size()-1)) + " lignes");
+        mainLayout->addWidget(tailleResultatRequete, 5, 2);
+        if(this->tableFaitRequete.size() > 1000) {
+            tableFaitRequeteWidget->setRowCount(1000);
+        }
+        else tableFaitRequeteWidget->setRowCount(this->tableFaitRequete.size()-1);
+        tableFaitRequeteWidget->setColumnCount(this->tableFaitRequete[0].size());
+        for(int i = 0; i<tableFaitRequete[0].size(); i++) {
+           tableFaitRequeteWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::fromStdString(tableFaitRequete[0][i])));
+        }
+        for(int i = 1; i<tableFaitRequete.size(); i++) {
+            for(int j = 0; j<tableFaitRequete[0].size(); j++){
+                QTableWidgetItem *item = tableFaitRequeteWidget->item(-1, j);
+                if(!item) {
+                    item = new QTableWidgetItem();
+                    tableFaitRequeteWidget->setItem(i-1, j, item);
+                }
+                item->setText(QString::fromStdString(tableFaitRequete[i][j]));
+            }
+        }
+        tableFaitRequeteWidget->setGeometry(QRect(QPoint(40, 200),
+        QSize(1500, 300)));
+        tableFaitRequeteWidget->setMaximumWidth(630);
+        tableFaitRequeteWidget->setMinimumWidth(630);
+        tableFaitRequeteWidget->setMaximumHeight(410);
+        tableFaitRequeteWidget->setMinimumHeight(410);
+        tableFaitRequeteWidget->resizeColumnsToContents();
+        tableFaitRequeteWidget->resizeRowsToContents();
+        
+        mainLayout->addWidget(tableFaitRequeteWidget, 4,2,1,2, Qt::AlignTop| Qt::AlignLeft);
+        
+        string optimisation = "Requete optimisée : ";
+        if (requetesMaterialise.size() <= 1) {
+            optimisation = "Requete non optimisée : ";
+        }
+        tempsReq->setText(QString::fromStdString(optimisation) + QString::fromStdString(to_string(tempsRequete)) + "s");
+        mainLayout->addWidget(tempsReq, 2, 3);
     }
 }
 
