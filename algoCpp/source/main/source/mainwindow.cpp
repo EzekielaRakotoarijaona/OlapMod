@@ -147,6 +147,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     setCentralWidget(mainScrollArea);
     msgBox = new QMessageBox();
+    msgBox->setWindowTitle("QueryOPtimizer");
     tableFaitWidget = new QTableWidget();
     tableFaitWidget->setMaximumWidth(630);
     tableFaitWidget->setMinimumWidth(630);
