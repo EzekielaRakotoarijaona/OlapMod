@@ -264,9 +264,9 @@ void MainWindow::initiChargerLayout() {
     
     QLabel* chiffre1 = new QLabel(this);
     chiffre1->setGeometry(QRect(QPoint(0,0),
-     QSize(50, 50)));
+     QSize(150, 50)));
     chiffre1->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-    QPixmap pixmapChiffre1("../ui_resources/chiffre_1.png");
+    QPixmap pixmapChiffre1("../ui_resources/import_fichier.png");
     chiffre1->setPixmap(pixmapChiffre1.scaled(chiffre1->width(),chiffre1->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
     chiffre1->setAlignment(Qt::AlignTop | Qt::AlignCenter);
     chiffre1->setFrameShape(QFrame::HLine);
@@ -285,7 +285,7 @@ void MainWindow::initiChargerLayout() {
     
     m_button = new QPushButton("", this);
     m_button->setFont(*baloo);
-    m_button->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white}");
+    m_button->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}");
     m_button->setText("Charger le fichier");
     m_button->setMaximumSize(150, 40);
     m_button->setMinimumSize(150, 40);
@@ -295,7 +295,7 @@ void MainWindow::initiChargerLayout() {
     chargerLayout->setAlignment(Qt::AlignTop| Qt::AlignCenter);
     chargerLayout->addWidget(chiffre1,0,0, Qt::AlignTop| Qt::AlignCenter);
     chargerLayout->addWidget(selectionFichier,1,0,Qt::AlignCenter| Qt::AlignCenter);
-    chargerLayout->addWidget(m_button,2,0,Qt::AlignTop| Qt::AlignCenter);
+    chargerLayout->addWidget(m_button,2,0,Qt::AlignCenter| Qt::AlignCenter);
     
     chargerBack = new QLabel(this);
     chargerBack->setGeometry(QRect(QPoint(100, 30),
@@ -315,9 +315,9 @@ void MainWindow::initRequeteLayout() {
      
      QLabel* chiffre2 = new QLabel(this);
      chiffre2->setGeometry(QRect(QPoint(0,0),
-      QSize(50, 50)));
+      QSize(150, 50)));
      chiffre2->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-      QPixmap pixmapChiffre2("../ui_resources/chiffre_2.png");
+      QPixmap pixmapChiffre2("../ui_resources/requetage.png");
       chiffre2->setPixmap(pixmapChiffre2.scaled(chiffre2->width(),chiffre2->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
       chiffre2->setAlignment(Qt::AlignTop | Qt::AlignCenter);
       chiffre2->setFrameShape(QFrame::HLine);
@@ -363,7 +363,7 @@ void MainWindow::initRequeteLayout() {
     
     validerRequete = new QPushButton("", this);
     validerRequete->setFont(*baloo);
-    validerRequete->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white}");
+    validerRequete->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}");
     validerRequete->setText("OK");
     validerRequete->setMaximumSize(70, 30);
     validerRequete->setMinimumSize(70, 30);
@@ -371,7 +371,7 @@ void MainWindow::initRequeteLayout() {
     
     effacerChamps = new QPushButton("", this);
     effacerChamps->setFont(*baloo);
-    effacerChamps->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white}");
+    effacerChamps->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}");
     effacerChamps->setText("Effacer");
     effacerChamps->setMaximumSize(70, 30);
     effacerChamps->setMinimumSize(70, 30);
@@ -387,8 +387,8 @@ void MainWindow::initRequeteLayout() {
     requeteLayout->addWidget(fonctionAggregation,2,0, Qt::AlignCenter| Qt::AlignCenter);
     requeteLayout->addWidget(fonctionAggregationComboBox,2,1, Qt::AlignCenter| Qt::AlignCenter);
     requeteLayout->addWidget(listeChampsRetenu,3,0,2,1,Qt::AlignCenter| Qt::AlignRight);
-    requeteLayout->addWidget(validerRequete,3,1, Qt::AlignTop| Qt::AlignCenter);
-    requeteLayout->addWidget(effacerChamps,4,1, Qt::AlignTop| Qt::AlignCenter);
+    requeteLayout->addWidget(validerRequete,4,1, Qt::AlignCenter| Qt::AlignCenter);
+    requeteLayout->addWidget(effacerChamps,3,1, Qt::AlignCenter| Qt::AlignCenter);
     
     
     requeteBack = new QLabel(this);
@@ -418,9 +418,9 @@ void MainWindow::nbMterialisationLayout() {
     
     QLabel* chiffre3 = new QLabel(this);
     chiffre3->setGeometry(QRect(QPoint(0,0),
-     QSize(50, 50)));
+     QSize(150, 50)));
     chiffre3->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-     QPixmap pixmapChiffre2("../ui_resources/chiffre_3.png");
+     QPixmap pixmapChiffre2("../ui_resources/optimisation.png");
      chiffre3->setPixmap(pixmapChiffre2.scaled(chiffre3->width(),chiffre3->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
      chiffre3->setAlignment(Qt::AlignTop | Qt::AlignCenter);
      chiffre3->setFrameShape(QFrame::HLine);
@@ -528,10 +528,10 @@ void MainWindow::nbMterialisationLayout() {
     
     nbRequetesAMaterialiserButton = new QPushButton(this);
     nbRequetesAMaterialiserButton->setFont(*baloo);
-    nbRequetesAMaterialiserButton->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white}");
+    nbRequetesAMaterialiserButton->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}");
     nbRequetesAMaterialiserButton->setText("OK");
-    nbRequetesAMaterialiserButton->setMaximumSize(70, 20);
-    nbRequetesAMaterialiserButton->setMinimumSize(70, 20);
+    nbRequetesAMaterialiserButton->setMaximumSize(70, 30);
+    nbRequetesAMaterialiserButton->setMinimumSize(70, 30);
     connect(nbRequetesAMaterialiserButton, SIGNAL (released()), this, SLOT (calculRequetesAMateriliser()));
     
     nbMaterialiserLayout = new QGridLayout();
@@ -567,9 +567,9 @@ void MainWindow::initExporterLayout() {
 
     QLabel* chiffre3 = new QLabel(this);
     chiffre3->setGeometry(QRect(QPoint(0,0),
-     QSize(50, 50)));
+     QSize(150, 50)));
     chiffre3->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-     QPixmap pixmapChiffre2("../ui_resources/chiffre_4.png");
+     QPixmap pixmapChiffre2("../ui_resources/exportcsv.png");
      chiffre3->setPixmap(pixmapChiffre2.scaled(chiffre3->width(),chiffre3->height(),Qt::KeepAspectRatio, Qt::SmoothTransformation));
      chiffre3->setAlignment(Qt::AlignTop | Qt::AlignCenter);
      chiffre3->setFrameShape(QFrame::HLine);
@@ -588,10 +588,10 @@ void MainWindow::initExporterLayout() {
     
     exporterButton = new QPushButton(this);
     exporterButton->setFont(*baloo);
-    exporterButton->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white}");
+    exporterButton->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}");
     exporterButton->setText("Exporter");
-    exporterButton->setMaximumSize(100, 40);
-    exporterButton->setMinimumSize(100, 40);
+    exporterButton->setMaximumSize(150, 40);
+    exporterButton->setMinimumSize(150, 40);
     connect(exporterButton, SIGNAL (released()), this, SLOT (exporterButtonLaunch()));
     
     exporterLayout = new QGridLayout();
