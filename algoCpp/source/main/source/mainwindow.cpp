@@ -25,6 +25,12 @@
 #include <QFont>
 #include <QFontDatabase>
 #include <QTextCursor>
+#include <QMenu>
+#include <QToolBar>
+#include <QIcon>
+#include <QToolButton>
+#include <QStatusBar>
+
 
 
 
@@ -33,6 +39,7 @@ using namespace std;
 MainWindow::MainWindow(QWidget *parent)
    : QMainWindow(parent)
 {
+    setUnifiedTitleAndToolBarOnMac(true);
     
     int id = QFontDatabase::addApplicationFont("../ui_resources/Baloo-Regular-webfont.ttf");
     if(id!=-1) {
@@ -40,6 +47,54 @@ MainWindow::MainWindow(QWidget *parent)
         baloo = new QFont(family);
     }
     else baloo = new QFont(QString::fromStdString("Baloo"));
+    
+    QToolBar* toolbar = new QToolBar;
+    toolbar->setStyleSheet("border: none; background-color: transparent;");
+    toolbar->setGeometry(QRect(QPoint(100, 30),
+    QSize(30, 20)));
+    QToolButton* helpButton = new QToolButton();
+    helpButton->setStyleSheet("QToolButton{border-image:url(../ui_resources/help.png); max-height: 25px; max-width: 25px;} QToolButton:hover{border-image:url(../ui_resources/help_hover.png); max-height: 25px; max-width: 25px;} QToolButton:pressed{border-image:url(../ui_resources/help_hover.png);max-height: 15px; max-width: 15px;}");
+    QToolButton* infoButton = new QToolButton();
+    infoButton->setStyleSheet("QToolButton{border-image:url(../ui_resources/info.png); max-height: 25px; max-width: 25px;} QToolButton:hover{border-image:url(../ui_resources/info_hover.png);max-height: 25px; max-width: 25px;} QToolButton:pressed{border-image:url(../ui_resources/info_hover.png);max-height: 15px; max-width: 15px;} ");
+    
+    toolbar->addWidget(helpButton);
+    toolbar->addWidget(infoButton);
+    connect(helpButton, SIGNAL(clicked()), this, SLOT(help()));
+    connect(infoButton, SIGNAL(clicked()), this, SLOT(info()));
+    
+    QStatusBar* statusBar = new QStatusBar();
+    statusBar->addPermanentWidget(toolbar);
+    
+                       
+    
+    
+    bar = new QProgressDialog();
+    barRequest = new QProgressDialog();
+    barRequest->setVisible(false);
+    barExport = new QProgressDialog();
+    barExport->setVisible(false);
+    barMat = new QProgressDialog();
+    barMat->setVisible(false);
+    
+    barMat->setAutoClose(true);
+    barMat->setCancelButtonText(QString());
+    barMat->setRange(0,100);
+    barMat->setValue(100);
+    
+    bar->setAutoClose(true);
+    bar->setCancelButtonText(QString());
+    bar->setRange(0,100);
+    bar->setValue(100);
+    
+    barExport->setAutoClose(true);
+    barExport->setCancelButtonText(QString());
+    barExport->setRange(0,100);
+    barExport->setValue(100);
+    
+    barRequest->setAutoClose(true);
+    barRequest->setCancelButtonText(QString());
+    barRequest->setRange(0,100);
+    barRequest->setValue(100);
     
     requetesMaterialise.resize(0);
     
@@ -119,10 +174,10 @@ MainWindow::MainWindow(QWidget *parent)
     
     mainLayout = new QGridLayout();
     mainLayout->setSizeConstraint(QLayout::SetNoConstraint);
-    mainLayout->setRowMinimumHeight(4, 410);
-    mainLayout->setRowMinimumHeight(0, 50);
+    mainLayout->setRowMinimumHeight(4, 380);
+    mainLayout->setRowMinimumHeight(0, 40);
     mainLayout->setVerticalSpacing(20);
-    mainLayout->setHorizontalSpacing(30);
+    mainLayout->setHorizontalSpacing(60);
     mainLayout->addWidget(title,0,0,Qt::AlignCenter| Qt::AlignLeft );
     mainLayout->addWidget(chargerBack,1,0);
     mainLayout->addLayout(chargerLayout, 1,0);
@@ -147,21 +202,27 @@ MainWindow::MainWindow(QWidget *parent)
 
     setCentralWidget(mainScrollArea);
     msgBox = new QMessageBox();
-    msgBox->setWindowTitle("QueryOPtimizer");
+    msgBox->setWindowTitle("QueryOptimizer");
     tableFaitWidget = new QTableWidget();
-    tableFaitWidget->setMaximumWidth(630);
-    tableFaitWidget->setMinimumWidth(630);
-    tableFaitWidget->setMaximumHeight(410);
-    tableFaitWidget->setMinimumHeight(410);
+    tableFaitWidget->setMaximumWidth(650);
+    tableFaitWidget->setMinimumWidth(650);
+    tableFaitWidget->setMaximumHeight(370);
+    tableFaitWidget->setMinimumHeight(370);
     mainLayout->addWidget(tableFaitWidget, 4,0,1,2, Qt::AlignTop| Qt::AlignLeft);
     
     
     tableFaitRequeteWidget = new QTableWidget();
-    tableFaitRequeteWidget->setMaximumWidth(630);
-    tableFaitRequeteWidget->setMinimumWidth(630);
-    tableFaitRequeteWidget->setMaximumHeight(410);
-    tableFaitRequeteWidget->setMinimumHeight(410);
+    tableFaitRequeteWidget->setMaximumWidth(650);
+    tableFaitRequeteWidget->setMinimumWidth(650);
+    tableFaitRequeteWidget->setMaximumHeight(370);
+    tableFaitRequeteWidget->setMinimumHeight(370);
     mainLayout->addWidget(tableFaitRequeteWidget, 4,2,1,2, Qt::AlignTop| Qt::AlignLeft);
+    
+    mainLayout->addWidget(barMat,0,3, Qt::AlignCenter| Qt::AlignCenter);
+    mainLayout->addWidget(bar,0,3, Qt::AlignCenter| Qt::AlignCenter);
+    mainLayout->addWidget(barRequest,0,3, Qt::AlignCenter| Qt::AlignCenter);
+    mainLayout->addWidget(barExport,0,3, Qt::AlignCenter| Qt::AlignCenter);
+    this->setStatusBar(statusBar);
 }
 
 void MainWindow::handleButton()
@@ -170,12 +231,8 @@ void MainWindow::handleButton()
     if(file.isEmpty()) {
         return;
     }
-    bar = new QProgressDialog();
-    bar->setRange(0,100);
-    bar->setAutoClose(true);
-    bar->setCancelButtonText(QString());
+    bar->setValue(0);
     bar->show();
-    mainLayout->addWidget(bar,0,3, Qt::AlignTop | Qt::AlignRight);
     QFileInfo fileInfo(file);
     dirPath = fileInfo.filePath(); // Path vers le fichier
     fileName = fileInfo.fileName();
@@ -209,12 +266,6 @@ void MainWindow::initTableFaitView(){
             item->setText(QString::fromStdString(tableFaitString[i][j]));
         }
     }
-    tableFaitWidget->setGeometry(QRect(QPoint(40, 200),
-    QSize(1500, 300)));
-    tableFaitWidget->setMaximumWidth(630);
-    tableFaitWidget->setMinimumWidth(630);
-    tableFaitWidget->setMaximumHeight(410);
-    tableFaitWidget->setMinimumHeight(410);
     tableFaitWidget->resizeColumnsToContents();
     tableFaitWidget->resizeRowsToContents();
     
@@ -249,12 +300,8 @@ void MainWindow::calculRequetesAMateriliser() {
         msgBox->show();
         return;
     }
-    bar = new QProgressDialog();
-    bar->setAutoClose(true);
-    bar->setCancelButtonText(QString());
-    bar->setRange(0,100);
-    bar->setValue(0);
-    mainLayout->addWidget(bar,0,3, Qt::AlignTop| Qt::AlignRight);
+    barMat->setValue(0);
+    barMat->show();
     connect(this, SIGNAL(endCalculRequete(int)), this, SLOT(displayPopupEndCalculRequete(int)), Qt::BlockingQueuedConnection);
     QFuture<void> future = QtConcurrent::run(this, &MainWindow::runCaculRequete );
 }
@@ -445,7 +492,7 @@ void MainWindow::nbMterialisationLayout() {
     memoireReelle->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     memoireReelle->setFont(*baloo);// AJOUT CE
      memoireReelle->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 8px"); // AJOUT CE
-    memoireReelle->setText("Unité de mémoire utilisée");// AJOUT CE
+    memoireReelle->setText("Unités de mémoire utilisées");// AJOUT CE
      memoireReelle->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
 
 
@@ -495,7 +542,7 @@ void MainWindow::nbMterialisationLayout() {
     uniteMemoire->setFrameStyle(QFrame::Panel | QFrame::Sunken);
      uniteMemoire->setFont(*baloo);// AJOUT CE
      uniteMemoire->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 4px"); // AJOUT CE
-     uniteMemoire->setText("Unité de mémoire prévue");// AJOUT CE
+     uniteMemoire->setText("Unités de mémoire prévues");// AJOUT CE
 
      uniteMemoire->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
      uniteMemoire->setFrameShape(QFrame::HLine);
@@ -604,17 +651,14 @@ void MainWindow::initExporterLayout() {
 
 void MainWindow::request() {
     if(tableFaitString.size() == 0) {
-        msgBox->setText("Commencez par importer une table avant de requeter");
+        msgBox->setText("Commencez par importer une table avant de requêter");
         msgBox->show();
         return;
         
     }
-    bar = new QProgressDialog();
-    bar->setRange(0,100);
-    bar->setAutoClose(true);
-    bar->setCancelButtonText(QString());
-    bar->show();
-    mainLayout->addWidget(bar,0,3, Qt::AlignTop | Qt::AlignRight);
+    barRequest->setValue(0);
+    barRequest->show();
+    mainLayout->addWidget(barRequest,0,3, Qt::AlignTop | Qt::AlignRight);
     connect(this, SIGNAL(endRequest(int)), this, SLOT(requestBarUpdate(int)), Qt::BlockingQueuedConnection);
     QFuture<void> future = QtConcurrent::run(this, &MainWindow::doRequest );
 }
@@ -633,6 +677,7 @@ vector<string> MainWindow::split(string &s, char delim) {
 
 void MainWindow::onClickChampsComboBox(int) {
     string selected = champsRequetesComboBox->itemText(champsRequetesComboBox->currentIndex()).toUtf8().constData();
+    champsRequetesComboBox->setCurrentIndex(0);
     if(!selected.empty()) {
         listeChampsRetenu->setText(listeChampsRetenu->toPlainText().toUtf8().constData() + QString::fromStdString(selected + ";") + "\n");
         QTextCursor cursor = listeChampsRetenu->textCursor();
@@ -649,7 +694,16 @@ void MainWindow::effacerListeChamps() {
 
 void MainWindow::tailleMaxVector(QString) {
     try {
-        int selected = stoi(nbRequetesAMaterialiserBox->text().toUtf8().constData());
+        string value = nbRequetesAMaterialiserBox->text().toUtf8().constData();
+        if(value.find(',') != std::string::npos) {
+            textMemoire->setText(QString::fromStdString(to_string(0)));
+            return;
+        }
+        if(value.find('.') != std::string::npos) {
+            textMemoire->setText(QString::fromStdString(to_string(0)));
+            return;
+        }
+        int selected = stoi(value);
         if (selected > taillesRequetes.size()) {
             selected = taillesRequetes.size() - 1;
         }
@@ -657,17 +711,24 @@ void MainWindow::tailleMaxVector(QString) {
         textMemoire->setGeometry(QRect(QPoint(0,0),
          QSize(100, 50)));
         textMemoire->setText(QString::fromStdString(to_string(espaceMemoire)));
-        nbMaterialiserLayout->addWidget(textMemoire,2,1, Qt::AlignCenter| Qt::AlignCenter);
     } catch (exception& e) {
         textMemoire->setText(QString::fromStdString(to_string(0)));
-        nbMaterialiserLayout->addWidget(textMemoire,2,1, Qt::AlignCenter| Qt::AlignCenter);
         return;
     }
 }
 
 void MainWindow::runCaculRequete() {
     try {
-        nbAMateriliser = stoi(nbRequetesAMaterialiserBox->text().toUtf8().constData());
+        string value = nbRequetesAMaterialiserBox->text().toUtf8().constData();
+        if(value.find(',') != std::string::npos) {
+             emit endCalculRequete(-1);
+            return;
+        }
+        if(value.find('.') != std::string::npos) {
+             emit endCalculRequete(-1);
+            return;
+        }
+        nbAMateriliser = stoi(value);
     } catch (exception& e) {
         emit endCalculRequete(-1);
         return;
@@ -688,31 +749,32 @@ void MainWindow::runCaculRequete() {
 
 void MainWindow::displayPopupEndCalculRequete(int value){
     if (value == -1) {
-        string message = "Entrer un nombre entre 0 - " + to_string(taillesRequetes.size()-1) + " !";
+        string message = "Entrer un entier entre 0 - " + to_string(taillesRequetes.size()-1) + " !";
         msgBox->setText(QString::fromStdString(message));
         msgBox->show();
-        bar->setValue(100);
+        barMat->setValue(100);
     }
     else if(value == 100) {
-        string message = "Les requetes sont préchargées ! <br><br>";
+        string message = "Les requêtes sont préchargées ! <br><br>";
         if(nbAMateriliser > requetesMaterialise.size()){
-            message +=  to_string(requetesMaterialise.size()-1) + " matérialisations suffisent à optimiser les requêtes utilisant " + to_string(espaceMemoireReel) + " d'espace mémoire";
+            message +=  to_string(requetesMaterialise.size()-1) + " matérialisations suffisent à optimiser les requêtes utilisant " + to_string(espaceMemoireReel) + " d'unités de mémoire";
         }
         msgBox->setText(QString::fromStdString(message));
         msgBox->show();
-        bar->setValue(value);
+        barMat->setValue(value);
         memoireReelleVal->setText(QString::fromStdString(to_string(espaceMemoireReel)));
         reqMatVal->setText(QString::fromStdString(to_string(requetesMaterialise.size()-1)));
-        nbMaterialiserLayout->addWidget(memoireReelleVal, 4, 1);
-        nbMaterialiserLayout->addWidget(reqMatVal, 3, 1);
     }
     else{
-        bar->setValue(value);
+        barMat->setValue(value);
     }
 }
 
 void MainWindow::runChargementFichier() {
-    
+    if(barMat->value() > 0 && barMat->value() < 100) {
+        emit endChargementFichier(-1);
+        return;
+    }
     string filePath = dirPath.toUtf8().constData();
     tableFaitString = chargerFichiers(filePath);
     if(tableFaitString.size() == 0) {
@@ -736,7 +798,7 @@ void MainWindow::runChargementFichier() {
 
 void MainWindow::displayPopupEndChargementFichier(int value) {
     if(value == -1) {
-        msgBox->setText(QString::fromStdString("Erreur lors du chargement vérifiez le format!"));
+        msgBox->setText(QString::fromStdString("Votre fichier n'est pas pris en charge, veuillez sélectionner un autre fichier !"));
         msgBox->show();
         bar->setValue(100);
         return;
@@ -764,12 +826,8 @@ void MainWindow::exporterButtonLaunch() {
     QFileInfo f( filename );
     saveDirPath = f.filePath(); // Path vers le fichier
     saveFileName = f.fileName();
-    bar = new QProgressDialog();
-    bar->setAutoClose(true);
-    bar->setCancelButtonText(QString());
-    bar->setRange(0,100);
-    bar->setValue(0);
-    mainLayout->addWidget(bar,0,3, Qt::AlignTop| Qt::AlignRight);
+    barExport->setValue(0);
+    barExport->show();
     connect(this, SIGNAL(endExportFichier(int)), this, SLOT(displayPopupExporter(int)), Qt::BlockingQueuedConnection);
     QFuture<void> future = QtConcurrent::run(this, &MainWindow::exporter );
 }
@@ -782,9 +840,9 @@ void MainWindow::exporter() {
 }
 
 void MainWindow::displayPopupExporter(int value) {
-    bar->setValue(value);
+    barExport->setValue(value);
     if(value == 100) {
-        msgBox->setText(QString::fromStdString("Fichier enregistré!"));
+        msgBox->setText(QString::fromStdString("Fichier enregistré !"));
         msgBox->show();
     }
 }
@@ -809,11 +867,10 @@ void MainWindow::doRequest() {
 
 
 void MainWindow::requestBarUpdate(int value) {
-    bar->setValue(value);
+    barRequest->setValue(value);
     if(value == 100) {
         listeChampsRetenu->setText(listeChampsRetenu->toPlainText().toUtf8().constData());
         requeteLayout->addWidget(listeChampsRetenu,3,0,2,1,Qt::AlignCenter| Qt::AlignRight);
-        tableFaitRequeteWidget = new QTableWidget();
         tailleResultatRequete->setText(QString::fromStdString(to_string(tableFaitRequete.size()-1)) + " lignes");
         mainLayout->addWidget(tailleResultatRequete, 5, 2);
         if(this->tableFaitRequete.size() > 1000) {
@@ -834,24 +891,27 @@ void MainWindow::requestBarUpdate(int value) {
                 item->setText(QString::fromStdString(tableFaitRequete[i][j]));
             }
         }
-        tableFaitRequeteWidget->setGeometry(QRect(QPoint(40, 200),
-        QSize(1500, 300)));
-        tableFaitRequeteWidget->setMaximumWidth(630);
-        tableFaitRequeteWidget->setMinimumWidth(630);
-        tableFaitRequeteWidget->setMaximumHeight(410);
-        tableFaitRequeteWidget->setMinimumHeight(410);
         tableFaitRequeteWidget->resizeColumnsToContents();
         tableFaitRequeteWidget->resizeRowsToContents();
         
-        mainLayout->addWidget(tableFaitRequeteWidget, 4,2,1,2, Qt::AlignTop| Qt::AlignLeft);
-        
-        string optimisation = "Requete optimisée : ";
+        string optimisation = "Requête optimisée : ";
         if (requetesMaterialise.size() <= 1) {
-            optimisation = "Requete non optimisée : ";
+            optimisation = "Requête non optimisée : ";
         }
         tempsReq->setText(QString::fromStdString(optimisation) + QString::fromStdString(to_string(tempsRequete)) + "s");
         mainLayout->addWidget(tempsReq, 2, 3);
     }
+}
+
+void MainWindow::info() {
+    msgBox->setText("Bienvenue sur QueryOptimizer. La Version actuelle est : 2.0.0");
+    msgBox->show();
+}
+
+
+void MainWindow::help() {
+    QWidget *helpWindow = new QWidget;
+    helpWindow->show();
 }
 
 

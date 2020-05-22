@@ -27,6 +27,7 @@
 #include <QMessageBox>
 #include <QFont>
 #include <QLineEdit>
+#include <QMenuBar>
 
 
 namespace Ui {
@@ -68,7 +69,10 @@ class MainWindow : public QMainWindow
         void displayPopupExporter(int value);
         void doRequest();
         void requestBarUpdate(int value);
+        void info();
+        void help();
     private:
+        QMenuBar *menuBar;
         QLabel *title;
         QLabel *titleTableFait;
         QLabel *titleTableGeneree;
@@ -81,6 +85,9 @@ class MainWindow : public QMainWindow
         QLabel* tailleTableFait;
         QLabel* tailleResultatRequete;
         QProgressDialog* bar;
+        QProgressDialog* barRequest;
+        QProgressDialog* barExport;
+        QProgressDialog* barMat;
         QMessageBox *msgBox;
         QGridLayout* mainLayout;
         QScrollArea* mainScrollArea;

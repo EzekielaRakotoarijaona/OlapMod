@@ -18,6 +18,7 @@
 #include <map>
 #include <iterator>
 #include <unordered_set>
+#include <codecvt>
 
 
 using namespace std; //ça permet d'utiliser la librairie stl
