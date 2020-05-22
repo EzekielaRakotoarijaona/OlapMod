@@ -329,7 +329,7 @@ void MainWindow::initRequeteLayout() {
      champsRequetes->setFrameStyle(QFrame::Panel | QFrame::Sunken);
      champsRequetes->setFont(*baloo);
      champsRequetes->setStyleSheet("font-weight:medium; font-size:13pt"); 
-     champsRequetes->setText("Les champs");
+     champsRequetes->setText("Choisissez des" "\n"  "dimensions");
       champsRequetes->setAlignment(Qt::AlignTop | Qt::AlignCenter);
       champsRequetes->setFrameShape(QFrame::HLine);
       champsRequetes->setFrameStyle(QFrame::NoFrame);
@@ -340,7 +340,7 @@ void MainWindow::initRequeteLayout() {
      fonctionAggregation->setFrameStyle(QFrame::Panel | QFrame::Sunken);
       fonctionAggregation->setFont(*baloo);
    fonctionAggregation->setStyleSheet("font-weight:medium; font-size:13pt"); 
-   fonctionAggregation->setText("Opération");
+   fonctionAggregation->setText("Choisissez une" "\n" "opération");
       fonctionAggregation->setAlignment(Qt::AlignTop | Qt::AlignCenter);
       fonctionAggregation->setFrameShape(QFrame::HLine);
       fonctionAggregation->setFrameStyle(QFrame::NoFrame);
