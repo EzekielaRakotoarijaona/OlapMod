@@ -30,6 +30,8 @@
 #include <QIcon>
 #include <QToolButton>
 #include <QStatusBar>
+#include <QTextBrowser>
+#include <QFile>
 
 
 
@@ -911,6 +913,18 @@ void MainWindow::info() {
 
 void MainWindow::help() {
     QWidget *helpWindow = new QWidget;
+    QGridLayout* layout = new QGridLayout;
+    QTextBrowser *tb = new QTextBrowser(this);
+    tb->setOpenExternalLinks(true);
+    QFile file("../doc/aide.html");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+      qWarning("file not found");
+      return;
+    }
+    tb->setHtml(file.readAll());
+    helpWindow->setLayout(layout);
+    layout->addWidget(tb);
     helpWindow->show();
 }
 
