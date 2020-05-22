@@ -745,7 +745,7 @@ void MainWindow::displayPopupEndChargementFichier(int value) {
         initTableFaitView();
         initTableTailleRequetesWidget();
         tailleTableFait->setText(QString::fromStdString(to_string(tableFait.size())) + " lignes");
-        msgBox->setText(QString::fromStdString("Ouverture et chargement du fichier :  <br><br>") + dirPath.toUtf8().constData() + QString::fromStdString(" termninée !"));
+        msgBox->setText(QString::fromStdString("Ouverture et chargement du fichier : ") + dirPath.toUtf8().constData() + QString::fromStdString("  <br> <br> Votre fichier a été importé avec succès !"));
         msgBox->show();
     }
     bar->setValue(value);
