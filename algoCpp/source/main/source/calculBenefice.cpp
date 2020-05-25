@@ -361,7 +361,7 @@ int espaceMemoirePrevu(vector<int> &taillesRequetes, int nbPrevu){
     int espaceMemoire = 0;
     vector<int> copieTailles = taillesRequetes;
     sort(copieTailles.begin(), copieTailles.end(), greater<int>());
-    for(int i = 1; i<nbPrevu+1; i++){
+    for(int i = 1; i<nbPrevu; i++){
         espaceMemoire += copieTailles[i];
     }
     return espaceMemoire;

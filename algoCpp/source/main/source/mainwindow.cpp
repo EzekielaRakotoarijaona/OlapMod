@@ -160,7 +160,7 @@ MainWindow::MainWindow(QWidget *parent)
 
    titleTableFait->setFont(*baloo);
    titleTableFait->setStyleSheet("font-weight:medium; font-size:16pt;color:grey"); 
-   titleTableFait->setText("Table de fait - Originale");
+   titleTableFait->setText("Table de faits - Originale");
      titleTableFait->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
      titleTableFait->setFrameShape(QFrame::HLine);
      titleTableFait->setFrameStyle(QFrame::NoFrame);
@@ -483,7 +483,7 @@ void MainWindow::nbMterialisationLayout() {
      QSize(120 * scaleWidthRatio, 50 * scaleHeigthRatio)));
     nbRequetesAMaterialiserLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     nbRequetesAMaterialiserLabel->setFont(*baloo);// AJOUT CE
-     nbRequetesAMaterialiserLabel->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 15px"); // AJOUT CE
+     nbRequetesAMaterialiserLabel->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 14px"); // AJOUT CE
      nbRequetesAMaterialiserLabel->setText("Nb requêtes à matérialiser" "\n" "Max : 0");// AJOUT CE
      nbRequetesAMaterialiserLabel->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
 
@@ -496,7 +496,7 @@ void MainWindow::nbMterialisationLayout() {
 
     memoireReelle->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     memoireReelle->setFont(*baloo);// AJOUT CE
-     memoireReelle->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 8px"); // AJOUT CE
+     memoireReelle->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 21px"); // AJOUT CE
     memoireReelle->setText("Unités de mémoire utilisées");// AJOUT CE
      memoireReelle->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
 
@@ -546,7 +546,7 @@ void MainWindow::nbMterialisationLayout() {
      QSize(200 * scaleWidthRatio, 50 * scaleHeigthRatio)));
     uniteMemoire->setFrameStyle(QFrame::Panel | QFrame::Sunken);
      uniteMemoire->setFont(*baloo);// AJOUT CE
-     uniteMemoire->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 4px"); // AJOUT CE
+     uniteMemoire->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 18px"); // AJOUT CE
      uniteMemoire->setText("Unités de mémoire prévues");// AJOUT CE
 
      uniteMemoire->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
@@ -738,7 +738,7 @@ void MainWindow::runCaculRequete() {
         emit endCalculRequete(-1);
         return;
     }
-    if (nbAMateriliser >= taillesRequetes.size()-1 || nbAMateriliser < 0) {
+    if (nbAMateriliser >= taillesRequetes.size() || nbAMateriliser < 0) {
         emit endCalculRequete(-1);
         return;
     }
