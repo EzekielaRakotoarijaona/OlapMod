@@ -75,8 +75,8 @@ class MainWindow : public QMainWindow
         //Variable de mise à l'échelle pour les résolutions d'écran différentes
         const int baseWidth = 1440;
         const int baseHeigth = 900;
-        int scaleWidthRatio = 1;
-        int scaleHeigthRatio = 1;
+        double scaleWidthRatio = 1;
+        double scaleHeigthRatio = 1;
     
         QMenuBar *menuBar;
         QLabel *title;

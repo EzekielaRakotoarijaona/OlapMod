@@ -43,8 +43,8 @@ using namespace std;
 MainWindow::MainWindow(QWidget *parent)
    : QMainWindow(parent)
 {
-    scaleWidthRatio = QApplication::desktop()->width() / baseWidth;
-    scaleHeigthRatio = QApplication::desktop()->height() / baseHeigth;
+    scaleWidthRatio = (double)QApplication::desktop()->width() / baseWidth;
+    scaleHeigthRatio = (double)QApplication::desktop()->height() / baseHeigth;
     
     int id = QFontDatabase::addApplicationFont("../ui_resources/Baloo-Regular-webfont.ttf");
     if(id!=-1) {
