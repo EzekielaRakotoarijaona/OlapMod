@@ -724,20 +724,24 @@ void MainWindow::tailleMaxVector(QString) {
 }
 
 void MainWindow::runCaculRequete() {
+    endCalculReq = false;
     tempsMaterialisation = 0.0;
     clock_t begin = clock();
     try {
         string value = nbRequetesAMaterialiserBox->text().toUtf8().constData();
         if(value.find(',') != std::string::npos) {
+            endCalculReq = true;
              emit endCalculRequete(-1);
             return;
         }
         if(value.find('.') != std::string::npos) {
-             emit endCalculRequete(-1);
+            endCalculReq = true;
+            emit endCalculRequete(-1);
             return;
         }
         nbAMateriliser = stol(value);
     } catch (exception& e) {
+        endCalculReq = true;
         emit endCalculRequete(-1);
         return;
     }
@@ -745,12 +749,12 @@ void MainWindow::runCaculRequete() {
         emit endCalculRequete(-1);
         return;
     }
-    emit endCalculRequete(10);
+    QFuture<void> future = QtConcurrent::run(this, &MainWindow::processMaterialisation );
     requetesMaterialise = calculBeneficeTotal(taillesRequetes, nbAMateriliser);
-    emit endCalculRequete(50);
     espaceMemoireReel = espaceMemoireUtilise(taillesRequetes, requetesMaterialise);
-    emit endCalculRequete(55);
+    emit endCalculRequete(45);
     stockerRequete(requetesMaterialise, tableFaitString, map_Sum, map_Max);
+    endCalculReq = true;
     clock_t end = clock();
     tempsMaterialisation += (double)(end - begin)/CLOCKS_PER_SEC;
     emit endCalculRequete(100);
@@ -778,35 +782,44 @@ void MainWindow::displayPopupEndCalculRequete(long value){
         statusBar->showMessage("Matérialisation en " + QString::fromStdString(to_string(tempsMaterialisation)) + "s" );
     }
     else{
+        statusBar->clearMessage();
+        statusBar->showMessage("Chargement... ");
         barMat->setValue(value);
     }
 }
 
 void MainWindow::runChargementFichier() {
+    endChargeFichier = false;
+    QFuture<void> future = QtConcurrent::run(this, &MainWindow::processChargementFichier );
     tempsChargement = 0.0;
     clock_t begin = clock();
     if(barMat->value() > 0 && barMat->value() < 100) {
+        endChargeFichier = true;
         emit endChargementFichier(-1);
         return;
     }
     string filePath = dirPath.toUtf8().constData();
     tableFaitString = chargerFichiers(filePath);
     if(tableFaitString.size() == 0) {
+        endChargeFichier = true;
         emit endChargementFichier(-1);
         return;
     }
     emit endChargementFichier(10);
     tableFait = conversion(tableFaitString);
     if(tableFait.size() == 0) {
+        endChargeFichier = true;
         emit endChargementFichier(-1);
         return;
     }
     emit endChargementFichier(50);
     taillesRequetes = toutes_les_tailles(tableFait);
     if(taillesRequetes.size() == 0) {
+        endChargeFichier = true;
         emit endChargementFichier(-1);
         return;
     }
+    endChargeFichier = true;
     clock_t end = clock();
     tempsChargement += (double)(end - begin)/CLOCKS_PER_SEC;
     emit endChargementFichier(100);
@@ -827,7 +840,11 @@ void MainWindow::displayPopupEndChargementFichier(long value) {
         msgBox->show();
         statusBar->clearMessage();
         statusBar->showMessage("Chargement du fichier en " + QString::fromStdString(to_string(tempsChargement)) + "s" );
+        bar->setValue(value);
+        return;
     }
+    statusBar->clearMessage();
+    statusBar->showMessage("Chargement ... ");
     bar->setValue(value);
 }
 
@@ -945,6 +962,28 @@ void MainWindow::help() {
     helpWindow->setLayout(layout);
     layout->addWidget(tb);
     helpWindow->show();
+}
+
+void MainWindow::processMaterialisation() {
+    while(!endCalculReq) {
+        if(nbAMateriliser != 0) {
+            int value = 50 + ((map_Sum.size() + map_Max.size()) * 50 / (nbAMateriliser * 2));
+            if(value != 100) emit endCalculRequete(value);
+        }
+        if (map_Sum.size() == nbAMateriliser && map_Max.size() == nbAMateriliser) {
+            return;
+        }
+    }
+}
+
+void MainWindow::processChargementFichier() {
+    while(!endChargeFichier) {
+        if( tableFait.size() != 0) {
+            int value =  tableFait.size() * 50 / tableFaitString.size();
+            if (value != 100) emit endChargementFichier(value);
+        }
+        if(tableFait.size() == tableFaitString.size()) return;
+    }
 }
 
 

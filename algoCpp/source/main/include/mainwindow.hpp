@@ -50,6 +50,8 @@ class MainWindow : public QMainWindow
         vector<string> split(string &s, char delim);
         void runCaculRequete();
         void runChargementFichier();
+        void processMaterialisation();
+        void processChargementFichier();
         void exporter();
     signals:
         void endCalculRequete(long value);
@@ -141,6 +143,8 @@ class MainWindow : public QMainWindow
         double tempsChargement = 0.0;
         double tempsMaterialisation = 0.0;
         double tempsRequete = 0.0;
+        bool endCalculReq = false;
+        bool endChargeFichier = false;
         
 };
 

@@ -354,7 +354,7 @@ long espaceMemoireUtilise(vector<long> &taillesRequetes, vector<long>& requetesM
     for(long i = 1; i<requetesMaterialisees.size(); i++) {
         espaceMemoire += taillesRequetes[requetesMaterialisees[i]];
     }
-    return espaceMemoire;
+    return espaceMemoire * 2;
 }
 
 long espaceMemoirePrevu(vector<long> &taillesRequetes, long nbPrevu){
@@ -364,7 +364,7 @@ long espaceMemoirePrevu(vector<long> &taillesRequetes, long nbPrevu){
     for(long i = 1; i<nbPrevu; i++){
         espaceMemoire += copieTailles[i];
     }
-    return espaceMemoire;
+    return espaceMemoire * 2;
 }
 
 void exportFichier(vector<vector<string>> tableFait, string nomFichier){
