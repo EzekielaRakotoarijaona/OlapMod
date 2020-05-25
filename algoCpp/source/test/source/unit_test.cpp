@@ -7,8 +7,8 @@
 
 bool testCalculBenefice(){
     
-    int resultatAttendu = 3;
-    int resultatReel = calculBenefice(taillesRequetes, requetesMaterialisees, 2);
+    long resultatAttendu = 3;
+    long resultatReel = calculBenefice(taillesRequetes, requetesMaterialisees, 2);
     
     //Test 1 : Dans le cas où le résultatAttendu est correcte
     if (resultatReel != resultatAttendu) {
@@ -61,8 +61,8 @@ bool testCalculBenefice(){
 
 
 bool testRequeteDep(){
-    vector<int> resultatAttendu = {0,1,2,3,4,5,6,7};
-    vector<int> resultatReel = requeteDep(7, taillesRequetes);
+    vector<long> resultatAttendu = {0,1,2,3,4,5,6,7};
+    vector<long> resultatReel = requeteDep(7, taillesRequetes);
     if(resultatAttendu != resultatReel){
         printf("Test Failed\n");
         return false;
@@ -84,9 +84,9 @@ bool testRequeteDep(){
 
 bool testCalculBeneficeTotal() {
     //Test 1
-    int nombreAMaterialiser = 1;
-    vector<int> resultatAttendu = {7,1};
-    vector<int> resultatReel = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+    long nombreAMaterialiser = 1;
+    vector<long> resultatAttendu = {7,1};
+    vector<long> resultatReel = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
     if(resultatAttendu != resultatReel){
         printf("Test Failed Test 1 Calcul Benefice Total \n");
         return false;
@@ -120,12 +120,12 @@ bool testChargerFichier(string filePath) {
         printf("Test Failed test Charger fichier 1 \n");
         return false;
     }
-    for (int i = 0; i < tableFait.size(); i++) {
+    for (long i = 0; i < tableFait.size(); i++) {
         if(tableFait[i].size() != resultatReel[i].size()){
             printf("Test Failed test Charger fichier 2 \n");
             return false;
         }
-        for (int j = 0; j < tableFait[i].size(); j++){
+        for (long j = 0; j < tableFait[i].size(); j++){
             if(tableFait[i][j] != resultatReel[i][j]){
                 printf("Test Failed test Charger fichier 3 \n");
                 return false;
@@ -136,7 +136,7 @@ bool testChargerFichier(string filePath) {
 }
 
 bool testTaillesRequetes(){
- vector<int> resultatReel = toutes_les_tailles(tableFait);
+ vector<long> resultatReel = toutes_les_tailles(tableFait);
  if(resultatAttenduTestTaillesRequetes != resultatReel){
     printf("Test Failed test Tailles Requetes \n");
     return false;
@@ -149,11 +149,11 @@ bool testIntegrationCalculBeneficeWorkflow(string filePath) {
     vector<vector<string>> tableFaitString = chargerFichiers(filePath);
     matrice tableFait = conversion(tableFaitString);
     //Calcul et affichage des tailles de la table de fait
-    vector<int> taillesRequetes = toutes_les_tailles(tableFait);
-    int nombreAMaterialiser = 3;
+    vector<long> taillesRequetes = toutes_les_tailles(tableFait);
+    long nombreAMaterialiser = 3;
     //Calcul des bénéfices
-    vector<int> resultatAttendu = {7,1,2,4};
-    vector<int> resultatReel = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+    vector<long> resultatAttendu = {7,1,2,4};
+    vector<long> resultatReel = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
     if(resultatAttendu != resultatReel){
         printf("Integration Test Benefice WorkFlow Failed \n");
         return false;
@@ -175,12 +175,12 @@ bool testMaterialiser(string filePath){
         printf("Test Failed test 1 table fait SOMME \n");
         return false;
     }
-    for (int i = 0; i < newTableFaitSomme.size(); i++) {
+    for (long i = 0; i < newTableFaitSomme.size(); i++) {
         if(newTableFaitSomme[i].size() != tableFaitAttenduSomme[i].size()){
             printf("Test Failed test 2 table fait SOMME \n");
             return false;
         }
-        for (int j = 0; j < newTableFaitSomme[i].size(); j++){
+        for (long j = 0; j < newTableFaitSomme[i].size(); j++){
             if(newTableFaitSomme[i][j] != tableFaitAttenduSomme[i][j]){
                 printf("Test Failed test 3 table fait SOMME \n");
                 return false;
@@ -192,12 +192,12 @@ bool testMaterialiser(string filePath){
         printf("Test Failed test 1 table fait MAX \n");
         return false;
     }
-    for (int i = 0; i < newTableFaitMax.size(); i++) {
+    for (long i = 0; i < newTableFaitMax.size(); i++) {
         if(newTableFaitMax[i].size() != tableFaitAttenduMax[i].size()){
             printf("Test Failed test 2 table fait MAX \n");
             return false;
         }
-        for (int j = 0; j < newTableFaitMax[i].size(); j++){
+        for (long j = 0; j < newTableFaitMax[i].size(); j++){
             if(newTableFaitMax[i][j] != tableFaitAttenduMax[i][j]){
                 printf("Test Failed test 3 table fait MAX \n");
                 return false;
@@ -213,25 +213,25 @@ bool testStocker(string filePath) {
     vector<vector<string>> tableFaitString = chargerFichiers(filePath);
     matrice tableFait = conversion(tableFaitString);
     //Calcul et affichage des tailles de la table de fait
-    vector<int> taillesRequetes = toutes_les_tailles(tableFait);
-    int nombreAMaterialiser = 6;
+    vector<long> taillesRequetes = toutes_les_tailles(tableFait);
+    long nombreAMaterialiser = 6;
     //Demande du nombre de requete à matérialiser en plus de la table de fait
     //Calcul des bénéfices
-    vector<int> requeteMaterialiser = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
-    unordered_map<int,vector<vector<string>>> unordered_map_Sum;
-    unordered_map<int,vector<vector<string>>> unordered_map_Max;
+    vector<long> requeteMaterialiser = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+    unordered_map<long,vector<vector<string>>> unordered_map_Sum;
+    unordered_map<long,vector<vector<string>>> unordered_map_Max;
     stockerRequete(requeteMaterialiser, tableFaitString, unordered_map_Sum, unordered_map_Max);
     afficherTableFait(unordered_map_Sum[3]);
     if(unordered_map_Sum[3].size() != tableFaitAttenduSomme.size()){
            printf("Test Failed test 1 MAP SOMME \n");
            return false;
        }
-       for (int i = 0; i < unordered_map_Sum[3].size(); i++) {
+       for (long i = 0; i < unordered_map_Sum[3].size(); i++) {
            if(unordered_map_Sum[3][i].size() != tableFaitAttenduSomme[i].size()){
                printf("Test Failed test 2 MAP SOMME \n");
                return false;
            }
-           for (int j = 0; j < unordered_map_Sum[3][i].size(); j++){
+           for (long j = 0; j < unordered_map_Sum[3][i].size(); j++){
                if(unordered_map_Sum[3][i][j] != tableFaitAttenduSomme[i][j]){
                    printf("Test Failed test 3 MAP SOMME \n");
                    return false;
@@ -243,12 +243,12 @@ bool testStocker(string filePath) {
            printf("Test Failed test 1 MAP MAX \n");
            return false;
        }
-       for (int i = 0; i < unordered_map_Max[3].size(); i++) {
+       for (long i = 0; i < unordered_map_Max[3].size(); i++) {
            if(unordered_map_Max[3][i].size() != tableFaitAttenduMax[i].size()){
                printf("Test Failed test 2 MAP MAX \n");
                return false;
            }
-           for (int j = 0; j < unordered_map_Max[3][i].size(); j++){
+           for (long j = 0; j < unordered_map_Max[3][i].size(); j++){
                if(unordered_map_Max[3][i][j] != tableFaitAttenduMax[i][j]){
                    printf("Test Failed test 3 MAP MAX \n");
                    return false;
@@ -291,13 +291,13 @@ bool testMateriliserRequete(string filePath) {
     vector<vector<string>> tableFaitString = chargerFichiers(filePath);
     matrice tableFait = conversion(tableFaitString);
     //Calcul et affichage des tailles de la table de fait
-    vector<int> taillesRequetes = toutes_les_tailles(tableFait);
-    int nombreAMaterialiser = 6;
+    vector<long> taillesRequetes = toutes_les_tailles(tableFait);
+    long nombreAMaterialiser = 6;
     //Demande du nombre de requete à matérialiser en plus de la table de fait
     //Calcul des bénéfices
-    vector<int> requeteMaterialiser = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
-    unordered_map<int,vector<vector<string>>> unordered_map_Sum;
-    unordered_map<int,vector<vector<string>>> unordered_map_Max;
+    vector<long> requeteMaterialiser = calculBeneficeTotal(taillesRequetes, nombreAMaterialiser);
+    unordered_map<long,vector<vector<string>>> unordered_map_Sum;
+    unordered_map<long,vector<vector<string>>> unordered_map_Max;
     stockerRequete(requeteMaterialiser, tableFaitString, unordered_map_Sum, unordered_map_Max);
     vector<vector<string>> newTableFait;
     
@@ -307,12 +307,12 @@ bool testMateriliserRequete(string filePath) {
         printf("Test Failed test 1 Materialiser of map sum \n");
         return false;
     }
-    for (int i = 0; i < newTableFait.size(); i++) {
+    for (long i = 0; i < newTableFait.size(); i++) {
         if(newTableFait[i].size() != tableFaitAttenduSomme[i].size()){
             printf("Test Failed test 2 Materialiser of map sum \n");
             return false;
         }
-        for (int j = 0; j < newTableFait[i].size(); j++){
+        for (long j = 0; j < newTableFait[i].size(); j++){
             if(newTableFait[i][j] != tableFaitAttenduSomme[i][j]){
                 printf("Test Failed test 3 Materialiser of map sum \n");
                 return false;
@@ -326,12 +326,12 @@ bool testMateriliserRequete(string filePath) {
         printf("Test Failed test 1 Materialiser from extern sum \n");
         return false;
     }
-    for (int i = 0; i < newTableFait.size(); i++) {
+    for (long i = 0; i < newTableFait.size(); i++) {
         if(newTableFait[i].size() != tableFaitAttenduSommeMaterialiser[i].size()){
             printf("Test Failed test 2 Materialiser from extern sum\n");
             return false;
         }
-        for (int j = 0; j < newTableFait[i].size(); j++){
+        for (long j = 0; j < newTableFait[i].size(); j++){
             if(newTableFait[i][j] != tableFaitAttenduSommeMaterialiser[i][j]){
                 printf("Test Failed test 3 Materialiser from extern sum\n");
                 return false;
@@ -345,12 +345,12 @@ bool testMateriliserRequete(string filePath) {
         printf("Test Failed test 1 Materialiser from extern max \n");
         return false;
     }
-    for (int i = 0; i < newTableFait.size(); i++) {
+    for (long i = 0; i < newTableFait.size(); i++) {
         if(newTableFait[i].size() != tableFaitAttenduMaxMaterialiser[i].size()){
             printf("Test Failed test 2 Materialiser from extern max\n");
             return false;
         }
-        for (int j = 0; j < newTableFait[i].size(); j++){
+        for (long j = 0; j < newTableFait[i].size(); j++){
             if(newTableFait[i][j] != tableFaitAttenduMaxMaterialiser[i][j]){
                 printf("Test Failed test 3 Materialiser from extern max\n");
                 return false;
@@ -364,12 +364,12 @@ bool testMateriliserRequete(string filePath) {
         printf("Test Failed test 1 Materialiser from real table \n");
         return false;
     }
-    for (int i = 0; i < newTableFait.size(); i++) {
+    for (long i = 0; i < newTableFait.size(); i++) {
         if(newTableFait[i].size() != tableFaitString_test[i].size()){
             printf("Test Failed test 2 Materialiser from real table\n");
             return false;
         }
-        for (int j = 0; j < newTableFait[i].size(); j++){
+        for (long j = 0; j < newTableFait[i].size(); j++){
             if(newTableFait[i][j] != tableFaitString_test[i][j]){
                 printf("Test Failed test 3 Materialiser from real table\n");
                 return false;
@@ -389,12 +389,12 @@ bool testMateriliserRequete(string filePath) {
         printf("Test Failed test 1 Materialiser from map sum \n");
         return false;
     }
-    for (int i = 0; i < newTableFait.size(); i++) {
+    for (long i = 0; i < newTableFait.size(); i++) {
         if(newTableFait[i].size() != tableFaitAttenduSommeMaterialiserDepuisMap[i].size()){
             printf("Test Failed test 2 Materialiser from map sum \n");
             return false;
         }
-        for (int j = 0; j < newTableFait[i].size(); j++){
+        for (long j = 0; j < newTableFait[i].size(); j++){
             if(newTableFait[i][j] != tableFaitAttenduSommeMaterialiserDepuisMap[i][j]){
                 printf("Test Failed test 3 Materialiser from map sum \n");
                 return false;
@@ -413,12 +413,12 @@ bool testMateriliserRequete(string filePath) {
         printf("Test Failed test 1 Materialiser from map sum \n");
         return false;
     }
-    for (int i = 0; i < newTableFait.size(); i++) {
+    for (long i = 0; i < newTableFait.size(); i++) {
         if(newTableFait[i].size() != tableFaitAttenduMaxMaterialiserDepuisMap[i].size()){
             printf("Test Failed test 2 Materialiser from map sum \n");
             return false;
         }
-        for (int j = 0; j < newTableFait[i].size(); j++){
+        for (long j = 0; j < newTableFait[i].size(); j++){
             if(newTableFait[i][j] != tableFaitAttenduMaxMaterialiserDepuisMap[i][j]){
                 printf("Test Failed test 3 Materialiser from map sum \n");
                 return false;
@@ -440,12 +440,12 @@ bool testExportFichier(string filePath){
             printf("Test Failed test 1 Export Fichier \n");
             return false;
         }
-        for (int i = 0; i < tableFaitString.size(); i++) {
+        for (long i = 0; i < tableFaitString.size(); i++) {
             if(tableFaitString[i].size() != nouvelleTableFaitImporte[i].size()){
                 printf("Test Failed test 2 Export Fichier \n");
                 return false;
             }
-            for (int j = 0; j < tableFaitString[i].size(); j++){
+            for (long j = 0; j < tableFaitString[i].size(); j++){
                 if(tableFaitString[i][j] != nouvelleTableFaitImporte[i][j]){
                     printf("Test Failed test 3 Export Fichier \n");
                     return false;

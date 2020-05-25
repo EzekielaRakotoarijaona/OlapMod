@@ -9,12 +9,12 @@
 
 
 using namespace std;
-static const vector<int> resultatAttenduTestTaillesRequetes={1, 3, 3, 6, 3, 7, 7, 8};
+static const vector<long> resultatAttenduTestTaillesRequetes={1, 3, 3, 6, 3, 7, 7, 8};
 
 
-static vector<int> taillesRequetes = {1, 3, 5, 6, 7, 6, 7, 8};
-static vector<int> requetesMaterialisees = {7};
-static vector<int> taillesRequetes2 = {1, 20, 15, 50, 30, 40, 75, 100};
+static vector<long> taillesRequetes = {1, 3, 5, 6, 7, 6, 7, 8};
+static vector<long> requetesMaterialisees = {7};
+static vector<long> taillesRequetes2 = {1, 20, 15, 50, 30, 40, 75, 100};
 
 static matrice tableFait = { {1,4,7},
                                                {1,5,8},
@@ -28,7 +28,7 @@ static matrice tableFait = { {1,4,7},
                                                {3,6,7} };
 
 
-static vector<int> stockMaterialisees = {7};
+static vector<long> stockMaterialisees = {7};
 
 static vector<vector<string>> tableFaitAttenduSomme = { {"QUATER", "PRODUCT", "#UNITS"}, {"T1","TV","11"},
 {"T2","PC","23"},
@@ -44,10 +44,10 @@ static vector<vector<string>> tableFaitAttenduMax = {{"QUATER", "PRODUCT", "#UNI
 {"T1","PC","10"},
 {"T3","TV","5"}};
 
-static vector<int> entierBinaire1 = {0,0,0,0,1};
-static vector<int> entierBinaire2 = {1,0,0,1,0};
-static vector<int> entierBinaire3 = {1,1,1,1,0};
-static vector<int> entierBinaire4 = {1,1,1,1,1};
+static vector<long> entierBinaire1 = {0,0,0,0,1};
+static vector<long> entierBinaire2 = {1,0,0,1,0};
+static vector<long> entierBinaire3 = {1,1,1,1,0};
+static vector<long> entierBinaire4 = {1,1,1,1,1};
 
 static vector<string> entierBinaireTestMaterialiserRequete = {"QUATER", "PRODUCT"};
 static vector<string> entierBinaireTestMaterialiserRequete2 = {"COUNTRY", "QUATER"};

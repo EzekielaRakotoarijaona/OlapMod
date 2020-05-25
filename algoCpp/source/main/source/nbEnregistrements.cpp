@@ -26,10 +26,10 @@ using namespace std; //ça permet d'utiliser la librairie stl
 
 //On définit une fonction de hash qui associe un entier à un vecteur d'entier
 struct VectorHash {
-    size_t operator()(const std::vector<int>& v) const {
-        std::hash<int> hasher;
+    size_t operator()(const std::vector<long>& v) const {
+        std::hash<long> hasher;
         size_t seed = 0;
-        for (int i : v) {
+        for (long i : v) {
             seed ^= hasher(i) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
         }
         return seed;
@@ -40,7 +40,7 @@ struct VectorHash {
 //On définit le type MySet qui est un unoredred_set de vecteurs d'entiers. Ces vecteurs sont hachés en utilisant
 //la fonction VectorHash définie ci-dessus
 
-using MySet = std::unordered_set<std::vector<int>, VectorHash>;
+using MySet = std::unordered_set<std::vector<long>, VectorHash>;
 
 
 vector<vector<string>> chargerFichiers(string filePath) { // Extrait les valeurs sous format string du fichier CSV pour les mettre dans une matrice
@@ -68,8 +68,8 @@ vector<vector<string>> chargerFichiers(string filePath) { // Extrait les valeurs
         return tableFait;
     }
  
-    for (int i = 0; i < tableFait.size(); i++) {  // On parcourt la matrice et affiche ses valeurs
-        for (int j = 0; j < tableFait[i].size(); j++)
+    for (long i = 0; i < tableFait.size(); i++) {  // On parcourt la matrice et affiche ses valeurs
+        for (long j = 0; j < tableFait[i].size(); j++)
             cout<< tableFait[i][j] << " ";
         cout<<" "<<endl;
     }
@@ -80,16 +80,16 @@ matrice conversion(vector<vector<string>> tableFaitString) {  // A partir de la 
                                                                // on convertit les données "string" en "entier" à partir d'une map
                                                                // et on les insère dans une nouvelle matrice tableFaitEntier
     matrice tableFaitEntiers; 
-    map<string,int> ma_map;
-    int map_valeur=0;
+    map<string,long> ma_map;
+    long map_valeur=0;
 
     tableFaitEntiers.resize(tableFaitString.size()-1);  // On initialise la taille de tableFaitEntier
     if(tableFaitString.size() < 2) {
         return tableFaitEntiers;
     }
 
- for (int i = 0; i < tableFaitString[0].size()-1; i++) {  // On parcourt la tableFaitString sans prendre en compte la dernière colonne (#units) qui n'a pas besoin d'être convertie
-        for (int j = 1; j < tableFaitString.size(); j++){
+ for (long i = 0; i < tableFaitString[0].size()-1; i++) {  // On parcourt la tableFaitString sans prendre en compte la dernière colonne (#units) qui n'a pas besoin d'être convertie
+        for (long j = 1; j < tableFaitString.size(); j++){
             if(ma_map.find(tableFaitString[j][i])==ma_map.end()){ // L'objectif est d'associer une valeur entière à chaque string différent
                                                                   // On utilise une MAP et on ajoute une ligne d'association clé-valeur à la map
                                                                   // Si la valeur de la tableFaitString n'est pas déja dans la map  
@@ -103,7 +103,7 @@ matrice conversion(vector<vector<string>> tableFaitString) {  // A partir de la 
 return tableFaitEntiers; // On retourne la table de fait avec des valeurs entières
 }
 
-void generer(matrice& M, int l, int c) {
+void generer(matrice& M, long l, long c) {
     //ça remplit une matrice M de l lignes et c colonnes
     M.resize(l);//on réserve l lignes
     for (auto i = 0; i < l; i++) M[i].resize(c);//chaque ligne est un vecteur de taille c
@@ -115,30 +115,30 @@ void generer(matrice& M, int l, int c) {
     }
 }
 
-vector<int> extraire(vector<int>& V, vector<int>& W) {
+vector<long> extraire(vector<long>& V, vector<long>& W) {
     //ça extrait du vecteur V les valeurs qui se trouvent dans les cases
     //dont l'indice se trouve dans W. Les valeurs extraites sont mises dans Z qui est retourné
     //Ex: V=[1, 10, 3, 2, 5] et W=[0, 3]. Alors Z sera [1, 2] car ce sont les valeurs aux indices 0 et 3 dans V
-    vector<int> Z;
+    vector<long> Z;
     for (auto i = 0; i < W.size(); i++) Z.push_back(V[W[i]]);
     return Z;
 }
 
-int taille(matrice& M, vector<int>& W) {
+long taille(matrice& M, vector<long>& W) {
 //ça compte le nombre de tuples de M, quand on considère les colonnes désignées dans W
-    //set<vector<int>> S;
+    //set<vector<long>> S;
     //ensemble où on met les vecteurs/tuples qu'on extraits de chaque ligne de M
     MySet S;
-    for (int i = 0; i < M.size(); i++) {
+    for (long i = 0; i < M.size(); i++) {
         S.insert(extraire(M[i], W));
     }
     return S.size();
 }
 
-vector<int> convertirEnBinaire(int n, int c) {
+vector<long> convertirEnBinaire(long n, long c) {
     //prend un entier n et le convertit en un vecteur de bits 0/1 de taille c
-    vector<int> V(c, 0); //V est de taille c et les cases sont intialisées à 0
-    int indice = c - 1;//on remplit V en commençant par la fin
+    vector<long> V(c, 0); //V est de taille c et les cases sont intialisées à 0
+    long indice = c - 1;//on remplit V en commençant par la fin
     while (n != 0) {
         V[indice] = n % 2;
         n = n / 2;
@@ -147,9 +147,9 @@ vector<int> convertirEnBinaire(int n, int c) {
     return V;
 }
 
-vector<int> Binaire_colonnes(vector<int> &V) {
+vector<long> Binaire_colonnes(vector<long> &V) {
     //transforme un veteur de 0 et 1 en un vecteur d'indices de colonnes
-    vector<int> W;
+    vector<long> W;
     for (auto i = 0; i < V.size(); i++) {
         if (V[i] == 1) {
             W.push_back(i);
@@ -158,20 +158,20 @@ vector<int> Binaire_colonnes(vector<int> &V) {
     return W;
 }
 
-vector<int> toutes_les_tailles(matrice & M) {
+vector<long> toutes_les_tailles(matrice & M) {
     //affiche les taille de chaque combinaison de colonnes de M
-    vector<int> resultat;
-    int nbcolonnes = M[0].size();
+    vector<long> resultat;
+    long nbcolonnes = M[0].size();
     resultat.resize(pow(2, nbcolonnes));
     resultat[0] = 1;
-    int combinaisonMax = pow(2, nbcolonnes) - 1;
+    long combinaisonMax = pow(2, nbcolonnes) - 1;
     #pragma omp parallel for
-    for (int combinaison = 1; combinaison <= combinaisonMax; combinaison++) {
-        vector<int> V = convertirEnBinaire(combinaison, nbcolonnes);
-        vector<int> W = Binaire_colonnes(V);
+    for (long combinaison = 1; combinaison <= combinaisonMax; combinaison++) {
+        vector<long> V = convertirEnBinaire(combinaison, nbcolonnes);
+        vector<long> W = Binaire_colonnes(V);
         resultat[combinaison] = taille(M, W);
     }
-    for(int combinaison = 0; combinaison <= combinaisonMax; combinaison++ ) {
+    for(long combinaison = 0; combinaison <= combinaisonMax; combinaison++ ) {
         cout << "la taille de la combinaison " << combinaison << " est " << resultat[combinaison] << endl;
     }
     return resultat; 

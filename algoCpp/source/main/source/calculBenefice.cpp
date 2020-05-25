@@ -19,7 +19,7 @@
 
 using namespace std;
 
-int calculBenefice(vector<int> &taillesRequetes, vector<int> &requetesMaterialisees, int numeroRequete) {
+long calculBenefice(vector<long> &taillesRequetes, vector<long> &requetesMaterialisees, long numeroRequete) {
     //Calcul de la différence de taille entre la requête courante et la requete matérialisée par laquelle elle est calculée
     if(numeroRequete >= taillesRequetes.size()) {
         throw "Numero de requete invalide : doit etre dans l'index des requetes possibles";
@@ -38,9 +38,9 @@ int calculBenefice(vector<int> &taillesRequetes, vector<int> &requetesMaterialis
     return benefice;
 }
 
-vector<int> requeteDep(int numeroRequete, vector<int> &taillesRequetes) {
+vector<long> requeteDep(long numeroRequete, vector<long> &taillesRequetes) {
     //Calcul de toutes les dépendances d'une requetes : toutes les requetes calculables à partir de numeroRequete
-    vector<int> reponse;
+    vector<long> reponse;
     for(auto i = 0; i<=numeroRequete; i++) {
         if((i & numeroRequete) == i){
             reponse.push_back(i);
@@ -49,17 +49,17 @@ vector<int> requeteDep(int numeroRequete, vector<int> &taillesRequetes) {
     return reponse;
 }
 
-vector<int> calculBeneficeTotal(vector<int> &taillesRequetes, int nombreAMaterialiser) {
+vector<long> calculBeneficeTotal(vector<long> &taillesRequetes, long nombreAMaterialiser) {
     //Fonction principale à appeler en dehors : dans un main par exemple
     double time_spent = 0.0;
     clock_t begin = clock();
-    vector<int> requetesMaterialisees;
+    vector<long> requetesMaterialisees;
     requetesMaterialisees.push_back(taillesRequetes.size()-1);
     //Boucle principale permettant de rajouter la requete ayant le plus de benefice aux requetes matérialisées
     while(requetesMaterialisees.size()-1 != nombreAMaterialiser){
         long size = requetesMaterialisees.size();
         printf("Etape : %d \n", size);
-        int indexMax = maxBenefice(taillesRequetes,requetesMaterialisees);
+        long indexMax = maxBenefice(taillesRequetes,requetesMaterialisees);
         if(vectorContains(indexMax, requetesMaterialisees)){
             break;
         }
@@ -74,19 +74,19 @@ vector<int> calculBeneficeTotal(vector<int> &taillesRequetes, int nombreAMateria
     return requetesMaterialisees;
 }
 
-int maxBenefice(vector<int> &taillesRequetes, vector<int> &requetesMaterialisees) {
+long maxBenefice(vector<long> &taillesRequetes, vector<long> &requetesMaterialisees) {
     //Détection de la requetes ayant le benefice le plus élevé
-    vector<int> benefices(taillesRequetes.size(), 0);
+    vector<long> benefices(taillesRequetes.size(), 0);
     printf("\nLes benefice trouves sont : ");
     //Parcours de chaque requetes pour calculer leur benefice
     #pragma omp parallel for
-    for(int i = 0; i < taillesRequetes.size(); i++) {
+    for(long i = 0; i < taillesRequetes.size(); i++) {
         if(!vectorContains(i, requetesMaterialisees)) {
-           int beneficeActuel = calculerBeneficeReel(taillesRequetes, requetesMaterialisees, i);
+           long beneficeActuel = calculerBeneficeReel(taillesRequetes, requetesMaterialisees, i);
            benefices[i] = beneficeActuel;
         }
     }
-    int indexMax = 0;
+    long indexMax = 0;
     for (long i = 0; i < taillesRequetes.size(); i++) {
         if (benefices[i] > benefices[indexMax]){
             indexMax = i;
@@ -96,7 +96,7 @@ int maxBenefice(vector<int> &taillesRequetes, vector<int> &requetesMaterialisees
     return indexMax;
 }
 
-bool vectorContains(int value, vector<int> vector){
+bool vectorContains(long value, vector<long> vector){
     //cout << "value " << value;
     //afficherVector(vector);
     for(auto val: vector){
@@ -107,7 +107,7 @@ bool vectorContains(int value, vector<int> vector){
     return false;
 }
 
-int calculerBeneficeReel(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, int numeroRequete){
+long calculerBeneficeReel(vector<long>& taillesRequetes, vector<long>& requetesMaterialisees, long numeroRequete){
     //Calcul du bénéfice
     
     //A la Première étape, seulement multiplier la différence entre la taille de kla requete materialiee et la taille de la requete courante par le nombre de requete que l'on peut calculer
@@ -116,13 +116,13 @@ int calculerBeneficeReel(vector<int>& taillesRequetes, vector<int>& requetesMate
     }
     //Sinon seulement calculer la différence entre la taille de la requete materialiee et la taille de la requete courante,
     else {
-        int benefice = calculBenefice(taillesRequetes,requetesMaterialisees, numeroRequete);
-        int maxBenefice = benefice;
+        long benefice = calculBenefice(taillesRequetes,requetesMaterialisees, numeroRequete);
+        long maxBenefice = benefice;
         //calculer toutes les requetes que l'on peut calculer à partir de numeroRequete
-        vector<int> requeteDepTab = requeteDep(numeroRequete, taillesRequetes);
+        vector<long> requeteDepTab = requeteDep(numeroRequete, taillesRequetes);
         for(long i=0; i< requeteDepTab.size(); i++) {
             if(requeteDepTab[i] != numeroRequete) {
-                int parQuiJeSuisCalculerValeur = parQuiJeSuisCalculer(taillesRequetes, requetesMaterialisees, requeteDepTab[i]);
+                long parQuiJeSuisCalculerValeur = parQuiJeSuisCalculer(taillesRequetes, requetesMaterialisees, requeteDepTab[i]);
                 //Si la requete est calculée par la même requete que numero requete, additionner benefice
                 if(parQuiJeSuisCalculerValeur == parQuiJeSuisCalculer(taillesRequetes, requetesMaterialisees, numeroRequete)) {
                     maxBenefice += benefice;
@@ -138,12 +138,12 @@ int calculerBeneficeReel(vector<int>& taillesRequetes, vector<int>& requetesMate
     }
 }
 
-int parQuiJeSuisCalculer(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, int numeroRequete) {
+long parQuiJeSuisCalculer(vector<long>& taillesRequetes, vector<long>& requetesMaterialisees, long numeroRequete) {
     if(numeroRequete >= taillesRequetes.size()) {
         throw "Numero de requete invalide : doit etre dans l'index des requetes possibles";
     }
     //Detecter parmi les requetes materialisée, par qui est calculée la requete numéro requete : la requete la plus petite en taille
-    int indexMax = requetesMaterialisees[0];
+    long indexMax = requetesMaterialisees[0];
     for(long i = 0 ; i < requetesMaterialisees.size(); i++) {
         if((numeroRequete & requetesMaterialisees[i]) == numeroRequete) {
             if (taillesRequetes[requetesMaterialisees[i]] < taillesRequetes[indexMax]) {
@@ -154,7 +154,7 @@ int parQuiJeSuisCalculer(vector<int>& taillesRequetes, vector<int>& requetesMate
     return indexMax;
 }
 
-void afficherVector(vector<int>& vector) {
+void afficherVector(vector<long>& vector) {
     printf("\nLe vecteur est : ");
     for(long i = 0; i<vector.size() ; i++){
         printf("%d, ", vector[i]);
@@ -172,7 +172,7 @@ void afficherTableFait(vector<vector<string>>& tableFait){
 }
 
 
-void materialiser(vector<vector<string>> & tableFait, int requeteAMaterialiser, int typeOperation, vector<vector<string>> & newTableFait){
+void materialiser(vector<vector<string>> & tableFait, long requeteAMaterialiser, long typeOperation, vector<vector<string>> & newTableFait){
     //Si la requete est 0 il suffit d'additioner ou maximiser le tout
     newTableFait.resize(0);
     if(requeteAMaterialiser == 0){
@@ -190,7 +190,7 @@ void materialiser(vector<vector<string>> & tableFait, int requeteAMaterialiser, 
         return;
     }
     //Sinon
-    vector<int> entier_Binaire = convertirEnBinaire(requeteAMaterialiser, tableFait[0].size()-1);
+    vector<long> entier_Binaire = convertirEnBinaire(requeteAMaterialiser, tableFait[0].size()-1);
     vector<vector<string>> tableFaitIntermediaire;
     //Création  d'une table de fait intermédiaire récupérant les colonnes concernées
     for (long i = 0; i < entier_Binaire.size(); i++) {
@@ -255,13 +255,13 @@ void insertInTableFait(vector<vector<string>>& newTableFait, vector<string>& tab
 }
 
 
-void stockerRequete(vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<int,vector<vector<string>>>& sum, unordered_map<int,vector<vector<string>>>& max) {
+void stockerRequete(vector<long>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<long,vector<vector<string>>>& sum, unordered_map<long,vector<vector<string>>>& max) {
     
     sum.clear();
     max.clear();
     
     #pragma omp parallel for
-    for(int i = 1; i<requetesMaterialisees.size() ; i++){
+    for(long i = 1; i<requetesMaterialisees.size() ; i++){
         vector<vector<string>> newTableFaitSomme;
         vector<vector<string>> newTableFaitMax;
         materialiser(table_FaitString, requetesMaterialisees[i],0, newTableFaitSomme);
@@ -272,26 +272,26 @@ void stockerRequete(vector<int>& requetesMaterialisees, vector<vector<string>>& 
 }
 
 void addition(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait){
-    int actualValue = stoi(newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1]);
-    int additionalValue = stoi(tableFait[positionTableFait][tableFait[positionTableFait].size()-1]);
-    int finalValue = actualValue + additionalValue;
+    long actualValue = stoi(newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1]);
+    long additionalValue = stoi(tableFait[positionTableFait][tableFait[positionTableFait].size()-1]);
+    long finalValue = actualValue + additionalValue;
     newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1] = to_string(finalValue);
 }
 
 void max(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait){
-    int actualValue = stoi(newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1]);
-    int additionalValue = stoi(tableFait[positionTableFait][tableFait[positionTableFait].size()-1]);
+    long actualValue = stoi(newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1]);
+    long additionalValue = stoi(tableFait[positionTableFait][tableFait[positionTableFait].size()-1]);
     if (actualValue < additionalValue) {
         newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1] = to_string(additionalValue);
     }
 }
 
-void materialiserRequete(vector<string>& numeroDeRequete,vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<int,vector<vector<string>>>& unordered_map_Sum, unordered_map<int,vector<vector<string>>>& unordered_map_Max, int typeOperation,  vector<vector<string>>& newTableFait) {
+void materialiserRequete(vector<string>& numeroDeRequete,vector<long>& taillesRequetes, vector<long>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<long,vector<vector<string>>>& unordered_map_Sum, unordered_map<long,vector<vector<string>>>& unordered_map_Max, long typeOperation,  vector<vector<string>>& newTableFait) {
     //On vide la table de fait si elle a déjà été utilisé auparavant
     newTableFait.clear();
     //On recupère l'entier correspondant à la requete
-    vector<int> binaryRequest = fromStringToBinary(numeroDeRequete, table_FaitString);
-    int requete = conversionBinaireAEntier(binaryRequest);
+    vector<long> binaryRequest = fromStringToBinary(numeroDeRequete, table_FaitString);
+    long requete = conversionBinaireAEntier(binaryRequest);
     //Si la requete est déjà matérialisée on renvoie depuis la map ou la table de fait de base
     if (find(requetesMaterialisees.begin(), requetesMaterialisees.end(), requete) != requetesMaterialisees.end()){
         if(requete == requetesMaterialisees[0]) {
@@ -311,7 +311,7 @@ void materialiserRequete(vector<string>& numeroDeRequete,vector<int>& taillesReq
     }
     //Sinon on calcul la table à partir de la requete deja materialisée la plus proche 
     else {
-        int parQuiJesuiCalculer = parQuiJeSuisCalculer(taillesRequetes, requetesMaterialisees, requete);
+        long parQuiJesuiCalculer = parQuiJeSuisCalculer(taillesRequetes, requetesMaterialisees, requete);
         if(parQuiJesuiCalculer == requetesMaterialisees[0]) {
             cout << "Materialisation a partir de la table de fait de base" << endl;
             materialiser(table_FaitString, requete, typeOperation, newTableFait);
@@ -331,16 +331,16 @@ void materialiserRequete(vector<string>& numeroDeRequete,vector<int>& taillesReq
     }
 }
 
-int conversionBinaireAEntier(vector<int>& numeroDeRequete) {
+long conversionBinaireAEntier(vector<long>& numeroDeRequete) {
     string binaireNumeroRequete;
-    for (int i = 0; i < numeroDeRequete.size(); i++) {
+    for (long i = 0; i < numeroDeRequete.size(); i++) {
         binaireNumeroRequete += to_string(numeroDeRequete[i]);
     }
     return stoi(binaireNumeroRequete, 0, 2);
 }
 
-vector<int> fromStringToBinary(vector<string> stringRequest, vector<vector<string>> &tableFaitString) {
-    vector<int> binaryResult(tableFaitString[0].size()-1, 0);
+vector<long> fromStringToBinary(vector<string> stringRequest, vector<vector<string>> &tableFaitString) {
+    vector<long> binaryResult(tableFaitString[0].size()-1, 0);
     for(auto i=0; i<binaryResult.size(); i++) {
         if(std::find(stringRequest.begin(), stringRequest.end(), tableFaitString[0][i]) != stringRequest.end()) {
             binaryResult[i] = 1;
@@ -349,19 +349,19 @@ vector<int> fromStringToBinary(vector<string> stringRequest, vector<vector<strin
     return binaryResult;
 }
 
-int espaceMemoireUtilise(vector<int> &taillesRequetes, vector<int>& requetesMaterialisees){
-    int espaceMemoire = 0;
-    for(int i = 1; i<requetesMaterialisees.size(); i++) {
+long espaceMemoireUtilise(vector<long> &taillesRequetes, vector<long>& requetesMaterialisees){
+    long espaceMemoire = 0;
+    for(long i = 1; i<requetesMaterialisees.size(); i++) {
         espaceMemoire += taillesRequetes[requetesMaterialisees[i]];
     }
     return espaceMemoire;
 }
 
-int espaceMemoirePrevu(vector<int> &taillesRequetes, int nbPrevu){
-    int espaceMemoire = 0;
-    vector<int> copieTailles = taillesRequetes;
-    sort(copieTailles.begin(), copieTailles.end(), greater<int>());
-    for(int i = 1; i<nbPrevu; i++){
+long espaceMemoirePrevu(vector<long> &taillesRequetes, long nbPrevu){
+    long espaceMemoire = 0;
+    vector<long> copieTailles = taillesRequetes;
+    sort(copieTailles.begin(), copieTailles.end(), greater<long>());
+    for(long i = 1; i<nbPrevu; i++){
         espaceMemoire += copieTailles[i];
     }
     return espaceMemoire;
@@ -370,9 +370,9 @@ int espaceMemoirePrevu(vector<int> &taillesRequetes, int nbPrevu){
 void exportFichier(vector<vector<string>> tableFait, string nomFichier){
     ofstream myfile(nomFichier);
     
-    for (int n=0; n < tableFait.size(); n++)
+    for (long n=0; n < tableFait.size(); n++)
     {
-        for (int i = 0; i < tableFait[n].size(); i++) {
+        for (long i = 0; i < tableFait[n].size(); i++) {
             if (i == tableFait[n].size() - 1) {
                 myfile << tableFait[n][i];
             }

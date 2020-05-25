@@ -46,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent)
     scaleWidthRatio = (double)QApplication::desktop()->width() / baseWidth;
     scaleHeigthRatio = (double)QApplication::desktop()->height() / baseHeigth;
     
-    int id = QFontDatabase::addApplicationFont("../ui_resources/Baloo-Regular-webfont.ttf");
+    long id = QFontDatabase::addApplicationFont("../ui_resources/Baloo-Regular-webfont.ttf");
     if(id!=-1) {
         QString family = QFontDatabase::applicationFontFamilies(id).at(0);
         baloo = new QFont(family);
@@ -242,7 +242,7 @@ void MainWindow::handleButton()
     dirPath = fileInfo.filePath(); // Path vers le fichier
     fileName = fileInfo.fileName();
     string filePath = dirPath.toUtf8().constData();
-    connect(this, SIGNAL(endChargementFichier(int)), this, SLOT(displayPopupEndChargementFichier(int)), Qt::BlockingQueuedConnection);
+    connect(this, SIGNAL(endChargementFichier(long)), this, SLOT(displayPopupEndChargementFichier(long)), Qt::BlockingQueuedConnection);
     QFuture<void> future = QtConcurrent::run(this, &MainWindow::runChargementFichier );
 }
 
@@ -258,11 +258,11 @@ void MainWindow::initTableFaitView(){
     }
     else tableFaitWidget->setRowCount(this->tableFaitString.size()-1);
     tableFaitWidget->setColumnCount(this->tableFaitString[0].size());
-    for(int i = 0; i<tableFaitString[0].size(); i++) {
+    for(long i = 0; i<tableFaitString[0].size(); i++) {
        tableFaitWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::fromStdString(tableFaitString[0][i])));
     }
-    for(int i = 1; i<tableFaitString.size(); i++) {
-        for(int j = 0; j<tableFaitString[0].size(); j++){
+    for(long i = 1; i<tableFaitString.size(); i++) {
+        for(long j = 0; j<tableFaitString[0].size(); j++){
             QTableWidgetItem *item = tableFaitWidget->item(-1, j);
             if(!item) {
                 item = new QTableWidgetItem();
@@ -278,7 +278,7 @@ void MainWindow::initTableFaitView(){
     delete champsRequetesComboBox;
     champsRequetesComboBox =  new QComboBox(this);
     champsRequetesComboBox->addItem("");
-    for(int i = 0; i< tableFaitString[0].size() - 1; i++) {
+    for(long i = 0; i< tableFaitString[0].size() - 1; i++) {
         champsRequetesComboBox->addItem(QString::fromStdString(tableFaitString[0][i]));
     }
     champsRequetesComboBox->setGeometry(QRect(QPoint(650, 100),
@@ -307,7 +307,7 @@ void MainWindow::calculRequetesAMateriliser() {
     }
     barMat->setValue(0);
     barMat->show();
-    connect(this, SIGNAL(endCalculRequete(int)), this, SLOT(displayPopupEndCalculRequete(int)), Qt::BlockingQueuedConnection);
+    connect(this, SIGNAL(endCalculRequete(long)), this, SLOT(displayPopupEndCalculRequete(long)), Qt::BlockingQueuedConnection);
     QFuture<void> future = QtConcurrent::run(this, &MainWindow::runCaculRequete );
 }
 
@@ -664,7 +664,7 @@ void MainWindow::request() {
     barRequest->setValue(0);
     barRequest->show();
     mainLayout->addWidget(barRequest,0,3, Qt::AlignTop | Qt::AlignRight);
-    connect(this, SIGNAL(endRequest(int)), this, SLOT(requestBarUpdate(int)), Qt::BlockingQueuedConnection);
+    connect(this, SIGNAL(endRequest(long)), this, SLOT(requestBarUpdate(long)), Qt::BlockingQueuedConnection);
     QFuture<void> future = QtConcurrent::run(this, &MainWindow::doRequest );
 }
 
@@ -708,14 +708,16 @@ void MainWindow::tailleMaxVector(QString) {
             textMemoire->setText(QString::fromStdString(to_string(0)));
             return;
         }
-        int selected = stoi(value);
+        long selected = stol(value);
         if (selected > taillesRequetes.size()) {
             selected = taillesRequetes.size() - 1;
         }
         espaceMemoire = espaceMemoirePrevu(taillesRequetes, selected);
+        cout << espaceMemoire << "je suis la" << endl;
         textMemoire->setGeometry(QRect(QPoint(0,0),
          QSize(100 * scaleWidthRatio, 50 * scaleHeigthRatio)));
         textMemoire->setText(QString::fromStdString(to_string(espaceMemoire)));
+        nbMaterialiserLayout->addWidget(textMemoire,2,1, Qt::AlignCenter| Qt::AlignCenter);
     } catch (exception& e) {
         textMemoire->setText(QString::fromStdString(to_string(0)));
         return;
@@ -733,7 +735,7 @@ void MainWindow::runCaculRequete() {
              emit endCalculRequete(-1);
             return;
         }
-        nbAMateriliser = stoi(value);
+        nbAMateriliser = stol(value);
     } catch (exception& e) {
         emit endCalculRequete(-1);
         return;
@@ -752,7 +754,7 @@ void MainWindow::runCaculRequete() {
 }
 
 
-void MainWindow::displayPopupEndCalculRequete(int value){
+void MainWindow::displayPopupEndCalculRequete(long value){
     if (value == -1) {
         string message = "Entrer un entier entre 0 - " + to_string(taillesRequetes.size()-1) + " !";
         msgBox->setText(QString::fromStdString(message));
@@ -801,7 +803,7 @@ void MainWindow::runChargementFichier() {
     emit endChargementFichier(100);
 }
 
-void MainWindow::displayPopupEndChargementFichier(int value) {
+void MainWindow::displayPopupEndChargementFichier(long value) {
     if(value == -1) {
         msgBox->setText(QString::fromStdString("Votre fichier n'est pas pris en charge, veuillez sélectionner un autre fichier !"));
         msgBox->show();
@@ -833,7 +835,7 @@ void MainWindow::exporterButtonLaunch() {
     saveFileName = f.fileName();
     barExport->setValue(0);
     barExport->show();
-    connect(this, SIGNAL(endExportFichier(int)), this, SLOT(displayPopupExporter(int)), Qt::BlockingQueuedConnection);
+    connect(this, SIGNAL(endExportFichier(long)), this, SLOT(displayPopupExporter(long)), Qt::BlockingQueuedConnection);
     QFuture<void> future = QtConcurrent::run(this, &MainWindow::exporter );
 }
 
@@ -844,7 +846,7 @@ void MainWindow::exporter() {
     emit endExportFichier(100);
 }
 
-void MainWindow::displayPopupExporter(int value) {
+void MainWindow::displayPopupExporter(long value) {
     barExport->setValue(value);
     if(value == 100) {
         msgBox->setText(QString::fromStdString("Fichier enregistré !"));
@@ -858,7 +860,7 @@ void MainWindow::doRequest() {
     
     string request = listeChampsRetenu->toPlainText().toUtf8().constData();
     vector<string> requete = split(request,';');
-    int operation = 0;
+    long operation = 0;
     string fonctionAggregation = fonctionAggregationComboBox->itemText(fonctionAggregationComboBox->currentIndex()).toUtf8().constData();
     emit endRequest(20);
     if( fonctionAggregation == "Max")
@@ -871,7 +873,7 @@ void MainWindow::doRequest() {
 }
 
 
-void MainWindow::requestBarUpdate(int value) {
+void MainWindow::requestBarUpdate(long value) {
     barRequest->setValue(value);
     if(value == 100) {
         listeChampsRetenu->setText(listeChampsRetenu->toPlainText().toUtf8().constData());
@@ -883,11 +885,11 @@ void MainWindow::requestBarUpdate(int value) {
         }
         else tableFaitRequeteWidget->setRowCount(this->tableFaitRequete.size()-1);
         tableFaitRequeteWidget->setColumnCount(this->tableFaitRequete[0].size());
-        for(int i = 0; i<tableFaitRequete[0].size(); i++) {
+        for(long i = 0; i<tableFaitRequete[0].size(); i++) {
            tableFaitRequeteWidget->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::fromStdString(tableFaitRequete[0][i])));
         }
-        for(int i = 1; i<tableFaitRequete.size(); i++) {
-            for(int j = 0; j<tableFaitRequete[0].size(); j++){
+        for(long i = 1; i<tableFaitRequete.size(); i++) {
+            for(long j = 0; j<tableFaitRequete[0].size(); j++){
                 QTableWidgetItem *item = tableFaitRequeteWidget->item(-1, j);
                 if(!item) {
                     item = new QTableWidgetItem();

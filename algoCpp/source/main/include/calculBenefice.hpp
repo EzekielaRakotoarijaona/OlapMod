@@ -16,25 +16,25 @@
 
 using namespace std;
 
-int calculBenefice(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, int numeroRequete);
+long calculBenefice(vector<long>& taillesRequetes, vector<long>& requetesMaterialisees, long numeroRequete);
 
-vector<int> requeteDep(int numeroRequete, vector<int>& taillesRequetes);
+vector<long> requeteDep(long numeroRequete, vector<long>& taillesRequetes);
 
-vector<int> calculBeneficeTotal(vector<int>& taillesRequetes, int nombreAMaterialiser);
+vector<long> calculBeneficeTotal(vector<long>& taillesRequetes, long nombreAMaterialiser);
 
-int maxBenefice(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees);
+long maxBenefice(vector<long>& taillesRequetes, vector<long>& requetesMaterialisees);
 
-int calculerBeneficeReel(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, int numeroRequete);
+long calculerBeneficeReel(vector<long>& taillesRequetes, vector<long>& requetesMaterialisees, long numeroRequete);
 
-int parQuiJeSuisCalculer(vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, int numeroRequete);
+long parQuiJeSuisCalculer(vector<long>& taillesRequetes, vector<long>& requetesMaterialisees, long numeroRequete);
 
-void afficherVector(vector<int>& vector);
+void afficherVector(vector<long>& vector);
 
-void stockerRequete(vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<int,vector<vector<string>>>& unordered_map_Sum, unordered_map<int,vector<vector<string>>>& unordered_map_Max);
+void stockerRequete(vector<long>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<long,vector<vector<string>>>& unordered_map_Sum, unordered_map<long,vector<vector<string>>>& unordered_map_Max);
 
 void afficherTableFait(vector<vector<string>>& tableFait);
 
-void materialiser(vector<vector<string>> & tableFait, int requeteAMaterialiser, int typeOperation, vector<vector<string>> & newTableFait );
+void materialiser(vector<vector<string>> & tableFait, long requeteAMaterialiser, long typeOperation, vector<vector<string>> & newTableFait );
 
 long findTuple(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire);
 
@@ -44,17 +44,17 @@ void addition(vector<vector<string>>& tableFait, vector<vector<string>>& newTabl
 
 void max(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait);
 
-void materialiserRequete(vector<string>& numeroDeRequete,vector<int>& taillesRequetes, vector<int>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<int,vector<vector<string>>>& unordered_map_Sum, unordered_map<int,vector<vector<string>>>& unordered_map_Max, int typeOperation,  vector<vector<string>>& newTableFait);
+void materialiserRequete(vector<string>& numeroDeRequete,vector<long>& taillesRequetes, vector<long>& requetesMaterialisees, vector<vector<string>>& table_FaitString, unordered_map<long,vector<vector<string>>>& unordered_map_Sum, unordered_map<long,vector<vector<string>>>& unordered_map_Max, long typeOperation,  vector<vector<string>>& newTableFait);
 
-int conversionBinaireAEntier(vector<int>& numeroDeRequete);
+long conversionBinaireAEntier(vector<long>& numeroDeRequete);
 
-bool vectorContains(int value, vector<int> vector);
+bool vectorContains(long value, vector<long> vector);
 
-vector<int> fromStringToBinary(vector<string> stringRequest, vector<vector<string>> &tableFaitString);
+vector<long> fromStringToBinary(vector<string> stringRequest, vector<vector<string>> &tableFaitString);
 
-int espaceMemoireUtilise(vector<int> &taillesRequetes, vector<int>& requetesMaterialisees);
+long espaceMemoireUtilise(vector<long> &taillesRequetes, vector<long>& requetesMaterialisees);
 
-int espaceMemoirePrevu(vector<int> &taillesRequetes, int nbPrevu);
+long espaceMemoirePrevu(vector<long> &taillesRequetes, long nbPrevu);
 
 void exportFichier(vector<vector<string>> tableFait, string nomFichier);
 

@@ -52,10 +52,10 @@ class MainWindow : public QMainWindow
         void runChargementFichier();
         void exporter();
     signals:
-        void endCalculRequete(int value);
-        void endChargementFichier(int value);
-        void endExportFichier(int value);
-        void endRequest(int value);
+        void endCalculRequete(long value);
+        void endChargementFichier(long value);
+        void endExportFichier(long value);
+        void endRequest(long value);
     private slots:
         void handleButton();
         void calculRequetesAMateriliser();
@@ -63,12 +63,12 @@ class MainWindow : public QMainWindow
         void onClickChampsComboBox(int);
         void tailleMaxVector(QString);
         void effacerListeChamps();
-        void displayPopupEndCalculRequete(int value);
-        void displayPopupEndChargementFichier(int value);
+        void displayPopupEndCalculRequete(long value);
+        void displayPopupEndChargementFichier(long value);
         void exporterButtonLaunch();
-        void displayPopupExporter(int value);
+        void displayPopupExporter(long value);
         void doRequest();
-        void requestBarUpdate(int value);
+        void requestBarUpdate(long value);
         void info();
         void help();
     private:
@@ -128,15 +128,15 @@ class MainWindow : public QMainWindow
         QString saveDirPath;
         QString saveFileName;
         vector<vector<string>> tableFaitString;
-        vector<int> taillesRequetes;
-        vector<int> requetesMaterialise;
+        vector<long> taillesRequetes;
+        vector<long> requetesMaterialise;
         matrice tableFait;
-        unordered_map<int,vector<vector<string>>> map_Sum;
-        unordered_map<int,vector<vector<string>>> map_Max;
+        unordered_map<long,vector<vector<string>>> map_Sum;
+        unordered_map<long,vector<vector<string>>> map_Max;
         vector<vector<string>> tableFaitRequete;
-        int espaceMemoire = 0;
-        int nbAMateriliser = 0;
-        int espaceMemoireReel = 0;
+        long espaceMemoire = 0;
+        long nbAMateriliser = 0;
+        long espaceMemoireReel = 0;
         double tempsRequete = 0.0;
         
 };
