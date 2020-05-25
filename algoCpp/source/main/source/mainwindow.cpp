@@ -911,8 +911,11 @@ void MainWindow::requestBarUpdate(long value) {
 }
 
 void MainWindow::info() {
-    msgBox->setText("Bienvenue sur QueryOptimizer. La Version actuelle est : 2.0.0");
-    msgBox->show();
+    QMessageBox msgInfo(this);
+    msgInfo.setWindowTitle("Help / About");
+    msgInfo.setTextFormat(Qt::RichText);   //this is what makes the links clickable
+    msgInfo.setText("<h1 style='text-align=center'>Bienvenue sur QueryOptimizer</h1> <p>Version 2.0.0 <br> <br> <a href='https://github.com/EzekielaRakotoarijaona/OlapMod/issues'>Support</a><br><br>&copy; 2020 Université de Bordeaux <br> <br> Créé par : Oubeyy Shah, Lilia Naitamara, Riad M'himdi, Claire-Elise Hochet, Camille Rakotoarijaona <br> <br> <a href='https://github.com/EzekielaRakotoarijaona/OlapMod/blob/master/LICENSE'>Licence Apache-2.0</a>");
+    msgInfo.exec();
 }
 
 
