@@ -122,6 +122,7 @@ class MainWindow : public QMainWindow
         QString dirPath;
         QString fileName;
         QFont* baloo;
+        QStatusBar* statusBar;
         
 
     
@@ -137,6 +138,8 @@ class MainWindow : public QMainWindow
         long espaceMemoire = 0;
         long nbAMateriliser = 0;
         long espaceMemoireReel = 0;
+        double tempsChargement = 0.0;
+        double tempsMaterialisation = 0.0;
         double tempsRequete = 0.0;
         
 };

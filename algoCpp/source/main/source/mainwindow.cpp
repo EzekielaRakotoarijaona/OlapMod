@@ -67,7 +67,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(helpButton, SIGNAL(clicked()), this, SLOT(help()));
     connect(infoButton, SIGNAL(clicked()), this, SLOT(info()));
     
-    QStatusBar* statusBar = new QStatusBar();
+    statusBar = new QStatusBar();
     statusBar->addPermanentWidget(toolbar);
     
                        
@@ -713,7 +713,6 @@ void MainWindow::tailleMaxVector(QString) {
             selected = taillesRequetes.size() - 1;
         }
         espaceMemoire = espaceMemoirePrevu(taillesRequetes, selected);
-        cout << espaceMemoire << "je suis la" << endl;
         textMemoire->setGeometry(QRect(QPoint(0,0),
          QSize(100 * scaleWidthRatio, 50 * scaleHeigthRatio)));
         textMemoire->setText(QString::fromStdString(to_string(espaceMemoire)));
@@ -725,6 +724,8 @@ void MainWindow::tailleMaxVector(QString) {
 }
 
 void MainWindow::runCaculRequete() {
+    tempsMaterialisation = 0.0;
+    clock_t begin = clock();
     try {
         string value = nbRequetesAMaterialiserBox->text().toUtf8().constData();
         if(value.find(',') != std::string::npos) {
@@ -750,6 +751,8 @@ void MainWindow::runCaculRequete() {
     espaceMemoireReel = espaceMemoireUtilise(taillesRequetes, requetesMaterialise);
     emit endCalculRequete(55);
     stockerRequete(requetesMaterialise, tableFaitString, map_Sum, map_Max);
+    clock_t end = clock();
+    tempsMaterialisation += (double)(end - begin)/CLOCKS_PER_SEC;
     emit endCalculRequete(100);
 }
 
@@ -771,6 +774,8 @@ void MainWindow::displayPopupEndCalculRequete(long value){
         barMat->setValue(value);
         memoireReelleVal->setText(QString::fromStdString(to_string(espaceMemoireReel)));
         reqMatVal->setText(QString::fromStdString(to_string(requetesMaterialise.size()-1)));
+        statusBar->clearMessage();
+        statusBar->showMessage("Matérialisation en " + QString::fromStdString(to_string(tempsMaterialisation)) + "s" );
     }
     else{
         barMat->setValue(value);
@@ -778,6 +783,8 @@ void MainWindow::displayPopupEndCalculRequete(long value){
 }
 
 void MainWindow::runChargementFichier() {
+    tempsChargement = 0.0;
+    clock_t begin = clock();
     if(barMat->value() > 0 && barMat->value() < 100) {
         emit endChargementFichier(-1);
         return;
@@ -800,6 +807,8 @@ void MainWindow::runChargementFichier() {
         emit endChargementFichier(-1);
         return;
     }
+    clock_t end = clock();
+    tempsChargement += (double)(end - begin)/CLOCKS_PER_SEC;
     emit endChargementFichier(100);
 }
 
@@ -816,6 +825,8 @@ void MainWindow::displayPopupEndChargementFichier(long value) {
         tailleTableFait->setText(QString::fromStdString(to_string(tableFait.size())) + " lignes");
         msgBox->setText(QString::fromStdString("Ouverture et chargement du fichier : ") + dirPath.toUtf8().constData() + QString::fromStdString("  <br> <br> Votre fichier a été importé avec succès !"));
         msgBox->show();
+        statusBar->clearMessage();
+        statusBar->showMessage("Chargement du fichier en " + QString::fromStdString(to_string(tempsChargement)) + "s" );
     }
     bar->setValue(value);
 }

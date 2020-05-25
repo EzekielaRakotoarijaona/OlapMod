@@ -272,15 +272,15 @@ void stockerRequete(vector<long>& requetesMaterialisees, vector<vector<string>>&
 }
 
 void addition(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait){
-    long actualValue = stoi(newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1]);
-    long additionalValue = stoi(tableFait[positionTableFait][tableFait[positionTableFait].size()-1]);
+    long actualValue = stol(newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1]);
+    long additionalValue = stol(tableFait[positionTableFait][tableFait[positionTableFait].size()-1]);
     long finalValue = actualValue + additionalValue;
     newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1] = to_string(finalValue);
 }
 
 void max(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait){
-    long actualValue = stoi(newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1]);
-    long additionalValue = stoi(tableFait[positionTableFait][tableFait[positionTableFait].size()-1]);
+    long actualValue = stol(newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1]);
+    long additionalValue = stol(tableFait[positionTableFait][tableFait[positionTableFait].size()-1]);
     if (actualValue < additionalValue) {
         newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1] = to_string(additionalValue);
     }
@@ -336,7 +336,7 @@ long conversionBinaireAEntier(vector<long>& numeroDeRequete) {
     for (long i = 0; i < numeroDeRequete.size(); i++) {
         binaireNumeroRequete += to_string(numeroDeRequete[i]);
     }
-    return stoi(binaireNumeroRequete, 0, 2);
+    return stol(binaireNumeroRequete, 0, 2);
 }
 
 vector<long> fromStringToBinary(vector<string> stringRequest, vector<vector<string>> &tableFaitString) {
