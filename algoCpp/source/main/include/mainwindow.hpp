@@ -41,24 +41,37 @@ class MainWindow : public QMainWindow
     public:
        explicit MainWindow(QWidget *parent = 0);
     private:
+        //Chargement de la Vue de Table de Faits
         void initTableFaitView();
+        //Chargement de la Vue d'import de fichier
         void initiChargerLayout();
+        //Chargement de la Vue de requetage
         void initRequeteLayout();
+        //Chargement de la Vue d'export de fichier
         void initExporterLayout();
+        //Chargement de la Vue de matérialisation
         void nbMterialisationLayout();
+        //Chargement de la Vue de table de requetée
         void initTableTailleRequetesWidget();
         vector<string> split(string &s, char delim);
+        //Calcul des matérialisation dans un thread concurrent
         void runCaculRequete();
+        //Chargement de fichier dans un concurrent thread
         void runChargementFichier();
+        //Mise à jour de la barre de progression Matérialisation via un thread concurrent
         void processMaterialisation();
+        //Mise à jour de la barre de progression Chargement fichier via un thread concurrent
         void processChargementFichier();
+        //Export de fichier dans un concurrent thread
         void exporter();
     signals:
+        //Les différents signaux émis pour mettre à jour les barres de progression
         void endCalculRequete(long value);
         void endChargementFichier(long value);
         void endExportFichier(long value);
         void endRequest(long value);
     private slots:
+        //Les différentes fonctions liées au boutons et aux événements
         void handleButton();
         void calculRequetesAMateriliser();
         void request();
@@ -80,6 +93,7 @@ class MainWindow : public QMainWindow
         double scaleWidthRatio = 1;
         double scaleHeigthRatio = 1;
     
+        //Widget modifiable de la fenêtre
         QMenuBar *menuBar;
         QLabel *title;
         QLabel *titleTableFait;
@@ -125,11 +139,10 @@ class MainWindow : public QMainWindow
         QString fileName;
         QFont* baloo;
         QStatusBar* statusBar;
-        
-
-    
         QString saveDirPath;
         QString saveFileName;
+    
+        //Les Objets nécéssaire à la partie traitement de données 
         vector<vector<string>> tableFaitString;
         vector<long> taillesRequetes;
         vector<long> requetesMaterialise;

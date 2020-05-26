@@ -40,12 +40,15 @@
 
 using namespace std;
 
+//Constructeur de la fenêtre et de tous les objets et widgets la composant au lancement
 MainWindow::MainWindow(QWidget *parent)
    : QMainWindow(parent)
 {
+    //Récupération de la résolution de l'écran pour faire la mise à l'échelle sur n'importe quel écran
     scaleWidthRatio = (double)QApplication::desktop()->width() / baseWidth;
     scaleHeigthRatio = (double)QApplication::desktop()->height() / baseHeigth;
     
+    //Chargement de la police Baloo
     long id = QFontDatabase::addApplicationFont("../ui_resources/Baloo-Regular-webfont.ttf");
     if(id!=-1) {
         QString family = QFontDatabase::applicationFontFamilies(id).at(0);
@@ -53,6 +56,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
     else baloo = new QFont(QString::fromStdString("Baloo"));
     
+    //Chargement de la bar pour les infos et tutoriels
     QToolBar* toolbar = new QToolBar;
     toolbar->setStyleSheet("border: none; background-color: transparent;");
     toolbar->setGeometry(QRect(QPoint(100, 30),
@@ -72,7 +76,7 @@ MainWindow::MainWindow(QWidget *parent)
     
                        
     
-    
+    //Initialisation bar de progression
     bar = new QProgressDialog();
     barRequest = new QProgressDialog();
     barRequest->setVisible(false);
@@ -103,12 +107,16 @@ MainWindow::MainWindow(QWidget *parent)
     
     requetesMaterialise.resize(0);
     
+    //Chargement de la vue de chargement de fichier
     initiChargerLayout();
+    //Chargement de la vue requete de fichier
     initRequeteLayout();
+    //Chargement de vue de matérialisation
     nbMterialisationLayout();
+    //Chargement de la vue d'exportation
     initExporterLayout();
 
-    
+    //Chargement de l'objet de temps requête
    tempsReq = new QLabel(this);
    tempsReq->setGeometry(QRect(QPoint(100, 30),
     QSize(200 * scaleWidthRatio, 50 * scaleHeigthRatio)));
@@ -120,6 +128,7 @@ MainWindow::MainWindow(QWidget *parent)
     tempsReq->setFrameShape(QFrame::HLine);
     tempsReq->setFrameStyle(QFrame::NoFrame);
     
+    //Chargement de la table de fait widget
     tailleTableFait = new QLabel();
     tailleTableFait->setGeometry(QRect(QPoint(100, 30),
      QSize(200 * scaleWidthRatio, 50 * scaleHeigthRatio)));
@@ -177,6 +186,7 @@ MainWindow::MainWindow(QWidget *parent)
      titleTableGeneree->setFrameStyle(QFrame::NoFrame);
     
     
+    //Layout principal en grille
     mainLayout = new QGridLayout();
     mainLayout->setSizeConstraint(QLayout::SetNoConstraint);
     mainLayout->setRowMinimumHeight(4, 380 * scaleHeigthRatio);
@@ -232,6 +242,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::handleButton()
 {
+    //Gestion du bouton de chargement
     QString file = QFileDialog::getOpenFileName(this, tr("Charger une table de fait ..."),"../resources",tr("BDD (*.csv)"));
     if(file.isEmpty()) {
         return;
@@ -247,6 +258,7 @@ void MainWindow::handleButton()
 }
 
 void MainWindow::initTableFaitView(){
+    //Chargement de la table fait
     requetesMaterialise.clear();
     map_Max.clear();
     map_Sum.clear();
@@ -300,6 +312,7 @@ void MainWindow::initTableTailleRequetesWidget(){
 
 
 void MainWindow::calculRequetesAMateriliser() {
+    //Concurrent thread pour matérialiser les requêtes et pas bloquer le thread principal de la fenêtre graphique
     if(tableFaitString.size() == 0) {
         msgBox->setText("Commencez par importer une table avant d'optimiser");
         msgBox->show();
@@ -655,6 +668,7 @@ void MainWindow::initExporterLayout() {
 
 
 void MainWindow::request() {
+    //Concurrent thread pour requeter les requêtes et pas bloquer le thread principal de la fenêtre graphique
     if(tableFaitString.size() == 0) {
         msgBox->setText("Commencez par importer une table avant de requêter");
         msgBox->show();
@@ -681,6 +695,7 @@ vector<string> MainWindow::split(string &s, char delim) {
 }
 
 void MainWindow::onClickChampsComboBox(int) {
+    //Gestion de la selection de dimensions pour la requête
     string selected = champsRequetesComboBox->itemText(champsRequetesComboBox->currentIndex()).toUtf8().constData();
     champsRequetesComboBox->setCurrentIndex(0);
     if(!selected.empty()) {
@@ -698,6 +713,7 @@ void MainWindow::effacerListeChamps() {
 }
 
 void MainWindow::tailleMaxVector(QString) {
+    //Calcul des tailles des requêtes
     try {
         string value = nbRequetesAMaterialiserBox->text().toUtf8().constData();
         if(value.find(',') != std::string::npos) {
@@ -724,6 +740,7 @@ void MainWindow::tailleMaxVector(QString) {
 }
 
 void MainWindow::runCaculRequete() {
+    //Thread concurrent de calcul deds tailles
     endCalculReq = false;
     tempsMaterialisation = 0.0;
     clock_t begin = clock();
@@ -762,6 +779,7 @@ void MainWindow::runCaculRequete() {
 
 
 void MainWindow::displayPopupEndCalculRequete(long value){
+    //Reception des messages des thread concurrent pour la mise à jour de l'ui
     if (value == -1) {
         string message = "Entrer un entier entre 0 - " + to_string(taillesRequetes.size()-1) + " !";
         msgBox->setText(QString::fromStdString(message));
@@ -789,6 +807,7 @@ void MainWindow::displayPopupEndCalculRequete(long value){
 }
 
 void MainWindow::runChargementFichier() {
+    //Thread concurrent pour le chargement du fichier
     endChargeFichier = false;
     QFuture<void> future = QtConcurrent::run(this, &MainWindow::processChargementFichier );
     tempsChargement = 0.0;
@@ -826,6 +845,7 @@ void MainWindow::runChargementFichier() {
 }
 
 void MainWindow::displayPopupEndChargementFichier(long value) {
+    //Reception des mise à jour de la barre de charhgement pour l'ui
     if(value == -1) {
         msgBox->setText(QString::fromStdString("Votre fichier n'est pas pris en charge, veuillez sélectionner un autre fichier !"));
         msgBox->show();
@@ -849,6 +869,7 @@ void MainWindow::displayPopupEndChargementFichier(long value) {
 }
 
 void MainWindow::exporterButtonLaunch() {
+    //Lancement de l'exportation
     if(tableFaitString.size() == 0 || tableFaitRequete.size() == 0) {
         msgBox->setText("Commencez par faire une requêtes");
         msgBox->show();
@@ -868,6 +889,7 @@ void MainWindow::exporterButtonLaunch() {
 }
 
 void MainWindow::exporter() {
+    //Thread concurrent de l'export de fichier
     emit endExportFichier(0);
     string path = saveDirPath.toUtf8().constData();
     exportFichier(tableFaitRequete, path);
@@ -875,6 +897,7 @@ void MainWindow::exporter() {
 }
 
 void MainWindow::displayPopupExporter(long value) {
+    //Mise à jour des infos de la barre de progressipn sur l'ui
     barExport->setValue(value);
     if(value == 100) {
         msgBox->setText(QString::fromStdString("Fichier enregistré !"));
@@ -883,6 +906,7 @@ void MainWindow::displayPopupExporter(long value) {
 }
 
 void MainWindow::doRequest() {
+    //Thread concurrent de traitement d'une requete
     tempsRequete = 0.0;
     clock_t begin = clock();
     
@@ -902,6 +926,7 @@ void MainWindow::doRequest() {
 
 
 void MainWindow::requestBarUpdate(long value) {
+    //Mise à jour de la barre de progression sur l'ui
     barRequest->setValue(value);
     if(value == 100) {
         listeChampsRetenu->setText(listeChampsRetenu->toPlainText().toUtf8().constData());
@@ -939,15 +964,17 @@ void MainWindow::requestBarUpdate(long value) {
 }
 
 void MainWindow::info() {
+    //Info de l'application html
     QMessageBox msgInfo(this);
-    msgInfo.setWindowTitle("Help / About");
+    msgInfo.setWindowTitle("A Propos de");
     msgInfo.setTextFormat(Qt::RichText);   //this is what makes the links clickable
-    msgInfo.setText("<h1 style='text-align=center'>Bienvenue sur QueryOptimizer</h1> <p>Version 2.0.0 <br> <br> <a href='https://github.com/EzekielaRakotoarijaona/OlapMod/issues'>Support</a><br><br>&copy; 2020 Université de Bordeaux <br> <br> Créé par : Oubeyy Shah, Lilia Naitamara, Riad M'himdi, Claire-Elise Hochet, Camille Rakotoarijaona <br> <br> <a href='https://github.com/EzekielaRakotoarijaona/OlapMod/blob/master/LICENSE'>Licence Apache-2.0</a>");
+    msgInfo.setText("<h1 style='text-align=center'>Bienvenue sur QueryOptimizer</h1> <p>Version 2.0.0 <br> <br> <a href='https://github.com/EzekielaRakotoarijaona/OlapMod/issues'>Support</a><br><br><img src='../ui_resources/univ.png' width='150' heigth='100' ><br>&copy; 2020 <br> <br> Créé par : Oubeyy Shah, Lilia Naitamara, Riad M'himdi, Claire-Elise Hochet, Camille Rakotoarijaona <br> <br> <a href='https://github.com/EzekielaRakotoarijaona/OlapMod/blob/master/LICENSE'>Licence Apache-2.0 <br><br> </a>");
     msgInfo.exec();
 }
 
 
 void MainWindow::help() {
+    //Aide de l'application au format html
     QWidget *helpWindow = new QWidget;
     QGridLayout* layout = new QGridLayout;
     QTextBrowser *tb = new QTextBrowser(this);
