@@ -191,43 +191,34 @@ void materialiser(vector<vector<string>> & tableFait, long requeteAMaterialiser,
     }
     //Sinon
     vector<long> entier_Binaire = convertirEnBinaire(requeteAMaterialiser, tableFait[0].size()-1);
-    vector<vector<string>> tableFaitIntermediaire;
-    //Création  d'une table de fait intermédiaire récupérant les colonnes concernées
-    for (long i = 0; i < entier_Binaire.size(); i++) {
-        if (entier_Binaire[i] == 1){
-            tableFaitIntermediaire.resize(tableFait.size());
-            for (long j = 0; j < tableFaitIntermediaire.size(); j++) {
-                tableFaitIntermediaire[j].push_back(tableFait[j][i]);
-            }
+    long size = 0;
+    for (long i = 0; i<entier_Binaire.size(); i++) {
+        if(entier_Binaire[i] == 1) {
+            size++;
         }
     }
-    //On y ajoute les faits
-    for (long i = 0; i < tableFaitIntermediaire.size(); i++) {
-            tableFaitIntermediaire[i].push_back(tableFait[i][tableFait[i].size()-1]);
-    }
     //On stock dans la vraie table de fait les tuples de manière unique et de sorte à appliquer la fonction d'aggrégation
-    for (long i = 0; i < tableFaitIntermediaire.size(); i++) {
+    for (long i = 0; i < tableFait.size(); i++) {
         //Position renvoie la position du tuple dans la nnouvelleTableDeFAit
-        long position = findTuple(newTableFait, tableFaitIntermediaire[i]);
+        long position = findTuple(newTableFait, tableFait[i], entier_Binaire, size);
         //Si la position est à -1 on insère le tuple dans la table de fait
         if (position == -1) {
-            insertInTableFait(newTableFait, tableFaitIntermediaire[i]);
+            insertInTableFait(newTableFait, tableFait[i], entier_Binaire);
         }
         else{
             //SI 0 calcul de la somme
             if (typeOperation == 0) {
-                addition(tableFaitIntermediaire, newTableFait, i, position);
+                addition(tableFait, newTableFait, i, position);
             }
             //Si 1 Calcul du Max
             else{
-                max(tableFaitIntermediaire, newTableFait, i, position);
+                max(tableFait, newTableFait, i, position);
             }
         }
     }
-    tableFaitIntermediaire.clear();
 }
 
-long findTuple(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire){
+long findTuple(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire, vector<long> &entier_Binaire, long size){
     //Si la table de fait est de taille 0 alors il est sûr que le tuple n'est pas encore dans la table
     if (newTableFait.size() == 0) {
         return -1;
@@ -236,22 +227,29 @@ long findTuple(vector<vector<string>>& newTableFait, vector<string>& tableFaitIn
     for (long i = 0; i < newTableFait.size(); i++) {
         long count = 0;
         for (long j = 0; j < tableFaitIntermediaire.size()-1; j++) {
-            if (newTableFait[i][j] == tableFaitIntermediaire[j]) {
+            if (entier_Binaire[j] == 1 &&  std::find(newTableFait[i].begin(), newTableFait[i].end(), tableFaitIntermediaire[j]) != newTableFait[i].end()) {
                 count++;
             }
         }
-        if (count == tableFaitIntermediaire.size()-1) {
+        if (count == size) {
             return i;
         }
     }
     return -1;
 }
 
-void insertInTableFait(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire){
+
+
+
+
+void insertInTableFait(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire, vector<long> &entier_Binaire){
     newTableFait.resize(newTableFait.size()+1);
-    for (long i = 0; i < tableFaitIntermediaire.size(); i++) {
-        newTableFait[newTableFait.size() - 1].push_back(tableFaitIntermediaire[i]);
+    for (long i = 0; i < tableFaitIntermediaire.size()-1; i++) {
+        if(entier_Binaire[i] == 1) {
+            newTableFait[newTableFait.size() - 1].push_back(tableFaitIntermediaire[i]);
+        }
     }
+    newTableFait[newTableFait.size() - 1].push_back(tableFaitIntermediaire[tableFaitIntermediaire.size()-1]);
 }
 
 

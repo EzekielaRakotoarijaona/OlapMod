@@ -36,9 +36,9 @@ void afficherTableFait(vector<vector<string>>& tableFait);
 
 void materialiser(vector<vector<string>> & tableFait, long requeteAMaterialiser, long typeOperation, vector<vector<string>> & newTableFait );
 
-long findTuple(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire);
+long findTuple(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire, vector<long> &entier_Binaire, long size);
 
-void insertInTableFait(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire);
+void insertInTableFait(vector<vector<string>>& newTableFait, vector<string>& tableFaitIntermediaire, vector<long> &entier_Binaire);
 
 void addition(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait);
 
