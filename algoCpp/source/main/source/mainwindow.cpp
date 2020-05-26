@@ -43,24 +43,25 @@ using namespace std;
 MainWindow::MainWindow(QWidget *parent)
    : QMainWindow(parent)
 {
-    scaleWidthRatio = (double)QApplication::desktop()->width() / baseWidth;
-    scaleHeigthRatio = (double)QApplication::desktop()->height() / baseHeigth;
+    scaleWidthRatio = (double)QApplication::desktop()->width() / baseWidth;                   // Récupération de la largeur et hauteur de l'ordinateur
+    scaleHeigthRatio = (double)QApplication::desktop()->height() / baseHeigth;	 	      // Afin d'adapter les tailles de layout à la résolution de l'écran
     
-    long id = QFontDatabase::addApplicationFont("../ui_resources/Baloo-Regular-webfont.ttf");
+    long id = QFontDatabase::addApplicationFont("../ui_resources/Baloo-Regular-webfont.ttf"); // Téléchargement de la police Baloo-regular
     if(id!=-1) {
-        QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+        QString family = QFontDatabase::applicationFontFamilies(id).at(0);                    // Attribution de la police à l'attribut "baloo"
         baloo = new QFont(family);
     }
-    else baloo = new QFont(QString::fromStdString("Baloo"));
-    
-    QToolBar* toolbar = new QToolBar;
+    else baloo = new QFont(QString::fromStdString("Baloo"));                                  // Si échec de l'installation de la police on apelle directement la police 
+    											      // de l'ordinateur (LES PC MACS POSSEDENT DEJA CETTE POLICE)
+    QToolBar* toolbar = new QToolBar;	
     toolbar->setStyleSheet("border: none; background-color: transparent;");
     toolbar->setGeometry(QRect(QPoint(100, 30),
     QSize(30 * scaleWidthRatio, 20 * scaleHeigthRatio)));
+   
     QToolButton* helpButton = new QToolButton();
-    helpButton->setStyleSheet("QToolButton{border-image:url(../ui_resources/help.png); max-height: 25px; max-width: 25px;} QToolButton:hover{border-image:url(../ui_resources/help_hover.png); max-height: 25px; max-width: 25px;} QToolButton:pressed{border-image:url(../ui_resources/help_hover.png);max-height: 15px; max-width: 15px;}");
+    helpButton->setStyleSheet("QToolButton{border-image:url(../ui_resources/help.png); max-height: 25px; max-width: 25px;} QToolButton:hover{border-image:url(../ui_resources/help_hover.png); max-height: 25px; max-width: 25px;} QToolButton:pressed{border-image:url(../ui_resources/help_hover.png);max-height: 15px; max-width: 15px;}");    // Attribution d'éléments de style CSS au bouton CSS                                                                 
     QToolButton* infoButton = new QToolButton();
-    infoButton->setStyleSheet("QToolButton{border-image:url(../ui_resources/info.png); max-height: 25px; max-width: 25px;} QToolButton:hover{border-image:url(../ui_resources/info_hover.png);max-height: 25px; max-width: 25px;} QToolButton:pressed{border-image:url(../ui_resources/info_hover.png);max-height: 15px; max-width: 15px;} ");
+    infoButton->setStyleSheet("QToolButton{border-image:url(../ui_resources/info.png); max-height: 25px; max-width: 25px;} QToolButton:hover{border-image:url(../ui_resources/info_hover.png);max-height: 25px; max-width: 25px;} QToolButton:pressed{border-image:url(../ui_resources/info_hover.png);max-height: 15px; max-width: 15px;} ");       // Attribution d'éléments type CSS au bouton
     
     toolbar->addWidget(helpButton);
     toolbar->addWidget(infoButton);
@@ -68,9 +69,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(infoButton, SIGNAL(clicked()), this, SLOT(info()));
     
     statusBar = new QStatusBar();
-    statusBar->addPermanentWidget(toolbar);
-    
-                       
+    statusBar->addPermanentWidget(toolbar);    
     
     
     bar = new QProgressDialog();
@@ -113,8 +112,9 @@ MainWindow::MainWindow(QWidget *parent)
    tempsReq->setGeometry(QRect(QPoint(100, 30),
     QSize(200 * scaleWidthRatio, 50 * scaleHeigthRatio)));
    tempsReq->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-   tempsReq->setFont(*baloo);
-   tempsReq->setStyleSheet("font-weight:medium; font-size:14pt");
+
+   tempsReq->setFont(*baloo);                                               // Attribution de la police "baloo" au label
+   tempsReq->setStyleSheet("font-weight:medium; font-size:14pt");           // Attribution d'éléments de style CSS au texte
    tempsReq->setText(QString::fromStdString(to_string(tempsRequete)) + "s");
     tempsReq->setAlignment(Qt::AlignTop | Qt::AlignRight);
     tempsReq->setFrameShape(QFrame::HLine);
@@ -124,9 +124,10 @@ MainWindow::MainWindow(QWidget *parent)
     tailleTableFait->setGeometry(QRect(QPoint(100, 30),
      QSize(200 * scaleWidthRatio, 50 * scaleHeigthRatio)));
     tailleTableFait->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-    tailleTableFait->setFont(*baloo);
-    tailleTableFait->setStyleSheet("font-weight:medium; font-size:13pt");
-    tailleTableFait->setText("0 lignes");
+
+    tailleTableFait->setFont(*baloo);  					    // Attribution de la police "baloo" au label
+    tailleTableFait->setStyleSheet("font-weight:medium; font-size:13pt");   // Attribution d'éléments de style CSS au texte
+    tailleTableFait->setText("0 lignes");                                   // Attribution d'un texte au label
      tailleTableFait->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
      tailleTableFait->setFrameShape(QFrame::HLine);
      tailleTableFait->setFrameStyle(QFrame::NoFrame);
@@ -135,9 +136,10 @@ MainWindow::MainWindow(QWidget *parent)
     tailleResultatRequete->setGeometry(QRect(QPoint(100, 30),
      QSize(200 * scaleWidthRatio, 50 * scaleHeigthRatio)));
     tailleResultatRequete->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-    tailleResultatRequete->setFont(*baloo);
-    tailleResultatRequete->setStyleSheet("font-weight:medium; font-size:13pt");
-    tailleResultatRequete->setText("0 lignes");
+
+    tailleResultatRequete->setFont(*baloo);				          // Attribution de la police "baloo" au label
+    tailleResultatRequete->setStyleSheet("font-weight:medium; font-size:13pt");   // Attribution d'éléments de style CSS au texte
+    tailleResultatRequete->setText("0 lignes");                                   // Attribution d'un texte au label         
      tailleResultatRequete->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
      tailleResultatRequete->setFrameShape(QFrame::HLine);
      tailleResultatRequete->setFrameStyle(QFrame::NoFrame);
@@ -146,9 +148,10 @@ MainWindow::MainWindow(QWidget *parent)
    title->setGeometry(QRect(QPoint(100, 30),
     QSize(200 * scaleWidthRatio, 50 * scaleHeigthRatio)));
    title->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-   title->setFont(*baloo);
-   title->setStyleSheet("font-weight:medium; font-size:28pt");
-   title->setText("QueryOptimizer");
+
+   title->setFont(*baloo);                                                  // Attribution de la police "baloo" au label
+   title->setStyleSheet("font-weight:medium; font-size:28pt");              // Attribution d'éléments de style CSS au texte
+   title->setText("QueryOptimizer");                                        // Attribution d'un texte au label   
     title->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
     title->setFrameShape(QFrame::HLine);
     title->setFrameStyle(QFrame::NoFrame);
@@ -157,10 +160,10 @@ MainWindow::MainWindow(QWidget *parent)
     titleTableFait->setGeometry(QRect(QPoint(100, 30),
      QSize(200 * scaleWidthRatio, 50 * scaleHeigthRatio)));
     titleTableFait->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-
-   titleTableFait->setFont(*baloo);
-   titleTableFait->setStyleSheet("font-weight:medium; font-size:16pt;color:grey"); 
-   titleTableFait->setText("Table de faits - Originale");
+						
+   titleTableFait->setFont(*baloo);							 // Attribution de la police "baloo" au label
+   titleTableFait->setStyleSheet("font-weight:medium; font-size:16pt;color:grey");       // Attribution d'éléments de style CSS au texte
+   titleTableFait->setText("Table de faits - Originale");                                // Attribution d'un texte au label  
      titleTableFait->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
      titleTableFait->setFrameShape(QFrame::HLine);
      titleTableFait->setFrameStyle(QFrame::NoFrame);
@@ -169,9 +172,10 @@ MainWindow::MainWindow(QWidget *parent)
     titleTableGeneree->setGeometry(QRect(QPoint(100, 30),
      QSize(200 * scaleWidthRatio, 50 * scaleHeigthRatio)));
     titleTableGeneree->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-   titleTableGeneree->setFont(*baloo);// AJOUT CE
-   titleTableGeneree->setStyleSheet("font-weight:medium; font-size:16pt;color:grey"); // AJOUT CE
-   titleTableGeneree->setText("Résultat requête");// AJOUT CE
+
+   titleTableGeneree->setFont(*baloo);							 // Attribution de la police "baloo" au label
+   titleTableGeneree->setStyleSheet("font-weight:medium; font-size:16pt;color:grey");    // Attribution d'éléments de style CSS au texte
+   titleTableGeneree->setText("Résultat requête");				         // Attribution d'un texte au label  
      titleTableGeneree->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
      titleTableGeneree->setFrameShape(QFrame::HLine);
      titleTableGeneree->setFrameStyle(QFrame::NoFrame);
@@ -207,7 +211,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     setCentralWidget(mainScrollArea);
     msgBox = new QMessageBox();
-    msgBox->setWindowTitle("QueryOptimizer");
+    msgBox->setWindowTitle("QueryOptimizer");                            // Attribution d'un titre à la fenêtre du msgBox
     tableFaitWidget = new QTableWidget();
     tableFaitWidget->setMaximumWidth(650 * scaleWidthRatio);
     tableFaitWidget->setMinimumWidth(650 * scaleWidthRatio);
@@ -291,7 +295,7 @@ void MainWindow::initTableTailleRequetesWidget(){
     requetesMaterialise.resize(1);
     requetesMaterialise[0] = taillesRequetes.size()-1;
     nbRequetesAMaterialiserBox->setText("0");
-    nbRequetesAMaterialiserLabel->setText("Nb requêtes à matérialiser" "\n" "Max : " + QString::fromStdString(to_string(taillesRequetes.size()-1)));
+    nbRequetesAMaterialiserLabel->setText("Nb requêtes à matérialiser" "\n" "Max : " + QString::fromStdString(to_string(taillesRequetes.size()-1)));  // Attribution d'un texte au label avec un saut de ligne "\n"
     connect(nbRequetesAMaterialiserBox,SIGNAL (textChanged(QString)),this,SLOT(tailleMaxVector(QString)));
     nbRequetesAMaterialiserBox->setGeometry(QRect(QPoint(650, 100),
     QSize(100 * scaleWidthRatio, 50 * scaleHeigthRatio)));
@@ -336,9 +340,9 @@ void MainWindow::initiChargerLayout() {
      selectionFichier->setFrameStyle(QFrame::NoFrame);
     
     m_button = new QPushButton("", this);
-    m_button->setFont(*baloo);
-    m_button->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}");
-    m_button->setText("Charger le fichier");
+    m_button->setFont(*baloo); 									// Attribution de la police "baloo" au label
+    m_button->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}"); // Attribution d'éléments de style CSS au bouton
+    m_button->setText("Charger le fichier");							// Attribution d'un texte au label  
     m_button->setMaximumSize(150 * scaleWidthRatio, 40 * scaleHeigthRatio);
     m_button->setMinimumSize(150 * scaleWidthRatio, 40 * scaleHeigthRatio);
     connect(m_button, SIGNAL (released()), this, SLOT (handleButton()));
@@ -379,9 +383,10 @@ void MainWindow::initRequeteLayout() {
      champsRequetes->setGeometry(QRect(QPoint(0,0),
       QSize(100 * scaleWidthRatio, 50 * scaleHeigthRatio)));
      champsRequetes->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-     champsRequetes->setFont(*baloo);
-     champsRequetes->setStyleSheet("font-weight:medium; font-size:13pt"); 
-     champsRequetes->setText("Choisissez des" "\n"  "dimensions");
+		
+     champsRequetes->setFont(*baloo);									// Attribution de la police "baloo" au label
+     champsRequetes->setStyleSheet("font-weight:medium; font-size:13pt"); 				// Attribution d'éléments de style CSS au texte
+     champsRequetes->setText("Choisissez des" "\n"  "dimensions");					// Attribution d'un texte au label avec un saut de ligne "\n"
       champsRequetes->setAlignment(Qt::AlignTop | Qt::AlignCenter);
       champsRequetes->setFrameShape(QFrame::HLine);
       champsRequetes->setFrameStyle(QFrame::NoFrame);
@@ -390,9 +395,10 @@ void MainWindow::initRequeteLayout() {
      fonctionAggregation->setGeometry(QRect(QPoint(0,0),
       QSize(100 * scaleWidthRatio, 50 * scaleHeigthRatio)));
      fonctionAggregation->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-      fonctionAggregation->setFont(*baloo);
-   fonctionAggregation->setStyleSheet("font-weight:medium; font-size:13pt"); 
-   fonctionAggregation->setText("Choisissez une" "\n" "opération");
+
+      fonctionAggregation->setFont(*baloo);								// Attribution de la police "baloo" au label
+   fonctionAggregation->setStyleSheet("font-weight:medium; font-size:13pt"); 				// Attribution d'éléments de style CSS au texte
+   fonctionAggregation->setText("Choisissez une" "\n" "opération");					// Attribution d'un texte au label avec un saut de ligne "\n"
       fonctionAggregation->setAlignment(Qt::AlignTop | Qt::AlignCenter);
       fonctionAggregation->setFrameShape(QFrame::HLine);
       fonctionAggregation->setFrameStyle(QFrame::NoFrame);
@@ -414,17 +420,17 @@ void MainWindow::initRequeteLayout() {
     listeChampsRetenu->setMaximumWidth(120 * scaleWidthRatio);
     
     validerRequete = new QPushButton("", this);
-    validerRequete->setFont(*baloo);
-    validerRequete->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}");
-    validerRequete->setText("OK");
+    validerRequete->setFont(*baloo);									// Attribution de la police "baloo" au label
+    validerRequete->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}"); // Attribution d'éléments de style CSS au texte
+    validerRequete->setText("OK");									// Attribution d'un texte au label
     validerRequete->setMaximumSize(70 * scaleWidthRatio, 30 * scaleHeigthRatio);
     validerRequete->setMinimumSize(70 * scaleWidthRatio, 30 * scaleHeigthRatio);
     connect(validerRequete, SIGNAL (released()), this, SLOT (request()));
     
     effacerChamps = new QPushButton("", this);
-    effacerChamps->setFont(*baloo);
-    effacerChamps->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}");
-    effacerChamps->setText("Effacer");
+    effacerChamps->setFont(*baloo);									// Attribution de la police "baloo" au label
+    effacerChamps->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}");// Attribution d'éléments de style CSS au texte
+    effacerChamps->setText("Effacer");									// Attribution d'un texte au label
     effacerChamps->setMaximumSize(70 * scaleWidthRatio, 30 * scaleHeigthRatio);
     effacerChamps->setMinimumSize(70 * scaleWidthRatio, 30 * scaleHeigthRatio);
     connect(effacerChamps, SIGNAL (released()), this, SLOT (effacerListeChamps()));
@@ -482,9 +488,10 @@ void MainWindow::nbMterialisationLayout() {
     nbRequetesAMaterialiserLabel->setGeometry(QRect(QPoint(0,0),
      QSize(120 * scaleWidthRatio, 50 * scaleHeigthRatio)));
     nbRequetesAMaterialiserLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-    nbRequetesAMaterialiserLabel->setFont(*baloo);// AJOUT CE
-     nbRequetesAMaterialiserLabel->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 14px"); // AJOUT CE
-     nbRequetesAMaterialiserLabel->setText("Nb requêtes à matérialiser" "\n" "Max : 0");// AJOUT CE
+
+    nbRequetesAMaterialiserLabel->setFont(*baloo);								// Attribution de la police "baloo" au label
+     nbRequetesAMaterialiserLabel->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 14px");     // Attribution d'éléments de style CSS au texte
+     nbRequetesAMaterialiserLabel->setText("Nb requêtes à matérialiser" "\n" "Max : 0");			// Attribution d'un texte au label avec saut de ligne "\n"
      nbRequetesAMaterialiserLabel->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
 
      nbRequetesAMaterialiserLabel->setFrameShape(QFrame::HLine);
@@ -495,9 +502,10 @@ void MainWindow::nbMterialisationLayout() {
      QSize(200 * scaleWidthRatio, 30 * scaleHeigthRatio)));
 
     memoireReelle->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-    memoireReelle->setFont(*baloo);// AJOUT CE
-     memoireReelle->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 21px"); // AJOUT CE
-    memoireReelle->setText("Unités de mémoire utilisées");// AJOUT CE
+		
+    memoireReelle->setFont(*baloo);						 				// Attribution de la police "baloo" au label				
+     memoireReelle->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 21px");     		 // Attribution d'éléments de style CSS au texte
+    memoireReelle->setText("Unités de mémoire utilisées");							// Attribution d'un texte au label
      memoireReelle->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
 
 
@@ -508,9 +516,10 @@ void MainWindow::nbMterialisationLayout() {
     reqMat->setGeometry(QRect(QPoint(0,0),
      QSize(200 * scaleWidthRatio, 50 * scaleHeigthRatio)));
     reqMat->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-    reqMat->setFont(*baloo);// AJOUT CE
-     reqMat->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 0px"); // AJOUT CE
-    reqMat->setText("Requêtes matérialisées");// AJOUT CE
+
+    reqMat->setFont(*baloo);											// Attribution de la police "baloo" au label
+     reqMat->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 0px"); 				 // Attribution d'éléments de style CSS au texte
+    reqMat->setText("Requêtes matérialisées");									// Attribution d'un texte au label
      reqMat->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
 
      reqMat->setFrameShape(QFrame::HLine);
@@ -520,9 +529,10 @@ void MainWindow::nbMterialisationLayout() {
     memoireReelleVal->setGeometry(QRect(QPoint(0,0),
      QSize(120 * scaleWidthRatio, 30 * scaleHeigthRatio)));
     memoireReelleVal->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-    memoireReelleVal->setFont(*baloo);// AJOUT CE
-     memoireReelleVal->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 0px"); // AJOUT CE
-    memoireReelleVal->setText(QString::fromStdString(to_string(espaceMemoireReel)));// AJOUT CE
+    
+     memoireReelleVal->setFont(*baloo);										// Attribution de la police "baloo" au label
+     memoireReelleVal->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 0px");     		 // Attribution d'éléments de style CSS au texte
+    memoireReelleVal->setText(QString::fromStdString(to_string(espaceMemoireReel)));				// Attribution d'un texte au label
      memoireReelleVal->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
 
      memoireReelleVal->setFrameShape(QFrame::HLine);
@@ -532,9 +542,10 @@ void MainWindow::nbMterialisationLayout() {
     reqMatVal->setGeometry(QRect(QPoint(0,0),
      QSize(120 * scaleWidthRatio, 30 * scaleHeigthRatio)));
     reqMatVal->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-    reqMatVal->setFont(*baloo);// AJOUT CE
-     reqMatVal->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 0px"); // AJOUT CE
-    reqMatVal->setText(QString::fromStdString(to_string(0)));// AJOUT CE
+
+    reqMatVal->setFont(*baloo);											// Attribution de la police "baloo" au label
+     reqMatVal->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 0px"); 			 // Attribution d'éléments de style CSS au texte
+    reqMatVal->setText(QString::fromStdString(to_string(0)));							// Attribution d'un texte au label
      reqMatVal->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
 
      reqMatVal->setFrameShape(QFrame::HLine);
@@ -545,9 +556,10 @@ void MainWindow::nbMterialisationLayout() {
     uniteMemoire->setGeometry(QRect(QPoint(0,0),
      QSize(200 * scaleWidthRatio, 50 * scaleHeigthRatio)));
     uniteMemoire->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-     uniteMemoire->setFont(*baloo);// AJOUT CE
-     uniteMemoire->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 18px"); // AJOUT CE
-     uniteMemoire->setText("Unités de mémoire prévues");// AJOUT CE
+
+     uniteMemoire->setFont(*baloo);										// Attribution de la police "baloo" au label
+     uniteMemoire->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 18px"); 			 // Attribution d'éléments de style CSS au texte
+     uniteMemoire->setText("Unités de mémoire prévues");							// Attribution d'un texte au label
 
      uniteMemoire->setAlignment(Qt::AlignCenter | Qt::AlignLeft);
      uniteMemoire->setFrameShape(QFrame::HLine);
@@ -557,9 +569,10 @@ void MainWindow::nbMterialisationLayout() {
     textMemoire->setGeometry(QRect(QPoint(0,0),
      QSize(120 * scaleWidthRatio, 50 * scaleHeigthRatio)));
     textMemoire->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-    textMemoire->setFont(*baloo);// AJOUT CE
-     textMemoire->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 0px"); // AJOUT CE
-    textMemoire->setText(QString::fromStdString(to_string(0)));// AJOUT CE
+
+    textMemoire->setFont(*baloo);										// Attribution de la police "baloo" au label
+     textMemoire->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 0px"); 			// Attribution d'éléments de style CSS au texte		
+    textMemoire->setText(QString::fromStdString(to_string(0)));							// Attribution d'un texte au label
      textMemoire->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
 
      textMemoire->setFrameShape(QFrame::HLine);
@@ -568,9 +581,10 @@ void MainWindow::nbMterialisationLayout() {
      nbRequetesAMaterialiserBox =  new QLineEdit(this);
     nbRequetesAMaterialiserBox->setGeometry(QRect(QPoint(0,0),
      QSize(120 * scaleWidthRatio, 50 * scaleHeigthRatio)));
-    nbRequetesAMaterialiserBox->setFont(*baloo);// AJOUT CE
-     nbRequetesAMaterialiserBox->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px"); // AJOUT CE
-    nbRequetesAMaterialiserBox->setText(QString::fromStdString(to_string(0)));// AJOUT CE
+
+    nbRequetesAMaterialiserBox->setFont(*baloo);								// Attribution de la police "baloo" au label
+     nbRequetesAMaterialiserBox->setStyleSheet("font-weight:medium; font-size:13pt; padding-left: 10px");	// Attribution d'éléments de style CSS au texte	
+    nbRequetesAMaterialiserBox->setText(QString::fromStdString(to_string(0)));					// Attribution d'un texte au label
      nbRequetesAMaterialiserBox->setAlignment(Qt::AlignCenter | Qt::AlignCenter);
     
     nbRequetesAMaterialiserBox->setMinimumHeight(15 * scaleHeigthRatio);
@@ -579,9 +593,10 @@ void MainWindow::nbMterialisationLayout() {
     nbRequetesAMaterialiserBox->setMaximumWidth(80 * scaleWidthRatio);
     
     nbRequetesAMaterialiserButton = new QPushButton(this);
-    nbRequetesAMaterialiserButton->setFont(*baloo);
-    nbRequetesAMaterialiserButton->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}");
-    nbRequetesAMaterialiserButton->setText("OK");
+
+    nbRequetesAMaterialiserButton->setFont(*baloo);								// Attribution de la police "baloo" au label
+    nbRequetesAMaterialiserButton->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}");// Attribution d'éléments de style CSS au texte	
+    nbRequetesAMaterialiserButton->setText("OK");								// Attribution d'un texte au label
     nbRequetesAMaterialiserButton->setMaximumSize(70 * scaleWidthRatio, 30 * scaleHeigthRatio);
     nbRequetesAMaterialiserButton->setMinimumSize(70 * scaleWidthRatio, 30 * scaleHeigthRatio);
     connect(nbRequetesAMaterialiserButton, SIGNAL (released()), this, SLOT (calculRequetesAMateriliser()));
@@ -631,17 +646,19 @@ void MainWindow::initExporterLayout() {
     selectionFichier->setGeometry(QRect(QPoint(0,0),
      QSize(250 * scaleWidthRatio, 80 * scaleHeigthRatio)));
     selectionFichier->setFrameStyle(QFrame::Panel | QFrame::Sunken);
-     selectionFichier->setFont(*baloo);
-     selectionFichier->setStyleSheet("font-weight:medium; font-size:13pt ; padding-left: 8px"); 
-     selectionFichier->setText("Souhaitez-vous exporter la table" "\n"  "de fait générée ?");
+
+     selectionFichier->setFont(*baloo);										// Attribution de la police "baloo" au label
+     selectionFichier->setStyleSheet("font-weight:medium; font-size:13pt ; padding-left: 8px"); 		// Attribution d'éléments de style CSS au texte	
+     selectionFichier->setText("Souhaitez-vous exporter la table" "\n"  "de fait générée ?");			// Attribution d'un texte au label avec un saut de ligne "\n"
      selectionFichier->setAlignment(Qt::AlignTop | Qt::AlignLeft);
      selectionFichier->setFrameShape(QFrame::HLine);
      selectionFichier->setFrameStyle(QFrame::NoFrame);
     
     exporterButton = new QPushButton(this);
-    exporterButton->setFont(*baloo);
-    exporterButton->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}");
-    exporterButton->setText("Exporter");
+
+    exporterButton->setFont(*baloo);										// Attribution de la police "baloo" au label
+    exporterButton->setStyleSheet("QPushButton{background-color:#191970; border-radius:10px;font-weight:medium; font-size:13pt;color:white}QPushButton:hover{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:13pt;color:white} QPushButton:pressed{background-color:#5b5b81; border-radius:10px;font-weight:medium; font-size:10pt;color:white}"); // Attribution d'éléments de style CSS au texte	
+    exporterButton->setText("Exporter");										// Attribution d'un texte au label
     exporterButton->setMaximumSize(150 * scaleWidthRatio, 40 * scaleHeigthRatio);
     exporterButton->setMinimumSize(150 * scaleWidthRatio, 40 * scaleHeigthRatio);
     connect(exporterButton, SIGNAL (released()), this, SLOT (exporterButtonLaunch()));

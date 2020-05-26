@@ -123,7 +123,7 @@ class MainWindow : public QMainWindow
         QTableWidget *tableFaitRequeteWidget;
         QString dirPath;
         QString fileName;
-        QFont* baloo;
+        QFont* baloo;         // variable pour la police d'écriture
         QStatusBar* statusBar;
         
 
