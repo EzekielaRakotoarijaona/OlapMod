@@ -73,6 +73,13 @@ vector<vector<string>> chargerFichiers(string filePath) { // Extrait les valeurs
             cout<< tableFait[i][j] << " ";
         cout<<" "<<endl;
     }
+    long size = tableFait[0].size();
+    for(long i = 1; i<tableFait.size(); i++) {
+        if(tableFait[i].size() != size) {
+            vector<vector<string>> tableFaitVide;
+            return tableFaitVide;
+        }
+    }
     return tableFait;
 }
 
