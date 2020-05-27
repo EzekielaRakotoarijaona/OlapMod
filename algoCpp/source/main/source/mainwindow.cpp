@@ -256,6 +256,7 @@ void MainWindow::handleButton()
     dirPath = fileInfo.filePath(); // Path vers le fichier
     fileName = fileInfo.fileName();
     string filePath = dirPath.toUtf8().constData();
+    clearAll();
     connect(this, SIGNAL(endChargementFichier(long)), this, SLOT(displayPopupEndChargementFichier(long)), Qt::BlockingQueuedConnection);
     QFuture<void> future = QtConcurrent::run(this, &MainWindow::runChargementFichier );
 }
@@ -1027,6 +1028,51 @@ void MainWindow::processChargementFichier() {
         }
         if(tableFait.size() == tableFaitString.size()) return;
     }
+}
+
+void MainWindow::clearAll() {
+    tableFaitString.clear();
+    tableFait.clear();
+    requetesMaterialise.clear();
+    map_Max.clear();
+    map_Sum.clear();
+    tableFaitRequete.clear();
+    espaceMemoire = 0;
+    nbAMateriliser = 0;
+    espaceMemoireReel = 0;
+    tempsChargement = 0.0;
+    tempsMaterialisation = 0.0;
+    tempsRequete = 0.0;
+    endCalculReq = false;
+    endChargeFichier = false;
+    effacerListeChamps();
+    tempsReq->setText(QString::fromStdString(to_string(tempsRequete)) + "s");
+    tableFaitWidget->setRowCount(0);
+    tableFaitWidget->setColumnCount(0);
+    tableFaitRequeteWidget->setRowCount(0);
+    tableFaitRequeteWidget->setColumnCount(0);
+    mainLayout->addWidget(tableFaitWidget, 4,0,1,2, Qt::AlignTop| Qt::AlignLeft);
+    mainLayout->addWidget(tableFaitRequeteWidget, 4,2,1,2, Qt::AlignTop| Qt::AlignLeft);
+    mainLayout->addWidget(tempsReq, 2, 3);
+    tailleResultatRequete->setText("0 lignes");
+    tailleTableFait->setText("0 lignes");
+    mainLayout->addWidget(tailleResultatRequete, 5, 2);
+    mainLayout->addWidget(tailleTableFait, 5, 0);
+    delete champsRequetesComboBox;
+    champsRequetesComboBox =  new QComboBox(this);
+    champsRequetesComboBox->setGeometry(QRect(QPoint(650, 100),
+    QSize(100 * scaleWidthRatio, 50 * scaleHeigthRatio)));
+    requeteLayout->addWidget(champsRequetesComboBox,1,1, Qt::AlignCenter| Qt::AlignCenter);
+    nbRequetesAMaterialiserLabel->setText("Nb requêtes à matérialiser" "\n" "Max : 0");
+    memoireReelleVal->setText(QString::fromStdString(to_string(espaceMemoireReel)));
+    reqMatVal->setText(QString::fromStdString(to_string(0)));
+    nbRequetesAMaterialiserBox->setText(QString::fromStdString(to_string(0)));
+    textMemoire->setText(QString::fromStdString(to_string(0)));
+    nbMaterialiserLayout->addWidget(nbRequetesAMaterialiserLabel,1,0, Qt::AlignCenter| Qt::AlignCenter);
+    nbMaterialiserLayout->addWidget(nbRequetesAMaterialiserBox,1,1, Qt::AlignCenter| Qt::AlignCenter);
+    nbMaterialiserLayout->addWidget(memoireReelleVal, 4, 1);
+    nbMaterialiserLayout->addWidget(reqMatVal, 3, 1);
+    nbMaterialiserLayout->addWidget(textMemoire,2,1, Qt::AlignCenter| Qt::AlignCenter);
 }
 
 

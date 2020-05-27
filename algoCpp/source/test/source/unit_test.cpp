@@ -170,7 +170,6 @@ bool testMaterialiser(string filePath){
     
     materialiser(tableFaitString, 3, 0, newTableFaitSomme);
     materialiser(tableFaitString, 3, 1, newTableFaitMax);
- 
     if(newTableFaitSomme.size() != tableFaitAttenduSomme.size()){
         printf("Test Failed test 1 table fait SOMME \n");
         return false;

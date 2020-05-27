@@ -15,6 +15,7 @@
 #include <iterator>
 #include "../include/nbEnregistrements.hpp"
 #include <fstream>
+#include <sstream>
 
 
 using namespace std;
@@ -270,17 +271,23 @@ void stockerRequete(vector<long>& requetesMaterialisees, vector<vector<string>>&
 }
 
 void addition(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait){
-    long actualValue = stol(newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1]);
-    long additionalValue = stol(tableFait[positionTableFait][tableFait[positionTableFait].size()-1]);
-    long finalValue = actualValue + additionalValue;
-    newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1] = to_string(finalValue);
+    double actualValue = stod(newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1]);
+    double additionalValue = stod(tableFait[positionTableFait][tableFait[positionTableFait].size()-1]);
+    double finalValue = actualValue + additionalValue;
+    ostringstream out;
+    out.precision(2);
+    out << std::fixed << finalValue;
+    newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1] = out.str();
 }
 
 void max(vector<vector<string>>& tableFait, vector<vector<string>>& newTableFait, long positionTableFait, long positionNewTableFait){
-    long actualValue = stol(newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1]);
-    long additionalValue = stol(tableFait[positionTableFait][tableFait[positionTableFait].size()-1]);
+    double actualValue = stod(newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1]);
+    double additionalValue = stod(tableFait[positionTableFait][tableFait[positionTableFait].size()-1]);
     if (actualValue < additionalValue) {
-        newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1] = to_string(additionalValue);
+        ostringstream out;
+        out.precision(2);
+        out << std::fixed << additionalValue;
+        newTableFait[positionNewTableFait][newTableFait[positionNewTableFait].size()-1] = out.str();
     }
 }
 

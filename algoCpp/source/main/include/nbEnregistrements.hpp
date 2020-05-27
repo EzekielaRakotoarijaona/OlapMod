@@ -26,6 +26,8 @@ typedef vector<vector<string>> matrice_string;//on définit le type matrice pour
 
 vector<vector<string>> chargerFichiers(string filePath);
 
+int valid_number(string str);
+
 matrice conversion(vector<vector<string>> tableFaitString);
 
 void generer(matrice& M, long l, long c);

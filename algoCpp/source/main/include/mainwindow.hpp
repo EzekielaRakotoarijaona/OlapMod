@@ -64,6 +64,8 @@ class MainWindow : public QMainWindow
         void processChargementFichier();
         //Export de fichier dans un concurrent thread
         void exporter();
+        //Reinitialiser tout
+        void clearAll();
     signals:
         //Les différents signaux émis pour mettre à jour les barres de progression
         void endCalculRequete(long value);
