@@ -985,7 +985,7 @@ void MainWindow::info() {
     QMessageBox msgInfo(this);
     msgInfo.setWindowTitle("A Propos de");
     msgInfo.setTextFormat(Qt::RichText);   //this is what makes the links clickable
-    msgInfo.setText("<h1 style='text-align=center'>Bienvenue sur QueryOptimizer</h1> <p>Version 2.0.0 <br> <br> <a href='https://github.com/EzekielaRakotoarijaona/OlapMod/issues'>Support</a><br><br><img src='../ui_resources/univ.png' width='150' heigth='100' ><br>&copy; 2020 <br> <br> Créé par : Oubeyy Shah, Lilia Naitamara, Riad M'himdi, Claire-Elise Hochet, Camille Rakotoarijaona <br> <br> <a href='https://github.com/EzekielaRakotoarijaona/OlapMod/blob/master/LICENSE'>Licence Apache-2.0 <br><br> </a>");
+    msgInfo.setText("<h1 style='text-align=center'>Bienvenue sur QueryOptimizer</h1> <p>Version 2.0.0(Stable) <br> <br> <a href='https://github.com/EzekielaRakotoarijaona/OlapMod/issues'>Support</a><br><br><img src='../ui_resources/univ.png' width='150' heigth='100' ><br>&copy; 2020 <br> <br> Créé par : Oubeyy Shah, Lilia Naitamara, Riad M'himdi, Claire-Elise Hochet, Camille Rakotoarijaona <br> <br> <a href='https://github.com/EzekielaRakotoarijaona/OlapMod/blob/master/LICENSE'>Licence Apache-2.0 <br><br> </a>");
     msgInfo.exec();
 }
 

@@ -11,153 +11,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="css/styles_menu.css">
-  <title>Aide ZEUS</title>
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-  <!--===============================================================================================-->
-  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="css/util.css">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-
-  <link rel="icon" type="image/png" href="tableau_styles/images/icons/favicon.ico"/>
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="tableau_styles/vendor/bootstrap/css/bootstrap.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="tableau_styles/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="tableau_styles/vendor/animate/animate.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="tableau_styles/vendor/select2/select2.min.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="tableau_styles/vendor/perfect-scrollbar/perfect-scrollbar.css">
-  <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="tableau_styles/css/util.css">
-  <link rel="stylesheet" type="text/css" href="tableau_styles/css/main.css">
+  <title>Aide QueryOptimizer</title>
   <!--===============================================================================================-->
 </head>
 <body>
-  <div id='cssmenu'>
-    <ul>
-      <li><a href='accueil.php'><span>Accueil</span></a></li>
-      <li><a href='formulaire.php'><span>Saisies de Fiches</span></a></li>
-      <li><a href='modification.php'><span>Modifications</span></a></li>
-      <li><a href='consultation.php'><span>Consultations</span></a></li>
-      <li class='last'><a href='formulaire_demandeur.php'><span>Gestion Contacts</span></a></li>
-    </ul>
-  </div>
-  <div class="container-contact100">
-  </br>
-</br>
- <img src="Lazy53.PNG" width="70" height="40">
- </br>
- </br>
-<h1 align="center"> Doc </h1>
+<h1 align="center"> Tutoriel </h1>
 </br>
 </br>
 <ul>
 </br>
 </br>
-<h3 align ='center'>1. Qu'est-ce que ZEUS?</h3>
+<h3 align ='center'>1. Qu'est-ce que Query Optimizer?</h3>
 </br>
 </br>
-<p align='center'>ZEUS est un logiciel de Gestion des appareils de synchronisation développé par un stagiaire de l'UPR/SO dans le but de pouvoir visualiser toute la carte de synchronisation et de permettre ainsi l'ajout, la modification et la suppressions d'éléments de synchronisation plus rapidement. En d'autres terme, Synchro vous offre la possibilité de naviguer sur une base de données de mainière efficace et ergonomique.</p>
+<p align='center'>Matérialiser complètement un cube de données s'avère souvent irréalisable en pratique car trop gourmand en espace de stockage.
+On se content de réaliser une matérialisation partielle: seule une partie est pré-calculée.
+Le produit permet de sélectionner la "meilleure" partie du cube à pré-calculer, pré-calculer cette partie de la manière la plus efficace et proposer une interface d'interrogation du cube qui exploite la partie pré-calculée.</p>
 </br>
 </br>
 <h3 align='center'>2. Fonctionnalités</h3>
 </br>
-<h4 align='center'>2.1 La Saisie de Fiche : (Fiche de Demande de Cablage)</h4>
+<h4 align='center'>2.1 Chargement de Fichier</h4>
 </br>
 </br>
-<p align="center">L'onglet <a href="formulaire.php">"Saisie de Fiches"</a>est un onglet à multiples fonctionnalités intégrées permettant à la fois de saisir une fiche de demande de câblage extraite automatiquement au format excel(.Xlsx : le fichier sortant ne présente aucun dommage cependant lors de l'ouverture excel vous informera sans doute d'une perte de données ou d'erreurs sur le fichier cependant, aucune information utile ne sera perdues. Veuillez donc juste valider) et ainsi pouvoir permettre une impression directe où un envoi de la fiche sur le terrain comportant avec une sélection le demandeur et ses coordonnées ainsi que les différents contacts que le demandeur aura choisis. De plus, juste avant l'extraction automatique en interne, le logiciel s'occupera lui-même de rajouter ces informations concernant l'appareil à synchroniser et l'appareil synchronisant dans la base de données pour y avoir accès plus tard (description de la base de données dans 3). Il est à noter que chaque case du formulaire doit être saisi correctement et qu'une suggestion automatique provenant d'éléments déjà sur la base a été mise en place sur certains champs comme Topologie et site si que ce soit pour le synchronisant ou le synchronisé ces informations existe dans la base. NB : La case site du Synchronisant ne nécessite pas forcément de valeur et prendra la valeur du synchronisé si elle n'est pas tapée. </p>
+<p align="center">La première chose à faire est d'importer un fichier au format csv à l'aide du bouton Charger fichier dans la partie "Chargement de l'interface. Le fichier csv doit avoir une structure particulière : être une table de faits avec des faits à la dernière colonnes, avoir des virgules en séparateur. Des exemples de fichiers sond disponibles dans le dossier "resources".
 </br>
 </br>
-<h4 align='center'>2.2 Consultations</h4>
+<h4 align='center'>2.2 Requêtage</h4>
 </br>
 </br>
-<p align="center">L'onglet <a href="consultation.php">"Consultations"</a> permettent comme son nom l'indique de consulter la base de données et d'y trouver en fonction du filtre choisi des éléments de synchronisation. On retrouvera donc sur cet écran, un champ pour choisir le type de filtre et un champ (avec suggestion automatique) pour entrer la recherche souhaitée. Après avoir validé la recherche, le logiciel interrogera le serveur et un résultat sera affiché dans un tableau en bas de la page(ces résultats pouvant parfois contenir trop de lignes, elles peuvent parfois faire ralentir la page web). Pour pouvoir permettre une ergonomie et une logique simple aux filtres, la phrase "recherche sur la base d'éléments" est directement continué par un nom de filtre suivant d'un nom de recherche lui donnant un sans directement sans avoir à chercher( ex  : "Recherche sur la Base d'éléments Sur le site Poitier").  Parmi ces filtres, nous en retrouverons 5 principaux : </a></p>
+<p align="center"> Après le chragement du fichier, à tout moment vous pouvez commencer à requêter la table. Pour ce faire dans le champ "Requêtage" vous permet grâce à sa liste déroulante de choisir les dimensions de la table de fait que vous voulez considérer pour faire votre requête. A chque clique dans la liste déroulante, votre choix sera affiché dans la petite partie de saisie de texte en dessous séparé par des virgules. Il est à noté que ce champs peut-être saisi manuellement en saisissant le nom des colonnes en les séparant par des virgules. Pour valider et lancer votre requête, dans cette partie "Requêtage", cliquez sur "OK"</p>
 </br>
-<h5 align='center'>2.2.1 Consultation Globale</h5>
-</br>
-<p align="center">Le Bouton consultation globale n'est pas un filtre en soi et ne devrait être utilisé qu'en cas d'extrême nécessité pour pouvoir rechercher à la main(ctrl+F) un élément de la base car la base s'incrémentant à chaque fois que l'on saisit une fiche, le nombre de lignes de résultats est de 1 trop grand pour l'ordinateur pouvant alors causer en fonction de la puissance de l'ordinateur utilisé des ralentissements de la page web mais aussi la vue est très peu ergonomique. En d'autre termes ce bouton est juste un bouton posé en cas de problèmes. </p>
-</br>
-<h5 align='center'>2.2.2 Consultation Sur un Site</h5>
-</br>
-<p align="center">Ce premier filtre comme son nom l'indique, permet de visualiser tous les équipements se trouvant sur un site et de trouver directement les équipements qu'il synchronise (se trouvant juste après lui).<p>
-</br>
-<h5 align='center'>2.2.3 Consultation d'éléments synchronisants</h5>
-</br>
-<p align="center">Ce filtre permet de visualiser en cascade(c'est-à-dire de visualiser tous les éléments qui le suivent tel un arbre de synchronisation finissant soit par une boucle revenant sur le premier élément soit à une feuille de l'arbre de synchronisation) tous les éléments participant à la synchronisation d'un appareil donné.</p>
-</br>
-<h5 align='center'>2.2.4 Consultation d'éléments synchronisés par</h5>
-</br>
-<p align="center">Ce filtre permet aussi une consultation en cascade mais en inverse, montrant tous les éléments que synchronise un appareil donné.</p>
-</br>
-<h5 align='center'>2.2.5 Consultation de SSU sur un Site</h5>
-</br>
-<p align="center">Ce filtre permet de rechercher toutes les Unités de synchronisations (SSU) se trouvant sur un site donné et montrant directement quels équipements le suivent ainsi que sur quelle sortie est branchées l'Unité de synchronisation</p>
-</br>
-<h5 align='center'>2.2.6 Consultation d'équipements se trouvant dans un département</h5>
-</br>
-<p align="center">Ce dernier filtre n'est pas une recherche mais permet l'extraction au format excel(format similaire à la fiche de demande de résiliation) d'une table présentant tous les équipements se trouvant dans un département</p>
+<h4 align='center'>2.3 Matérialisation</h4>
 </br>
 </br>
-<h4 align='center'>2.2 Fiches</h4>
-</br>
-</br>
-<p align="center">L'onglet fiche est un onglet permettant de gérer les fiches déjà présentes sur la base de données. En outre, si l'utilisateur lors de la création de fiche ne l'a pas enregistrée par mégarde ou qu'il l'a égaré, cet onglet lui permettra de retélécharger cette fiche. Pour ce faire, il a 2 options soit en la cherchant dans la barre de recherche soit en cliquant sur l'élément correspondant. Il est à noter que lors d'une recherche de fiche, une suggestion automatique sera faite pour que l'utilisateur puisse ne pas se tromper de nom. Et deuxièmement, cet onglet permet aussi de pouvoir si on le souhaite supprimer une fiche de la base et pour ce faire, mêmes méthodes que pour le téléchargement. Il faut juste sélectionner l'option supprimée. Dans cet onglet, les choses seront donc présentées avec un menu déroulant pour choisir l'option, une barre de recherche et un bouton valider et aussi juste en dessous, une liste cliquable des fiches contenues dans la base</p>
+<p align="center">Après avoir importé une table avec succès, de la même manière que le requêtage, vous pouvez à tout moment choisir d'optimiser le requêtage dans le champs "Matérialisation". Dans ce champ, on retrouve 4 Chiffres : Le premier est éditable et représente le nombre de requête que vous souhaitez matérialiser au maximum ; Le second est une estimation du nombre maximum de lignes que la matérialisation que vous avez saisi prendra en mémoire ; Le 3ème représente le nombre de requêtes métrialisés à l'instant t ;  Le 4 ème représente l'espace mémoire utilisé par les requêtes qui sont matérialisées à l'instant t (l'espace mémoire réel est inférieur ou égal à l'espace mémoire prévu)</p>
 
 </br>
 </br>
-<h4 align='center'>2.3 Modifications et Suppressions</h4>
+<h4 align='center'>2.3 Exportation</h4>
 </br>
-<h5 align='center'>2.3.1 Modification de masse ou d'attribut globaux</h5>
-</br>
-<p align="center">Plusieurs options s'offrent à nous lors de la modification. Tout comme dans chaque autre onglet, un menu déroulant nous permet de choisir le type d'actions que nous souhaitons réaliser. Il y a pour cela en tant que grosses modifications, des fonctions de mises à jour de nom de Site, de topologie ou encore de types d'équipement ayant un nom précis sur la base. Pour ce faire il suffira de choisir dans le menu déroulant l'option souhaitée et de taper au niveau des cases en dessous, la valeur actuelle et la nouvelle valeur souhaitée. Un message pop-up s'affichera en cas de réussite ou d'échec.</p>
-</br>
-<h5 align='center'>2.3.2 Modification et Suppression de Synchronisation</h5>
-</br>
-<p align="center">Deux autres options aparaissement dans le menu déroulant la modification et la suppression de synchronisation entre deux équipements. Pour la modification, après avoir entré le synchronisant et le synchronisé, un nouvel écran s'affichera avec toutes les informations sur la synchronisation suivie d'une case à compléter si l'utilisateur souhaite ou non modifier la valeur de cet attribut. Après validation, la fiche se mettra à jour sur le serveur et sur la base des données. Une nouvelle fiche sera alors téléchargée sur votre ordinateur automatiquement avec des cases rouges pour montrer les ases qui ont été modifié. De plus, de cette option, on peut aussi retrouver une fonctionnalité qui permet à l'utilisateur de pouvoir télécharger une nouvelle fiche au cas où à partir de n'importe quelle synchronisation de la base. En ce qui concerne la suppression, l'utilisateur, n'aura qu'à taper et valider. À la fin de chaque option, un pop-up validera ou non l'action.</p>
-</br>
-</br>
-<h4 align='center'>2.4 Gestion Contacts</h4>
-</br>
-<h5 align='center'>2.4.1 Ajout de Contacts</h5>
-</br>
-<p align="center">L'onglet ajout de contact permet la gestion des utilisateurs(demandeurs possibles de fiches) et les contacts possibles à ajouter à une fiche. Dans celui-ci, il vous sera demandé le nom, le prénom, ainsi que le numéro de téléphone en question. Pour les différents contacts, le prénom n'est pas primordial. Cependant pour les demandeurs même si le logiciel ne le force pas, il est préférable d'ajouter un prénom pour ne pas avoir une case vide dans la fiche extraite au niveau du prénom. Il faut sélectionner le type d'ajout avant de valider la fiche.</p>
-</br>
-<h5 align='center'>2.4.2 Suppression de Contacts</h5>
-</br>
-<p align="center">Pour pouvoir supprimer un contact de la base, il faut taper correctement le nom du contact à supprimer. Il faut pour cela aussi s'assurer lors de l'ajout d'un contact que celui-ci n'existe pas déjà sur la base(pour vérifier cela, aller dans l'onglet saisi de fiches et regarder tous les contacts présents)</p>
-</br>
-</br>
-<h3 align='center'>3. Structure de la base d'équipements (non détaillée)</h3>
-</br>
-</br>
-<p align="center">Sans entrer dans les détails, la base de donnée se compose principalement d'une table comportant 3 éléments principaux, le nom de l'équipement (topologie), ce qu'il fait (Synchronise ou est synchronisé (Entrée/Sortie)), ainsi que celui sur qui il agit (Depuis/vers). A ces informations, s'ajoutent d'autres informations concernant les équipements plus ou moins importante en foncction de ce que l'on souhaite tel que l'emplacement de l'équipement, à savoir le Site et le Département.</p>
+<p align="center">Après avoir fait une requête, voous pouvez choisir d'exporter et sauvegarder la table que vous venez de générer au format csv. Pour cela rendez-vous dans la section "exportation". Cliquez sur le bouton et choissiez un nom et un emplacement pour le fichier.</p>
 </br>
 </br>
 </br>
 </br>
 </br>
 </br>
-<p align='center'>Pour plus d'infos, veuillez trouver sur ce lien le téléchargement du <a href="readme.php">Readme.txt</a></p>
+</br>
+<h1 style='text-align=center'>QueryOptimizer</h1> <p>Version 2.0.0(Stable) <br> <br> <a href='https://github.com/EzekielaRakotoarijaona/OlapMod/issues'>Support</a><br><br><img src='../ui_resources/univ.png' width='150' heigth='100' ><br>&copy; 2020 <br> <br> Créé par : Oubeyy Shah, Lilia Naitamara, Riad M'himdi, Claire-Elise Hochet, Camille Rakotoarijaona <br> <br> <a href='https://github.com/EzekielaRakotoarijaona/OlapMod/blob/master/LICENSE'>Licence Apache-2.0 <br><br> </a>
 </br>
 </br>
 </ul>
